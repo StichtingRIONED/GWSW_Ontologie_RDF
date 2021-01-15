@@ -5,7 +5,7 @@
   .yellow{background: yellow;}
   .box{background: lightyellow}
 </style>
-<!--script src="builds/respec-rioned.js"></script-->
+<script src="builds/respec-rioned.js"></script>
 
 **Een beschrijving van het protocol GWSW-OroX**
 
@@ -391,8 +391,8 @@ De tabellen beschrijven de opgenomen properties. De toepassing van properties (p
 <table class="simp">
 <thead>
 <tr class="header">
-<th><p>Property</p>
-<p>(inverse)</p></th>
+<th><br/>Property
+<br/>(inverse)</th>
 <th>Type</th>
 <th>Omschrijving</th>
 </tr>
@@ -494,15 +494,15 @@ De tabellen beschrijven de opgenomen properties. De toepassing van properties (p
 <td><em>Subject</em> <span class="blue">heeft als conformiteitscode</span> <em>Literal</em> (verzameling codes voor conformiteitsklassen )</td>
 </tr>
 <tr>
-<td><p>hasAspect</p>
-<p>(isAspectOf)</p></td>
+<td><br/>hasAspect
+<br/>(isAspectOf)</td>
 <td>owl:ObjectProperty</td>
 <td><strong>CE</strong> beschrijft restrictie op cardinaliteit: Bij subject mag property hasAspect 0-n maal of min 0-n en max 1-n maal voorkomen</td>
 </tr>
 <tr>
 <td>hasValue</td>
-<td><p>owl:DatatypeProperty</p>
-<p>owl:FunctionalProperty</p></td>
+<td><br/>owl:DatatypeProperty
+<br/>owl:FunctionalProperty</td>
 <td><strong>CE</strong> beschrijft restrictie op object: Bij subject met property hasValue mogen alleen objecten van een bepaald datatype voorkomen. Bij het datatype kunnen vervolgens restricties op inhoud worden meegegeven.</td>
 </tr>
 <tr>
@@ -511,8 +511,8 @@ De tabellen beschrijven de opgenomen properties. De toepassing van properties (p
 <td><strong>CE</strong> beschrijft restrictie op object: Bij subject met property hasReference mogen alleen objecten van een bepaalde klasse (collectie) voorkomen</td>
 </tr>
 <tr>
-<td><p>hasInput</p>
-<p>(isInputOf)</p></td>
+<td><br/>hasInput
+<br/>(isInputOf)</td>
 <td>owl:ObjectProperty</td>
 <td><strong>CE</strong> beschrijft restrictie op cardinaliteit: Bij subject mag property hasInput 0-n maal of min 0-n en max 1-n maal voorkomen</td>
 </tr>
@@ -522,8 +522,8 @@ De tabellen beschrijven de opgenomen properties. De toepassing van properties (p
 <td><strong>CE</strong> beschrijft restrictie op cardinaliteit: Bij subject mag property hasOutput 0-n maal of min 0-n en max 1-n maal voorkomen</td>
 </tr>
 <tr>
-<td><p>hasPart</p>
-<p>(isPartOf)</p></td>
+<td><br/>hasPart
+<br/>(isPartOf)</td>
 <td>owl:ObjectProperty</td>
 <td><strong>CE</strong> beschrijft restrictie op cardinaliteit: Bij subject mag property hasPart 0-n maal of min 0-n en max 1-n maal voorkomen</td>
 </tr>
@@ -727,7 +727,7 @@ In het GWSW komen vertalingen voor, die worden als rdfs:label (voorzien van de t
 Voor de namen van relaties wordt altijd de Engelse taal gebruikt, voor de namen van kwalitatieve aspecten (in gebruik voor onderscheidende kenmerken) wordt Nederlandse taal gebruikt, meestal de naam van het object (de range van de property) startend met lowercase.
 
 Een generieke relatie in een dataset: classificeren van de put
-<div class="example"><div class="example-title marker">Model:</div><pre>
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1    rdf:type    gwsw:Inspectieput .
 </pre></div>
 
@@ -765,77 +765,77 @@ De volgende annotaties worden bij GWSW-concepten opgenomen (zie voor toelichting
 <tbody>
 <tr>
 <td>rdfs:label</td>
-<td><p>Exact 1 per taalgemeenschap.</p>
-<p><span class="blue">Opnemen bij de klasse, collectie-idividual, optioneel bij CE's</span></p></td>
+<td>Exact 1 per taalgemeenschap.
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, optioneel bij CE's</span></td>
 </tr>
 <tr>
 <td>skos:altLabel</td>
-<td><p>Onbeperkt (min=0)</p>
-<p><span class="blue">Opnemen bij de klasse, collectie-idividual</span></p></td>
+<td>Onbeperkt (min=0)
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividual</span></td>
 </tr>
 <tr>
 <td>skos:hiddenLabel</td>
-<td><p>Maximaal 1 (min=0) <span class="red">Vervalt op termijn (alleen in Gellish-omgeving)</span></p>
-<p><span class="blue">Opnemen bij de klasse, collectie-idividual</span></p></td>
+<td>Maximaal 1 (min=0) <span class="red">Vervalt op termijn (alleen in Gellish-omgeving)</span>
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividual</span></td>
 </tr>
 <tr>
 <td>skos:notation</td>
-<td><p>Maximaal 1 per context (min=0)</p>
-<p><span class="blue">Opnemen bij de klasse, collectie-idividual</span></p></td>
+<td>Maximaal 1 per context (min=0)
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividual</span></td>
 </tr>
 <tr>
 <td>skos:definition</td>
-<td><p>Onbeperkt (min=0)</p>
-<p><span class="blue">Opnemen bij de klasse, collectie-idividual</span></p></td>
+<td>Onbeperkt (min=0)
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividual</span></td>
 </tr>
 <tr>
 <td>rdfs:seeAlso</td>
-<td><p>Onbeperkt (min=0)</p>
-<p>Opbouw: [externe bron] Omschrijving of URI (webadres)</p>
-<p><span class="blue">Opnemen bij de klasse, collectie-idividual</span></p></td>
+<td>Onbeperkt (min=0)
+<br/>Opbouw: [externe bron] Omschrijving of URI (webadres)
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividual</span></td>
 </tr>
 <tr>
 <td>rdfs:comment</td>
-<td><p>Onbeperkt (min=0)</p>
-<p>Algemene opbouw: Commentaar-tekst</p>
-<p>Verwijzing naar figuur: [Bijlage nnn.jpg]</p>
-<p>- als "nnn" identiek is aan de URI-naam: [Bijlage *.jpg]</p>
-<p><span class="blue">Opnemen bij de klasse, collectie-idividual, optioneel bij CE's</span></p></td>
+<td>Onbeperkt (min=0)
+<br/>Algemene opbouw: Commentaar-tekst
+<br/>Verwijzing naar figuur: [Bijlage nnn.jpg]
+<br/>- als "nnn" identiek is aan de URI-naam: [Bijlage *.jpg]
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, optioneel bij CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasUnit</td>
-<td><p>Kies uit de tabel hierna</p>
-<p><span class="blue">Opnemen bij de klasse</span></p></td>
+<td>Kies uit de tabel hierna
+<br/><span class="blue">Opnemen bij de klasse</span></td>
 </tr>
 <tr>
 <td>gwsw:hasDateStart</td>
-<td><p>Exact 1</p>
-<p><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></p></td>
+<td>Exact 1
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasDateChange</td>
-<td><p>Minimaal 0, invullen als de waarde van één van de attributen wijzigt of als het concept andere properties (attributen/relaties) krijgt. Bevat altijd de laatste datum.</p>
-<p><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></p></td>
+<td>Minimaal 0, invullen als de waarde van één van de attributen wijzigt of als het concept andere properties (attributen/relaties) krijgt. Bevat altijd de laatste datum.
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasAuthorStart</td>
-<td><p>Exact 1. Bijgehouden vanaf 2006</p>
-<p><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></p></td>
+<td>Exact 1. Bijgehouden vanaf 2006
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasAuthorChange</td>
-<td><p>Minimaal 0</p>
-<p><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></p></td>
+<td>Minimaal 0
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasValidity</td>
-<td><p>Minimaal 0, maximaal 1</p>
-<p><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></p></td>
+<td>Minimaal 0, maximaal 1
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></td>
 </tr>
 <tr>
 <td>skos:scopeNote</td>
-<td><p>Minimaal 0</p>
-<p><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></p></td>
+<td>Minimaal 0
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></td>
 </tr>
 </tbody>
 </table>
