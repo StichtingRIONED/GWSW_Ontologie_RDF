@@ -1,10 +1,10 @@
 var respecConfig =
 {
   //specStatus: "unofficial", // w3c-UD.css nodig, maar die is er niet
-  specStatus: "design",
-  //specType: "HR",             // Handreiking
+  //specStatus: "design",
+  specType: "HR",             // Handreiking
   //format: "markdown",         // Altijd "markdown"     
-  shortName: "GWSW-2.0", 	      // Wordt gebruikt in de document URL
+  shortName: "GWSW_RDF", 	      // Wordt gebruikt in de document URL
   license: "cc0",
    
   editors: [{
@@ -26,15 +26,15 @@ var respecConfig =
     companyURL: "https://www.riool.net"
   }],
   otherLinks: [{
-    key: "GitHub", href: "https://github.com/stichtingrioned/GWSW_2.0/"
+    key: "GitHub", href: "https://github.com/stichtingrioned/GWSW_Ontologie_RDF/"
   }],
   //github: "https://github.com/StichtingRIONED/GWSW"
   //-- Repositorynaam/issues op GitHub ------------------------------------------------
   //issueBase: "https://github.com/StichtingRIONED/GWSW/issues/",
 
-  thisVersion: "https://stichtingrioned.github.io/GWSW_2.0/",
+  thisVersion: "https://stichtingrioned.github.io/GWSW_Ontologie_RDF/",
   latestVersion: "", // gepubliceerde versie
-  edDraftURI: "https://stichtingrioned.github.io/GWSW_2.0/", // werkversie
+  edDraftURI: "https://stichtingrioned.github.io/GWSW_Ontologie_RDF/", // werkversie
 
   maxTocLevel: 4, // Aantal niveau's ToC, default is 0
 };
