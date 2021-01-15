@@ -722,19 +722,19 @@ Voor de namen van relaties wordt altijd de Engelse taal gebruikt, voor de namen 
 
 Een generieke relatie in een dataset: classificeren van de put
 
-<div>class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1    rdf:type    gwsw:Inspectieput .
 </pre></div>
 
 Een GWSW relatie in de dataset:
 
-<div>class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1    gwsw:isPartOf    bim:Rioolstelsel1 .
 </pre></div>
 
 Een GWSW kwalitatief aspect in een dataset (afgeleid wordt dat bim:Put1 een inspectieput is):
 
-<div>class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1    gwsw:functie    gwsw:ToegangVerschaffen . # individual van type gwsw:Functie
 </pre></div>
 
@@ -870,7 +870,7 @@ Gebruik bij het attribuut hasUnit de tekst uit de kolom Eenheid:
 
 Een voorbeeld van gebruikte annotaties:
 
-<div>class="example"><div class="example-title marker">Model:</div><pre>
+<div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:Put    rdf:type                    owl:Class ;
             rdfs:label                  "Put"@nl ;
             rdfs:subClassOf             gwsw:FysiekObjebClt ;
@@ -904,13 +904,13 @@ In het GWSW Datamodel worden context-specifieke coderingen altijd gecombineerd m
 
 In RDF is het gebruikelijk om attributen van een subject te benoemen in de property (“property-central”). Bijvoorbeeld:
 
-<div>class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1  gwsw:hasAspectPutHoogte  1000^^xsd:integer .
 </pre></div>
 
 Zo'n eigenschap/kenmerk kan ook als apart concept (“class-central”) worden onderscheiden:
 
-<div>class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1  gwsw:hasAspect      bim:Hgt1 .
 bim:Hgt1  rdf:type            gwsw:PutHoogte ;
           gwsw:hasValue       1000^^xsd:integer .
@@ -918,7 +918,7 @@ bim:Hgt1  rdf:type            gwsw:PutHoogte ;
 
 De notatie (in turtle) blijft overzichtelijk, het object Hgt1 kan anoniem blijven (zonder URI) en wordt bijvoorbeeld gecombineerd met de specificatie van putmateriaal (zie hoofdstuk “Collecties”):
 
-<div>class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1  gwsw:hasAspect  
           [
             rdf:type            gwsw:PutHoogte ; 
@@ -932,7 +932,7 @@ bim:Put1  gwsw:hasAspect
 
 In de GWSW Ontologie definieert voor veel kenmerken metagegevens zoals de "wijze van inwinning". Dat is volgens het class-central principe relatief eenvoudig te beschrijven:
 
-<div>class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1  gwsw:hasAspect  
           [
             rdf:type                    gwsw:PutHoogte ;
@@ -972,7 +972,7 @@ In het OroX worden twee soorten datatype gebruikt:
 
 Voor restricties op de kenmerk-waarde hanteren we:
 
-<div>class="example"><div class="example-title marker">Model:</div><pre>
+<div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:hasAspect     rdf:type               owl:ObjectProperty .
 gwsw:hasValue      rdf:type               owl:DatatypeProperty ;
                    rdf:type               owl:FunctionalProperty . # waarde-relatie altijd max 1
@@ -986,14 +986,14 @@ gwsw:PutHoogte     rdfs:subClassOf        gwsw:Kenmerk ;
 
 Alleen een restrictie op het standaard datatype:
 
-<div>class="example"><div class="example-title marker">Model:</div><pre>
+<div class="example"><div class="example-title marker">Model:</div><pre>
                      owl:allValuesFrom      xsd:integer
                    ] .
 </pre></div>
 
 Of restricties op min/max waarde met een GWSW-datatype:
 
-<div>class="example"><div class="example-title marker">Model:</div><pre>
+<div class="example"><div class="example-title marker">Model:</div><pre>
                      owl:allValuesFrom   gwsw:dt_PutHoogte  
                    ] .
 gwsw:dt_PutHoogte  rdf:type       rdfs:Datatype ; # typering verplicht in OWL RL
@@ -1011,7 +1011,7 @@ gwsw:dt_PutHoogte  rdf:type       rdfs:Datatype ; # typering verplicht in OWL RL
 
 Een intrinsiek aspect behoort specifiek (per definitie) bij een klasse.
 
-<div>class="example"><div class="example-title marker">Model:</div><pre>
+<div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:PutHoogte  rdfs:comment      “Intrinsiek kenmerk” ;
                 rdfs:subClassOf   gwsw:Hoogte .
 </pre></div>
@@ -1022,7 +1022,7 @@ Vanwege inference-snelheid hier eenzijdige subklassering aangehouden. Alleen de 
 
 Via blank-node subklasse bij Put met restrictie op property:
 
-<div>class="example"><div class="example-title marker">Model:</div><pre>
+<div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:Put    rdfs:subClassOf
             [   rdf:type              owl:Restriction ;
                 owl:onProperty        gwsw:hasAspect ;
@@ -1032,7 +1032,7 @@ gwsw:Put    rdfs:subClassOf
 </pre></div>
 Met deze definitie worden Putten onderscheiden op basis van het intrinsieke aspect Puthoogte, de individual hoeft in de dataset niet getypeerd te worden:
 
-<div>class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1    gwsw:hasAspect
             [
               rdf:type                gwsw:PutHoogte ;
@@ -1044,7 +1044,7 @@ bim:Put1    gwsw:hasAspect
 
 De restrictie-property <span class="blue">owl:hasValue</span> gebruiken we voor het kwalificeren van standaardwaardes van kenmerken (bijvoorbeeld voor versie-aanduidingen) .
 
-<div>class="example"><div class="example-title marker">Model:</div><pre>
+<div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:GwswVersie   rdf:type  owl:Class ;  
                   rdfs:subClassOf
                   [
@@ -1058,7 +1058,7 @@ gwsw:Abc          rdfs:label           “abc”^^xsd:string
 
 Met de restrictie-property <span class="blue">owl:allValuesFrom</span> worden concepten als kwalificatie benoemd.
 
-<div>class="example"><div class="example-title marker">Model:</div><pre>
+<div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:NodeId   rdf:type             owl:Class ;  
               rdfs:subClassOf
               [
@@ -1074,7 +1074,7 @@ Een onderscheidend kenmerk wordt gemodelleerd met restricties binnen een CE. Bij
 
 Definieer Onderscheidend Kenmerk (class en property)
 
-<div>class="example"><div class="example-title marker">Model:</div><pre>
+<div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:Uitvoering     skos:definition  "Materiaal, afwerking, vorm"@nl ;
                     rdfs:subClassOf  gwsw:OnderscheidendKenmerk .
 gwsw:uitvoering     rdf:type         owl:ObjectProperty ;
@@ -1084,7 +1084,7 @@ gwsw:uitvoering     rdf:type         owl:ObjectProperty ;
 
 Combineer het kenmerk en de waarde ervan in een CE
 
-<div>class="example"><div class="example-title marker">Model:</div><pre>
+<div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:Klein          rdfs:label       “klein" ;
                     rdf:type         gwsw:Uitvoering .  # Individual: uitvoeringswijze
 gwsw:KleinObject    rdfs:subClassOf  gwsw:FysiekObject ;
@@ -1098,7 +1098,7 @@ gwsw:KleinObject    rdfs:subClassOf  gwsw:FysiekObject ;
 
 Als in de dataset een invidual als volgt beschreven is leidt een reasoner af dat KleinObject1 van het type KleinObject is:
 
-<div>class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:KleinObject1    gwsw:uitvoering  gwsw:Klein .
 </pre></div>
 
@@ -1115,7 +1115,7 @@ De samenstelling-relaties komen voor in datasets en in de ontologie, in de ontol
 
 De relaties <span class="blue">hasInput</span> en <span class="blue">hasOutput</span> worden gebruikt voor de beschrijving van activiteiten en processen, een voorbeeld:
 
-<div>class="example"><div class="example-title marker">Model:</div><pre>
+<div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:hasInput           rdfs:label         "has as input" ;
                         rdf:type           owl:ObjectProperty .
 gwsw:InspecterenPut     rdfs:label         "Inspecteren van een put"@nl, “Inspection manhole”@en ;
@@ -1124,7 +1124,7 @@ gwsw:InspecterenPut     rdfs:label         "Inspecteren van een put"@nl, “Insp
 
 In een dataset:
 
-<div>class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Insp1               rdf:type           gwsw:InspecterenPut ;
                         gwsw:hasInput      bim:Put1 .
 </pre></div>
@@ -1215,7 +1215,7 @@ gwsw:Rioolput   rdfs:subClassOf
 
 Cardinaliteit kan tweezijdig worden beschreven, daarvoor zijn er omgekeerde relaties nodig.
 
-<div>class="example"><div class="example-title marker">Model:</div><pre>
+<div class="example"><div class="example-title marker">Model:</div><pre>
 
 gwsw:isPartOf   rdfs:label                     "has as part (inverse)” ;
                 rdf:type                       owl:ObjectProperty ;
