@@ -7,16 +7,16 @@
 </style>
 
 <!-- gebruik voor lokaal editen -->
-<!--script src="builds/respec-rioned.js"></script-->
+<script src="./builds/respec-rioned.js"></script>
 
-**Een beschrijving van het protocol GWSW-OroX**
+**Een beschrijving van het protocol GWSW-OroX versie 1.6**
 
 Van: Stichting RIONED
 
 Versie historie
 <div style="font-size: 0.90em">
 
-20201219: In kader Gellish-ontmanteling
+20201219: In kader Gellish-ontmanteling 
 
 * URI's voor aspect properties vragen extra aandacht voor hoofdlettergevoeligheid. Nu bestaan bijvoorbeeld gwsw:functie en gwsw:Functie naast elkaar. (hst 3.1.1)
 * op basis NTA8035: consequent de term properties voor predicates hanteren, onderverdeeld in attributen (annotaties en aspecten) en relaties
@@ -293,9 +293,15 @@ De **Auteurs** gecombineerd met **Datum start concept** en **Datum wijziging con
 
 De **Taalgemeenschap** wordt als extra naam bij de concepten (met property rdfs:label) vermeld.
 
-### Collection of Facts
+### Collection of Facts - GWSW deelmodellen
 
-Vanaf GWSW versie 1.6 (na afscheid van het bron Gellish model) is de **Collection of Facts** op conceptniveau in de RDF-bron opgenomen. De Collection of Facts vanuit het het Gellish-model speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met de annotatie-relatie **skos:scopeNote**, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (filter/module GWSW-Basis, GWSW-RIB, enz.) horen.
+Vanaf GWSW versie 1.6 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met de annotatie-relatie **skos:scopeNote**, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen.
+
+Op basis van de CoF worden de GWSW deelmodellen samengesteld, zo'n deelmodel is een filter op het datamodel waarbij de klassen, de CE's en de individuals worden geselecteerd op de gekoppelde CoF. De deelmodellen hebben een diverse functies:
+
+* het overzichtelijk presenteren van specifieke GWSW onderdelen
+* het filteren van conformiteitsklassen, data-verificatie voor bepaalde processen
+* het koppelen van alleen de relevante modelonderdelen aan datasets, afgestemd op de praktijk van uitwisselen  
 
 De annotatie skos:scopeNote (voor het filteren van datamodellen) wordt altijd opgenomen bij:
 
@@ -303,20 +309,40 @@ De annotatie skos:scopeNote (voor het filteren van datamodellen) wordt altijd op
 * De CE's met restrictie op de cardinaliteit van concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken, de kwalitatieve aspect-properties).
 * De typering van individuals binnen een collectie (de verzameling kan variëren vanwege bijvoorbeeld een externe normering)
 
-De annotatie skos:scopeNote wordt niet opgenomen indien:
-
-De relevantie wordt bepaald door de skos:scopeNote bij de klasse-definitie, dan wordt de CE niet expliciet binnen een scope opgenomen.
+De annotatie skos:scopeNote wordt **niet** opgenomen indien:
 
 * De definitie van onderscheidende kenmerken (CE's voor de kwalitatieve aspect-properties), de relevantie wordt bepaald door de skos:scopeNote bij de betrokken klasse
 * De individuals van de onderscheidende kenmerken, bijvoorbeeld concepten die van type gwsw:Functie zijn. Ook hier wordt de relevantie bepaald door de skos:scopeNote bij de betrokken klasse
 * Restricties op datatype (waarde binnen een collectie of van een xsd-type), bij de relaties gwsw:hasValue en gwsw:hasReference
 * In vervolg daarop: restricties op waardebereik (min/max)
 
-### Validity context
+De toegepaste CoF's en deelmodellen zijn in het GWSW datamodel opgenomen:
 
-Vergelijkbaar met de Collection of Facts speelt ook de **Validity context** vanuit Gellish nog steeds een rol in de RDF-vorm van het GWSW. Met de annotatie-relatie **gwsw:hasValidity** worden de triples gespecificeerd voor een bepaalde conformiteitsklasse (met kwaliteitseisen per proces).
+<div class="example"><div class="example-title marker">Model:</div><pre>
+gwsw:_TOP
+  rdf:type                      gwsw:CollectionOfFacts ;
+  rdfs:label                    "Collection of facts TOP"@nl ;
+  skos:definition               "Bevat algemene supertypes"@nl 
+.
+gwsw:DeelmodelKentallen
+  rdf:type                      owl:Class ;
+  rdfs:label                    "Deelmodel Kentallen"@nl ; 
+  skos:scopeNote                gwsw:_TOP ;
+  rdfs:subClassOf               gwsw:VerzamelingSoorten ;
+  rdfs:subClassOf
+  [
+  rdf:type                      owl:Class ;
+  owl:oneOf                     (gwsw:_TOP gwsw:_DMO gwsw:_HYD )
+  ] ;
+  skos:definition               "Deelmodel voor afvoerscenario's en kentallen. Bevat het rioleringsnetwerk, het afvoernetwerk (verbindingen tussen stelsels) en gemeentelijke activiteiten voor optimaliseren afvalwaterketen"@nl
+.
+</pre></div>
 
-…
+
+### Validity context - Conformiteitsklassen
+
+Vergelijkbaar met de Collection of Facts speelt ook de **Validity context** vanuit Gellish nog steeds een rol in de RDF-vorm van het GWSW. Met de annotatie-relatie **gwsw:hasValidity** worden de triples nabewerkt voor een bepaalde conformiteitsklasse (met kwaliteitseisen per proces).
+...
 
 ## Top Level soorten
 

@@ -485,7 +485,7 @@
 
 /** Change Marking ************************************************************/
 
-	del { color: red;  text-decoration: line-through; }
+	del { color: gray;  text-decoration: line-through; } /** mv: Was color red */
 	ins { color: #080; text-decoration: underline;    }
 
 /** Miscellaneous improvements to inline formatting ***************************/
@@ -725,8 +725,10 @@ table.default td {
 }
 table.simp {
   font-size: 0.95em;
-  padding: 0 0.5em 0 0.5em;
   background-color:  rgb(245, 247, 255);
+}
+table.simp th, table.simp td  { /** mv: eenvoudige basistabel */
+  padding: 0 0 0 0.5em;
 }
 /* mv: preformatted text (20200927) */
 
