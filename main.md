@@ -311,7 +311,7 @@ De annotatie skos:scopeNote (voor het filteren van datamodellen) wordt altijd op
 
 De annotatie skos:scopeNote wordt **niet** opgenomen indien:
 
-* De definitie van onderscheidende kenmerken (CE's voor de kwalitatieve aspect-properties), de relevantie wordt bepaald door de skos:scopeNote bij de betrokken klasse
+* De definitie van onderscheidende kenmerken (CE's voor de kwalitatieve aspect-properties), horen ongeacht een filter of deelmodel bij de betrokken klasse
 * De individuals van de onderscheidende kenmerken, bijvoorbeeld concepten die van type gwsw:Functie zijn. Ook hier wordt de relevantie bepaald door de skos:scopeNote bij de betrokken klasse
 * Restricties op datatype (waarde binnen een collectie of van een xsd-type), bij de relaties gwsw:hasValue en gwsw:hasReference
 * In vervolg daarop: restricties op waardebereik (min/max)
