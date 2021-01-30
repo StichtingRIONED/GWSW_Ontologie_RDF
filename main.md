@@ -300,7 +300,8 @@ Vanaf GWSW versie 1.6 (na afscheid van het Gellish bronmodel) is de **Collection
 Op basis van de CoF worden de GWSW deelmodellen samengesteld, zo'n deelmodel is een filter op het datamodel waarbij de klassen, de CE's en de individuals worden geselecteerd op de gekoppelde CoF. De deelmodellen hebben een diverse functies:
 
 * het overzichtelijk presenteren van specifieke GWSW onderdelen
-* het filteren van conformiteitsklassen, data-verificatie voor bepaalde processen
+* het overzichtelijk onderhouden van het datamodel. Veel deelmodellen hebben een heel specifieke functie, anderen worden met een lage frequentie onderhouden. Denk bijvoorbeeld aan uitwisselformaten.
+* het samenstellen van conformiteitsklassen, data-verificatie voor bepaalde processen
 * het koppelen van alleen de relevante modelonderdelen aan datasets, afgestemd op de praktijk van uitwisselen  
 
 De annotatie skos:scopeNote (voor het filteren van datamodellen) wordt altijd opgenomen bij:
