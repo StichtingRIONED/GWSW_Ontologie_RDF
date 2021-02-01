@@ -864,8 +864,9 @@ De volgende annotaties worden bij GWSW-concepten opgenomen (zie voor toelichting
 </tbody>
 </table>
 
-Gebruik bij het attribuut hasUnit de tekst uit de kolom Eenheid:
+De in RDF gehanteerde datatypes zijn gekoppeld aan de waarde van hasUnit. Als bij een concept de eenheid niet is gespecificeerd wordt uitgegaan van datatype <span class="blue">xsd:string</span>.  
 
+Gebruik voor de waarden van het attribuut hasUnit één van mogelijke eenheden:
 <table class="simp">
 <thead>
 <tr class="header"><th>Eenheid</th><th>Datatype</th></tr>
@@ -892,6 +893,7 @@ Gebruik bij het attribuut hasUnit de tekst uit de kolom Eenheid:
 <tr><td>ppm</td><td>xsd:integer</td></tr>
 <tr><td>hhmmss</td><td>xsd:time</td></tr>
 <tr><td>- <em>(factor)</em></td><td>xsd:decimal</td></tr>
+<tr><td><span class="yellow">gml</td><td><span class="yellow">geo:gmlLiteral</td></tr>
 </tbody>
 </table>
 
