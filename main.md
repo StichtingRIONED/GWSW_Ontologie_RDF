@@ -6,8 +6,8 @@
   .box{background: lightyellow}
 </style>
 
-<!-- gebruik voor lokaal editen -->
-<script src="./builds/respec-rioned.js"></script>
+<!-- gebruik voor lokaal editen
+<script src="./builds/respec-rioned.js"></script> -->
 
 **Een beschrijving van het protocol GWSW-OroX versie 1.6**
 
