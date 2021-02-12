@@ -203,11 +203,13 @@ Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkeli
 
 3. Hou er rekening mee dat de individuen zo specifiek mogelijk geclassificeerd dienen te worden. Classificatie met een supertype gebeurt alleen als het subtype niet van toepassing is (denk aan het eerdere voorbeeld "hemelwaterstelsel") of als het onbekend is en wel toegepast kan worden. Bijvoorbeeld bij gebruik van de inspectienorm voor "vrijverval rioolleidingen" (met subtypes gemengd, hemelwater, vuilwater).
 
-### Data-afleiding - Definiërende relaties
+### Data-afleiding - Beschrijf alle voorkomende aspecten en relaties bij een concept
 
-1. Beschrijf relaties tussen concepten altijd via een CE, maak het optioneel via min=0, of definiërend via exact min en max (cardinaliteit-beschrijving). Een fysiek object heeft dan bijvoorbeeld per definitie andere fysieke objecten als onderdeel.
+1. Beschrijf met CE's op de cardinaliteit alle mogelijk voorkomende properties (uitgezonderd de annotatie-attributen), ook als ze niet definiërend zijn. Hanteer de cardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
 
-2. Beschrijf op dezelfde wijze ook altijd de inverse relatie.
+2. Beschrijf definiërende relaties tussen concepten met de cardinaliteit "exact". Een fysiek object heeft dan bijvoorbeeld per definitie andere fysieke objecten als onderdeel.
+
+3. Beschrijf op dezelfde wijze ook altijd de inverse relatie.
 
 ### Erven van samenstellingen
 
