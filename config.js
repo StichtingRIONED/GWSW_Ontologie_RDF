@@ -32,9 +32,10 @@ var respecConfig =
   //-- Repositorynaam/issues op GitHub ------------------------------------------------
   //issueBase: "https://github.com/StichtingRIONED/GWSW/issues/",
 
-  //thisVersion: "https://stichtingrioned.github.io/GWSW_Ontologie_RDF/",
-  latestVersion: "https://stichtingrioned.github.io/GWSW_Ontologie_RDF/", // gepubliceerde versie
+  thisVersion: "https://stichtingrioned.github.io/GWSW_Ontologie_RDF/",
+  latestVersion: "", // gepubliceerde versie
   //edDraftURI: "https://stichtingrioned.github.io/GWSW_Ontologie_RDF/", // werkversie
 
   maxTocLevel: 4, // Aantal niveau's ToC, default is 0
+  level2: true,
 };
