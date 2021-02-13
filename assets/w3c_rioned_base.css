@@ -748,7 +748,7 @@ table.simp {
   background-color:  rgb(245, 247, 255);
 }
 table.simp th, table.simp td  { /** mv: eenvoudige basistabel */
-  padding: 0.5em;
+  padding: 0.5em 0 0.5em 0.5em;
 }
 /* mv: preformatted text (20200927) */
 
