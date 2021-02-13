@@ -36,6 +36,6 @@ var respecConfig =
   latestVersion: "", // gepubliceerde versie
   //edDraftURI: "https://stichtingrioned.github.io/GWSW_Ontologie_RDF/", // werkversie
 
-  maxTocLevel: 4, // Aantal niveau's ToC, default is 0
-  level2: true,
+  maxTocLevel: 3, // Aantal niveau's ToC, default is 0/geen limiet
+  level2: true, // mv: hoofdstuk-nummering alleen voor de subsections (20210212)
 };
