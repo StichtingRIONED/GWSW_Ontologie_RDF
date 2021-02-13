@@ -1,6 +1,6 @@
 /******************************************************************************
  
- * [nv] vanaf https://www.w3.org/StyleSheets/TR/2016/base.css
+ * [nv:] vanaf https://www.w3.org/StyleSheets/TR/2016/base.css
  *
  *                   Style sheet for the W3C specifications                   *
  *
@@ -329,15 +329,15 @@
 		page-break-after: avoid;
 		page-break-inside: avoid;
 		font: 100% sans-serif;   /* Reset all font styling to clear out UA styles */
-		font-family: inherit;    /* Inherit the font family. */
+		font-family: 'Segoe UI', sans-serif;    /* Inherit the font family. */
 		line-height: 1.2;        /* Keep wrapped headings compact */
 		hyphens: manual;         /* Hyphenated headings look weird */
 	}
 
-	h2, h3, h4, h5, h6 {
+  /* mv: 	
+  h2, h3, h4, h5, h6 {
 		margin-top: 3rem;
 	}
-
 	h1, h2, h3 {
 		color: #005A9C;
 		background: transparent;
@@ -349,6 +349,14 @@
 	h4 { font-weight: bold; }
 	h5 { font-style: italic; }
 	h6 { font-variant: small-caps; }
+  dt { font-weight: bold; }*/
+
+	h1 { margin-top: 3rem; color: #005A9C; font-size: 200%; }
+	h2 { margin-top: 3rem; color: #005A9C; font-size: 180%; }
+	h3 { margin-top: 3rem; color: #005A9C; font-size: 160%; font-weight: bold; } /* mv: level1 binnen <section> */
+	h4 { margin-top: 2rem; color: #005A9C; font-size: 140%; font-weight: bold; }
+	h5 { margin-top: 1rem; color: #005A9C; font-size: 120%; font-style: italic; font-weight: bold; }
+	h6 { margin-top: 1rem; color: #005A9C; font-style: italic; font-weight: bold; }
 	dt { font-weight: bold; }
 
 /** Subheadings ***************************************************************/
@@ -494,6 +502,18 @@
 		vertical-align: super;
 		font-size: 80%;
 	}
+
+/** mv: diverse tekstmarkeringen */
+  .yellow{background: yellow;}
+  span.red{color: red;}
+  span.box{background: lightyellow}
+  span.mark {
+    background-color: yellow;
+  }
+  span.blue {
+    color: rgb(0, 174, 255);
+    font-weight: bold;
+  }
 
 /******************************************************************************/
 /*                                    Code                                    */
@@ -740,14 +760,6 @@ pre.file {
   background-color:  rgb(221, 247, 255);
 }
 
-/* mv: gemarkeerde tekst */
-span.mark {
-  background-color: yellow;
-}
-span.blue {
-  color: rgb(0, 174, 255);
-  font-weight: bold;
-}
 /* mv: logo */
 img.logo {
   display:block;
