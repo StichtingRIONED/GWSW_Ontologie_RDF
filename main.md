@@ -235,6 +235,12 @@ Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkeli
 
 2. Intrinsieke kenmerken zijn geen noodzaak maar de combinatie met bepaalde restricties maakt ze waardevol en daarnaast wordt het model robuuster: als een individual het kenmerk heeft, dan hoort het van een bepaald type te zijn.
 
+### Datatypes
+
+1. Specificeer altijd de waardetypes bij de aspectwaarden
+2. Specificeer waar nodig ook het waardebereik (in combinatie met het waardetype)
+3. Start de URI van een datatype altijd met "Dt_"
+
 ### <span class="yellow">Contexten onderscheiden</span>
 
 Collection of Facts, wijze van indeling…
@@ -471,7 +477,7 @@ De tabellen beschrijven de opgenomen properties. De toepassing van properties (p
 <tr>
 <td>rdfs:seeAlso</td>
 <td>Annotatie</td>
-<td><em>Subject</em> <span class="blue">heeft aanvullende infofmatie</span> op <em>Literal</em> (definitie en/of bron-referentie ) (annotatie)</td>
+<td><em>Subject</em> <span class="blue">heeft aanvullende infofmatie</span> op <em>Literal</em> (definitie, bron-referentie of bijlage) (annotatie)</td>
 </tr>
 <tr>
 <td>rdfs:comment</td>
@@ -811,7 +817,7 @@ De volgende annotaties worden bij GWSW-concepten opgenomen (zie voor toelichting
 <tr>
 <td>rdfs:seeAlso</td>
 <td>Onbeperkt (min=0)
-<br/>Opbouw: [externe bron] Omschrijving of URI (webadres)
+<br/>Opbouw: [externe bron] Omschrijving of URI (webadres naar site of document)
 <br/><span class="blue">Opnemen bij de klasse, collectie-idividual</span></td>
 </tr>
 <tr>
@@ -899,18 +905,18 @@ Een voorbeeld van gebruikte annotaties:
 gwsw:Put    rdf:type                    owl:Class ;
             rdfs:label                  "Put"@nl ;
             rdfs:subClassOf             gwsw:FysiekObjebClt ;
-            skos:definition             "Verticale waterdichte ….”@bCll ;
-            rdfs:seeAlso                "[IMGeo:1.0/2007] Gegraven of … "@bCll ,
+            skos:definition             "Verticale waterdichte ….”@nl ;
+            rdfs:seeAlso                "[IMGeo:1.0/2007] Gegraven of … "@nl ,
                                         "https://imgeo.geostandaarden.nl/def/imgeo-object/put" ;
             rdfs:comment                "Toelichting bij modellering put" ;
-            gwsw:hasValidity            "1f 3f 4f " ; # codering voor samenstellen onformiteitsklasse
+            gwsw:hasValidity            "1f 3f 4f " ; # codering voor samenstellen conformiteitsklasse
             skos:scopeNote              gwsw:_TOP ;
             gwsw:hasDateStart           "2013-07-18"^^xsd:date .
 </pre></div>
 
 ### Annotatie voor coderingen, met context-specifiek datatype
 
-Coderingen komen veel voor in het GWSW, bijvoorbeeld als taalonafhankelijke aanduidigen van toestandsaspecten in de EN13508-2. Codes van concepten zijn object bij de property skos:notation. In het voorbeeld is een fictieve code “AAA” gebruikt.
+Coderingen komen veel voor in het GWSW, bijvoorbeeld als taalonafhankelijke aanduidingen van toestandsaspecten in de EN13508-2. Codes van concepten zijn object bij de property skos:notation. In het voorbeeld is een fictieve code “AAA” gebruikt.
 
 Voor een concept kunnen meerdere codes afhankelijk van de context voorkomen. Voor het reiniging van een leiding worden bijvoorbeeld andere codes gebruikt dan voor het inspecteren van een leiding. Om dat onderscheid te kunnen maken is in de GWSW-Ontologie een datatype aan de code toegevoegd. Dat datatype representeert het geldende notatie-schema.
 
@@ -937,7 +943,7 @@ Zo'n eigenschap/kenmerk kan ook als apart concept (“class-central”) worden o
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1  gwsw:hasAspect      bim:Hgt1 .
-bim:Hgt1  rdf:type            gwsw:PutHoogte ;
+bim:Hgt1  rdf:type            gwsw:HoogtePut ;
           gwsw:hasValue       1000^^xsd:integer .
 </pre></div>
 
@@ -946,7 +952,7 @@ De notatie (in turtle) blijft overzichtelijk, het object Hgt1 kan anoniem blijve
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1  gwsw:hasAspect  
           [
-            rdf:type            gwsw:PutHoogte ; 
+            rdf:type            gwsw:HoogtePut ; 
             gwsw:hasValue       1000^^xsd:integer
           ] ,
           [
@@ -960,7 +966,7 @@ In de GWSW Ontologie definieert voor veel kenmerken metagegevens zoals de "wijze
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1  gwsw:hasAspect  
           [
-            rdf:type                    gwsw:PutHoogte ;
+            rdf:type                    gwsw:HoogtePut ;
             gwsw:hasValue               1000^^xsd:integer ;
             gwsw:hasAspect
             [
@@ -1001,7 +1007,7 @@ Voor restricties op de kenmerk-waarde hanteren we:
 gwsw:hasAspect     rdf:type               owl:ObjectProperty .
 gwsw:hasValue      rdf:type               owl:DatatypeProperty ;
                    rdf:type               owl:FunctionalProperty . # waarde-relatie altijd max 1
-gwsw:PutHoogte     rdfs:subClassOf        gwsw:Kenmerk ;
+gwsw:HoogtePut     rdfs:subClassOf        gwsw:Kenmerk ;
   rdfs:label                              “Put hoogte” ;
                    rdfs:subClassOf
                    [
@@ -1021,7 +1027,7 @@ Of restricties op min/max waarde met een GWSW-datatype:
 <div class="example"><div class="example-title marker">Model:</div><pre>
                      owl:allValuesFrom   gwsw:dt_PutHoogte  
                    ] .
-gwsw:dt_PutHoogte  rdf:type       rdfs:Datatype ; # typering verplicht in OWL RL
+gwsw:Dt_HoogtePut  rdf:type       rdfs:Datatype ; # typering verplicht in OWL RL
                    rdfs:label     “Put hoogte - datatype” ;
                    owl:equivalentClass
                    [
@@ -1037,7 +1043,7 @@ gwsw:dt_PutHoogte  rdf:type       rdfs:Datatype ; # typering verplicht in OWL RL
 Een intrinsiek aspect behoort specifiek (per definitie) bij een klasse.
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:PutHoogte  rdfs:comment      “Intrinsiek kenmerk” ;
+gwsw:HoogtePut  rdfs:comment      “Intrinsiek kenmerk” ;
                 rdfs:subClassOf   gwsw:Hoogte .
 </pre></div>
 
@@ -1051,7 +1057,7 @@ Via blank-node subklasse bij Put met restrictie op property:
 gwsw:Put    rdfs:subClassOf
             [   rdf:type              owl:Restriction ;
                 owl:onProperty        gwsw:hasAspect ;
-                owl:someValuesFrom    gwsw:PutHoogte ;
+                owl:someValuesFrom    gwsw:HoogtePut ;
             ] .
 
 </pre></div>
@@ -1060,7 +1066,7 @@ Met deze definitie worden Putten onderscheiden op basis van het intrinsieke aspe
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1    gwsw:hasAspect
             [
-              rdf:type                gwsw:PutHoogte ;
+              rdf:type                gwsw:HoogtePut ;
               gwsw:hasValue           "1100"
             ] .
 </pre></div>
