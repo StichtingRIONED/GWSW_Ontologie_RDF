@@ -10,8 +10,9 @@ Van: Stichting RIONED
 Versie historie
 <div style="font-size: 0.90em">
 
-20201219: In kader Gellish-ontmanteling 
+20201219-20210223: In kader Gellish-ontmanteling 
 
+* verwijzing naar bijlage in opmerking-annotatie vervangen door rdfs:seeAlso-verwijzing naar document-URL
 * URI's voor aspect properties vragen extra aandacht voor hoofdlettergevoeligheid. Nu bestaan bijvoorbeeld gwsw:functie en gwsw:Functie naast elkaar. (hst 3.1.1)
 * op basis NTA8035: consequent de term properties voor predicates hanteren, onderverdeeld in attributen (annotaties en aspecten) en relaties
 * onderscheidende kenmerken met specifiek predicate (kwalitatieve aspect property) toekennen. Voorsorteren op NTA8035, annuleer de ingewikkelde intersection-restrictie (hst 3.3) (20210109)
