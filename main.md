@@ -1,7 +1,7 @@
 # GWSW Ontologie in RDF
 
-<!-- gebruik voor lokaal editen
-<script src="./builds/respec-rioned.js"></script> -->
+<!-- gebruik voor lokaal editen-->
+<script src="./builds/respec-rioned.js"></script>
 
 **Een beschrijving van het protocol GWSW-OroX versie 1.6**
 
@@ -102,7 +102,7 @@ Belangrijke superklassen zijn:
 
 Bij het ontwerp van een datastructuur spelen deze elementen de hoofdrol, ze vormen het ontwerpkader.
 
-Met het principe van object-oriëntatie hanteert het model overerving-principes en maakt het zo expliciet mogelijk onderscheid in subklassen van de genoemde superklassen. Dat is een heel andere benadering dan bijvoorbeeld het ontwerp van een relationeel model. Daarbij ligt de nadruk ligt op het interpreteren van informatie met een hoofdrol voor de normalisatie-techniek om opslagruimte te beperken en redundantie te voorkomen.
+Met het principe van object-oriëntatie hanteert het model overerving-principes en maakt het zo expliciet mogelijk onderscheid in subklassen van de genoemde superklassen. Dat is een heel andere benadering dan bijvoorbeeld het ontwerp van een relationeel model waarbij de nadruk ligt op het interpreteren van informatie met een hoofdrol voor de normalisatie-techniek om opslagruimte te beperken en redundantie te voorkomen.
 
 ## Uitgangspunten
 
@@ -118,13 +118,26 @@ Voor de definitie van klassen, eigenschappen, datatypen en restricties kunnen ve
 
 Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkelijke opzet (gestart in 2006) van het model in Gellish-vorm. Deze principes zijn natuurlijk taalonafhankelijk, ook in de RDF-vorm blijven ze van groot belang. Veel dank gaat naar Andries van Renssen, geestelijk vader van Gellish en Matthé van Koetsveld, sterk betrokken bij de modellering in Gellish van het GWSW en zijn voorlopers.
 
+### Structureren
+
+Zoals genoemd is de datastructuur object-georiënteerd waarbij relaties tussen objecten in een drietal structuren zijn ondergebracht:
+
+* Soortenboom (de taxonomie of klasse-indeling)
+* Samenstelling (de meronomie of deel-geheel indeling)
+* Proces (het activiteiten-schema)
+
+Bij het ontwerp spelen deze structuren de hoofdrol, ze vormen het ontwerpkader. Met het principe van object-oriëntatie hanteert het model overerving-principes en maakt het zo expliciet mogelijk onderscheid in subklassen van de genoemde superklassen.
+
+**Ter illustratie:**  
+Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het kenmerk "aantal pompen". Zo'n gegeven wordt (in presentaties) afgeleid uit het aantal voorkomens van de relatie <span class="blue">hasPart</span> tussen Gemaal en Pomp. De objecten Gemaal en Pomp worden expliciet beschreven.
+
 ### Terminologie - Het vakgebied is leidend
 
 (uitwerking: zie hst 3.1)
 
 1. Volg de gebruikelijke termen binnen het vakgebied, bedenk geen nieuwe conceptnamen die misschien de lading beter dekken of neutraler zijn. Dat geldt ook - waar mogelijk - voor abstracte concepten.
 
-2. Geef alle gebruikelijke vakgebied-termen die gelden voor het te modelleren systeem of proces een plek, als apart concept of als synoniem van een concept. De zoekfunctie moet volledig zijn.
+2. Geef alle gebruikelijke vakgebied-termen die gelden voor het te modelleren systeem of proces een plek, als apart concept of als synoniem van een concept. De zoekfunctie wordt daarmee volledig.
 
 3. Laat algemene termen die niet specifiek bij de discipline horen zoveel mogelijk buiten beschouwing. Modelleer bijvoorbeeld het concept "calamiteit" alleen als het als supertype nodig is.
 
@@ -151,31 +164,22 @@ Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkeli
 3. Gebruik de volgende onderscheidende kenmerken bij fysieke objecten:
 
     * Doel (waarvoor)
-
     * Toepassing (waarin)
-
     * Functie (wat doet het)
-
     * Uitvoering (hoe)
-
     * Structuur (waaruit)
 
 4. Activiteiten worden altijd gekenmerkt door de relaties
 
     * Invoer / hasInput (het lijdend voorwerp)
-
     * Uitvoer / hasOutput (het gewijzigde voorwerp, een rapport)
 
 5. Gebruik daarnaast de volgende onderscheidende kenmerken bij activiteiten:
 
     * Doel (waarvoor)
-
     * Toepassing (waarin)
-
     * Resultaat (wat doet het)
-
     * Technologie (werkwijze, eisen)
-
     * Mechanisme (waarmee)
 
 6. Kwalificeer het onderscheidende kenmerk impliciet (gwsw:uitvoering "groot"). Expliciete kwalificaties (in de vorm van subtypes van generieke kenmerken) worden dus niet gebruikt (zijn - nog - onnodig).
@@ -220,11 +224,11 @@ Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkeli
 
 3. Voorkom het opnemen van optionele kenmerken bij een supertype (kenmerken die niet voor alle subtypes gelden), definieer de kenmerken dus niet op een te hoog niveau.
 
-4. Gebruik bijvoorbeeld het multi-parent principe. Als alleen kunststof leidingen het gebruikte kenmerk "kleur" hebben, introduceer dan het concept "kunststof leiding" met het kenmerk "kleur". Een indivual is dan zowel een "vrijverval rioolleiding" als een "kunststof leiding" zijn en heeft daarmee dat extra kenmerk.
+4. Gebruik bijvoorbeeld het multi-parent principe. Als alleen kunststof leidingen het gebruikte kenmerk "kleur" hebben, introduceer dan het concept "kunststof leiding" met het kenmerk "kleur". Een individual is dan zowel een "vrijverval rioolleiding" als een "kunststof leiding" zijn en heeft daarmee dat extra kenmerk.
 
 ### Kenmerken - Geen typelijsten
 
-1. Kenmerken die verwijzen naar een typelijst (bijvoorbeeld het kenmerk Soort Deksel van het concept Deksel) mogen niet voorkomen. Een typelijst moet altijd uitgedrukt worden in de taxonomie, bijvoorbeeld subtypes van Deksel.
+1. Kenmerken die verwijzen naar een typelijst (bijvoorbeeld het kenmerk Soort Deksel van het concept Deksel) komen niet voor. Een typelijst wordt uitgedrukt in de taxonomie (bijvoorbeeld als subtypes van Deksel).
 
 ### Kenmerken - Specialiseren, maak ze intrinsiek
 
@@ -234,13 +238,13 @@ Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkeli
 
     * Definieer het generieke kenmerk "diameter" met het subtype "diameter leiding" met specifieke restricties op de afmetingen.
 
-2. Intrinsieke kenmerken zijn geen noodzaak maar de combinatie met bepaalde restricties maakt ze waardevol en daarnaast wordt het model robuuster: als een individual het kenmerk heeft, dan hoort het van een bepaald type te zijn.
+2. Intrinsieke kenmerken zijn geen noodzaak maar de combinatie met restricties (bijvoorbeeld minimum/maximum waarde) maakt ze waardevol en daarnaast wordt het model robuuster: als een individual het kenmerk heeft, dan hoort het van een bepaald type te zijn.
 
 ### Datatypes
 
 1. Specificeer altijd de waardetypes bij de aspectwaarden
 2. Specificeer waar nodig ook het waardebereik (in combinatie met het waardetype)
-3. Start de URI van een datatype altijd met "Dt_"
+3. Start de URI van een gemodelleerd datatype altijd met "Dt_"
 
 ### <span class="yellow">Contexten onderscheiden</span>
 
@@ -409,11 +413,15 @@ Alle collectie-leden zijn in de GWSW topologie opgenomen als individuen met anno
 
 ## Properties in de GWSW-Ontologie
 
-De GWSW properties in een diagram:
+De toegepaste attributen (annotatie-properties en aspecten) in een diagram:
 
-<img src="media/image1.png" style="width:100%;" />
+<img src="media/attributen.png" style="width:100%;" />
 
-De tabellen beschrijven de opgenomen properties. De toepassing van properties (per klasse) is in de GWSW-Ontologie vaak aan regels gebonden door middel van een Class Expression (CE). In de volgende tabel is dat aangegeven (“CE”).
+De toegepasten relaties in een diagram:
+
+<img src="media/relaties.png" style="width:100%;" />
+
+De tabellen beschrijven de gebruikte properties. De toepassing van properties (per klasse) is in de GWSW-Ontologie vaak aan regels gebonden door middel van een Class Expression (CE). In de volgende tabel is dat aangegeven (“CE”).
 
 <table class="simp">
 <thead>
@@ -486,27 +494,27 @@ De tabellen beschrijven de opgenomen properties. De toepassing van properties (p
 <td><em>Subject</em> <span class="blue">heeft als commentaar</span> <em>Literal</em> (annotatie)</td>
 </tr>
 <tr>
-<td>hasUnit</td>
+<td>gwsw:hasUnit</td>
 <td>owl:AnnotationProperty</td>
 <td><em>Subject</em> <span class="blue">heeft als eenheid</span> <em>Literal</em> (annotatie)</td>
 </tr>
 <tr>
-<td>hasDateStart</td>
+<td>gwsw:hasDateStart</td>
 <td>owl:AnnotationProperty</td>
 <td><em>Subject</em> <span class="blue">heeft als begindatum</span> <em>Literal</em> (annotatie)</td>
 </tr>
 <tr>
-<td>hasDateChange</td>
+<td>gwsw:hasDateChange</td>
 <td>owl:AnnotationProperty</td>
 <td><em>Subject</em> <span class="blue">heeft als wijzigingsdatum</span> <em>Literal</em> (annotatie)</td>
 </tr>
 <tr>
-<td>hasAuthorStart</td>
+<td>gwsw:hasAuthorStart</td>
 <td>owl:AnnotationProperty</td>
 <td><em>Subject</em> <span class="blue">heeft als begin-auteur</span> <em>Literal</em> (naam persoon die concept heeft gemaakt)</td>
 </tr>
 <tr>
-<td>hasAuthorChange</td>
+<td>gwsw:hasAuthorChange</td>
 <td>owl:AnnotationProperty</td>
 <td><em>Subject</em> <span class="blue">heeft als wijziging-auteur</span> <em>Literal</em> (naam persoon die concept heeft gewijzigd)</td>
 </tr>
@@ -516,88 +524,88 @@ De tabellen beschrijven de opgenomen properties. De toepassing van properties (p
 <td><em>Subject</em> <span class="blue">heeft als feitencollectie</span> <em>Individual</em> (een type CollectionOfFacts)</td>
 </tr>
 <tr>
-<td>hasValidity</td>
+<td>gwsw:hasValidity</td>
 <td>owl:AnnotationProperty</td>
 <td><em>Subject</em> <span class="blue">heeft als conformiteitscode</span> <em>Literal</em> (verzameling codes voor conformiteitsklassen )</td>
 </tr>
 <tr>
-<td>hasAspect<br/>(isAspectOf)</td>
+<td>gwsw:hasAspect<br/>(isAspectOf)</td>
 <td>owl:ObjectProperty</td>
 <td><strong>CE</strong> beschrijft restrictie op cardinaliteit: Bij subject mag property hasAspect 0-n maal of min 0-n en max 1-n maal voorkomen</td>
 </tr>
 <tr>
-<td>hasValue</td>
+<td>gwsw:hasValue</td>
 <td><br/>owl:DatatypeProperty
 <br/>owl:FunctionalProperty</td>
 <td><strong>CE</strong> beschrijft restrictie op object: Bij subject met property hasValue mogen alleen objecten van een bepaald datatype voorkomen. Bij het datatype kunnen vervolgens restricties op inhoud worden meegegeven.</td>
 </tr>
 <tr>
-<td>hasReference</td>
+<td>gwsw:hasReference</td>
 <td>owl:ObjectProperty owl:FunctionalProperty</td>
 <td><strong>CE</strong> beschrijft restrictie op object: Bij subject met property hasReference mogen alleen objecten van een bepaalde klasse (collectie) voorkomen</td>
 </tr>
 <tr>
-<td>hasInput<br/>(isInputOf)</td>
+<td>gwsw:hasInput<br/>(isInputOf)</td>
 <td>owl:ObjectProperty</td>
 <td><strong>CE</strong> beschrijft restrictie op cardinaliteit: Bij subject mag property hasInput 0-n maal of min 0-n en max 1-n maal voorkomen</td>
 </tr>
 <tr>
-<td>hasOutput<br/>(isOutputOf)</td>
+<td>gwsw:hasOutput<br/>(isOutputOf)</td>
 <td>owl:ObjectProperty</td>
 <td><strong>CE</strong> beschrijft restrictie op cardinaliteit: Bij subject mag property hasOutput 0-n maal of min 0-n en max 1-n maal voorkomen</td>
 </tr>
 <tr>
-<td>hasPart<br/>(isPartOf)</td>
+<td>gwsw:hasPart<br/>(isPartOf)</td>
 <td>owl:ObjectProperty</td>
 <td><strong>CE</strong> beschrijft restrictie op cardinaliteit: Bij subject mag property hasPart 0-n maal of min 0-n en max 1-n maal voorkomen</td>
 </tr>
 <tr>
-<td>hasConnection</td>
+<td>gwsw:hasConnection</td>
 <td>owl:ObjectProperty owl:SymmetricProperty</td>
 <td><strong>CE</strong> beschrijft restrictie op cardinaliteit: Bij subject mag property hasConnection 0-n maal of min 0-n en max 1-n maal voorkomen</td>
 </tr>
 <tr>
-<td>hasRepresentation</td>
+<td>gwsw:hasRepresentation</td>
 <td>owl:ObjectProperty owl:FunctionalProperty</td>
 <td></td>
 </tr>
 <tr>
-<td class="yellow">doel</td>
+<td class="yellow">gwsw:doel</td>
 <td>owl:ObjectProperty</td>
 <td><em>Subject</em> <span class="blue">heeft doel</span> <em>Individual van type Doel. (onderscheidend kenmerk)</em></td>
 </tr>
 <tr>
-<td class="yellow">toepassing</td>
+<td class="yellow">gwsw:toepassing</td>
 <td>owl:ObjectProperty</td>
 <td><em>Subject</em> <span class="blue">heeft toepassing</span> <em>Individual van type Toepassing. (onderscheidend kenmerk)</em></td>
 </tr>
 <tr>
-<td class="yellow">functie</td>
+<td class="yellow">gwsw:functie</td>
 <td>owl:ObjectProperty</td>
 <td><em>Subject</em> <span class="blue">heeft functie</span> <em>Individual van type Functie. (onderscheidend kenmerk)</em></td>
 </tr>
 <tr>
-<td class="yellow">uitvoering</td>
+<td class="yellow">gwsw:uitvoering</td>
 <td>owl:ObjectProperty</td>
 <td><em>Subject</em> <span class="blue">heeft uitvoering</span> <em>Individual van type Uitvoering. (onderscheidend kenmerk)</em></td>
 </tr>
 <tr>
-<td class="yellow">structuur</td>
+<td class="yellow">gwsw:structuur</td>
 <td>owl:ObjectProperty</td>
 <td><em>Subject</em> <span class="blue">heeft structuur</span> <em>Individual van type Structuur. (onderscheidend kenmerk)</em></td>
 </tr>
 <tr>
-<td class="yellow">technologie</td>
+<td class="yellow">gwsw:technologie</td>
 <td>owl:ObjectProperty</td>
 <td><em>Subject</em> <span class="blue">heeft technologie</span> <em>Individual van type Technologie. (onderscheidend kenmerk)</em></td>
 </tr>
 <tr>
-<td class="yellow">resultaat</td>
+<td class="yellow">gwsw:resultaat</td>
 <td>owl:ObjectProperty</td>
 <td><em>Subject</em> <span class="blue">heeft resultaat</span> <em>Individual van type Resultaat. (onderscheidend kenmerk)</em></td>
 </tr>
 <tr>
-<td class="yellow">mechanisme</td>
+<td class="yellow">gwsw:mechanisme</td>
 <td>owl:ObjectProperty</td>
 <td><em>Subject</em> <span class="blue">heeft mechanisme</span> <em>Individual van type Mechanisme. (onderscheidend kenmerk)</em></td>
 </tr>
