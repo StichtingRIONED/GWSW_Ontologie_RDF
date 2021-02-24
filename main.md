@@ -204,9 +204,9 @@ Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het ken
 
 ### Data-afleiding - Beschrijf alle voorkomende aspecten en relaties bij een concept
 
-1. Beschrijf met CE's op de cardinaliteit alle mogelijk voorkomende properties (uitgezonderd de annotatie-attributen), ook als ze niet definiërend zijn. Hanteer de cardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
+1. Beschrijf met CE's op de kardinaliteit alle mogelijk voorkomende properties (uitgezonderd de annotatie-attributen), ook als ze niet definiërend zijn. Hanteer de kardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
 
-2. Beschrijf definiërende relaties tussen concepten met de cardinaliteit "exact". Een fysiek object heeft dan bijvoorbeeld per definitie andere fysieke objecten als onderdeel.
+2. Beschrijf definiërende relaties tussen concepten met de kardinaliteit "exact". Een fysiek object heeft dan bijvoorbeeld per definitie andere fysieke objecten als onderdeel.
 
 3. Beschrijf op dezelfde wijze ook altijd de inverse relatie.
 
@@ -258,7 +258,7 @@ Omgaan met context-specifieke codering: consequent specifiek datatype hanteren. 
 
 # Samenvatting opzet GWSW-Ontologie in RDF
 
-## Explicite definitie: basis voor determinatie
+## Expliciete definitie: basis voor determinatie
 
 Voor de indeling in soorten, de bepaling van de taxonomie, wordt de onderscheidende definitie zo expliciet mogelijk beschreven. Determinerend kan daarmee (de naam van) een soort worden bepaald. Verschillende elementen in de ontologie spelen hierbij een rol, die zijn beschreven in de volgende paragrafen.
 
@@ -278,11 +278,11 @@ Meer specifiek voor activiteiten:
 * Resultaat
 * Mechanisme (waarmee)
 
-Het onderscheidende kenmerken wordt beschreven met een specifieke kwalitatieve-aspect-property, de range bij de property is dan een individual van het type onderscheidend kenmerk. Met een CE wordt een restrictie op de properties <span class="blue">doel</span>, <span class="blue">toepassing</span>, <span class="blue">functie</span>, <span class="blue">uitvoering</span>, <span class="blue">structuur</span>, <span class="blue">technologie</span>, <span class="blue">resultaat</span>, <span class="blue">mechanisme</span> gecombineerd met een restrictie op de waarde <span class="blue">hasValue</span>.
+Het onderscheidende kenmerken wordt beschreven met een specifieke kwalitatieve-aspect-property, de range bij de property is dan een individual van het type onderscheidend kenmerk. Met een CE wordt een restrictie op de properties <span class="blue">doel</span>, <span class="blue">toepassing</span>, <span class="blue">functie</span>, <span class="blue">uitvoering</span>, <span class="blue">structuur</span>, <span class="blue">technologie</span>, <span class="blue">resultaat</span>, <span class="blue">mechanisme</span> gecombineerd met een restrictie op <span class="blue">hasValue</span>.
 
 ### Kwalificerende samenstelling
 
-De structuur wordt voor wat betreft de samenstelling expliciet beschreven door een CE met een restrictie op de property <span class="blue">hasPart</span> gecombineerd met de benoeming van de cardinaliteit. De cardinaliteit beschrijft het aantal voorkomens van een property tussen twee soorten.
+De structuur wordt voor wat betreft de samenstelling expliciet beschreven door een CE met een restrictie op de property <span class="blue">hasPart</span> gecombineerd met de benoeming van de kardinaliteit. De kardinaliteit beschrijft het aantal voorkomens van een property tussen twee soorten.
 
 ### Intrinsieke aspecten / possessed aspects
 
@@ -290,9 +290,9 @@ Afhankelijk van de soort kunnen kenmerken worden specialiseerd. Die intrinsieke 
 
 ## Metagegevens
 
-Het oorspronkelijke Gellish-model bevat een serie metagegevens zoals Cardinaliteit Links/Rechts, UoM, Brondefinitie, Eigen definitie, Datum Begin/Wijziging. Die worden als volgt in het RDF-model meegenomen:
+Het oorspronkelijke Gellish-model bevat een serie metagegevens zoals Kardinaliteit Links/Rechts, UoM, Brondefinitie, Eigen definitie, Datum Begin/Wijziging. Die worden als volgt in het RDF-model meegenomen:
 
-De **Cardinaliteit** wordt via CE’s in RDF uitgedrukt. De cardinaliteit kan in twee richtingen gelden, daarvoor is voor de relevante properties een inverse geïntroduceerd. Ook voor deze omgekeerde propery geldt dan via de CE een restrictie op cardinaliteit.
+De **Kardinaliteit** wordt via CE’s in RDF uitgedrukt. De kardinaliteit kan in twee richtingen gelden, daarvoor is voor de relevante properties een inverse geïntroduceerd. Ook voor deze omgekeerde propery geldt dan via de CE een restrictie op kardinaliteit.
 
 De **UoM, Brondefinitie, Eigen definitie** worden als annotaties bij de concepten opgenomen.
 
@@ -314,7 +314,7 @@ Op basis van de CoF worden de GWSW deelmodellen samengesteld, zo'n deelmodel is 
 De annotatie skos:scopeNote (voor het filteren van datamodellen) wordt altijd opgenomen bij:
 
 * De typering (relatie rdf:type) van alle GWSW-klassen
-* De CE's met restrictie op de cardinaliteit van concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken, de kwalitatieve aspect-properties).
+* De CE's met restrictie op de kardinaliteit van concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken, de kwalitatieve aspect-properties).
 * De typering van individuals binnen een collectie (de verzameling kan variëren vanwege bijvoorbeeld een externe normering)
 
 De annotatie skos:scopeNote wordt **niet** opgenomen indien:
@@ -531,7 +531,7 @@ De tabellen beschrijven de gebruikte properties. De toepassing van properties (p
 <tr>
 <td>gwsw:hasAspect<br/>(isAspectOf)</td>
 <td>owl:ObjectProperty</td>
-<td><strong>CE</strong> beschrijft restrictie op cardinaliteit: Bij subject mag property hasAspect 0-n maal of min 0-n en max 1-n maal voorkomen</td>
+<td><strong>CE</strong> beschrijft restrictie op kardinaliteit: Bij subject mag property hasAspect 0-n maal of min 0-n en max 1-n maal voorkomen</td>
 </tr>
 <tr>
 <td>gwsw:hasValue</td>
@@ -547,22 +547,22 @@ De tabellen beschrijven de gebruikte properties. De toepassing van properties (p
 <tr>
 <td>gwsw:hasInput<br/>(isInputOf)</td>
 <td>owl:ObjectProperty</td>
-<td><strong>CE</strong> beschrijft restrictie op cardinaliteit: Bij subject mag property hasInput 0-n maal of min 0-n en max 1-n maal voorkomen</td>
+<td><strong>CE</strong> beschrijft restrictie op kardinaliteit: Bij subject mag property hasInput 0-n maal of min 0-n en max 1-n maal voorkomen</td>
 </tr>
 <tr>
 <td>gwsw:hasOutput<br/>(isOutputOf)</td>
 <td>owl:ObjectProperty</td>
-<td><strong>CE</strong> beschrijft restrictie op cardinaliteit: Bij subject mag property hasOutput 0-n maal of min 0-n en max 1-n maal voorkomen</td>
+<td><strong>CE</strong> beschrijft restrictie op kardinaliteit: Bij subject mag property hasOutput 0-n maal of min 0-n en max 1-n maal voorkomen</td>
 </tr>
 <tr>
 <td>gwsw:hasPart<br/>(isPartOf)</td>
 <td>owl:ObjectProperty</td>
-<td><strong>CE</strong> beschrijft restrictie op cardinaliteit: Bij subject mag property hasPart 0-n maal of min 0-n en max 1-n maal voorkomen</td>
+<td><strong>CE</strong> beschrijft restrictie op kardinaliteit: Bij subject mag property hasPart 0-n maal of min 0-n en max 1-n maal voorkomen</td>
 </tr>
 <tr>
 <td>gwsw:hasConnection</td>
 <td>owl:ObjectProperty owl:SymmetricProperty</td>
-<td><strong>CE</strong> beschrijft restrictie op cardinaliteit: Bij subject mag property hasConnection 0-n maal of min 0-n en max 1-n maal voorkomen</td>
+<td><strong>CE</strong> beschrijft restrictie op kardinaliteit: Bij subject mag property hasConnection 0-n maal of min 0-n en max 1-n maal voorkomen</td>
 </tr>
 <tr>
 <td>gwsw:hasRepresentation</td>
@@ -612,7 +612,7 @@ De tabellen beschrijven de gebruikte properties. De toepassing van properties (p
 </tbody>
 </table>
 
-Inverse properties zijn nodig om verschillen in cardinaliteit bij omgekeerde relaties te kunnen definiëren. Ze worden alleen gebruikt bij object-properties waarvan het type niet symmetrisch (<span class="blue">hasConnection</span>) of functioneel (<span class="blue">hasRepresentation</span>) is.
+Inverse properties zijn nodig om verschillen in kardinaliteit bij omgekeerde relaties te kunnen definiëren. Ze worden alleen gebruikt bij object-properties waarvan het type niet symmetrisch (<span class="blue">hasConnection</span>) of functioneel (<span class="blue">hasRepresentation</span>) is.
 
 Voor het uitdrukken van CE’s voorziet OWL 2 in een groot aantal (restrictie) properties. Daarmee kunnen we klassen expliciet onderscheiden, de GWSW Ontologie bevat de volgende :
 
@@ -626,7 +626,7 @@ Voor het uitdrukken van CE’s voorziet OWL 2 in een groot aantal (restrictie) p
 <tbody>
 <tr>
 <td>owl:onClass</td>
-<td>Uitdrukken van cardinaliteit</td>
+<td>Uitdrukken van kardinaliteit</td>
 </tr>
 <tr>
 <td>owl:onProperty</td>
@@ -730,7 +730,7 @@ In datasets conform het GWSW worden de volgende properties gebruikt:
 
 ## Validatie/inferencing met GWSW-Ontologie
 
-Hier volgt een opsomming van de mogelijke inferences en validaties. In enkele gevallen is reasoning op basis van het UNA (Unique Name Assumption) principe nodig. De controle op cardinaliteit is beperkt vanwege het OWA (Open World Assumption) principe in RDF.
+Hier volgt een opsomming van de mogelijke inferences en validaties. In enkele gevallen is reasoning op basis van het UNA (Unique Name Assumption) principe nodig. De controle op kardinaliteit is beperkt vanwege het OWA (Open World Assumption) principe in RDF.
 
 * Controle op hasReference-waarden binnen domein van collecties / keuzelijsten (UNA)
 * Controle op correcte typering binnen samenstellingen via “<span class="blue">hasPart</span>”.
@@ -742,9 +742,9 @@ Hier volgt een opsomming van de mogelijke inferences en validaties. In enkele ge
     - <span class="blue">hasAspect</span> Uitvoering + hasReference Klein =&gt; Individual = KleinObject
 * Controle op correct gebruik datatype bij <span class="blue">hasValue</span>: decimal, string, integer, double, date, time, year.
 * Controle op numerieke waarden binnen minimum maximum grenzen
-* Cardinaliteit, aantal voorkomens per property boven het voor het type gedefinieerde maximum wordt gemeld (UNA)
-    - ook “inverse”-cardinaliteit wordt in de reasoning meegenomen
-    - minimum cardinaliteit en shall-relatie wel gemodelleerd, controle op strijdigheid met typering niet mogelijk (OWA)
+* Kardinaliteit, aantal voorkomens per property boven het voor het type gedefinieerde maximum wordt gemeld (UNA)
+    - ook “inverse”-kardinaliteit wordt in de reasoning meegenomen
+    - minimum kardinaliteit en shall-relatie wel gemodelleerd, controle op strijdigheid met typering niet mogelijk (OWA)
 
 # Details van de GWSW semantiek
 
@@ -1201,9 +1201,9 @@ gwsw:Ruimte        owl:disjointWith     gwsw:Kenmerk ;
                    owl:disjointWith     gwsw:FysiekObject . # Enzovoort
 </pre></div>
 
-## Cardinaliteit
+## Kardinaliteit
 
-Cardinaliteiten worden in CE’s geborgd. Fictief voorbeeld van cardinaliteit voor objectproperty + objecttype:
+Kardinaliteiten worden in CE’s geborgd. Fictief voorbeeld van kardinaliteit voor objectproperty + objecttype:
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:Rioolstelsel     rdfs:subClassOf
@@ -1223,7 +1223,7 @@ gwsw:Rioolstelsel     rdfs:subClassOf
 
 </pre></div>
 
-Als de cardinaliteit niet beperkt is:
+Als de kardinaliteit niet beperkt is:
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
                       owl:minQualifiedCardinality     "0"^^xsd: nonNegativeInteger ;
@@ -1231,7 +1231,7 @@ Als de cardinaliteit niet beperkt is:
 
 Hiermee is wel gemarkeerd dat het aspect *relevant is voor* het subject.
 
-Als de cardinaliteit verplicht voor een klasse:
+Als de kardinaliteit verplicht voor een klasse:
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
                       owl:qualifiedCardinality        "1"^^xsd: nonNegativeInteger ;
@@ -1253,7 +1253,7 @@ gwsw:Rioolput   rdfs:subClassOf
 
 **Inversed property**
 
-Cardinaliteit kan tweezijdig worden beschreven, daarvoor zijn er omgekeerde relaties nodig.
+Kardinaliteit kan tweezijdig worden beschreven, daarvoor zijn er omgekeerde relaties nodig.
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 
@@ -1262,7 +1262,7 @@ gwsw:isPartOf   rdfs:label                     "has as part (inverse)” ;
                 owl:inverseOf                  gwsw:hasPart .
 </pre></div>
 
-Ook voor deze inversed property + object (was subject) wordt dan de cardinaliteit gedefinieerd.
+Ook voor deze inversed property + object (was subject) wordt dan de kardinaliteit gedefinieerd.
 
 ## Collecties
 
