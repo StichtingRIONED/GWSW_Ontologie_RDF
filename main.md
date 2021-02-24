@@ -641,7 +641,7 @@ Voor het uitdrukken van CE’s voorziet OWL 2 in een groot aantal (restrictie) p
 <td>Uitdrukken van range bij waarden</td>
 </tr>
 <tr>
-<td>owl:  From</td>
+<td>owl:someValuesFrom</td>
 <td>Uitdrukken van intrinsieke en onderscheidende kenmerken</td>
 </tr>
 <tr>
@@ -723,7 +723,7 @@ In datasets conform het GWSW worden de volgende properties gebruikt:
 </tr>
 <tr>
 <td>hasRepresentation</td>
-<td><em>Subject</em> <span class="blue">heeft als representati</span> <em>Object</em></td>
+<td><em>Subject</em> <span class="blue">heeft als representatie</span> <em>Object</em></td>
 </tr>
 </tbody>
 </table>
@@ -1216,17 +1216,16 @@ gwsw:Rioolstelsel     rdfs:subClassOf
                       rdfs:subClassOf
                       [
                         rdf:type                      owl:Restriction ;
-                        owl:maxQualifiedCardinality   "99"^^xsd: nonNegativeInteger ; #$ onbeperkt = geen maximum
+                        owl:maxQualifiedCardinality   "99"^^xsd:nonNegativeInteger ; #$ onbeperkt = geen maximum
                         owl:onProperty                gwsw:hasPart ;
                         owl:onClass                   gwsw:Lozingspunt .
                       ] .
-
 </pre></div>
 
 Als de kardinaliteit niet beperkt is:
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
-                      owl:minQualifiedCardinality     "0"^^xsd: nonNegativeInteger ;
+                      owl:minQualifiedCardinality     "0"^^xsd:nonNegativeInteger ;
 </pre></div>
 
 Hiermee is wel gemarkeerd dat het aspect *relevant is voor* het subject.
@@ -1234,7 +1233,7 @@ Hiermee is wel gemarkeerd dat het aspect *relevant is voor* het subject.
 Als de kardinaliteit verplicht voor een klasse:
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
-                      owl:qualifiedCardinality        "1"^^xsd: nonNegativeInteger ;
+                      owl:qualifiedCardinality        "1"^^xsd:nonNegativeInteger ;
 </pre></div>
 
 **Definiërende relaties**
@@ -1245,7 +1244,7 @@ In het GWSW is beschreven welke relaties onderscheidend zijn voor de typering. E
 gwsw:Rioolput   rdfs:subClassOf
                 [
                   rdf:type                     owl:Restriction ;
-                  owl:minQualifiedCardinality  "1"^^xsd: nonNegativeInteger ;
+                  owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
                   owl:onProperty               gwsw:hasPart ;
                   owl:onClass                  gwsw:Deksel .
                 ] .
