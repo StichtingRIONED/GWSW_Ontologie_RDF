@@ -417,7 +417,7 @@ De toegepaste attributen (annotatie-properties en aspecten) in een diagram:
 
 <img src="media/attributen.png" style="width:100%;" />
 
-De toegepasten relaties in een diagram:
+De toegepaste relaties in een diagram:
 
 <img src="media/relaties.png" style="width:100%;" />
 
