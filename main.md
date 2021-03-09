@@ -323,7 +323,7 @@ De annotatie skos:scopeNote wordt **niet** opgenomen indien:
 * De individuals van de onderscheidende kenmerken, bijvoorbeeld concepten die van type gwsw:Functie zijn. Ook hier wordt de relevantie bepaald door de skos:scopeNote bij de betrokken klasse
 * CE's met restrictie op datatype (waarde binnen een collectie of van een xsd-type), bij de relaties gwsw:hasValue en gwsw:hasReference
 * In vervolg daarop: CE's met restricties op waardebereik (min/max)
-* CE's met restrictie op aantal voorkomens van kenmerken van kenmerken: bijvoorbeeld het metagegeven Inwinning
+* CE's met restrictie op aantal voorkomens van kenmerken van kenmerken: bijvoorbeeld het metagegeven Inwinning bij kenmerken zoals hoogteligging
 
 De toegepaste CoF's en deelmodellen zijn als volgt in het GWSW datamodel opgenomen:
 
