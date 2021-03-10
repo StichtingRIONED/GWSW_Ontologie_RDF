@@ -302,9 +302,9 @@ De **Taalgemeenschap** wordt als extra naam bij de concepten (met property rdfs:
 
 ### Collection of Facts - GWSW deelmodellen
 
-Vanaf GWSW versie 1.6 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met de annotatie-relatie **skos:scopeNote**, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen.
+Vanaf GWSW versie 1.6 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met het annotatie-attribuut **skos:scopeNote**, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen.
 
-Op basis van de CoF worden de GWSW deelmodellen samengesteld, zo'n deelmodel is een filter op het datamodel waarbij de klassen, de CE's en de individuals worden geselecteerd op de gekoppelde CoF. De deelmodellen hebben een diverse functies:
+Op basis van de CoF worden de GWSW deelmodellen samengesteld, zo'n deelmodel is een filter op het datamodel waarbij de klassen, de CE's en de individuals worden geselecteerd op de gekoppelde CoF. De deelmodellen hebben meerdere functies:
 
 * het overzichtelijk presenteren van specifieke GWSW onderdelen
 * het overzichtelijk onderhouden van het datamodel. Veel deelmodellen hebben een heel specifieke functie, anderen worden met een lage frequentie onderhouden. Denk bijvoorbeeld aan uitwisselformaten.
@@ -313,14 +313,13 @@ Op basis van de CoF worden de GWSW deelmodellen samengesteld, zo'n deelmodel is 
 
 De annotatie skos:scopeNote (voor het filteren van datamodellen) wordt altijd opgenomen bij:
 
-* De typering (relatie rdf:type) van alle GWSW-klassen
+* De typering (relatie rdf:type) van alle GWSW-klassen, inclusief alle annotaties
 * De CE's met restrictie op de kardinaliteit van concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken, de kwalitatieve aspect-properties).
 * De typering van individuals binnen een collectie (de verzameling kan variëren vanwege bijvoorbeeld een externe normering)
 
-De annotatie skos:scopeNote wordt **niet** opgenomen indien:
+De annotatie skos:scopeNote wordt **niet** opgenomen bij:
 
-* De definitie van onderscheidende kenmerken (CE's voor de kwalitatieve aspect-properties), vallen binnen de scope van de betrokken klasse
-* De individuals van de onderscheidende kenmerken, bijvoorbeeld concepten die van type gwsw:Functie zijn. Ook hier wordt de relevantie bepaald door de skos:scopeNote bij de betrokken klasse
+* De kwalificatie van onderscheidende kenmerken (CE's voor de kwalitatieve aspect-properties), vallen binnen de scope van de betrokken klasse. De onderscheidende kenmerken en de individuals/instanties ervan zijn in één centraal deelmodel opgenomen
 * CE's met restrictie op datatype (waarde binnen een collectie of van een xsd-type), bij de relaties gwsw:hasValue en gwsw:hasReference
 * In vervolg daarop: CE's met restricties op waardebereik (min/max)
 * CE's met restrictie op aantal voorkomens van kenmerken van kenmerken: bijvoorbeeld het metagegeven Inwinning bij kenmerken zoals hoogteligging
@@ -351,6 +350,8 @@ gwsw:DeelmodelKentallen
 ### Validity context - Conformiteitsklassen
 
 Vergelijkbaar met de Collection of Facts speelt ook de **Validity context** vanuit Gellish nog steeds een rol in de RDF-vorm van het GWSW. Met de annotatie-relatie **gwsw:hasValidity** worden de triples nabewerkt voor een bepaalde conformiteitsklasse (met kwaliteitseisen per proces).
+
+
 ...
 
 ## Top Level soorten
@@ -749,9 +750,7 @@ Hier volgt een opsomming van de mogelijke inferences en validaties. In enkele ge
 
 # Details van de GWSW semantiek
 
-## Concepten: naamgeving en annotaties
-
-### Naamgeving van concepten \[URI\]
+## Identificatie van concepten: naamgeving en URI
 
 Het hanteren van begrijpbare namen voor concepten is de gangbare RDF praktijk. We gaan uit van camelCase of CamelCase notatie van de namen voor respectievelijk de properties (starten met lowercase) als de klassen (starten met uppercase). De syntax van de namen is conform de voorwaarden voor een URI, de prefix + naam is de URI van het concept.
 
@@ -787,7 +786,7 @@ Altijd de literal bij rdfs:label als voorkeursterm gebruiken. Als die meertalig 
 
 In het oorspronkelijke Gellish-model is een nummer-identificatie (naast het unieke label) belangrijk. Dit unieke nummer wordt met de property skos:hiddenLabel benoemd, maar zal op termijn zijn waarde verliezen.
 
-### Annotaties bij concepten
+## Annotaties bij concepten
 
 De volgende annotaties worden bij GWSW-concepten opgenomen (zie voor toelichting het overzicht van de properties in hst 2.5):
 
@@ -876,6 +875,23 @@ De volgende annotaties worden bij GWSW-concepten opgenomen (zie voor toelichting
 </tbody>
 </table>
 
+Een voorbeeld van gebruikte annotaties:
+
+<div class="example"><div class="example-title marker">Model:</div><pre>
+gwsw:Put    rdf:type                    owl:Class ;
+            rdfs:label                  "Put"@nl ;
+            rdfs:subClassOf             gwsw:FysiekObject ;
+            skos:definition             "Verticale waterdichte ….”@nl ;
+            rdfs:seeAlso                "[IMGeo:1.0/2007] Gegraven of … "@nl ,
+                                        "https://imgeo.geostandaarden.nl/def/imgeo-object/put" ;
+            rdfs:comment                "Toelichting bij modellering put" ;
+            gwsw:hasValidity            "1f 3f 4f " ; # codering voor samenstellen conformiteitsklasse
+            skos:scopeNote              gwsw:_TOP ;
+            gwsw:hasDateStart           "2013-07-18"^^xsd:date .
+</pre></div>
+
+### Toegepaste eenheden
+
 De in RDF gehanteerde datatypes zijn gekoppeld aan de waarde van <span class="blue">hasUnit</span>. Als bij een concept de eenheid niet is gespecificeerd wordt uitgegaan van datatype <span class="blue">xsd:string</span>.  
 
 Gebruik voor de waarden van het attribuut <span class="blue">hasUnit</span> één van mogelijke eenheden:
@@ -909,35 +925,70 @@ Gebruik voor de waarden van het attribuut <span class="blue">hasUnit</span> éé
 </tbody>
 </table>
 
-Een voorbeeld van gebruikte annotaties:
+### Coderingen met context-specifiek datatype
+
+Coderingen komen veel voor in het GWSW, bijvoorbeeld als taalonafhankelijke aanduidingen van toestandsaspecten in de EN13508-2. Codes van concepten zijn de waarde van het annotatie-attribuut <span class="blue">skos:notation</span>. In dit voorbeeld de gebruikte codes voor (gegevensuitwisseling bij) de activiteiten Inspecteren en reinigen leiding.
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:Put    rdf:type                    owl:Class ;
-            rdfs:label                  "Put"@nl ;
-            rdfs:subClassOf             gwsw:FysiekObjebClt ;
-            skos:definition             "Verticale waterdichte ….”@nl ;
-            rdfs:seeAlso                "[IMGeo:1.0/2007] Gegraven of … "@nl ,
-                                        "https://imgeo.geostandaarden.nl/def/imgeo-object/put" ;
-            rdfs:comment                "Toelichting bij modellering put" ;
-            gwsw:hasValidity            "1f 3f 4f " ; # codering voor samenstellen conformiteitsklasse
-            skos:scopeNote              gwsw:_TOP ;
-            gwsw:hasDateStart           "2013-07-18"^^xsd:date .
-</pre></div>
-
-### Annotatie voor coderingen, met context-specifiek datatype
-
-Coderingen komen veel voor in het GWSW, bijvoorbeeld als taalonafhankelijke aanduidingen van toestandsaspecten in de EN13508-2. Codes van concepten zijn object bij de property skos:notation. In het voorbeeld is een fictieve code “AAA” gebruikt.
-
-Voor een concept kunnen meerdere codes afhankelijk van de context voorkomen. Voor het reiniging van een leiding worden bijvoorbeeld andere codes gebruikt dan voor het inspecteren van een leiding. Om dat onderscheid te kunnen maken is in de GWSW-Ontologie een datatype aan de code toegevoegd. Dat datatype representeert het geldende notatie-schema.
-
-<div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:StartNodeReference     skos:notation     “AAB"^^:Dt_Notation_RIB . (inspecteren leiding)
-gwsw:StartNodeReference     skos:notation     "GAB"^^:Dt_Notation_RRB . (reinigen leiding)
+gwsw:StartNodeReference     skos:notation     “AAB"^^:Dt_Notation_IL . (inspecteren leiding)
+gwsw:StartNodeReference     skos:notation     "GAB"^^:Dt_Notation_RL . (reinigen leiding)
 gwsw:Dt_Notation_RRB        rdfs:label        "Codering reinigen put/leiding"@nl ;
                             rdf:type          rdfs:Datatype .
 </pre></div>
+Voor een concept kunnen meerdere codes afhankelijk van de context voorkomen. Voor het reiniging van een leiding worden bijvoorbeeld andere codes gebruikt dan voor het inspecteren van een leiding. Om dat onderscheid te kunnen maken is in de GWSW-Ontologie een datatype aan de code toegevoegd. Dat datatype representeert het geldende notatie-schema. De volgende datatypes worden gebruikt bij de waarde van skos:notation:
+<table class="simp">
+<thead>
+<tr class="header"><th>Datatype van code</th><th>Gebruikt in context</th></tr>
+</thead>
+<tbody>
+<tr><td>Dt_Notation_HY</td><td>Hydraulisch rekenen</td></tr>
+<tr><td>Dt_Notation_IL</td><td>Inspecteren leiding</td></tr>
+<tr><td>Dt_Notation_IP</td><td>Inspecteren put</td></tr>
+<tr><td>Dt_Notation_IR</td><td>Inspecteren en reinigen algemeen</td></tr>
+<tr><td>Dt_Notation_RK</td><td>Reinigen en inspecteren leiding</td></tr>
+<tr><td>Dt_Notation_RL</td><td>Reinigen leiding</td></tr>
+<tr><td>Dt_Notation_RP</td><td>Reinigen put</td></tr>
+<tr><td>Dt_Notation_RS</td><td>Reinigen stortbon</td></tr>
+<tr><td>Dt_Notation_RC</td><td>Reinigen calamiteit</td></tr>
+<tr><td>Dt_Notation_RT</td><td>Reinigen stagnatie</td></tr>
+</tbody>
+</table>
 
-In het GWSW Datamodel worden context-specifieke coderingen altijd gecombineerd met het context-afhankelijke datatype. Alleen voor algemene coderingen (zoals de code HWA voor gwsw:AfvloeiendHemelwater) wordt geen specifiek datatype gebruikt.
+In het GWSW Datamodel worden context-specifieke coderingen meestal gecombineerd met het context-afhankelijke datatype. Alleen voor algemene coderingen (zoals de code HWA voor gwsw:AfvloeiendHemelwater) en voor coderingen van concepten binnen een exclusief deelmodel (bijvoorbeeld de NLCS symbolen) wordt geen specifiek datatype gebruikt.
+
+### Validity context bij conformiteitsklassen
+
+De waarde bij gwsw:hasValidity bevat een codering voor toepassing van de conformiteitsklassen. Het is een string met de volgende opbouw:
+
+**" 1f 2t "**
+
+Het cijfer in deze condering staat voor het type conformiteitsklasse:
+
+<table class="simp">
+<thead>
+<tr class="header"><th>Nummer</th><th>Conformiteitsklasse</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td> MdsProj
+<tr><td>2</td><td> RibHeen
+<tr><td>3</td><td> MdsPlan
+<tr><td>4</td><td> IMBOR
+<tr><td>5</td><td> HYD
+</tbody>
+</table>
+
+De letter geeft het soort kwaliteitseis aan:
+
+<table class="simp">
+<thead>
+<tr class="header"><th>Letter</th><th>Betekenis</th></tr>
+</thead>
+<tbody>
+<tr><td>t</td><td> Draai de kardinaliteit, bijvoorbeeld *minimaal 0* wordt *exact 1*
+<tr><td>d</td><td> De klasse doet niet mee in de kwaliteitseis, meestal gaat het om een CE
+<tr><td>f</td><td> De klasse is te globaal binnen de conformiteitsklasse. Bij de aanmaak van het RDF bestand met de conformiteitsklasse wordt op basis van deze code de Opmerking-kolom bijgewerkt met tekst: [cfk fout]. Deze tekst wordt gescand in validatie-queries
+</tbody>
+</table>
 
 ## Aspecten – Property-central
 
@@ -1043,8 +1094,8 @@ gwsw:Dt_HoogtePut  rdf:type       rdfs:Datatype ; # typering verplicht in OWL RL
                    [
                      rdf:type   rdfs:Datatype ;
                      owl:onDatatype   xsd:integer
-                     owl:withRestrictions           
-                     ( [xsd:minInclusive "0"^^xsd:integer] [xsd:maxExclusive     "10000"^^xsd:integer] )
+                     owl:withRestrictions
+                     ( [xsd:minInclusive "0"^^xsd:integer] [xsd:maxExclusive "10000"^^xsd:integer] )
                    ] .
 </pre></div>
 
