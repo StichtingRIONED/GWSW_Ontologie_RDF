@@ -927,7 +927,7 @@ Gebruik voor de waarden van het attribuut <span class="blue">hasUnit</span> éé
 
 ### Coderingen met context-specifiek datatype
 
-Coderingen komen veel voor in het GWSW, bijvoorbeeld als taalonafhankelijke aanduidingen van toestandsaspecten in de EN13508-2. Codes van concepten zijn de waarde van het annotatie-attribuut <span class="blue">skos:notation</span>. In dit voorbeeld de gebruikte codes voor (gegevensuitwisseling bij) de activiteiten Inspecteren en reinigen leiding.
+Coderingen komen veel voor in het GWSW, bijvoorbeeld als taalonafhankelijke aanduidingen van toestandsaspecten in de EN13508-2. Codes van concepten zijn de waarde van het annotatie-attribuut <span class="blue">skos:notation</span>. In dit voorbeeld de gebruikte codes voor (gegevensuitwisseling bij) de activiteiten Inspecteren en reinigen leiding:
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:StartNodeReference     skos:notation     “AAB"^^:Dt_Notation_IL . (inspecteren leiding)
@@ -935,12 +935,6 @@ gwsw:StartNodeReference     skos:notation     "GAB"^^:Dt_Notation_RL . (reinigen
 gwsw:Dt_Notation_RRB        rdfs:label        "Codering reinigen put/leiding"@nl ;
                             rdf:type          rdfs:Datatype .
 </pre></div>
-Voor een concept kunnen meerdere codes afhankelijk van de context voorkomen. Voor het reiniging van een leiding worden bijvoorbeeld andere codes gebruikt dan voor het inspecteren van een leiding. Om dat onderscheid te kunnen maken is in de GWSW-Ontologie een datatype aan de code toegevoegd. Dat datatype representeert het geldende notatie-schema. De volgende datatypes worden gebruikt bij de waarde van skos:notation:  
-
-
-
-Voor een concept kunnen meerdere codes afhankelijk van de context voorkomen. Voor het reiniging van een leiding worden bijsdf
-
 
 <table class="simp">
 <thead>
@@ -959,6 +953,8 @@ Voor een concept kunnen meerdere codes afhankelijk van de context voorkomen. Voo
 <tr><td>Dt_Notation_RT</td><td>Reinigen stagnatie</td></tr>
 </tbody>
 </table>
+
+Voor een concept kunnen meerdere codes afhankelijk van de context voorkomen. Voor het reiniging van een leiding worden bijvoorbeeld andere codes gebruikt dan voor het inspecteren van een leiding. Om dat onderscheid te kunnen maken is in de GWSW-Ontologie een datatype aan de code toegevoegd. Dat datatype representeert het geldende notatie-schema. De volgende datatypes worden gebruikt bij de waarde van skos:notation:
 
 In het GWSW Datamodel worden context-specifieke coderingen meestal gecombineerd met het context-afhankelijke datatype. Alleen voor algemene coderingen (zoals de code HWA voor gwsw:AfvloeiendHemelwater) en voor coderingen van concepten binnen een exclusief deelmodel (bijvoorbeeld de NLCS symbolen) wordt geen specifiek datatype gebruikt.
 
