@@ -935,7 +935,7 @@ gwsw:StartNodeReference     skos:notation     "GAB"^^:Dt_Notation_RL . (reinigen
 gwsw:Dt_Notation_RRB        rdfs:label        "Codering reinigen put/leiding"@nl ;
                             rdf:type          rdfs:Datatype .
 </pre></div>
-
+Voor een concept kunnen code afhankelijk van de context voorkomen
 <table class="simp">
 <thead>
 <tr class="header"><th>Datatype van code</th><th>Gebruikt in context</th></tr>
@@ -954,7 +954,7 @@ gwsw:Dt_Notation_RRB        rdfs:label        "Codering reinigen put/leiding"@nl
 </tbody>
 </table>
 
-Voor een concept kunnen meerdere codes afhankelijk van de context voorkomen. Voor het reiniging van een leiding worden bijvoorbeeld andere codes gebruikt dan voor het inspecteren van een leiding. Om dat onderscheid te kunnen maken is in de GWSW-Ontologie een datatype aan de code toegevoegd. Dat datatype representeert het geldende notatie-schema. De volgende datatypes worden gebruikt bij de waarde van skos:notation:
+Voor een concept kunnen meerdere codes afhankelijk van de context voorkomen. Bij het reinigen van een leiding worden bijvoorbeeld andere codes gebruikt dan voor het inspecteren van een leiding. Om dat onderscheid te kunnen maken is in de GWSW-Ontologie een datatype aan de code toegevoegd. Dat datatype representeert het geldende notatie-schema. De volgende datatypes worden gebruikt bij de waarde van skos:notation:
 
 In het GWSW Datamodel worden context-specifieke coderingen meestal gecombineerd met het context-afhankelijke datatype. Alleen voor algemene coderingen (zoals de code HWA voor gwsw:AfvloeiendHemelwater) en voor coderingen van concepten binnen een exclusief deelmodel (bijvoorbeeld de NLCS symbolen) wordt geen specifiek datatype gebruikt.
 
