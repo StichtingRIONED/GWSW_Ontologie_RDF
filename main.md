@@ -1,7 +1,7 @@
 # GWSW Ontologie in RDF
 
-<!-- gebruik voor lokaal editen-->
-<script src="./builds/respec-rioned.js"></script>
+<!-- gebruik voor lokaal editen
+<script src="./builds/respec-rioned.js"></script>-->
 
 **Een beschrijving van het protocol GWSW-OroX versie 1.6**
 
@@ -935,9 +935,7 @@ gwsw:StartNodeReference     skos:notation     "GAB"^^:Dt_Notation_RL . (reinigen
 gwsw:Dt_Notation_RRB        rdfs:label        "Codering reinigen put/leiding"@nl ;
                             rdf:type          rdfs:Datatype .
 </pre></div>
-
-Voor een concept kunnen meerdere codes afhankelijk van de context voorkomen. Voor het reiniging van een leiding worden bijvoorbeeld andere codes gebruikt dan voor het inspecteren van een leiding. Om dat onderscheid te kunnen maken is in de GWSW-Ontologie een datatype aan de code toegevoegd. Dat datatype representeert het geldende notatie-schema. De volgende datatypes worden gebruikt bij de waarde van skos:notation:
-
+Voor een concept kunnen meerdere codes afhankelijk van de context voorkomen. Voor het reiniging van een leiding worden bijvoorbeeld andere codes gebruikt dan voor het inspecteren van een leiding. Om dat onderscheid te kunnen maken is in de GWSW-Ontologie een datatype aan de code toegevoegd. Dat datatype representeert het geldende notatie-schema. De volgende datatypes worden gebruikt bij de waarde van skos:notation:  
 <table class="simp">
 <thead>
 <tr class="header"><th>Datatype van code</th><th>Gebruikt in context</th></tr>
