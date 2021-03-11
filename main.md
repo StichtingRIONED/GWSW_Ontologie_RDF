@@ -1,7 +1,7 @@
 # GWSW Ontologie in RDF
 
-<!-- gebruik voor lokaal editen
-<script src="./builds/respec-rioned.js"></script>-->
+<!-- gebruik voor lokaal editen -->
+<script src="./builds/respec-rioned.js"></script>
 
 **Een beschrijving van het protocol GWSW-OroX versie 1.6**
 
@@ -936,7 +936,7 @@ gwsw:Dt_Notation_RRB        rdfs:label        "Codering reinigen put/leiding"@nl
                             rdf:type          rdfs:Datatype .
 </pre></div>
 
-Voor een concept kunnen code afhankelijk van de context voorkomen
+Bij een concept kunnen meerdere codes afhankelijk van de context voorkomen. Bij de uitwisseling van gegevens over het reinigen van een leiding worden bijvoorbeeld andere codes gebruikt dan over het inspecteren van een leiding. Om dat onderscheid te kunnen maken is in de GWSW-Ontologie een datatype aan de code toegevoegd. Dat datatype representeert het geldende notatie-schema. De volgende datatypes worden gebruikt bij de waarde van skos:notation:
 
 <table class="simp">
 <thead>
@@ -956,15 +956,13 @@ Voor een concept kunnen code afhankelijk van de context voorkomen
 </tbody>
 </table>
 
-Voor een concept kunnen meerdere codes afhankelijk van de context voorkomen. Bij het reinigen van een leiding worden bijvoorbeeld andere codes gebruikt dan voor het inspecteren van een leiding. Om dat onderscheid te kunnen maken is in de GWSW-Ontologie een datatype aan de code toegevoegd. Dat datatype representeert het geldende notatie-schema. De volgende datatypes worden gebruikt bij de waarde van skos:notation:
-
 In het GWSW Datamodel worden context-specifieke coderingen meestal gecombineerd met het context-afhankelijke datatype. Alleen voor algemene coderingen (zoals de code HWA voor gwsw:AfvloeiendHemelwater) en voor coderingen van concepten binnen een exclusief deelmodel (bijvoorbeeld de NLCS symbolen) wordt geen specifiek datatype gebruikt.
 
 ### Validity context bij conformiteitsklassen
 
 De waarde bij gwsw:hasValidity bevat een codering voor toepassing van de conformiteitsklassen. Het is een string met de volgende opbouw:
 
-**" 1f 2t "**
+**" 1f 2t 5f enz."**
 
 Het cijfer in deze condering staat voor het type conformiteitsklasse:
 
