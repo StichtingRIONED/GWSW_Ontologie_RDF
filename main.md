@@ -935,7 +935,9 @@ gwsw:StartNodeReference     skos:notation     "GAB"^^:Dt_Notation_RL . (reinigen
 gwsw:Dt_Notation_RRB        rdfs:label        "Codering reinigen put/leiding"@nl ;
                             rdf:type          rdfs:Datatype .
 </pre></div>
+
 Voor een concept kunnen code afhankelijk van de context voorkomen
+
 <table class="simp">
 <thead>
 <tr class="header"><th>Datatype van code</th><th>Gebruikt in context</th></tr>
@@ -956,7 +958,7 @@ Voor een concept kunnen code afhankelijk van de context voorkomen
 
 Voor een concept kunnen meerdere codes afhankelijk van de context voorkomen. Bij het reinigen van een leiding worden bijvoorbeeld andere codes gebruikt dan voor het inspecteren van een leiding. Om dat onderscheid te kunnen maken is in de GWSW-Ontologie een datatype aan de code toegevoegd. Dat datatype representeert het geldende notatie-schema. De volgende datatypes worden gebruikt bij de waarde van skos:notation:
 
-In het GWSW Datamodel worden context-specifieke coderingen meestal gecombineerd met het context-afhankelijke datatype. Alleen voor algemene coderingen (zoals de code HWA voor gwsw:AfvloeiendHemelwater) en voor coderingen van concepten binnen een exclusief deelmodel (bijvoorbeeld de NLCS symbolen) wordt geen specifiek datatype gebruikttt.
+In het GWSW Datamodel worden context-specifieke coderingen meestal gecombineerd met het context-afhankelijke datatype. Alleen voor algemene coderingen (zoals de code HWA voor gwsw:AfvloeiendHemelwater) en voor coderingen van concepten binnen een exclusief deelmodel (bijvoorbeeld de NLCS symbolen) wordt geen specifiek datatype gebruikt.
 
 ### Validity context bij conformiteitsklassen
 
@@ -971,11 +973,11 @@ Het cijfer in deze condering staat voor het type conformiteitsklasse:
 <tr class="header"><th>Nummer</th><th>Conformiteitsklasse</th></tr>
 </thead>
 <tbody>
-<tr><td>1</td><td> MdsProj
-<tr><td>2</td><td> RibHeen
-<tr><td>3</td><td> MdsPlan
-<tr><td>4</td><td> IMBOR
-<tr><td>5</td><td> HYD
+<tr><td>1</td><td>MdsProj</td></tr>
+<tr><td>2</td><td>RibHeen</td></tr>
+<tr><td>3</td><td>MdsPlan</td></tr>
+<tr><td>4</td><td>IMBOR</td></tr>
+<tr><td>5</td><td>Hyd</td></tr>
 </tbody>
 </table>
 
@@ -986,9 +988,9 @@ De letter geeft het soort kwaliteitseis aan:
 <tr class="header"><th>Letter</th><th>Betekenis</th></tr>
 </thead>
 <tbody>
-<tr><td>t</td><td> Draai de kardinaliteit, bijvoorbeeld *minimaal 0* wordt *exact 1*
-<tr><td>d</td><td> De klasse doet niet mee in de kwaliteitseis, meestal gaat het om een CE
-<tr><td>f</td><td> De klasse is te globaal binnen de conformiteitsklasse. Bij de aanmaak van het RDF bestand met de conformiteitsklasse wordt op basis van deze code de Opmerking-kolom bijgewerkt met tekst: [cfk fout]. Deze tekst wordt gescand in validatie-queries
+<tr><td>t</td><td> Draai de kardinaliteit, bijvoorbeeld *minimaal 0* wordt *exact 1*</td></tr>
+<tr><td>d</td><td> De klasse doet niet mee in de kwaliteitseis, meestal gaat het om een CE</td></tr>
+<tr><td>f</td><td> De klasse is te globaal binnen de conformiteitsklasse. Bij de aanmaak van het RDF bestand met de conformiteitsklasse wordt op basis van deze code de Opmerking-kolom bijgewerkt met tekst: [cfk fout]. Deze tekst wordt gescand in validatie-queries</td></tr>
 </tbody>
 </table>
 
