@@ -66,7 +66,7 @@ In dit hoofdstuk vind u de begrippen en uitgangspunten bij de modellering in RDF
 ## Gebruikte begrippen
 
 **RDF, RDFS, OWL 2**
-RDF staat voor Resource Description Format, de basisdefinitie van modellen op basis van subject-predicate-object. In de tekst verstaan we onder RDF de combinatie van RDF met RDFS (RDF Schema) en OWL 2 (Web Ontology Language).
+RDF staat voor Resource Description Framework, de basisdefinitie van modellen op basis van subject-predicate-object. In de tekst verstaan we onder RDF de combinatie van RDF met RDFS (RDF Schema) en OWL 2 (Web Ontology Language).
 
 **Ontologie**
 Datastructuur die alle relevante entiteiten en hun onderlinge relaties en regels binnen een domein bevat. (bron: Wikipedia)
