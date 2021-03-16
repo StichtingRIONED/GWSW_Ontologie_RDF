@@ -135,6 +135,7 @@ Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het ken
 
 Zie hst. [Identificatie van concepten](#identificatie-van-concepten:-naamgeving-en-uri)  
 Zie hst. [Identificatie van concepten](#identificatie-van-concepten---naamgeving-en-uri)  
+Zie hst. [Identificatie van concepten](#identificatie-van-concepten-naamgeving-en-uri)  
 Zie hst. [Identificatie van concepten](#identificatie-van-concepten)  
 
 1. Volg de gebruikelijke termen binnen het vakgebied, bedenk geen nieuwe conceptnamen die misschien de lading beter dekken of neutraler zijn. Dat geldt ook - waar mogelijk - voor abstracte concepten.
