@@ -133,7 +133,7 @@ Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het ken
 
 ### Terminologie - Het vakgebied is leidend
 
-(uitwerking: zie hst 3.1)
+Zie hst. [#Identificatie van concepten: naamgeving en URI](Identificatie van concepten: naamgeving en URI)
 
 1. Volg de gebruikelijke termen binnen het vakgebied, bedenk geen nieuwe conceptnamen die misschien de lading beter dekken of neutraler zijn. Dat geldt ook - waar mogelijk - voor abstracte concepten.
 
@@ -419,7 +419,7 @@ De toegepaste **relaties** in een diagram:
 
 <img src="media/relaties.png" style="width:100%;" />
 
-De tabellen beschrijven de gebruikte properties. De toepassing van properties (per klasse) is in de GWSW-Ontologie vaak aan regels gebonden door middel van een Class Expression (CE). In de volgende tabel is dat aangegeven (“CE”).
+De tabellen beschrijven de gebruikte properties. De toepassing van **relaties** is in de GWSW-Ontologie aan regels gebonden door middel van een Class Expression (CE). In de volgende tabel is dat aangegeven (“CE”).
 
 <table class="simp">
 <thead>
