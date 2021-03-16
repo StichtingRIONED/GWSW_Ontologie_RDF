@@ -133,10 +133,7 @@ Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het ken
 
 ### Terminologie - Het vakgebied is leidend
 
-Zie hst. [Identificatie van concepten](#identificatie-van-concepten:-naamgeving-en-uri)  
-Zie hst. [Identificatie van concepten](#identificatie-van-concepten---naamgeving-en-uri)  
 Zie hst. [Identificatie van concepten](#identificatie-van-concepten-naamgeving-en-uri)  
-Zie hst. [Identificatie van concepten](#identificatie-van-concepten)  
 
 1. Volg de gebruikelijke termen binnen het vakgebied, bedenk geen nieuwe conceptnamen die misschien de lading beter dekken of neutraler zijn. Dat geldt ook - waar mogelijk - voor abstracte concepten.
 
@@ -259,36 +256,6 @@ Omgaan met context-specifieke codering: consequent specifiek datatype hanteren. 
 
 # Samenvatting opzet GWSW-Ontologie in RDF
 
-## Expliciete definitie: basis voor determinatie
-
-Voor de indeling in soorten, de bepaling van de taxonomie, wordt de onderscheidende definitie zo expliciet mogelijk beschreven. Determinerend kan daarmee (de naam van) een soort worden bepaald. Verschillende elementen in de ontologie spelen hierbij een rol, die zijn beschreven in de volgende paragrafen.
-
-### Onderscheidende kenmerken
-
-De onderscheidende kenmerken specificeren de soorten, de GWSW ontologie hanteert de volgende:
-
-* Doel (waarvoor)
-* Toepassing (waarin)
-* Functie (wat doet het)
-* Uitvoering (hoe)
-* Structuur (waaruit)
-
-Meer specifiek voor activiteiten:
-
-* Technologie (werkwijze, eisen)
-* Resultaat
-* Mechanisme (waarmee)
-
-Het onderscheidende kenmerken wordt beschreven met een specifieke kwalitatieve-aspect-property, de range bij de property is dan een individual van het type onderscheidend kenmerk. Met een CE wordt een restrictie op de properties <span class="blue">doel</span>, <span class="blue">toepassing</span>, <span class="blue">functie</span>, <span class="blue">uitvoering</span>, <span class="blue">structuur</span>, <span class="blue">technologie</span>, <span class="blue">resultaat</span>, <span class="blue">mechanisme</span> gecombineerd met een restrictie op <span class="blue">hasValue</span>.
-
-### Kwalificerende samenstelling
-
-De structuur wordt voor wat betreft de samenstelling expliciet beschreven door een CE met een restrictie op de property <span class="blue">hasPart</span> gecombineerd met de benoeming van de kardinaliteit. De kardinaliteit beschrijft het aantal voorkomens van een property tussen twee soorten.
-
-### Intrinsieke aspecten / possessed aspects
-
-Afhankelijk van de soort kunnen kenmerken worden specialiseerd. Die intrinsieke kenmerken horen dan exclusief bij een soort. De CE beschrijft een restrictie op de property <span class="blue">hasAspect</span> in combinatie met het gerelateerd kenmerktype.
-
 ## Metagegevens
 
 Het oorspronkelijke Gellish-model bevat een serie metagegevens zoals Kardinaliteit Links/Rechts, UoM, Brondefinitie, Eigen definitie, Datum Begin/Wijziging. Die worden als volgt in het RDF-model meegenomen:
@@ -405,6 +372,36 @@ De "top level" concepten in GWSW-OroX zijn de concepten die boven in de soortenb
 </tr>
 </tbody>
 </table>
+
+## Expliciete definitie: basis voor determinatie
+
+Voor de indeling in soorten, de bepaling van de taxonomie, wordt de onderscheidende definitie zo expliciet mogelijk beschreven. Determinerend kan daarmee (de naam van) een soort worden bepaald. Verschillende elementen in de ontologie spelen hierbij een rol, die zijn beschreven in de volgende paragrafen.
+
+### Onderscheidende kenmerken
+
+De onderscheidende kenmerken specificeren de soorten, de GWSW ontologie hanteert de volgende:
+
+* Doel (waarvoor)
+* Toepassing (waarin)
+* Functie (wat doet het)
+* Uitvoering (hoe)
+* Structuur (waaruit)
+
+Meer specifiek voor activiteiten:
+
+* Technologie (werkwijze, eisen)
+* Resultaat
+* Mechanisme (waarmee)
+
+Het onderscheidende kenmerken wordt beschreven met een specifieke kwalitatieve-aspect-property, de range bij de property is dan een individual van het type onderscheidend kenmerk. Met een CE wordt een restrictie op de properties <span class="blue">doel</span>, <span class="blue">toepassing</span>, <span class="blue">functie</span>, <span class="blue">uitvoering</span>, <span class="blue">structuur</span>, <span class="blue">technologie</span>, <span class="blue">resultaat</span>, <span class="blue">mechanisme</span> gecombineerd met een restrictie op <span class="blue">hasValue</span>.
+
+### Kwalificerende samenstelling
+
+De structuur wordt voor wat betreft de samenstelling expliciet beschreven door een CE met een restrictie op de property <span class="blue">hasPart</span> gecombineerd met de benoeming van de kardinaliteit. De kardinaliteit beschrijft het aantal voorkomens van een property tussen twee soorten.
+
+### Intrinsieke aspecten / possessed aspects
+
+Afhankelijk van de soort kunnen kenmerken worden specialiseerd. Die intrinsieke kenmerken horen dan exclusief bij een soort. De CE beschrijft een restrictie op de property <span class="blue">hasAspect</span> in combinatie met het gerelateerd kenmerktype.
 
 ## Collecties, domeintabellen
 
@@ -747,15 +744,7 @@ Hier volgt een opsomming van de mogelijke inferences en validaties. In enkele ge
 
 # Details van de GWSW semantiek
 
-## Identificatie van concepten: naamgeving en URI
-
-sdf
-
 ## Identificatie van concepten - naamgeving en URI
-
-sdf
-
-## Identificatie van concepten
 
 Het hanteren van begrijpbare namen voor concepten is de gangbare RDF praktijk. We gaan uit van camelCase of CamelCase notatie van de namen voor respectievelijk de properties (starten met lowercase) als de klassen (starten met uppercase). De syntax van de namen is conform de voorwaarden voor een URI, de prefix + naam is de URI van het concept.
 
