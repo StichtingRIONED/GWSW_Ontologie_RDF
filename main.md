@@ -135,7 +135,8 @@ Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het ken
 
 Zie hst. [#Identificatie van concepten: naamgeving en URI](Identificatie van concepten: naamgeving en URI)
 Zie hst. [Identificatie van concepten](#Identificatie van concepten: naamgeving en URI)
-Zie hst. [Identificatie van concepten](#identificatie-van-concepten:-naamgeving-en-URI)
+Zie hst. [Identificatie van concepten](#identificatie-van-concepten:-naamgeving-en-uri)
+Zie hst. [Identificatie van concepten](#identificatie-van-concepten---naamgeving-en-uri)
 Zie hst. [Identificatie van concepten: naamgeving en URI](Identificatie van concepten)
 
 1. Volg de gebruikelijke termen binnen het vakgebied, bedenk geen nieuwe conceptnamen die misschien de lading beter dekken of neutraler zijn. Dat geldt ook - waar mogelijk - voor abstracte concepten.
@@ -153,9 +154,7 @@ Zie hst. [Identificatie van concepten: naamgeving en URI](Identificatie van conc
 2. Een concept wordt geïdentificeerd door de URI (prefix + naam) conform hst 3.1.1
 
 3. Een concept en elke CE wordt altijd voorzien van de annotaties zoals opgenomen in hst 3.1.2.
-
-    1. <span class="yellow">De minimale per klasse en CE nog specificeren</span>
-
+  
 ### Specialiseren - Onderscheidende kenmerken
 
 (het opbouwen van de soortenboom, uitwerking: zie hst 3.6)
@@ -317,12 +316,12 @@ Op basis van de CoF worden de GWSW deelmodellen samengesteld, zo'n deelmodel is 
 De annotatie skos:scopeNote (voor het filteren van datamodellen) wordt altijd opgenomen bij:
 
 * De typering (relatie rdf:type) van alle GWSW-klassen, inclusief alle annotaties
-* De CE's met restrictie op de kardinaliteit van concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken, de kwalitatieve aspect-properties).
+* De CE's met restrictie op de kardinaliteit van concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken).
 * De typering van individuals binnen een collectie (de verzameling kan variëren vanwege bijvoorbeeld een externe normering)
 
 De annotatie skos:scopeNote wordt **niet** opgenomen bij:
 
-* De kwalificatie van onderscheidende kenmerken (CE's voor de kwalitatieve aspect-properties), vallen binnen de scope van de betrokken klasse. De onderscheidende kenmerken en de individuals/instanties ervan zijn in één centraal deelmodel opgenomen
+* De CE's voor de kwalificatie van onderscheidende kenmerken, die vallen binnen de scope van de betrokken klasse. De onderscheidende kenmerken en de individuals/instanties ervan zijn in één centraal deelmodel opgenomen
 * CE's met restrictie op datatype (waarde binnen een collectie of van een xsd-type), bij de relaties gwsw:hasValue en gwsw:hasReference
 * In vervolg daarop: CE's met restricties op waardebereik (min/max)
 * CE's met restrictie op aantal voorkomens van kenmerken van kenmerken: bijvoorbeeld het metagegeven Inwinning bij kenmerken zoals hoogteligging
@@ -749,7 +748,7 @@ Hier volgt een opsomming van de mogelijke inferences en validaties. In enkele ge
 
 # Details van de GWSW semantiek
 
-## Identificatie van concepten: naamgeving en URI
+## Identificatie van concepten - naamgeving en URI
 
 Het hanteren van begrijpbare namen voor concepten is de gangbare RDF praktijk. We gaan uit van camelCase of CamelCase notatie van de namen voor respectievelijk de properties (starten met lowercase) als de klassen (starten met uppercase). De syntax van de namen is conform de voorwaarden voor een URI, de prefix + naam is de URI van het concept.
 
@@ -787,7 +786,7 @@ In het oorspronkelijke Gellish-model is een nummer-identificatie (naast het unie
 
 ## Annotaties bij concepten
 
-De volgende annotaties worden bij GWSW-concepten opgenomen (zie voor toelichting het overzicht van de properties in hst 2.5):
+De volgende annotaties worden in het GWSW toegepast (zie voor toelichting ook het overzicht van de properties in hst 2.5):
 
 <table class="simp">
 <thead>
@@ -888,6 +887,37 @@ gwsw:Put    rdf:type                    owl:Class ;
             skos:scopeNote              gwsw:_TOP ;
             gwsw:hasDateStart           "2013-07-18"^^xsd:date .
 </pre></div>
+
+### Toegepaste annotaties per klasse
+
+Een GWSW concept van het type owl:Class heeft altijd de volgende annotaties:
+
+* rdfs:label
+* gwsw:hasDateStart
+* gwsw:hasAuthorStart
+* skos:scopeNote
+* skos:definition
+
+Daarnaast zijn de volgende annotaties onder voorwaarden opgenomen:
+
+* rdfs:hasDateChange (indien andere annotaties zoals skos:definition gewijzigd zijn)
+* rdfs:hasAuthorChange (indien hasDateChange is opgenomen)
+* gwsw:hasUnit (indien de klasse een relatie rdfs:hasValue met een relevant datatype heeft)
+
+### Toegepaste annotaties per CE
+
+Een GWSW concept van het type owl:Restriction heeft altijd de volgende annotaties:
+
+* gwsw:hasDateStart
+* gwsw:hasAuthorStart
+* skos:scopeNote
+* skos:definition
+
+Daarnaast zijn de volgende annotaties onder voorwaarden altijd opgenomen:
+
+* rdfs:hasDateChange (indien andere annotaties zoals skos:definition gewijzigd zijn)
+* rdfs:hasAuthorChange (indien hasDateChange is opgenomen)
+* gwsw:hasUnit (indien de klasse een relatie rdfs:hasValue met een relevant datatype heeft)
 
 ### Toegepaste eenheden
 
