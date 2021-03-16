@@ -159,7 +159,7 @@ Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het ken
 
 1. Voor het classificeren van een concept uitgaan van zoeken op onderscheidende kenmerken in de (abstracte) soortenboom. Denk aan determineren van planten volgens Linnaeus: na het maken van een aantal keuzes wordt de soort gevonden
 
-2. Streef ernaar om met de onderscheidende kenmerken de uitgeschreven definitie af te dekken
+2. Streef ernaar om met de onderscheidende kenmerken de (in je hoofd) uitgeschreven definitie te vervangen
 
 3. Gebruik de volgende onderscheidende kenmerken bij fysieke objecten:
 
@@ -346,13 +346,9 @@ gwsw:DeelmodelKentallen
 .
 </pre></div>
 
-
 ### Validity context - Conformiteitsklassen
 
-Vergelijkbaar met de Collection of Facts speelt ook de **Validity context** vanuit Gellish nog steeds een rol in de RDF-vorm van het GWSW. Met de annotatie-relatie **gwsw:hasValidity** worden de triples nabewerkt voor een bepaalde conformiteitsklasse (met kwaliteitseisen per proces).
-
-
-...
+Vergelijkbaar met de Collection of Facts speelt ook de **Validity context** vanuit Gellish nog steeds een rol in de RDF-vorm van het GWSW. Met de annotatie **gwsw:hasValidity** worden de triples nabewerkt voor een bepaalde conformiteitsklasse (met kwaliteitseisen per proces).
 
 ## Top Level soorten
 
@@ -415,11 +411,11 @@ Alle collectie-leden zijn in de GWSW topologie opgenomen als individuen met anno
 
 ## Properties in de GWSW-Ontologie
 
-De toegepaste attributen (annotatie-properties en aspecten) in een diagram:
+De toegepaste **attributen** (annotatie-properties en aspecten) in een diagram:
 
 <img src="media/attributen.png" style="width:100%;" />
 
-De toegepaste relaties in een diagram:
+De toegepaste **relaties** in een diagram:
 
 <img src="media/relaties.png" style="width:100%;" />
 
@@ -462,22 +458,22 @@ De tabellen beschrijven de gebruikte properties. De toepassing van properties (p
 </tr>
 <tr>
 <td>skos:altLabel</td>
-<td>Annotatie</td>
+<td>owl:AnnotationProperty</td>
 <td><em>Subject</em> <span class="blue">heeft als synoniem</span> <em>Literal</em> (ook vertalingen, dan meerdere rdfs:altLabel properties) (annotatie)</td>
 </tr>
 <tr>
 <td>skos:hiddenLabel</td>
-<td>Annotatie</td>
+<td>owl:AnnotationProperty</td>
 <td><em>Subject</em> <span class="blue">heeft als id</span> <em>Literal</em> (annotatie, alleen gebruikt in de Gellish-omgeving). In RDF is de URI van het concept wordt de enige ID (hst 3.1.1)</td>
 </tr>
 <tr>
 <td>skos:notation</td>
-<td>Annotatie</td>
+<td>owl:DatatypeProperty</td>
 <td><em>Subject</em> <span class="blue">heeft als code</span> <em>Literal</em> (annotatie) Eventueel per context (hst 3.1.2)</td>
 </tr>
 <tr>
 <td>skos:definition</td>
-<td>Annotatie</td>
+<td>owl:AnnotationProperty</td>
 <td><em>Subject</em> <span class="blue">heeft als definitie</span> <em>Literal</em> (definitie <em>zonder</em> bron-referentie) (annotatie) Een "interne" omschrijving, vastgesteld binnen het GWSW-project</td>
 </tr>
 <tr>
