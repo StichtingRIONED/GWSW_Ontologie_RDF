@@ -133,8 +133,9 @@ Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het ken
 
 ### Terminologie - Het vakgebied is leidend
 
-Zie hst. [Identificatie van concepten](#identificatie-van-concepten:-naamgeving-en-uri)
-Zie hst. [Identificatie van concepten](#identificatie-van-concepten---naamgeving-en-uri)
+Zie hst. [Identificatie van concepten](#identificatie-van-concepten:-naamgeving-en-uri)  
+Zie hst. [Identificatie van concepten](#identificatie-van-concepten---naamgeving-en-uri)  
+Zie hst. [Identificatie van concepten](#identificatie-van-concepten)  
 
 1. Volg de gebruikelijke termen binnen het vakgebied, bedenk geen nieuwe conceptnamen die misschien de lading beter dekken of neutraler zijn. Dat geldt ook - waar mogelijk - voor abstracte concepten.
 
@@ -745,7 +746,15 @@ Hier volgt een opsomming van de mogelijke inferences en validaties. In enkele ge
 
 # Details van de GWSW semantiek
 
+## Identificatie van concepten: naamgeving en URI
+
+sdf
+
 ## Identificatie van concepten - naamgeving en URI
+
+sdf
+
+## Identificatie van concepten
 
 Het hanteren van begrijpbare namen voor concepten is de gangbare RDF praktijk. We gaan uit van camelCase of CamelCase notatie van de namen voor respectievelijk de properties (starten met lowercase) als de klassen (starten met uppercase). De syntax van de namen is conform de voorwaarden voor een URI, de prefix + naam is de URI van het concept.
 
