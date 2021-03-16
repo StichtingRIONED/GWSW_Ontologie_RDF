@@ -133,7 +133,7 @@ Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het ken
 
 ### Terminologie - Het vakgebied is leidend
 
-Zie hst. [Identificatie van concepten](#identificatie-van-concepten-naamgeving-en-uri)  
+Zie hst [Identificatie van concepten](#identificatie-van-concepten-naamgeving-en-uri)  
 
 1. Volg de gebruikelijke termen binnen het vakgebied, bedenk geen nieuwe conceptnamen die misschien de lading beter dekken of neutraler zijn. Dat geldt ook - waar mogelijk - voor abstracte concepten.
 
@@ -147,13 +147,13 @@ Zie hst. [Identificatie van concepten](#identificatie-van-concepten-naamgeving-e
 
 1. Elk GWSW-concept is van het generieke type owl:Class.
 
-2. Een concept wordt geïdentificeerd door de URI (prefix + naam) conform hst 3.1.1
+2. Een concept wordt geïdentificeerd door de URI (prefix + naam) conform hst [Identificatie van concepten](#identificatie-van-concepten-naamgeving-en-uri)
 
-3. Een concept en elke CE wordt altijd voorzien van de annotaties zoals opgenomen in hst 3.1.2.
+3. Een concept en elke CE wordt altijd voorzien van de annotaties zoals opgenomen in hst [Annotaties bij concepten](#annotaties-bij-concepten).
   
 ### Specialiseren - Onderscheidende kenmerken
 
-(het opbouwen van de soortenboom, uitwerking: zie hst 3.6)
+Het specialiseren, opbouwen van de soortenboom, zie hst [Onderscheidende kenmerken](onderscheidende-kenmerken-modelleren)
 
 1. Voor het classificeren van een concept uitgaan van zoeken op onderscheidende kenmerken in de (abstracte) soortenboom. Denk aan determineren van planten volgens Linnaeus: na het maken van een aantal keuzes wordt de soort gevonden
 
@@ -244,7 +244,7 @@ Zie hst. [Identificatie van concepten](#identificatie-van-concepten-naamgeving-e
 2. Specificeer waar nodig ook het waardebereik (in combinatie met het waardetype)
 3. Start de URI van een gemodelleerd datatype altijd met "Dt_"
 
-### <span class="yellow">Contexten onderscheiden</span>
+### Context-specifieke deelmodellen
 
 Collection of Facts, wijze van indeling…
 
@@ -278,19 +278,6 @@ Op basis van de CoF worden de GWSW deelmodellen samengesteld, zo'n deelmodel is 
 * het overzichtelijk onderhouden van het datamodel. Veel deelmodellen hebben een heel specifieke functie, anderen worden met een lage frequentie onderhouden. Denk bijvoorbeeld aan uitwisselformaten.
 * het samenstellen van conformiteitsklassen, data-verificatie voor bepaalde processen
 * het koppelen van alleen de relevante modelonderdelen aan datasets, afgestemd op de praktijk van uitwisselen  
-
-De annotatie skos:scopeNote (voor het filteren van datamodellen) wordt altijd opgenomen bij:
-
-* De typering (relatie rdf:type) van alle GWSW-klassen, inclusief alle annotaties
-* De CE's met restrictie op de kardinaliteit van concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken).
-* De typering van individuals binnen een collectie (de verzameling kan variëren vanwege bijvoorbeeld een externe normering)
-
-De annotatie skos:scopeNote wordt **niet** opgenomen bij:
-
-* De CE's voor de kwalificatie van onderscheidende kenmerken, die vallen binnen de scope van de betrokken klasse. De onderscheidende kenmerken en de individuals/instanties ervan zijn in één centraal deelmodel opgenomen
-* CE's met restrictie op datatype (waarde binnen een collectie of van een xsd-type), bij de relaties gwsw:hasValue en gwsw:hasReference
-* In vervolg daarop: CE's met restricties op waardebereik (min/max)
-* CE's met restrictie op aantal voorkomens van kenmerken van kenmerken: bijvoorbeeld het metagegeven Inwinning bij kenmerken zoals hoogteligging
 
 De toegepaste CoF's en deelmodellen zijn als volgt in het GWSW datamodel opgenomen:
 
@@ -462,12 +449,12 @@ De tabellen beschrijven de gebruikte properties. De toepassing van **relaties** 
 <tr>
 <td>skos:hiddenLabel</td>
 <td>owl:AnnotationProperty</td>
-<td><em>Subject</em> <span class="blue">heeft als id</span> <em>Literal</em> (annotatie, alleen gebruikt in de Gellish-omgeving). In RDF is de URI van het concept wordt de enige ID (hst 3.1.1)</td>
+<td><em>Subject</em> <span class="blue">heeft als id</span> <em>Literal</em> (annotatie, alleen gebruikt in de Gellish-omgeving). In RDF is de URI van het concept wordt de enige ID (hst [Identificatie van concepten](#identificatie-van-concepten-naamgeving-en-uri))</td>
 </tr>
 <tr>
 <td>skos:notation</td>
 <td>owl:DatatypeProperty</td>
-<td><em>Subject</em> <span class="blue">heeft als code</span> <em>Literal</em> (annotatie) Eventueel per context (hst 3.1.2)</td>
+<td><em>Subject</em> <span class="blue">heeft als code</span> <em>Literal</em> (annotatie) Eventueel per context (hst [Coderingen met context-specifiek datatype](coderingen-met-context-specifiek-datatype))</td>
 </tr>
 <tr>
 <td>skos:definition</td>
@@ -744,7 +731,7 @@ Hier volgt een opsomming van de mogelijke inferences en validaties. In enkele ge
 
 # Details van de GWSW semantiek
 
-## Identificatie van concepten - naamgeving en URI
+## Identificatie van concepten - Naamgeving en URI
 
 Het hanteren van begrijpbare namen voor concepten is de gangbare RDF praktijk. We gaan uit van camelCase of CamelCase notatie van de namen voor respectievelijk de properties (starten met lowercase) als de klassen (starten met uppercase). De syntax van de namen is conform de voorwaarden voor een URI, de prefix + naam is de URI van het concept.
 
@@ -782,7 +769,7 @@ In het oorspronkelijke Gellish-model is een nummer-identificatie (naast het unie
 
 ## Annotaties bij concepten
 
-De volgende annotaties worden in het GWSW toegepast (zie voor toelichting ook het overzicht van de properties in hst 2.5):
+De volgende annotaties worden in het GWSW toegepast (zie voor toelichting ook het overzicht van de properties in [Properties in de GWSW Ontologie](properties-in-de-gwsw-ontologie):
 
 <table class="simp">
 <thead>
@@ -915,6 +902,21 @@ Daarnaast zijn de volgende annotaties onder voorwaarden altijd opgenomen:
 * rdfs:hasAuthorChange (indien hasDateChange is opgenomen)
 * gwsw:hasUnit (indien de klasse een relatie rdfs:hasValue met een relevant datatype heeft)
 
+### Context-scope - deelmodellen
+
+De annotatie skos:scopeNote (voor het filteren van deelmodellen) wordt altijd opgenomen bij:
+
+* De typering (relatie rdf:type) van alle GWSW-klassen, inclusief alle annotaties
+* De CE's met restrictie op de kardinaliteit van concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken).
+* De typering van individuals binnen een collectie (de verzameling kan variëren vanwege bijvoorbeeld een externe normering)
+
+De annotatie skos:scopeNote wordt **niet** opgenomen bij:
+
+* De CE's voor de kwalificatie van onderscheidende kenmerken, die vallen binnen de scope van de betrokken klasse. De onderscheidende kenmerken en de individuals/instanties ervan zijn in één centraal deelmodel opgenomen
+* CE's met restrictie op datatype (waarde binnen een collectie of van een xsd-type), bij de relaties gwsw:hasValue en gwsw:hasReference
+* In vervolg daarop: CE's met restricties op waardebereik (min/max)
+* CE's met restrictie op aantal voorkomens van kenmerken van kenmerken: bijvoorbeeld het metagegeven Inwinning bij kenmerken zoals hoogteligging
+
 ### Toegepaste eenheden
 
 De in RDF gehanteerde datatypes zijn gekoppeld aan de waarde van <span class="blue">hasUnit</span>. Als bij een concept de eenheid niet is gespecificeerd wordt uitgegaan van datatype <span class="blue">xsd:string</span>.  
@@ -1017,17 +1019,15 @@ De letter geeft het soort kwaliteitseis aan:
 </tbody>
 </table>
 
-## Aspecten – Property-central
+## Aspecten – Class-central
 
-### Eigenschappen en predicaat
-
-In RDF is het gebruikelijk om attributen van een subject te benoemen in de property (“property-central”). Bijvoorbeeld:
+In RDF worden aspect-attributen vaak gespecificeerd in de property (“property-central”). Bijvoorbeeld:
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1  gwsw:hasAspectPutHoogte  1000^^xsd:integer .
 </pre></div>
 
-Zo'n eigenschap/kenmerk kan ook als apart concept (“class-central”) worden onderscheiden:
+In het GWSW definiëren we zo'n eigenschap/kenmerk als apart concept (“class-central”):
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1  gwsw:hasAspect      bim:Hgt1 .
@@ -1077,8 +1077,9 @@ In de GWSW ontologie gaan we uit van het “class-central” principe. Deze oplo
 * Door objectificering van het kenmerk kan het in meerdere relaties gebruikt:
     - Het kenmerk kan met de relatie “hasInput” als object voor berekeningen staan
     - Het kenmerk kan zelf kenmerken bevatten (met de relatie “hasAspect”), bijvoorbeeld metagegevens over de inwinning. In het GWSW komt dit veel voor (zie het eerdere voorbeeld).
-* Als alternatief voor de property-central oplossing met rdfs:range kunnen met een CE als subklassering op subject + property “hasValue” restricties aan het datatype worden toegevoegd. (zie hst. 3.2.2)
-* Als alternatief voor de property-central oplossing met rdfs:domain kunnen met een CE als subklassering op het subject restricties aan de combinatie property en object worden toegevoegd. (zie hst. 3.2.3).
+* Als alternatief voor de property-central oplossing met rdfs:domain kunnen met een CE als subklassering op het subject restricties aan de combinatie property en object worden toegevoegd.
+* Als alternatief voor de property-central oplossing met rdfs:range kunnen met een CE als subklassering op subject + property “hasValue” restricties aan het datatype worden toegevoegd.
+
 * In een dataset kan naar believen het aspect als URI of anoniem (via een blank node) worden uitgeschreven.
 * De uitgebreidere semantiek kan in een dataset met beperkte syntax worden beschreven (zie het eerdere voorbeeld)
 
@@ -1187,7 +1188,7 @@ gwsw:NodeId   rdf:type             owl:Class ;
               ] .
 </pre></div>
 
-## Modelleren onderscheidende kenmerken
+## Onderscheidende kenmerken modelleren
 
 Een onderscheidend kenmerk wordt gemodelleerd met restricties binnen een CE. Bij benoeming van de CE als equivalentClass vragen deze restricties veel rekenkracht, daarom is hier ook voor een éénzijdige subtypering (rdfs:subClassOf ipv owl:equivalentClass) gekozen. Daarmee leveren we wel semantiek in (“sufficient”, niet “necessary”).
 
