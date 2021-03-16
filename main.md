@@ -134,6 +134,7 @@ Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het ken
 ### Terminologie - Het vakgebied is leidend
 
 Zie hst. [#Identificatie van concepten: naamgeving en URI](Identificatie van concepten: naamgeving en URI)
+Zie hst. [Identificatie van concepten: naamgeving en URI](Identificatie van concepten)
 
 1. Volg de gebruikelijke termen binnen het vakgebied, bedenk geen nieuwe conceptnamen die misschien de lading beter dekken of neutraler zijn. Dat geldt ook - waar mogelijk - voor abstracte concepten.
 
