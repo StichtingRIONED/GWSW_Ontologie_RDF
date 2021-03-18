@@ -305,6 +305,20 @@ De "top level" concepten in GWSW-OroX zijn de concepten die boven in de soortenb
 
 ## Overzicht properties in de GWSW-Ontologie
 
+### Metagegevens vanuit Gellish
+
+Het oorspronkelijke Gellish-model bevat een serie metagegevens zoals Kardinaliteit Links/Rechts, UoM, Brondefinitie, Eigen definitie, Datum Begin/Wijziging. Die worden als volgt in het RDF-model meegenomen:
+
+De **Kardinaliteit** wordt via CE’s in RDF uitgedrukt. De kardinaliteit kan in twee richtingen gelden, daarvoor is voor de relevante properties een inverse geïntroduceerd. Ook voor deze omgekeerde propery geldt dan via de CE een restrictie op kardinaliteit.
+
+De **UoM, Brondefinitie, Eigen definitie** worden als annotaties bij de concepten opgenomen.
+
+De **Auteurs** gecombineerd met **Datum start concept** en **Datum wijziging concept** worden als annotaties bij de concepten opgenomen.
+
+De **Taalgemeenschap** wordt als extra naam bij de concepten (met property rdfs:label) vermeld.
+
+### Properties in diagrammen
+
 De toegepaste **attributen** (annotatie-properties en aspecten) in een diagram:
 
 <img src="media/attributen.png" style="width:100%;" />
@@ -313,7 +327,9 @@ De toegepaste **relaties** in een diagram:
 
 <img src="media/relaties.png" style="width:100%;" />
 
-De tabellen beschrijven de gebruikte properties. De toepassing van **relaties** is in de GWSW-Ontologie aan regels gebonden door middel van een Class Expression (CE). In de volgende tabel is dat aangegeven (“CE”).
+### Omschrijving properties
+
+De toepassing van **relaties** is in de GWSW-Ontologie aan regels gebonden door middel van een Class Expression (CE). In de volgende tabel is dat aangegeven (“CE”).
 
 <table class="simp">
 <thead>
@@ -563,7 +579,7 @@ Voor het uitdrukken van CE’s voorziet OWL 2 in een groot aantal (restrictie) p
 </tbody>
 </table>
 
-## Properties in Datasets
+### Properties in Datasets
 
 In datasets conform het GWSW worden de volgende properties gebruikt:
 
@@ -635,18 +651,6 @@ Hier volgt een opsomming van de mogelijke inferences en validaties. In enkele ge
 * Kardinaliteit, aantal voorkomens per property boven het voor het type gedefinieerde maximum wordt gemeld (UNA)
     - ook “inverse”-kardinaliteit wordt in de reasoning meegenomen
     - minimum kardinaliteit en shall-relatie wel gemodelleerd, controle op strijdigheid met typering niet mogelijk (OWA)
-
-## Metagegevens
-
-Het oorspronkelijke Gellish-model bevat een serie metagegevens zoals Kardinaliteit Links/Rechts, UoM, Brondefinitie, Eigen definitie, Datum Begin/Wijziging. Die worden als volgt in het RDF-model meegenomen:
-
-De **Kardinaliteit** wordt via CE’s in RDF uitgedrukt. De kardinaliteit kan in twee richtingen gelden, daarvoor is voor de relevante properties een inverse geïntroduceerd. Ook voor deze omgekeerde propery geldt dan via de CE een restrictie op kardinaliteit.
-
-De **UoM, Brondefinitie, Eigen definitie** worden als annotaties bij de concepten opgenomen.
-
-De **Auteurs** gecombineerd met **Datum start concept** en **Datum wijziging concept** worden als annotaties bij de concepten opgenomen.
-
-De **Taalgemeenschap** wordt als extra naam bij de concepten (met property rdfs:label) vermeld.
 
 ## Annotaties bij concepten
 
@@ -1306,7 +1310,7 @@ gwsw:Rioolput   rdfs:subClassOf
 
 ## Inverse property
 
-Kardinaliteit kan tweezijdig worden beschreven, daarvoor zijn er omgekeerde relaties nodig.
+Kardinaliteit wordt tweezijdig beschreven, daarvoor zijn er omgekeerde relaties nodig.
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 
@@ -1315,7 +1319,7 @@ gwsw:isPartOf   rdfs:label                     "has as part (inverse)” ;
                 owl:inverseOf                  gwsw:hasPart .
 </pre></div>
 
-Ook voor deze inversed property + object (was subject) wordt dan de kardinaliteit gedefinieerd.
+Ook voor deze inverse property + object (was subject) wordt dan de kardinaliteit gedefinieerd.
 
 ## Collecties, domeintabellen
 
