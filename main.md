@@ -153,7 +153,7 @@ Zie hst [Identificatie van concepten](#identificatie-van-concepten-naamgeving-en
   
 ### Specialiseren - Onderscheidende kenmerken
 
-Het specialiseren, opbouwen van de soortenboom, zie hst [Onderscheidende kenmerken](onderscheidende-kenmerken-modelleren)
+Het specialiseren, opbouwen van de soortenboom, zie hst [Onderscheidende kenmerken](#onderscheidende-kenmerken)
 
 1. Voor het classificeren van een concept uitgaan van zoeken op onderscheidende kenmerken in de (abstracte) soortenboom. Denk aan determineren van planten volgens Linnaeus: na het maken van een aantal keuzes wordt de soort gevonden
 
@@ -254,56 +254,7 @@ Combineren van model-bestanden in editor mogelijK. Onderscheid houden - ook na a
 
 Omgaan met context-specifieke codering: consequent specifiek datatype hanteren. Te hanteren datatypes noemen, wijken af van CoF's…
 
-# Samenvatting opzet GWSW-Ontologie in RDF
-
-## Metagegevens
-
-Het oorspronkelijke Gellish-model bevat een serie metagegevens zoals Kardinaliteit Links/Rechts, UoM, Brondefinitie, Eigen definitie, Datum Begin/Wijziging. Die worden als volgt in het RDF-model meegenomen:
-
-De **Kardinaliteit** wordt via CE’s in RDF uitgedrukt. De kardinaliteit kan in twee richtingen gelden, daarvoor is voor de relevante properties een inverse geïntroduceerd. Ook voor deze omgekeerde propery geldt dan via de CE een restrictie op kardinaliteit.
-
-De **UoM, Brondefinitie, Eigen definitie** worden als annotaties bij de concepten opgenomen.
-
-De **Auteurs** gecombineerd met **Datum start concept** en **Datum wijziging concept** worden als annotaties bij de concepten opgenomen.
-
-De **Taalgemeenschap** wordt als extra naam bij de concepten (met property rdfs:label) vermeld.
-
-### Collection of Facts - GWSW deelmodellen
-
-Vanaf GWSW versie 1.6 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met het annotatie-attribuut **skos:scopeNote**, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen.
-
-Op basis van de CoF worden de GWSW deelmodellen samengesteld, zo'n deelmodel is een filter op het datamodel waarbij de klassen, de CE's en de individuals worden geselecteerd op de gekoppelde CoF. De deelmodellen hebben meerdere functies:
-
-* het overzichtelijk presenteren van specifieke GWSW onderdelen
-* het overzichtelijk onderhouden van het datamodel. Veel deelmodellen hebben een heel specifieke functie, anderen worden met een lage frequentie onderhouden. Denk bijvoorbeeld aan uitwisselformaten.
-* het samenstellen van conformiteitsklassen, data-verificatie voor bepaalde processen
-* het koppelen van alleen de relevante modelonderdelen aan datasets, afgestemd op de praktijk van uitwisselen  
-
-De toegepaste CoF's en deelmodellen zijn als volgt in het GWSW datamodel opgenomen:
-
-<div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:_TOP
-  rdf:type                      gwsw:CollectionOfFacts ;
-  rdfs:label                    "Collection of facts TOP"@nl ;
-  skos:definition               "Bevat algemene supertypes"@nl 
-.
-gwsw:DeelmodelKentallen
-  rdf:type                      owl:Class ;
-  rdfs:label                    "Deelmodel Kentallen"@nl ; 
-  skos:scopeNote                gwsw:_TOP ;
-  rdfs:subClassOf               gwsw:VerzamelingSoorten ;
-  rdfs:subClassOf
-  [
-  rdf:type                      owl:Class ;
-  owl:oneOf                     (gwsw:_TOP gwsw:_DMO gwsw:_HYD )
-  ] ;
-  skos:definition               "Deelmodel voor afvoerscenario's en kentallen. Bevat het rioleringsnetwerk, het afvoernetwerk (verbindingen tussen stelsels) en gemeentelijke activiteiten voor optimaliseren afvalwaterketen"@nl
-.
-</pre></div>
-
-### Validity context - Conformiteitsklassen
-
-Vergelijkbaar met de Collection of Facts speelt ook de **Validity context** vanuit Gellish nog steeds een rol in de RDF-vorm van het GWSW. Met de annotatie **gwsw:hasValidity** worden de triples nabewerkt voor een bepaalde conformiteitsklasse (met kwaliteitseisen per proces).
+# Details van de GWSW semantiek
 
 ## Top Level soorten
 
@@ -349,52 +300,10 @@ De "top level" concepten in GWSW-OroX zijn de concepten die boven in de soortenb
 <td>VerzamelingSoorten</td>
 <td>Collection of qualitative aspects. Is specialisatie van collection of classes</td>
 </tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 
-## Expliciete definitie: basis voor determinatie
-
-Voor de indeling in soorten, de bepaling van de taxonomie, wordt de onderscheidende definitie zo expliciet mogelijk beschreven. Determinerend kan daarmee (de naam van) een soort worden bepaald. Verschillende elementen in de ontologie spelen hierbij een rol, die zijn beschreven in de volgende paragrafen.
-
-### Onderscheidende kenmerken
-
-De onderscheidende kenmerken specificeren de soorten, de GWSW ontologie hanteert de volgende:
-
-* Doel (waarvoor)
-* Toepassing (waarin)
-* Functie (wat doet het)
-* Uitvoering (hoe)
-* Structuur (waaruit)
-
-Meer specifiek voor activiteiten:
-
-* Technologie (werkwijze, eisen)
-* Resultaat
-* Mechanisme (waarmee)
-
-Het onderscheidende kenmerken wordt beschreven met een specifieke kwalitatieve-aspect-property, de range bij de property is dan een individual van het type onderscheidend kenmerk. Met een CE wordt een restrictie op de properties <span class="blue">doel</span>, <span class="blue">toepassing</span>, <span class="blue">functie</span>, <span class="blue">uitvoering</span>, <span class="blue">structuur</span>, <span class="blue">technologie</span>, <span class="blue">resultaat</span>, <span class="blue">mechanisme</span> gecombineerd met een restrictie op <span class="blue">hasValue</span>.
-
-### Kwalificerende samenstelling
-
-De structuur wordt voor wat betreft de samenstelling expliciet beschreven door een CE met een restrictie op de property <span class="blue">hasPart</span> gecombineerd met de benoeming van de kardinaliteit. De kardinaliteit beschrijft het aantal voorkomens van een property tussen twee soorten.
-
-### Intrinsieke aspecten / possessed aspects
-
-Afhankelijk van de soort kunnen kenmerken worden specialiseerd. Die intrinsieke kenmerken horen dan exclusief bij een soort. De CE beschrijft een restrictie op de property <span class="blue">hasAspect</span> in combinatie met het gerelateerd kenmerktype.
-
-## Collecties, domeintabellen
-
-Alle collectie-leden zijn in de GWSW topologie opgenomen als individuen met annotaties. RDF beschrijft de enumeratie van individuals per collectie. Hoofdstuk 3.7 bevat de details.
-
-## Properties in de GWSW-Ontologie
+## Overzicht properties in de GWSW-Ontologie
 
 De toegepaste **attributen** (annotatie-properties en aspecten) in een diagram:
 
@@ -449,13 +358,13 @@ De tabellen beschrijven de gebruikte properties. De toepassing van **relaties** 
 <tr>
 <td>skos:hiddenLabel</td>
 <td>owl:AnnotationProperty</td>
-<td><em>Subject</em> <span class="blue">heeft als id</span> <em>Literal</em> (annotatie, alleen gebruikt in de Gellish-omgeving). In RDF is de URI van het concept wordt de enige ID (hst [Identificatie van concepten](#identificatie-van-concepten-naamgeving-en-uri))</td>
+<td><em>Subject</em> <span class="blue">heeft als id</span> <em>Literal</em> (annotatie, alleen gebruikt in de Gellish-omgeving). In RDF is de URI van het concept de enige ID</td>
 </tr>
 <tr>
 <td>skos:notation</td>
 <td>owl:DatatypeProperty</td>
-<td><em>Subject</em> <span class="blue">heeft als code</span> <em>Literal</em> (annotatie) Eventueel per context (hst [Coderingen met context-specifiek datatype](coderingen-met-context-specifiek-datatype))</td>
-</tr>
+<td><em>Subject</em> <span class="blue">heeft als code</span> <em>Literal</em> (annotatie) Eventueel per context
+</td></tr>
 <tr>
 <td>skos:definition</td>
 <td>owl:AnnotationProperty</td>
@@ -654,8 +563,6 @@ Voor het uitdrukken van CE’s voorziet OWL 2 in een groot aantal (restrictie) p
 </tbody>
 </table>
 
-Hoofdstuk 3 beschrijft de toepassing van deze properties.
-
 ## Properties in Datasets
 
 In datasets conform het GWSW worden de volgende properties gebruikt:
@@ -711,7 +618,7 @@ In datasets conform het GWSW worden de volgende properties gebruikt:
 </tbody>
 </table>
 
-## Validatie/inferencing met GWSW-Ontologie
+## Data-afleiding en validatie in GWSW-Ontologie
 
 Hier volgt een opsomming van de mogelijke inferences en validaties. In enkele gevallen is reasoning op basis van het UNA (Unique Name Assumption) principe nodig. De controle op kardinaliteit is beperkt vanwege het OWA (Open World Assumption) principe in RDF.
 
@@ -729,47 +636,21 @@ Hier volgt een opsomming van de mogelijke inferences en validaties. In enkele ge
     - ook “inverse”-kardinaliteit wordt in de reasoning meegenomen
     - minimum kardinaliteit en shall-relatie wel gemodelleerd, controle op strijdigheid met typering niet mogelijk (OWA)
 
-# Details van de GWSW semantiek
+## Metagegevens
 
-## Identificatie van concepten - Naamgeving en URI
+Het oorspronkelijke Gellish-model bevat een serie metagegevens zoals Kardinaliteit Links/Rechts, UoM, Brondefinitie, Eigen definitie, Datum Begin/Wijziging. Die worden als volgt in het RDF-model meegenomen:
 
-Het hanteren van begrijpbare namen voor concepten is de gangbare RDF praktijk. We gaan uit van camelCase of CamelCase notatie van de namen voor respectievelijk de properties (starten met lowercase) als de klassen (starten met uppercase). De syntax van de namen is conform de voorwaarden voor een URI, de prefix + naam is de URI van het concept.
+De **Kardinaliteit** wordt via CE’s in RDF uitgedrukt. De kardinaliteit kan in twee richtingen gelden, daarvoor is voor de relevante properties een inverse geïntroduceerd. Ook voor deze omgekeerde propery geldt dan via de CE een restrictie op kardinaliteit.
 
-In het GWSW komen vertalingen voor, die worden als rdfs:label (voorzien van de taalcode) benoemd. Ook synoniemen komen veelvuldig in het GWSW voor, die worden benoemd met de relatie skos:altLabel.
+De **UoM, Brondefinitie, Eigen definitie** worden als annotaties bij de concepten opgenomen.
 
-Voor de namen van relaties wordt altijd de Engelse taal gebruikt, voor de namen van kwalitatieve aspecten (in gebruik voor onderscheidende kenmerken) wordt Nederlandse taal gebruikt, meestal de naam van het object (de range van de property) startend met lowercase.
+De **Auteurs** gecombineerd met **Datum start concept** en **Datum wijziging concept** worden als annotaties bij de concepten opgenomen.
 
-Een generieke relatie in een dataset: classificeren van de put
-
-<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:Put1    rdf:type    gwsw:Inspectieput .
-</pre></div>
-
-Een GWSW relatie in de dataset:
-
-<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:Put1    gwsw:isPartOf    bim:Rioolstelsel1 .
-</pre></div>
-
-Een GWSW kwalitatief aspect in een dataset (afgeleid wordt dat bim:Put1 een inspectieput is):
-
-<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:Put1    gwsw:functie    gwsw:ToegangVerschaffen . # individual van type gwsw:Functie
-</pre></div>
-
-Een URI van een concept is in principe hoofdlettergevoelig, gwsw:functie is de property, gwsw:Functie is de class (de range van de property). Voor het omgaan met webadressen vraagt dat extra aandacht, bijvoorbeeld door het domain "gwsw:" voor properties te wijzigen.
-
-**Voorkeursterm GWSW-concepten**
-
-Voor de voorkeursterm van GWSW-concepten geldt het volgende uitgangspunt:
-
-Altijd de literal bij rdfs:label als voorkeursterm gebruiken. Als die meertalig is (er kunnen meerdere rdfs:label relaties zijn met een eigen taalaanduiding) geldt altijd de voorkeur @nl en daarna @en (van een GWSW-concept is minimaal een @nl of een @en versie aanwezig).
-
-In het oorspronkelijke Gellish-model is een nummer-identificatie (naast het unieke label) belangrijk. Dit unieke nummer wordt met de property skos:hiddenLabel benoemd, maar zal op termijn zijn waarde verliezen.
+De **Taalgemeenschap** wordt als extra naam bij de concepten (met property rdfs:label) vermeld.
 
 ## Annotaties bij concepten
 
-De volgende annotaties worden in het GWSW toegepast (zie voor toelichting ook het overzicht van de properties in [Properties in de GWSW Ontologie](properties-in-de-gwsw-ontologie):
+De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [overzicht van de properties](overzicht-properties-in-de-gwsw-ontologie)):
 
 <table class="simp">
 <thead>
@@ -902,20 +783,41 @@ Daarnaast zijn de volgende annotaties onder voorwaarden altijd opgenomen:
 * rdfs:hasAuthorChange (indien hasDateChange is opgenomen)
 * gwsw:hasUnit (indien de klasse een relatie rdfs:hasValue met een relevant datatype heeft)
 
-### Context-scope - deelmodellen
+### Identificatie van concepten - Naamgeving en URI
 
-De annotatie skos:scopeNote (voor het filteren van deelmodellen) wordt altijd opgenomen bij:
+Het hanteren van begrijpbare namen voor concepten is de gangbare RDF praktijk. We gaan uit van camelCase of CamelCase notatie van de namen voor respectievelijk de properties (starten met lowercase) als de klassen (starten met uppercase). De syntax van de namen is conform de voorwaarden voor een URI, de prefix + naam is de URI van het concept.
 
-* De typering (relatie rdf:type) van alle GWSW-klassen, inclusief alle annotaties
-* De CE's met restrictie op de kardinaliteit van concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken).
-* De typering van individuals binnen een collectie (de verzameling kan variëren vanwege bijvoorbeeld een externe normering)
+In het GWSW komen vertalingen voor, die worden als rdfs:label (voorzien van de taalcode) benoemd. Ook synoniemen komen veelvuldig in het GWSW voor, die worden benoemd met de relatie skos:altLabel.
 
-De annotatie skos:scopeNote wordt **niet** opgenomen bij:
+Voor de namen van relaties wordt altijd de Engelse taal gebruikt, voor de namen van kwalitatieve aspecten (in gebruik voor onderscheidende kenmerken) wordt Nederlandse taal gebruikt, meestal de naam van het object (de range van de property) startend met lowercase.
 
-* De CE's voor de kwalificatie van onderscheidende kenmerken, die vallen binnen de scope van de betrokken klasse. De onderscheidende kenmerken en de individuals/instanties ervan zijn in één centraal deelmodel opgenomen
-* CE's met restrictie op datatype (waarde binnen een collectie of van een xsd-type), bij de relaties gwsw:hasValue en gwsw:hasReference
-* In vervolg daarop: CE's met restricties op waardebereik (min/max)
-* CE's met restrictie op aantal voorkomens van kenmerken van kenmerken: bijvoorbeeld het metagegeven Inwinning bij kenmerken zoals hoogteligging
+Een generieke relatie in een dataset: classificeren van de put
+
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+bim:Put1    rdf:type    gwsw:Inspectieput .
+</pre></div>
+
+Een GWSW relatie in de dataset:
+
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+bim:Put1    gwsw:isPartOf    bim:Rioolstelsel1 .
+</pre></div>
+
+Een GWSW kwalitatief aspect in een dataset (afgeleid wordt dat bim:Put1 een inspectieput is):
+
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+bim:Put1    gwsw:functie    gwsw:ToegangVerschaffen . # individual van type gwsw:Functie
+</pre></div>
+
+Een URI van een concept is in principe hoofdlettergevoelig, gwsw:functie is de property, gwsw:Functie is de class (de range van de property). Voor het omgaan met webadressen vraagt dat extra aandacht, bijvoorbeeld door het domain "gwsw:" voor properties te wijzigen.
+
+### Voorkeursterm GWSW-concepten
+
+Voor de voorkeursterm van GWSW-concepten geldt het volgende uitgangspunt:
+
+Altijd de literal bij rdfs:label als voorkeursterm gebruiken. Als die meertalig is (er kunnen meerdere rdfs:label relaties zijn met een eigen taalaanduiding) geldt altijd de voorkeur @nl en daarna @en (van een GWSW-concept is minimaal een @nl of een @en versie aanwezig).
+
+In het oorspronkelijke Gellish-model is een nummer-identificatie (naast het unieke label) belangrijk. Dit unieke nummer wordt met de property skos:hiddenLabel benoemd, maar zal op termijn zijn waarde verliezen.
 
 ### Toegepaste eenheden
 
@@ -985,7 +887,55 @@ Bij een concept kunnen meerdere codes afhankelijk van de context voorkomen. Bij 
 
 In het GWSW Datamodel worden context-specifieke coderingen meestal gecombineerd met het context-afhankelijke datatype. Alleen voor algemene coderingen (zoals de code HWA voor gwsw:AfvloeiendHemelwater) en voor coderingen van concepten binnen een exclusief deelmodel (bijvoorbeeld de NLCS symbolen) wordt geen specifiek datatype gebruikt.
 
-### Validity context bij conformiteitsklassen
+### Collection of Facts - GWSW deelmodellen
+
+Vanaf GWSW versie 1.6 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met het annotatie-attribuut **skos:scopeNote**, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen.
+
+Op basis van de CoF worden de GWSW deelmodellen samengesteld, zo'n deelmodel is een filter op het datamodel waarbij de klassen, de CE's en de individuals worden geselecteerd op de gekoppelde CoF. De deelmodellen hebben meerdere functies:
+
+* het overzichtelijk presenteren van specifieke GWSW onderdelen
+* het overzichtelijk onderhouden van het datamodel. Veel deelmodellen hebben een heel specifieke functie, anderen worden met een lage frequentie onderhouden. Denk bijvoorbeeld aan uitwisselformaten.
+* het samenstellen van conformiteitsklassen, data-verificatie voor bepaalde processen
+* het koppelen van alleen de relevante modelonderdelen aan datasets, afgestemd op de praktijk van uitwisselen  
+
+De toegepaste CoF's en deelmodellen zijn als volgt in het GWSW datamodel opgenomen:
+
+<div class="example"><div class="example-title marker">Model:</div><pre>
+gwsw:_TOP
+  rdf:type                      gwsw:CollectionOfFacts ;
+  rdfs:label                    "Collection of facts TOP"@nl ;
+  skos:definition               "Bevat algemene supertypes"@nl 
+.
+gwsw:DeelmodelKentallen
+  rdf:type                      owl:Class ;
+  rdfs:label                    "Deelmodel Kentallen"@nl ; 
+  skos:scopeNote                gwsw:_TOP ;
+  rdfs:subClassOf               gwsw:VerzamelingSoorten ;
+  rdfs:subClassOf
+  [
+  rdf:type                      owl:Class ;
+  owl:oneOf                     (gwsw:_TOP gwsw:_DMO gwsw:_HYD )
+  ] ;
+  skos:definition               "Deelmodel voor afvoerscenario's en kentallen. Bevat het rioleringsnetwerk, het afvoernetwerk (verbindingen tussen stelsels) en gemeentelijke activiteiten voor optimaliseren afvalwaterketen"@nl
+.
+</pre></div>
+
+De annotatie skos:scopeNote (voor het filteren van deelmodellen) wordt altijd opgenomen bij:
+
+* De typering (relatie rdf:type) van alle GWSW-klassen, inclusief alle annotaties
+* De CE's met restrictie op de kardinaliteit van concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken).
+* De typering van individuals binnen een collectie (de verzameling kan variëren vanwege bijvoorbeeld een externe normering)
+
+De annotatie skos:scopeNote wordt **niet** opgenomen bij:
+
+* De CE's voor de kwalificatie van onderscheidende kenmerken, die vallen binnen de scope van de betrokken klasse. De onderscheidende kenmerken en de individuals/instanties ervan zijn in één centraal deelmodel opgenomen
+* CE's met restrictie op datatype (waarde binnen een collectie of van een xsd-type), bij de relaties gwsw:hasValue en gwsw:hasReference
+* In vervolg daarop: CE's met restricties op waardebereik (min/max)
+* CE's met restrictie op aantal voorkomens van kenmerken van kenmerken: bijvoorbeeld het metagegeven Inwinning bij kenmerken zoals hoogteligging
+
+### Validity context - Conformiteitsklassen
+
+Vergelijkbaar met de Collection of Facts speelt ook de **Validity context** vanuit Gellish nog steeds een rol in de RDF-vorm van het GWSW. Met de annotatie **gwsw:hasValidity** worden de triples nabewerkt voor een bepaalde conformiteitsklasse (met kwaliteitseisen per proces).
 
 De waarde bij gwsw:hasValidity bevat een codering voor toepassing van de conformiteitsklassen. Het is een string met de volgende opbouw:
 
@@ -1018,6 +968,62 @@ De letter geeft het soort kwaliteitseis aan:
 <tr><td>f</td><td> De klasse is te globaal binnen de conformiteitsklasse. Bij de aanmaak van het RDF bestand met de conformiteitsklasse wordt op basis van deze code de Opmerking-kolom bijgewerkt met tekst: [cfk fout]. Deze tekst wordt gescand in validatie-queries</td></tr>
 </tbody>
 </table>
+
+## Onderscheidende kenmerken
+
+**Expliciete definitie: basis voor determinatie**  
+Voor de indeling in soorten, de bepaling van de taxonomie, wordt de onderscheidende definitie zo expliciet mogelijk beschreven. Determinerend kan daarmee (de naam van) een soort worden bepaald. Verschillende elementen in de ontologie spelen hierbij een rol, die zijn beschreven in de volgende paragrafen.
+
+
+De onderscheidende kenmerken specificeren de soorten, de GWSW ontologie hanteert de volgende:
+
+* Doel (waarvoor)
+* Toepassing (waarin)
+* Functie (wat doet het)
+* Uitvoering (hoe)
+* Structuur (waaruit)
+
+Meer specifiek voor activiteiten:
+
+* Technologie (werkwijze, eisen)
+* Resultaat
+* Mechanisme (waarmee)
+
+Het onderscheidende kenmerken wordt beschreven met een specifieke kwalitatieve-aspect-property, de range bij de property is dan een individual van het type onderscheidend kenmerk. Met een CE wordt een restrictie op de properties <span class="blue">doel</span>, <span class="blue">toepassing</span>, <span class="blue">functie</span>, <span class="blue">uitvoering</span>, <span class="blue">structuur</span>, <span class="blue">technologie</span>, <span class="blue">resultaat</span>, <span class="blue">mechanisme</span> gecombineerd met een restrictie op <span class="blue">hasValue</span>.
+
+### Onderscheidende kenmerken modelleren
+
+Een onderscheidend kenmerk wordt gemodelleerd met restricties binnen een CE. Bij benoeming van de CE als equivalentClass vragen deze restricties veel rekenkracht, daarom is hier ook voor een éénzijdige subtypering (rdfs:subClassOf ipv owl:equivalentClass) gekozen. Daarmee leveren we wel semantiek in (“sufficient”, niet “necessary”).
+
+Definieer Onderscheidend Kenmerk (class en property)
+
+<div class="example"><div class="example-title marker">Model:</div><pre>
+gwsw:Uitvoering     skos:definition  "Materiaal, afwerking, vorm"@nl ;
+                    rdfs:subClassOf  gwsw:OnderscheidendKenmerk .
+gwsw:uitvoering     rdf:type         owl:ObjectProperty ;
+                    rdfs:range       gwsw:Uitvoering ;
+                    rdfs:label       "Heeft Uitvoering"@nl .
+</pre></div>
+
+Combineer het kenmerk en de waarde ervan in een CE
+
+<div class="example"><div class="example-title marker">Model:</div><pre>
+gwsw:Klein          rdfs:label       “klein" ;
+                    rdf:type         gwsw:Uitvoering .  # Individual: uitvoeringswijze
+gwsw:KleinObject    rdfs:subClassOf  gwsw:FysiekObject ;
+                    rdfs:subClassOf
+                    [
+                      rdf:type       owl:Restriction ;  # Via blank node: eenzijdige subklasse
+                      owl:onProperty gwsw:uitvoering ; # Kwalitatief aspect
+                      owl:hasValue   gwsw:Klein;  # Individual
+                    ] .
+</pre></div>
+
+Als in de dataset een invidual als volgt beschreven is leidt een reasoner af dat KleinObject1 van het type KleinObject is:
+
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+bim:KleinObject1    gwsw:uitvoering  gwsw:Klein .
+</pre></div>
 
 ## Aspecten – Class-central
 
@@ -1127,9 +1133,9 @@ gwsw:Dt_HoogtePut  rdf:type       rdfs:Datatype ; # typering verplicht in OWL RL
                    ] .
 </pre></div>
 
-### Intrinsieke aspecten
+### Intrinsieke aspecten / possessed aspects
 
-Een intrinsiek aspect behoort specifiek (per definitie) bij een klasse.
+Een intrinsiek aspect behoort specifiek (per definitie) bij een klasse. Afhankelijk van de soort kunnen kenmerken worden specialiseerd. Die intrinsieke kenmerken horen dan exclusief bij een soort. De CE beschrijft een restrictie op de property <span class="blue">hasAspect</span> in combinatie met het gerelateerd kenmerktype.
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:HoogtePut  rdfs:comment      “Intrinsiek kenmerk” ;
@@ -1186,40 +1192,6 @@ gwsw:NodeId   rdf:type             owl:Class ;
                 owl:onProperty     gwsw:hasReference ; # Objectproperty
                 owl:allValuesFrom  gwsw:Rioolput
               ] .
-</pre></div>
-
-## Onderscheidende kenmerken modelleren
-
-Een onderscheidend kenmerk wordt gemodelleerd met restricties binnen een CE. Bij benoeming van de CE als equivalentClass vragen deze restricties veel rekenkracht, daarom is hier ook voor een éénzijdige subtypering (rdfs:subClassOf ipv owl:equivalentClass) gekozen. Daarmee leveren we wel semantiek in (“sufficient”, niet “necessary”).
-
-Definieer Onderscheidend Kenmerk (class en property)
-
-<div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:Uitvoering     skos:definition  "Materiaal, afwerking, vorm"@nl ;
-                    rdfs:subClassOf  gwsw:OnderscheidendKenmerk .
-gwsw:uitvoering     rdf:type         owl:ObjectProperty ;
-                    rdfs:range       gwsw:Uitvoering ;
-                    rdfs:label       "Heeft Uitvoering"@nl .
-</pre></div>
-
-Combineer het kenmerk en de waarde ervan in een CE
-
-<div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:Klein          rdfs:label       “klein" ;
-                    rdf:type         gwsw:Uitvoering .  # Individual: uitvoeringswijze
-gwsw:KleinObject    rdfs:subClassOf  gwsw:FysiekObject ;
-                    rdfs:subClassOf
-                    [
-                      rdf:type       owl:Restriction ;  # Via blank node: eenzijdige subklasse
-                      owl:onProperty gwsw:uitvoering ; # Kwalitatief aspect
-                      owl:hasValue   gwsw:Klein;  # Individual
-                    ] .
-</pre></div>
-
-Als in de dataset een invidual als volgt beschreven is leidt een reasoner af dat KleinObject1 van het type KleinObject is:
-
-<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:KleinObject1    gwsw:uitvoering  gwsw:Klein .
 </pre></div>
 
 ## Samenstellingen (delen van, verbindingen)
@@ -1316,9 +1288,11 @@ Als de kardinaliteit verplicht voor een klasse:
                       owl:qualifiedCardinality        "1"^^xsd:nonNegativeInteger ;
 </pre></div>
 
-**Definiërende relaties**
+### Kwalificerende samenstelling
 
 In het GWSW is beschreven welke relaties onderscheidend zijn voor de typering. Een rioolput moet bijvoorbeeld een deksel hebben om een echte rioolput te zijn. Daarvoor geldt ook een type-prolongatie van *Rioolput* naar CE, als iets een *Rioolput* is dan is het ook iets met een *Deksel*.
+
+De structuur wordt voor wat betreft de samenstelling expliciet beschreven door een CE met een restrictie op de property <span class="blue">hasPart</span> gecombineerd met de benoeming van de kardinaliteit. De kardinaliteit beschrijft het aantal voorkomens van een property tussen twee soorten.
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:Rioolput   rdfs:subClassOf
@@ -1330,7 +1304,7 @@ gwsw:Rioolput   rdfs:subClassOf
                 ] .
 </pre></div>
 
-**Inversed property**
+## Inverse property
 
 Kardinaliteit kan tweezijdig worden beschreven, daarvoor zijn er omgekeerde relaties nodig.
 
@@ -1343,11 +1317,13 @@ gwsw:isPartOf   rdfs:label                     "has as part (inverse)” ;
 
 Ook voor deze inversed property + object (was subject) wordt dan de kardinaliteit gedefinieerd.
 
-## Collecties
+## Collecties, domeintabellen
 
-Voor de modellering van collecties gebruiken we in RDF een enumeratie van individuals. Alle collectiemembers (elementen) zijn dus in de GWSW-topologie opgenomen als individuen met annotatieproperties.
+Alle collectie-leden zijn in de GWSW topologie opgenomen als individuen met annotaties. RDF beschrijft de enumeratie van individuals per collectie. Hoofdstuk 3.7 bevat de details.
 
-<span class="yellow">Ook klassen (concepten van het type owl:Class) kunnen in collecties voorkomen. Vaak gaat het dan om groeperingen van soorten die niet in de soortenboom zijn ingedeeld. Deze concepten worden niet als individu van het type collectie opgenomen, ze zijn al getypeerd en van annotaties voorzien.</span>
+Voor de modellering van collecties gebruiken we in RDF een enumeratie van individuals. Alle collectie-members (elementen) zijn dus in de GWSW-topologie opgenomen als individuen met annotatieproperties.
+
+Ook klassen (concepten van het type owl:Class) kunnen in collecties voorkomen. Vaak gaat het dan om groeperingen van soorten die niet in de soortenboom zijn ingedeeld. Deze concepten worden niet als individu van het type collectie opgenomen, ze zijn al getypeerd en van annotaties voorzien.
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:PutMateriaal  rdfs:subClassOf      gwsw:Kenmerk ;
