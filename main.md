@@ -1308,7 +1308,7 @@ gwsw:Rioolput   rdfs:subClassOf
                 ] .
 </pre></div>
 
-## Inverse property
+### Inverse kardinaliteit
 
 Kardinaliteit wordt tweezijdig beschreven, daarvoor zijn er omgekeerde relaties nodig.
 
