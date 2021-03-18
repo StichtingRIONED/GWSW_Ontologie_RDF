@@ -1259,7 +1259,7 @@ gwsw:Ruimte        owl:disjointWith     gwsw:Kenmerk ;
 
 ## Kardinaliteit
 
-Kardinaliteiten worden in CE’s geborgd. Fictief voorbeeld van kardinaliteit voor objectproperty + objecttype:
+Kardinaliteit wordt in CE’s geborgd. Fictief voorbeeld van kardinaliteit voor relatie en objecttype:
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:Rioolstelsel     rdfs:subClassOf
@@ -1355,7 +1355,7 @@ In de dataset verwijzen naar het individu:
 bim:Put1           rdf:type             gwsw:Put ;
                    gwsw:hasAspect
                    [
-                   rdf:type             gwsw:Put_mat ;
-                   gwsw:hasReference    gwsw:Beton ; # Objectproperty
+                   rdf:type             gwsw:PutMateriaal ;
+                   gwsw:hasReference    gwsw:Beton ; # individu
                    ] .
 </pre></div>
