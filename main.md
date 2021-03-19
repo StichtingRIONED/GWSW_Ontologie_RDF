@@ -61,7 +61,7 @@ Linda van den Brink (Geonovum)
 
 Bij de uitwerking van deze tekst is er van uitgegaan dat de lezer bekend is met de principes en semantiek van RDF/RDFS/OWL 2 en het uitwisselformaat Turtle.
 
-In de voorbeelden en in de praktijk (bij uitwisseling van GWSW-gegevens) gebruiken we het Turtle-formaat. Voor de concepten binnen de GWSW-Ontologie hanteren we in de voorbeelden de prefix “gwsw:”. Voor individuen in een dataset wordt de prefix “bim:” gebruikt.
+In de voorbeelden en in de praktijk (bij uitwisseling van GWSW-gegevens) gebruiken we het Turtle-formaat. Voor de concepten binnen de GWSW-Ontologie hanteren we in de voorbeelden de prefix “gwsw:”. Voor individuen in een dataset wordt de prefix “ex:” gebruikt.
 
 In dit hoofdstuk vind u de begrippen en uitgangspunten bij de modellering in RDF. In het volgende hoofdstuk wordt samenvattend de opzet van het RDF model beschreven. In het laatste hoofdstuk vind u de gedetaillleerde uitwerking van het RDF model.
 
@@ -177,15 +177,14 @@ Definieer klassen zo uitgebreid mogelijk op basis van hun eigenschappen. Daarmee
 
 Het specialiseren, opbouwen van de soortenboom, zie hst [Details onderscheidende kenmerken](#details-onderscheidende-kenmerken)
 
-1. Voor het classificeren van een concept uitgaan van zoeken op onderscheidende kenmerken in de (abstracte) soortenboom. Denk aan determineren van planten volgens Linnaeus: na het maken van een aantal keuzes wordt de soort gevonden
-
+1. Voor het classificeren van een concept uitgaan van onderscheidende kenmerken in de (abstracte) soortenboom. Denk aan determineren van planten volgens Linnaeus: na het maken van een aantal keuzes wordt de soort gevonden
 2. Streef ernaar om met de onderscheidende kenmerken de (in je hoofd) uitgeschreven definitie te vervangen
-3. Gebruik de volgende onderscheidende kenmerken bij fysieke objecten en activiteiten zoals beschreven in hst [Details onderscheidende kenmerken](details-onderscheidende-kenmerken).
-6. Kwalificeer het onderscheidende kenmerk impliciet (gwsw:uitvoering "groot"). Expliciete kwalificaties (in de vorm van subtypes van generieke kenmerken) worden dus niet gebruikt (zijn - nog - onnodig).
+3. Gebruik de beschreven onderscheidende kenmerken bij fysieke objecten en activiteiten
+4. Kwalificeer het onderscheidende kenmerk impliciet (gwsw:uitvoering "groot"). Expliciete kwalificaties (in de vorm van subtypes van generieke kenmerken) worden dus niet gebruikt (zijn - nog - onnodig)
 
 ### Abstracte concepten
 
-Klassen (en collecties) die niet voor classificatie worden gebruikt.
+_Klassen (en collecties) die niet voor classificatie worden gebruikt_
 
 1. Hou ze beperkt, de soortenboom zo veel mogelijk concreet houden. Supertypes zijn vaak alleen verdichtingen, geen soort.
 2. Concepten zijn herkenbaar als abstract wanneer ze bijvoorbeeld niet in de deel-geheel relaties (bijvoorbeeld als deel van een rioleringsgebied) voorkomen.
@@ -782,19 +781,19 @@ Een URI van een concept is in principe hoofdlettergevoelig, gwsw:functie is de p
 Een generieke relatie in een dataset: classificeren van de put
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:Put1    rdf:type    gwsw:Inspectieput .
+ex:Put1    rdf:type    gwsw:Inspectieput .
 </pre></div>
 
 Een GWSW relatie in de dataset:
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:Put1    gwsw:isPartOf    bim:Rioolstelsel1 .
+ex:Put1    gwsw:isPartOf    ex:Rioolstelsel1 .
 </pre></div>
 
-Een GWSW kwalitatief aspect in een dataset (afgeleid wordt dat bim:Put1 een inspectieput is):
+Een GWSW kwalitatief aspect in een dataset (afgeleid wordt dat ex:Put1 een inspectieput is):
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:Put1    gwsw:functie    gwsw:ToegangVerschaffen . # individu van type gwsw:Functie
+ex:Put1    gwsw:functie    gwsw:ToegangVerschaffen . # individu van type gwsw:Functie
 </pre></div>
 
 ### Toegepaste eenheden
@@ -936,7 +935,7 @@ De letter geeft het soort kwaliteitseis aan:
 <tbody>
 <tr><td>t</td><td> Draai de kardinaliteit, bijvoorbeeld *minimaal 0* wordt *exact 1*</td></tr>
 <tr><td>d</td><td> De klasse doet niet mee in de kwaliteitseis, meestal gaat het om een CE</td></tr>
-<tr><td>f</td><td> De klasse is te globaal binnen de conformiteitsklasse. Bij de aanmaak van het RDF bestand met de conformiteitsklasse wordt op basis van deze code de Opmerking-kolom bijgewerkt met tekst: [cfk fout]. Deze tekst wordt gescand in validatie-queries</td></tr>
+<tr><td>f</td><td> De klasse is te abstract binnen de conformiteitsklasse. Bij de aanmaak van het RDF bestand met de conformiteitsklasse wordt op basis van deze code de Opmerking-kolom bijgewerkt met tekst: [cfk fout]. Deze tekst wordt gescand in validatie-queries</td></tr>
 </tbody>
 </table>
 
@@ -990,7 +989,7 @@ gwsw:KleinObject    rdfs:subClassOf  gwsw:FysiekObject ;
 Als in de dataset een individu als volgt beschreven is leidt een reasoner af dat KleinObject1 van het type KleinObject is:
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:KleinObject1    gwsw:uitvoering  gwsw:Klein .
+ex:KleinObject1    gwsw:uitvoering  gwsw:Klein .
 </pre></div>
 
 ## Details aspecten
@@ -998,21 +997,21 @@ bim:KleinObject1    gwsw:uitvoering  gwsw:Klein .
 In RDF worden aspect-attributen vaak gespecificeerd in de property (“property-central”). Bijvoorbeeld:
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:Put1  gwsw:hasAspectPutHoogte  1000^^xsd:integer .
+ex:Put1  gwsw:hasAspectPutHoogte  1000^^xsd:integer .
 </pre></div>
 
 In het GWSW definiëren we zo'n eigenschap/kenmerk als apart concept (“class-central”):
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:Put1  gwsw:hasAspect      bim:Hgt1 .
-bim:Hgt1  rdf:type            gwsw:HoogtePut ;
+ex:Put1  gwsw:hasAspect      ex:Hgt1 .
+ex:Hgt1  rdf:type            gwsw:HoogtePut ;
           gwsw:hasValue       1000^^xsd:integer .
 </pre></div>
 
 De notatie (in turtle) blijft overzichtelijk, het object Hgt1 kan anoniem blijven (zonder URI) en wordt bijvoorbeeld gecombineerd met de specificatie van putmateriaal (zie hoofdstuk “Collecties”):
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:Put1  gwsw:hasAspect  
+ex:Put1  gwsw:hasAspect  
           [
             rdf:type            gwsw:HoogtePut ; 
             gwsw:hasValue       1000^^xsd:integer
@@ -1026,7 +1025,7 @@ bim:Put1  gwsw:hasAspect
 In de GWSW Ontologie definieert voor veel kenmerken metagegevens zoals de "wijze van inwinning". Dat is volgens het class-central principe relatief eenvoudig te beschrijven:
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:Put1  gwsw:hasAspect  
+ex:Put1  gwsw:hasAspect  
           [
             rdf:type                    gwsw:HoogtePut ;
             gwsw:hasValue               1000^^xsd:integer ;
@@ -1129,7 +1128,7 @@ gwsw:Put    rdfs:subClassOf
 Met deze definitie worden Putten onderscheiden op basis van het intrinsieke aspect Puthoogte, het individu hoeft in de dataset niet getypeerd te worden:
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:Put1    gwsw:hasAspect
+ex:Put1    gwsw:hasAspect
             [
               rdf:type                gwsw:HoogtePut ;
               gwsw:hasValue           "1100"
@@ -1189,8 +1188,8 @@ gwsw:InspecterenPut     rdfs:label         "Inspecteren van een put"@nl, “Insp
 In een dataset:
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:Insp1               rdf:type           gwsw:InspecterenPut ;
-                        gwsw:hasInput      bim:Put1 .
+ex:Insp1               rdf:type           gwsw:InspecterenPut ;
+                        gwsw:hasInput      ex:Put1 .
 </pre></div>
 
 **Verbindingen**
@@ -1322,7 +1321,7 @@ gwsw:Beton         rdfs:label           “beton" ; # annotatie: naam
 In de dataset verwijzen naar het individu:
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:Put1           rdf:type             gwsw:Put ;
+ex:Put1           rdf:type             gwsw:Put ;
                    gwsw:hasAspect
                    [
                    rdf:type             gwsw:PutMateriaal ;
