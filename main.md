@@ -270,13 +270,16 @@ Kenmerken die verwijzen naar een typelijst (bijvoorbeeld het kenmerk Soort Dekse
 
 ## Deelmodellen
 
-Hou rekening met de onderverdeling van het GWSW datamodel in de context-specifieke deelmodellen. Handhaaf een logisch onderverdeling door modelaanpassingen in het juiste bronbestand (geïmporteerde turtle-bestand) door te voeren en nauwgezet de annotatie skos:scopeNote te vullen.
+Vanaf GWSW versie 1.6 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met het annotatie-attribuut **skos:scopeNote**, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen.
 
-Opsplitsen in model-bestanden, exclusieve contexten in apart bestand…
+Op basis van de CoF worden dus de GWSW deelmodellen samengesteld, zo'n deelmodel is een filter op het datamodel waarbij de klassen, de CE's en de individuals worden geselecteerd op de gekoppelde CoF. De deelmodellen hebben meerdere functies:
 
-Combineren van model-bestanden in editor mogelijK. Onderscheid houden - ook na aanpassingen in de editor - via annotatie skos:scopeNote…
+* het overzichtelijk presenteren van specifieke GWSW onderdelen
+* het overzichtelijk onderhouden van het datamodel. Veel deelmodellen hebben een heel specifieke functie, anderen worden met een lage frequentie onderhouden. Denk bijvoorbeeld aan uitwisselformaten.
+* het samenstellen van conformiteitsklassen, data-verificatie voor bepaalde processen
+* het koppelen van alleen de relevante modelonderdelen aan datasets, afgestemd op de praktijk van uitwisselen
 
-Omgaan met context-specifieke codering: consequent specifiek datatype hanteren. Te hanteren datatypes noemen, wijken af van CoF's…
+Hou rekening met de onderverdeling van de context-specifieke deelmodellen. Combineren van deelmodellen met behoud van overzicht is in RDF-editors mogelijk. Handhaaf een logisch onderverdeling door modelaanpassingen in het juiste bronbestand (geïmporteerde turtle-bestand) te doen en de annotatie skos:scopeNote te vullen.
 
 # Details van de GWSW semantiek
 
@@ -762,7 +765,7 @@ gwsw:Put    rdf:type                    owl:Class ;
             gwsw:hasDateStart           "2013-07-18"^^xsd:date .
 </pre></div>
 
-### Toegepaste annotaties per klasse
+### Annotaties per klasse
 
 Een GWSW concept van het type owl:Class heeft altijd de volgende annotaties:
 
@@ -778,7 +781,7 @@ Daarnaast zijn de volgende annotaties onder voorwaarden opgenomen:
 * rdfs:hasAuthorChange (indien hasDateChange is opgenomen)
 * gwsw:hasUnit (indien de klasse een relatie rdfs:hasValue met een relevant datatype heeft)
 
-### Toegepaste annotaties per CE
+### Annotaties per CE
 
 Een GWSW concept van het type owl:Restriction heeft altijd de volgende annotaties:
 
@@ -896,18 +899,9 @@ Bij een concept kunnen meerdere codes afhankelijk van de context voorkomen. Bij 
 
 In het GWSW Datamodel worden context-specifieke coderingen meestal gecombineerd met het context-afhankelijke datatype. Alleen voor algemene coderingen (zoals de code HWA voor gwsw:AfvloeiendHemelwater) en voor coderingen van concepten binnen een exclusief deelmodel (bijvoorbeeld de NLCS symbolen) wordt geen specifiek datatype gebruikt.
 
-### Deelmodellen
+### Details deelmodellen
 
-Vanaf GWSW versie 1.6 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met het annotatie-attribuut **skos:scopeNote**, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen.
-
-Op basis van de CoF worden de GWSW deelmodellen samengesteld, zo'n deelmodel is een filter op het datamodel waarbij de klassen, de CE's en de individuals worden geselecteerd op de gekoppelde CoF. De deelmodellen hebben meerdere functies:
-
-* het overzichtelijk presenteren van specifieke GWSW onderdelen
-* het overzichtelijk onderhouden van het datamodel. Veel deelmodellen hebben een heel specifieke functie, anderen worden met een lage frequentie onderhouden. Denk bijvoorbeeld aan uitwisselformaten.
-* het samenstellen van conformiteitsklassen, data-verificatie voor bepaalde processen
-* het koppelen van alleen de relevante modelonderdelen aan datasets, afgestemd op de praktijk van uitwisselen  
-
-De toegepaste CoF's en deelmodellen zijn als volgt in het GWSW datamodel opgenomen:
+De deelmodellen zijn als volgt in het GWSW datamodel opgenomen:
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:_TOP
