@@ -59,7 +59,7 @@ Linda van den Brink (Geonovum)
 
 Bij de uitwerking van deze tekst is er van uitgegaan dat de lezer bekend is met de principes en semantiek van RDF/RDFS/OWL 2 en het uitwisselformaat Turtle.
 
-In de voorbeelden en in de praktijk (bij uitwisseling van GWSW-gegevens) gebruiken we het Turtle-formaat. Voor de concepten binnen de GWSW-Ontologie hanteren we in de voorbeelden de prefix “gwsw:”. Voor individuals in een dataset wordt de prefix “bim:” gebruikt.
+In de voorbeelden en in de praktijk (bij uitwisseling van GWSW-gegevens) gebruiken we het Turtle-formaat. Voor de concepten binnen de GWSW-Ontologie hanteren we in de voorbeelden de prefix “gwsw:”. Voor individuen in een dataset wordt de prefix “bim:” gebruikt.
 
 In dit hoofdstuk vind u de begrippen en uitgangspunten bij de modellering in RDF. In het volgende hoofdstuk wordt samenvattend de opzet van het RDF model beschreven. In het laatste hoofdstuk vind u de gedetaillleerde uitwerking van het RDF model.
 
@@ -71,8 +71,8 @@ RDF staat voor Resource Description Framework, de basisdefinitie van modellen op
 **Ontologie**
 Datastructuur die alle relevante entiteiten en hun onderlinge relaties en regels binnen een domein bevat. (bron: Wikipedia)
 
-**Individual**
-Een instantie van een concept, iets uit de werkelijkheid. Zoals individual “0980” de bestaande betonnen constructie van het soort/klasse/concept “rioolput” is.
+**Individu**
+Een instantie van een concept, iets uit de werkelijkheid. Zoals individu “0980” de bestaande betonnen constructie van het soort/klasse/concept “rioolput” is.
 
 **Property**
 Voor de relatie (tussen subject en object) zijn meerdere namen gebruikelijk (“predicate”, “property name”), we hanteren in dit document “property”. Properties zijn (confrom de NTA8035) onderverdeeld in attributen (die weer onderverdeeld zijn in aspecten en annotaties) en relaties.
@@ -81,7 +81,7 @@ Voor de relatie (tussen subject en object) zijn meerdere namen gebruikelijk (“
 De afkorting CE wordt gebruikt voor Class Expressions (in Description Logics “complex concepts”). CE’s worden ondermeer gevormd door Classes te binden aan Property Expressions. Met Class Expressions kunnen we onder andere restricties benoemen voor Properties waarmee concepten/klassen worden onderscheiden.
 
 **Dataset**
-Een dataset bevat de beschrijving van een fysiek stedelijk water systeem, de “individuals” op basis van het GWSW. De term **ABox** wordt ook gebruikt: “assertion components” binnen een ontologie. Voor het model (de concepten) wordt dan de term **TBox** gebruikt: “terminological components”.
+Een dataset bevat de beschrijving van een fysiek stedelijk water systeem, de “individuen” op basis van het GWSW. De term **ABox** wordt ook gebruikt: “assertion components” binnen een ontologie. Voor het model (de concepten) wordt dan de term **TBox** gebruikt: “terminological components”.
 
 ## Inrichting GWSW-OroX protocol
 
@@ -161,10 +161,10 @@ Definieer klassen zo uitgebreid mogelijk op basis van hun eigenschappen. Daarmee
 * Controle op correcte typering binnen samenstellingen via “<span class="blue">hasPart</span>”.
     - Ruimte <span class="blue">hasPart</span> “Object”. Object: alleen van de klasse Ruimte of FysiekObject
     - FysiekObject <span class="blue">hasPart</span> “Object”. Object: alleen van de klasse Ruimte of FysiekObject
-* Inferencing: Individual-klasse wordt afgeleid uit intrinsiek aspect.
-    - <span class="blue">hasAspect</span> BreedteLeiding =&gt; Individual = Leiding
-* Inferencing: Individual-klasse wordt afgeleid uit onderscheidend kenmerk.
-    - <span class="blue">hasAspect</span> Uitvoering + hasReference Klein =&gt; Individual = KleinObject
+* Inferencing: Individu-klasse wordt afgeleid uit intrinsiek aspect.
+    - <span class="blue">hasAspect</span> BreedteLeiding =&gt; Individu = Leiding
+* Inferencing: Individu-klasse wordt afgeleid uit onderscheidend kenmerk.
+    - <span class="blue">hasAspect</span> Uitvoering + hasReference Klein =&gt; Individu = KleinObject
 * Controle op correct gebruik datatype bij <span class="blue">hasValue</span>: decimal, string, integer, double, date, time, year.
 * Controle op numerieke waarden binnen minimum maximum grenzen
 * Kardinaliteit, aantal voorkomens per property boven het voor het type gedefinieerde maximum wordt gemeld (UNA)
@@ -247,7 +247,7 @@ Beschrijf alle relevante aspecten en relaties bij een concept.
 
 3. Voorkom het opnemen van optionele kenmerken bij een supertype (kenmerken die niet voor alle subtypes gelden), definieer de kenmerken dus niet op een te hoog niveau.
 
-4. Gebruik het multi-parent principe. Als alleen kunststof leidingen het gebruikte kenmerk "kleur" hebben, introduceer dan het concept "kunststof leiding" met het kenmerk "kleur". Een individual is dan zowel een "vrijverval rioolleiding" als een "kunststof leiding" en heeft daarmee dat extra kenmerk.
+4. Gebruik het multi-parent principe. Als alleen kunststof leidingen het gebruikte kenmerk "kleur" hebben, introduceer dan het concept "kunststof leiding" met het kenmerk "kleur". Een individu is dan zowel een "vrijverval rioolleiding" als een "kunststof leiding" en heeft daarmee dat extra kenmerk.
 
 **Geen typelijsten**  
 Kenmerken die verwijzen naar een typelijst (bijvoorbeeld het kenmerk Soort Deksel van het concept Deksel) komen niet voor. Een typelijst wordt uitgedrukt in de taxonomie (bijvoorbeeld als subtypes van Deksel).
@@ -260,7 +260,7 @@ Kenmerken die verwijzen naar een typelijst (bijvoorbeeld het kenmerk Soort Dekse
 
     * Definieer het generieke kenmerk "diameter" met het subtype "diameter leiding" met specifieke restricties op de afmetingen.
 
-2. Intrinsieke kenmerken zijn geen noodzaak maar de combinatie met restricties (bijvoorbeeld minimum/maximum waarde) maakt ze waardevol en daarnaast wordt het model robuuster: als een individual het kenmerk heeft, dan hoort het van een bepaald type te zijn.
+2. Intrinsieke kenmerken zijn geen noodzaak maar de combinatie met restricties (bijvoorbeeld minimum/maximum waarde) maakt ze waardevol en daarnaast wordt het model robuuster: als een individu het kenmerk heeft, dan hoort het van een bepaald type te zijn.
 
 ### Datatypes
 
@@ -272,7 +272,7 @@ Kenmerken die verwijzen naar een typelijst (bijvoorbeeld het kenmerk Soort Dekse
 
 Vanaf GWSW versie 1.6 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met het annotatie-attribuut **skos:scopeNote**, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen.
 
-Op basis van de CoF worden dus de GWSW deelmodellen samengesteld, zo'n deelmodel is een filter op het datamodel waarbij de klassen, de CE's en de individuals worden geselecteerd op de gekoppelde CoF. De deelmodellen hebben meerdere functies:
+Op basis van de CoF worden dus de GWSW deelmodellen samengesteld, zo'n deelmodel is een filter op het datamodel waarbij de klassen, de CE's en de individuen worden geselecteerd op de gekoppelde CoF. De deelmodellen hebben meerdere functies:
 
 * het overzichtelijk presenteren van specifieke GWSW onderdelen
 * het overzichtelijk onderhouden van het datamodel. Veel deelmodellen hebben een heel specifieke functie, anderen worden met een lage frequentie onderhouden. Denk bijvoorbeeld aan uitwisselformaten.
@@ -456,7 +456,7 @@ De toepassing van **relaties** is in de GWSW-Ontologie aan regels gebonden door 
 <tr>
 <td>skos:scopeNote</td>
 <td>owl:AnnotationProperty</td>
-<td><em>Subject</em> <span class="blue">heeft als feitencollectie</span> <em>Individual</em> (een type CollectionOfFacts)</td>
+<td><em>Subject</em> <span class="blue">heeft als feitencollectie</span> <em>Individu</em> (een type CollectionOfFacts)</td>
 </tr>
 <tr>
 <td>gwsw:hasValidity</td>
@@ -507,42 +507,42 @@ De toepassing van **relaties** is in de GWSW-Ontologie aan regels gebonden door 
 <tr>
 <td class="yellow">gwsw:doel</td>
 <td>owl:ObjectProperty</td>
-<td><em>Subject</em> <span class="blue">heeft doel</span> <em>Individual van type Doel. (onderscheidend kenmerk)</em></td>
+<td><em>Subject</em> <span class="blue">heeft doel</span> <em>Individu van type Doel. (onderscheidend kenmerk)</em></td>
 </tr>
 <tr>
 <td class="yellow">gwsw:toepassing</td>
 <td>owl:ObjectProperty</td>
-<td><em>Subject</em> <span class="blue">heeft toepassing</span> <em>Individual van type Toepassing. (onderscheidend kenmerk)</em></td>
+<td><em>Subject</em> <span class="blue">heeft toepassing</span> <em>Individu van type Toepassing. (onderscheidend kenmerk)</em></td>
 </tr>
 <tr>
 <td class="yellow">gwsw:functie</td>
 <td>owl:ObjectProperty</td>
-<td><em>Subject</em> <span class="blue">heeft functie</span> <em>Individual van type Functie. (onderscheidend kenmerk)</em></td>
+<td><em>Subject</em> <span class="blue">heeft functie</span> <em>Individu van type Functie. (onderscheidend kenmerk)</em></td>
 </tr>
 <tr>
 <td class="yellow">gwsw:uitvoering</td>
 <td>owl:ObjectProperty</td>
-<td><em>Subject</em> <span class="blue">heeft uitvoering</span> <em>Individual van type Uitvoering. (onderscheidend kenmerk)</em></td>
+<td><em>Subject</em> <span class="blue">heeft uitvoering</span> <em>Individu van type Uitvoering. (onderscheidend kenmerk)</em></td>
 </tr>
 <tr>
 <td class="yellow">gwsw:structuur</td>
 <td>owl:ObjectProperty</td>
-<td><em>Subject</em> <span class="blue">heeft structuur</span> <em>Individual van type Structuur. (onderscheidend kenmerk)</em></td>
+<td><em>Subject</em> <span class="blue">heeft structuur</span> <em>Individu van type Structuur. (onderscheidend kenmerk)</em></td>
 </tr>
 <tr>
 <td class="yellow">gwsw:technologie</td>
 <td>owl:ObjectProperty</td>
-<td><em>Subject</em> <span class="blue">heeft technologie</span> <em>Individual van type Technologie. (onderscheidend kenmerk)</em></td>
+<td><em>Subject</em> <span class="blue">heeft technologie</span> <em>Individu van type Technologie. (onderscheidend kenmerk)</em></td>
 </tr>
 <tr>
 <td class="yellow">gwsw:resultaat</td>
 <td>owl:ObjectProperty</td>
-<td><em>Subject</em> <span class="blue">heeft resultaat</span> <em>Individual van type Resultaat. (onderscheidend kenmerk)</em></td>
+<td><em>Subject</em> <span class="blue">heeft resultaat</span> <em>Individu van type Resultaat. (onderscheidend kenmerk)</em></td>
 </tr>
 <tr>
 <td class="yellow">gwsw:mechanisme</td>
 <td>owl:ObjectProperty</td>
-<td><em>Subject</em> <span class="blue">heeft mechanisme</span> <em>Individual van type Mechanisme. (onderscheidend kenmerk)</em></td>
+<td><em>Subject</em> <span class="blue">heeft mechanisme</span> <em>Individu van type Mechanisme. (onderscheidend kenmerk)</em></td>
 </tr>
 </tbody>
 </table>
@@ -676,33 +676,33 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 <tr>
 <td>rdfs:label</td>
 <td>Exact 1 per taalgemeenschap.
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, optioneel bij CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, optioneel bij CE's</span></td>
 </tr>
 <tr>
 <td>skos:altLabel</td>
 <td>Onbeperkt (min=0)
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividual</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividu</span></td>
 </tr>
 <tr>
 <td>skos:hiddenLabel</td>
 <td>Maximaal 1 (min=0) <span class="red">Vervalt op termijn (alleen in Gellish-omgeving)</span>
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividual</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividu</span></td>
 </tr>
 <tr>
 <td>skos:notation</td>
 <td>Maximaal 1 per context (min=0)
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividual</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividu</span></td>
 </tr>
 <tr>
 <td>skos:definition</td>
 <td>Onbeperkt (min=0)
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividual</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividu</span></td>
 </tr>
 <tr>
 <td>rdfs:seeAlso</td>
 <td>Onbeperkt (min=0)
 <br/>Opbouw: [externe bron] Omschrijving of URI (webadres naar site of document)
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividual</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividu</span></td>
 </tr>
 <tr>
 <td>rdfs:comment</td>
@@ -710,7 +710,7 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 <br/>Algemene opbouw: Commentaar-tekst
 <br/>Verwijzing naar figuur: [Bijlage nnn.jpg]
 <br/>- als "nnn" identiek is aan de URI-naam: [Bijlage *.jpg]
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, optioneel bij CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, optioneel bij CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasUnit</td>
@@ -720,32 +720,32 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 <tr>
 <td>gwsw:hasDateStart</td>
 <td>Exact 1
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasDateChange</td>
 <td>Minimaal 0, invullen als de waarde van één van de attributen wijzigt of als het concept andere properties (attributen/relaties) krijgt. Bevat altijd de laatste datum.
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasAuthorStart</td>
 <td>Exact 1. Bijgehouden vanaf 2006
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasAuthorChange</td>
 <td>Minimaal 0
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasValidity</td>
 <td>Minimaal 0, maximaal 1
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, CE's</span></td>
 </tr>
 <tr>
 <td>skos:scopeNote</td>
 <td>Minimaal 0
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividual, CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, CE's</span></td>
 </tr>
 </tbody>
 </table>
@@ -828,7 +828,7 @@ bim:Put1    gwsw:isPartOf    bim:Rioolstelsel1 .
 Een GWSW kwalitatief aspect in een dataset (afgeleid wordt dat bim:Put1 een inspectieput is):
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-bim:Put1    gwsw:functie    gwsw:ToegangVerschaffen . # individual van type gwsw:Functie
+bim:Put1    gwsw:functie    gwsw:ToegangVerschaffen . # individu van type gwsw:Functie
 </pre></div>
 
 ### Toegepaste eenheden
@@ -927,11 +927,11 @@ De annotatie skos:scopeNote (voor het filteren van deelmodellen) wordt altijd op
 
 * De typering (relatie rdf:type) van alle GWSW-klassen, inclusief alle annotaties
 * De CE's met restrictie op de kardinaliteit van concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken).
-* De typering van individuals binnen een collectie (de verzameling kan variëren vanwege bijvoorbeeld een externe normering)
+* De typering van individuen binnen een collectie (de verzameling kan variëren vanwege bijvoorbeeld een externe normering)
 
 De annotatie skos:scopeNote wordt **niet** opgenomen bij:
 
-* De CE's voor de kwalificatie van onderscheidende kenmerken, die vallen binnen de scope van de betrokken klasse. De onderscheidende kenmerken en de individuals/instanties ervan zijn in één centraal deelmodel opgenomen
+* De CE's voor de kwalificatie van onderscheidende kenmerken, die vallen binnen de scope van de betrokken klasse. De onderscheidende kenmerken en de individuen/instanties ervan zijn in één centraal deelmodel opgenomen
 * CE's met restrictie op datatype (waarde binnen een collectie of van een xsd-type), bij de relaties gwsw:hasValue en gwsw:hasReference
 * In vervolg daarop: CE's met restricties op waardebereik (min/max)
 * CE's met restrictie op aantal voorkomens van kenmerken van kenmerken: bijvoorbeeld het metagegeven Inwinning bij kenmerken zoals hoogteligging
@@ -993,7 +993,7 @@ Meer specifiek voor activiteiten:
 * Resultaat
 * Mechanisme (waarmee)
 
-Het onderscheidende kenmerken wordt beschreven met een specifieke kwalitatieve-aspect-property, de range bij de property is dan een individual van het type onderscheidend kenmerk. Met een CE wordt een restrictie op de properties <span class="blue">doel</span>, <span class="blue">toepassing</span>, <span class="blue">functie</span>, <span class="blue">uitvoering</span>, <span class="blue">structuur</span>, <span class="blue">technologie</span>, <span class="blue">resultaat</span>, <span class="blue">mechanisme</span> gecombineerd met een restrictie op <span class="blue">hasValue</span>.
+Het onderscheidende kenmerken wordt beschreven met een specifieke kwalitatieve-aspect-property, de range bij de property is dan een individu van het type onderscheidend kenmerk. Met een CE wordt een restrictie op de properties <span class="blue">doel</span>, <span class="blue">toepassing</span>, <span class="blue">functie</span>, <span class="blue">uitvoering</span>, <span class="blue">structuur</span>, <span class="blue">technologie</span>, <span class="blue">resultaat</span>, <span class="blue">mechanisme</span> gecombineerd met een restrictie op <span class="blue">hasValue</span>.
 
 ### Onderscheidende kenmerken in datamodel
 
@@ -1013,17 +1013,17 @@ Combineer het kenmerk en de waarde ervan in een CE
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:Klein          rdfs:label       “klein" ;
-                    rdf:type         gwsw:Uitvoering .  # Individual: uitvoeringswijze
+                    rdf:type         gwsw:Uitvoering .  # Individu: uitvoeringswijze
 gwsw:KleinObject    rdfs:subClassOf  gwsw:FysiekObject ;
                     rdfs:subClassOf
                     [
                       rdf:type       owl:Restriction ;  # Via blank node: eenzijdige subklasse
                       owl:onProperty gwsw:uitvoering ; # Kwalitatief aspect
-                      owl:hasValue   gwsw:Klein;  # Individual
+                      owl:hasValue   gwsw:Klein;  # Individu
                     ] .
 </pre></div>
 
-Als in de dataset een invidual als volgt beschreven is leidt een reasoner af dat KleinObject1 van het type KleinObject is:
+Als in de dataset een individu als volgt beschreven is leidt een reasoner af dat KleinObject1 van het type KleinObject is:
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:KleinObject1    gwsw:uitvoering  gwsw:Klein .
@@ -1162,7 +1162,7 @@ gwsw:Put    rdfs:subClassOf
             ] .
 
 </pre></div>
-Met deze definitie worden Putten onderscheiden op basis van het intrinsieke aspect Puthoogte, de individual hoeft in de dataset niet getypeerd te worden:
+Met deze definitie worden Putten onderscheiden op basis van het intrinsieke aspect Puthoogte, het individu hoeft in de dataset niet getypeerd te worden:
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 bim:Put1    gwsw:hasAspect
@@ -1185,7 +1185,7 @@ gwsw:GwswVersie   rdf:type  owl:Class ;
                     owl:hasValue       gwsw:Abc ;
                    ] .
 gwsw:Abc          rdfs:label           “abc”^^xsd:string
-                  rdf:type             gwsw:GwswVersie . # wordt hiermee individual
+                  rdf:type             gwsw:GwswVersie . # wordt hiermee individu
 </pre></div>
 
 Met de restrictie-property <span class="blue">owl:allValuesFrom</span> worden concepten als kwalificatie benoemd.
@@ -1254,7 +1254,7 @@ gwsw:Ruimte       rdf:type              owl:Class ;
                   ] .
 </pre></div>
 
-In combinatie daarmee is in de ontologie expliciet gemaakt dat bijvoorbeeld individuals van het type FysiekObject altijd iets anders zijn dan die van het type Ruimte:
+In combinatie daarmee is in de ontologie expliciet gemaakt dat bijvoorbeeld individuen van het type FysiekObject altijd iets anders zijn dan die van het type Ruimte:
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:Ruimte        owl:disjointWith     gwsw:Kenmerk ;
@@ -1329,9 +1329,9 @@ Ook voor deze inverse property + object (was subject) wordt dan de kardinaliteit
 
 _Domeintabellen_
 
-Alle collectie-leden zijn in de GWSW topologie opgenomen als individuen met annotaties. RDF beschrijft de enumeratie van individuals per collectie. Hoofdstuk 3.7 bevat de details.
+Alle collectie-leden zijn in de GWSW topologie opgenomen als individuen met annotaties. RDF beschrijft de enumeratie van individuen per collectie. Hoofdstuk 3.7 bevat de details.
 
-Voor de modellering van collecties gebruiken we in RDF een enumeratie van individuals. Alle collectie-members (elementen) zijn dus in de GWSW-topologie opgenomen als individuen met annotatieproperties.
+Voor de modellering van collecties gebruiken we in RDF een enumeratie van individuen. Alle collectie-members (elementen) zijn dus in de GWSW-topologie opgenomen als individuen met annotatieproperties.
 
 Ook klassen (concepten van het type owl:Class) kunnen in collecties voorkomen. Vaak gaat het dan om groeperingen van soorten die niet in de soortenboom zijn ingedeeld. Deze concepten worden niet als individu van het type collectie opgenomen, ze zijn al getypeerd en van annotaties voorzien.
 
@@ -1348,7 +1348,7 @@ gwsw:PutMatColl    rdf:type             owl:Class ;
                    rdfs:subClassOf
                    [
                      rdf:type           owl:Class ;
-                     owl:oneOf          (gwsw:Beton gwsw:Pvc)  # individuals
+                     owl:oneOf          (gwsw:Beton gwsw:Pvc)  # individuen
                    ] .
 gwsw:Beton         rdfs:label           “beton" ; # annotatie: naam
                    rdf:type             gwsw:PutMatColl ;  # algemene typering
