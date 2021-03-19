@@ -128,10 +128,13 @@ Zoals genoemd is de datastructuur object-georiënteerd waarbij objecten in een d
 * Samenstelling (de meronomie of deel-geheel indeling en de processchema's)
 * Groeperingen (collecties van individuen of soorten)
 
-Bij het ontwerp spelen deze structuren de hoofdrol, ze vormen het ontwerpkader. Met het principe van object-oriëntatie hanteert het model overerving-principes en ma``akt het zo expliciet mogelijk onderscheid in (relaties tussen) subtypes.
+Bij het ontwerp spelen deze structuren de hoofdrol, ze vormen het ontwerpkader. Met het principe van object-oriëntatie hanteert het model overerving-principes en maakt zo expliciet mogelijk onderscheid in (relaties tussen) subtypes.
 
 **Ter illustratie:**  
 Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het kenmerk "aantal pompen". Zo'n gegeven wordt (in presentaties) afgeleid uit het aantal voorkomens van de relatie <span class="blue">gwsw:hasPart</span> tussen Gemaal en Pomp. De objecten Gemaal en Pomp worden expliciet beschreven.
+
+**"As is", een momentopname**  
+Het datamodel is ingericht op een "as is" situatie, het bevat een momentopname van systemen en processen binnen de discipline stedelijk water. Het beschrijft dus geen historische gegevens of de levenscyclus van objecten zoals binnen de context van system engineering.
 
 ## Concepten en annotaties
 
