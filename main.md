@@ -118,17 +118,17 @@ Voor de definitie van klassen, eigenschappen, datatypen en restricties kunnen ve
 
 # Modelleerprincipes
 
-Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkelijke opzet (gestart in 2006) van het model in Gellish-vorm. Deze principes zijn natuurlijk taalonafhankelijk, ook in de RDF-vorm blijven ze van groot belang. Veel dank gaat naar Andries van Renssen, geestelijk vader van Gellish en Matthé van Koetsveld, sterk betrokken bij de modellering in Gellish van het GWSW en zijn voorlopers.
+Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkelijke opzet (gestart in 2006) van het model in Gellish-vorm. Deze principes zijn natuurlijk taalonafhankelijk, ook in de RDF-vorm blijven ze van groot belang. Veel dank gaat naar Andries van Renssen, geestelijk vader van Gellish en Matthé van Koetsveld, intensief betrokken bij de modellering in Gellish van het GWSW en zijn voorlopers.
 
 ## Structureren
 
-Zoals genoemd is de datastructuur object-georiënteerd waarbij relaties tussen objecten in een drietal structuren zijn ondergebracht:
+Zoals genoemd is de datastructuur object-georiënteerd waarbij objecten in een drietal hoofdstructuren zijn ondergebracht:
 
 * Soortenboom (de taxonomie of klasse-indeling)
-* Samenstelling (de meronomie of deel-geheel indeling)
-* Proces (het activiteiten-schema)
+* Samenstelling (de meronomie of deel-geheel indeling en de processchema's)
+* Groeperingen (collecties van individuen of soorten)
 
-Bij het ontwerp spelen deze structuren de hoofdrol, ze vormen het ontwerpkader. Met het principe van object-oriëntatie hanteert het model overerving-principes en maakt het zo expliciet mogelijk onderscheid in subklassen van de genoemde superklassen.
+Bij het ontwerp spelen deze structuren de hoofdrol, ze vormen het ontwerpkader. Met het principe van object-oriëntatie hanteert het model overerving-principes en ma``akt het zo expliciet mogelijk onderscheid in (relaties tussen) subtypes.
 
 **Ter illustratie:**  
 Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het kenmerk "aantal pompen". Zo'n gegeven wordt (in presentaties) afgeleid uit het aantal voorkomens van de relatie <span class="blue">gwsw:hasPart</span> tussen Gemaal en Pomp. De objecten Gemaal en Pomp worden expliciet beschreven.
@@ -177,28 +177,7 @@ Het specialiseren, opbouwen van de soortenboom, zie hst [Details onderscheidende
 1. Voor het classificeren van een concept uitgaan van zoeken op onderscheidende kenmerken in de (abstracte) soortenboom. Denk aan determineren van planten volgens Linnaeus: na het maken van een aantal keuzes wordt de soort gevonden
 
 2. Streef ernaar om met de onderscheidende kenmerken de (in je hoofd) uitgeschreven definitie te vervangen
-
-3. Gebruik de volgende onderscheidende kenmerken bij fysieke objecten:
-
-    * Doel (waarvoor)
-    * Toepassing (waarin)
-    * Functie (wat doet het)
-    * Uitvoering (hoe)
-    * Structuur (waaruit)
-
-4. Activiteiten worden altijd gekenmerkt door de relaties
-
-    * Invoer / hasInput (het lijdend voorwerp)
-    * Uitvoer / hasOutput (het gewijzigde voorwerp, een rapport)
-
-5. Gebruik daarnaast de volgende onderscheidende kenmerken bij activiteiten:
-
-    * Doel (waarvoor)
-    * Toepassing (waarin)
-    * Resultaat (wat doet het)
-    * Technologie (werkwijze, eisen)
-    * Mechanisme (waarmee)
-
+3. Gebruik de volgende onderscheidende kenmerken bij fysieke objecten en activiteiten zoals beschreven in hst [Details onderscheidende kenmerken](details-onderscheidende-kenmerken).
 6. Kwalificeer het onderscheidende kenmerk impliciet (gwsw:uitvoering "groot"). Expliciete kwalificaties (in de vorm van subtypes van generieke kenmerken) worden dus niet gebruikt (zijn - nog - onnodig).
 
 ### Abstracte concepten
@@ -206,24 +185,19 @@ Het specialiseren, opbouwen van de soortenboom, zie hst [Details onderscheidende
 Klassen (en collecties) die niet voor classificatie worden gebruikt.
 
 1. Hou ze beperkt, de soortenboom zo veel mogelijk concreet houden. Supertypes zijn vaak alleen verdichtingen, geen soort.
-
 2. Concepten zijn herkenbaar als abstract wanneer ze bijvoorbeeld niet in de deel-geheel relaties (bijvoorbeeld als deel van een rioleringsgebied) voorkomen.
-
 3. Abstracte concepten bij voorkeur als groep/collectie (en niet als supertype) definiëren. Bijvoorbeeld groepering naar thema's, denk aan infiltratievoorzieningen.
-
 4. Subtypes op hetzelfde niveau dienen in grote lijn hetzelfde samenstellingsniveau te hebben.
 
 ### Erven van samenstellingen
 
 1. Voorkom redundantie van deel-geheel relaties, die relatie mag niet dubbel voorkomen voor een subtype en het bijbehorende supertype.
-2. Definieer de samenstelling dus niet op een te hoog niveau (blijft verleidelijk)
+2. Definieer de samenstelling - hoewel verleidelijk - dus niet op een te hoog niveau
 
 ### Bladerobjecten
 
 1. Specialiseer de concepten zoveel als mogelijk: definieer de subtypes, de "bladerobjecten".
-
 2. Introduceer geen subtype als het geen onderscheidend kenmerk heeft. Bijvoorbeeld geen extra subtype "standaard hemelwaterstelsel" naast "verbeterd hemelwaterstelsel".
-
 3. Hou er rekening mee dat de individuen zo specifiek mogelijk geclassificeerd dienen te worden. Classificatie met een supertype gebeurt alleen als het subtype niet van toepassing is (denk aan het eerdere voorbeeld "hemelwaterstelsel") of als het onbekend is en wel toegepast kan worden. Bijvoorbeeld bij gebruik van de inspectienorm voor "vrijverval rioolleidingen" (met subtypes gemengd, hemelwater, vuilwater).
 
 ## Aspecten en relaties
@@ -231,19 +205,14 @@ Klassen (en collecties) die niet voor classificatie worden gebruikt.
 Beschrijf alle relevante aspecten en relaties bij een concept.
 
 1. Beschrijf met CE's op de kardinaliteit alle mogelijk voorkomende properties (uitgezonderd de annotatie-attributen), ook als ze niet definiërend zijn. Hanteer de kardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
-
 2. Beschrijf definiërende relaties tussen concepten met de kardinaliteit "exact". Een fysiek object heeft dan bijvoorbeeld per definitie andere fysieke objecten als onderdeel.
-
 3. Beschrijf op dezelfde wijze ook altijd de inverse relatie.
 
 ### Kenmerken
 
 1. Kenmerken zijn altijd eigendom van een entiteit/geheel en kunnen niet bestaan zonder de eigenaar.
-
 2. Vermeng dus geen kenmerken van entiteiten. Bijvoorbeeld Dekselmateriaal, Beheerdernaam kunnen geen kenmerken van een Put zijn, die horen bij het concept Deksel en Beheerder. Die concepten zijn vervolgens gerelateerd aan de put.
-
 3. Voorkom het opnemen van optionele kenmerken bij een supertype (kenmerken die niet voor alle subtypes gelden), definieer de kenmerken dus niet op een te hoog niveau.
-
 4. Gebruik het multi-parent principe. Als alleen kunststof leidingen het gebruikte kenmerk "kleur" hebben, introduceer dan het concept "kunststof leiding" met het kenmerk "kleur". Een individu is dan zowel een "vrijverval rioolleiding" als een "kunststof leiding" en heeft daarmee dat extra kenmerk.
 
 **Geen typelijsten**  
@@ -252,11 +221,8 @@ Kenmerken die verwijzen naar een typelijst (bijvoorbeeld het kenmerk Soort Dekse
 ### Intrinsieke aspecten
 
 1. Specialiseer waar nodig de kenmerken, zodat restricties op de kenmerk-waarde zo specifiek mogelijk zijn. Bijvoorbeeld:
-
     * Definieer het generieke kenmerk "materiaal" met het subtype "materiaal put" met bijbehorende domeinwaarden
-
     * Definieer het generieke kenmerk "diameter" met het subtype "diameter leiding" met specifieke restricties op de afmetingen.
-
 2. Intrinsieke kenmerken zijn geen noodzaak maar de combinatie met restricties (bijvoorbeeld minimum/maximum waarde) maakt ze waardevol en daarnaast wordt het model robuuster: als een individu het kenmerk heeft, dan hoort het van een bepaald type te zijn.
 
 ### Datatypes
@@ -986,17 +952,15 @@ De onderscheidende kenmerken specificeren de soorten, de GWSW ontologie hanteert
 
 Meer specifiek voor activiteiten:
 
+* Doel (waarvoor)
+* Toepassing (waarin, welk proces)
 * Technologie (werkwijze, eisen)
-* Resultaat
+* Resultaat (wat doet het)
 * Mechanisme (waarmee)
 
-Het onderscheidende kenmerken wordt beschreven met een specifieke kwalitatieve-aspect-property, de range bij de property is dan een individu van het type onderscheidend kenmerk. Met een CE wordt een restrictie op de properties <span class="blue">doel</span>, <span class="blue">toepassing</span>, <span class="blue">functie</span>, <span class="blue">uitvoering</span>, <span class="blue">structuur</span>, <span class="blue">technologie</span>, <span class="blue">resultaat</span>, <span class="blue">mechanisme</span> gecombineerd met een restrictie op <span class="blue">hasValue</span>.
-
-### Onderscheidende kenmerken in datamodel
+De onderscheidende kenmerken wordt beschreven met een specifieke kwalitatieve-aspect-property, de range bij de property is dan een individu van het type onderscheidend kenmerk. Met een CE wordt een restrictie op de properties <span class="blue">doel</span>, <span class="blue">toepassing</span>, <span class="blue">functie</span>, <span class="blue">uitvoering</span>, <span class="blue">structuur</span>, <span class="blue">technologie</span>, <span class="blue">resultaat</span>, <span class="blue">mechanisme</span> gecombineerd met een restrictie op <span class="blue">hasValue</span>.
 
 Een onderscheidend kenmerk wordt gemodelleerd met restricties binnen een CE. Bij benoeming van de CE als equivalentClass vragen deze restricties veel rekenkracht, daarom is hier ook voor een éénzijdige subtypering (rdfs:subClassOf ipv owl:equivalentClass) gekozen. Daarmee leveren we wel semantiek in (“sufficient”, niet “necessary”).
-
-Definieer Onderscheidend Kenmerk (class en property)
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:Uitvoering     skos:definition  "Materiaal, afwerking, vorm"@nl ;
