@@ -130,8 +130,9 @@ Zoals genoemd is de datastructuur object-georiënteerd waarbij objecten in een d
 
 Bij het ontwerp spelen deze structuren de hoofdrol, ze vormen het ontwerpkader. Met het principe van object-oriëntatie hanteert het model overerving-principes en maakt zo expliciet mogelijk onderscheid in (relaties tussen) subtypes.
 
-**Ter illustratie:**  
-Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het kenmerk "aantal pompen". Zo'n gegeven wordt (in presentaties) afgeleid uit het aantal voorkomens van de relatie <span class="blue">gwsw:hasPart</span> tussen Gemaal en Pomp. De objecten Gemaal en Pomp worden expliciet beschreven.
+<span class="box">**Voorbeelden ter illustratie:**  
+Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het kenmerk "aantal pompen". Zo'n gegeven wordt (in presentaties) afgeleid uit het aantal voorkomens van de relatie <span class="blue">gwsw:hasPart</span> tussen Gemaal en Pomp. De objecten Gemaal en Pomp worden expliciet beschreven.  
+Eigenschappen van de bovengrond en ondergrond (maaiveldhoogte, grondsoort) komen niet voor als aspecten van de fysieke objecten die zich daarin bevinden. Een leiding heeft niet als kenmerk "Grondsoort", wel wordt er een relatie met de ondergrond - en dus met bijbehorende kenmerken - gedefinieerd.</span>
 
 **"As is", een momentopname**  
 Het datamodel is ingericht op een "as is" situatie, het bevat een momentopname van systemen en processen binnen de discipline stedelijk water. Het beschrijft dus geen historische gegevens of de levenscyclus van objecten zoals binnen de context van system engineering.
