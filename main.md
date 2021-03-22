@@ -43,7 +43,7 @@ Versie historie
 
 Het W3C definieert standaarden voor het Semantisch Web met als basis de triple-vorm: de Subject-Predicate-Object constructie. Het basisprotocol dat hieraan ten grondslag ligt is RDF.
 
-<span class="box">De term RDF wordt in deze notitie gebruikt voor de combinatie van meerdere protocollen: RDF, RDFS en OWL 2.</span>  
+<div class="box">De term RDF wordt in deze notitie gebruikt voor de combinatie van meerdere protocollen: RDF, RDFS en OWL 2.</div>  
 
 Het GegevensWoordenboek Stedelijk Water (GWSW), een ontwikkeling van de stichting RIONED, is oorspronkelijk ontwikkeld in de Gellish taal. Ook Gellish is een semantische modelleringstaal in het zogenaamde ORO (Object-Relatie-Object) formaat. In het najaar van 2015 is het GWSW omgezet naar RDF.
 

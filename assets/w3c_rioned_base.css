@@ -514,12 +514,11 @@
     color: rgb(0, 174, 255);
     font-weight: bold;
   }
-  div.box{
+  div.box{ /* 20210322 */
     background: lightyellow; 
     border: none;
     box-shadow:rgba(75%, 75%, 75%, .25);
-    margin-top: 1em;
-    padding-left: 2em;
+    margin-top: 2em;
   }
 
 /******************************************************************************/
