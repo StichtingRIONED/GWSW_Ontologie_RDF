@@ -131,8 +131,9 @@ Zoals genoemd is de datastructuur object-georiënteerd waarbij objecten in een d
 Bij het ontwerp spelen deze structuren de hoofdrol, ze vormen het ontwerpkader. Met het principe van object-oriëntatie hanteert het model overerving-principes en maakt zo expliciet mogelijk onderscheid in (relaties tussen) subtypes.
 
 <span class="box">**Voorbeelden ter illustratie:**  
-Afgeleide gegevens binnen de vakdiscipline komen niet voor, bijvoorbeeld het kenmerk "aantal pompen". Zo'n gegeven wordt (in presentaties) afgeleid uit het aantal voorkomens van de relatie <span class="blue">gwsw:hasPart</span> tussen Gemaal en Pomp. De objecten Gemaal en Pomp worden expliciet beschreven.  
-Eigenschappen van de bovengrond en ondergrond (maaiveldhoogte, grondsoort) komen niet voor als aspecten van de fysieke objecten die zich daarin bevinden. Een leiding heeft niet als kenmerk "Grondsoort", wel wordt er een relatie met de ondergrond - en dus met bijbehorende kenmerken - gedefinieerd.</span>
+Afgeleide gegevens komen niet voor in de definitie van fysieke objecten, bijvoorbeeld het kenmerk "aantal pompen". Zo'n gegeven wordt (in presentaties) afgeleid uit het aantal voorkomens van de relatie <span class="blue">gwsw:hasPart</span> tussen Gemaal en Pomp. De objecten Gemaal en Pomp worden expliciet beschreven.  
+Afgeleide gegevens zoals rekenresultaten en data-analyses komen in het GWSW wel voor in de vorm van gemodelleerde rapportages, bijvoorbeeld in GWSW Kentallen.  
+Eigenschappen van de bovengrond en ondergrond (maaiveldhoogte, grondsoort) komen niet voor als aspecten van de fysieke objecten die zich daarin bevinden. Een leiding heeft niet als kenmerk "Grondsoort", wel wordt er een relatie <span class="blue">gwsw:isPartOf</span> met de ondergrond - en dus met bijbehorende kenmerken - gedefinieerd.</span>
 
 **"As is", een momentopname**  
 Het datamodel is ingericht op een "as is" situatie, het bevat een momentopname van systemen en processen binnen de discipline stedelijk water. Het beschrijft dus geen historische gegevens of de levenscyclus van objecten zoals binnen de context van system engineering.
@@ -208,7 +209,7 @@ _Klassen (en collecties) die niet voor classificatie worden gebruikt_
 Beschrijf alle relevante aspecten en relaties bij een concept.
 
 1. Beschrijf met CE's op de kardinaliteit alle mogelijk voorkomende properties (uitgezonderd de annotatie-attributen), ook als ze niet definiërend zijn. Hanteer de kardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
-2. Beschrijf definiërende relaties tussen concepten met de kardinaliteit "exact". Een fysiek object heeft dan bijvoorbeeld per definitie andere fysieke objecten als onderdeel.
+2. Beschrijf definiërende relaties tussen concepten met de kardinaliteit. Een fysiek object heeft dan bijvoorbeeld per definitie andere fysieke objecten als onderdeel.
 3. Beschrijf op dezelfde wijze ook altijd de inverse relatie.
 
 ### Kenmerken
