@@ -47,15 +47,15 @@ Het W3C definieert standaarden voor het Semantisch Web met als basis de triple-v
 
 Het GegevensWoordenboek Stedelijk Water (GWSW), een ontwikkeling van de stichting RIONED, is oorspronkelijk ontwikkeld in de Gellish taal. Ook Gellish is een semantische modelleringstaal in het zogenaamde ORO (Object-Relatie-Object) formaat. In het najaar van 2015 is het GWSW omgezet naar RDF.
 
-In de “backend” situatie gebruikt het GWSW-projectteam het Gellish formaat nog steeds voor ontologie-ontwerp en -beheer. Via een geautomatiseerd proces wordt echter altijd gepubliceerd conform de RDF semantiek.
-
 *Met dank aan:*
 
-Daan Oostinga (Semmtech)  
-Mike Henrichs (Semmtech)  
-Michel Böhms (TNO)  
-Matthé van Koetsveld (CIM Architects)  
-Linda van den Brink (Geonovum)  
+Daan Oostinga  
+Mike Henrichs  
+Michel Böhms  
+Matthé van Koetsveld  
+Linda van den Brink  
+
+Tot en met GWSW versie 1.5.1 (medio 2020) heeft het GWSW-projectteam in de “backend” situatie het Gellish formaat toegepast voor ontologie-ontwerp en -beheer. Via een geautomatiseerd proces werd echter gepubliceerd conform de RDF semantiek. Vanaf versie 1.6 wordt het GWSW volledig met RDF tools ontwikkeld en onderhouden.
 
 ## Leeswijzer
 
@@ -63,7 +63,7 @@ Bij de uitwerking van deze tekst is er van uitgegaan dat de lezer bekend is met 
 
 In de voorbeelden en in de praktijk (bij uitwisseling van GWSW-gegevens) gebruiken we het Turtle-formaat. Voor de concepten binnen de GWSW-Ontologie hanteren we in de voorbeelden de prefix “gwsw:”. Voor individuen in een dataset wordt de prefix “ex:” gebruikt.
 
-In dit hoofdstuk vind u de begrippen en uitgangspunten bij de modellering in RDF. In het volgende hoofdstuk wordt samenvattend de opzet van het RDF model beschreven. In het laatste hoofdstuk vind u de gedetaillleerde uitwerking van het RDF model.
+In dit inleiding vindt u de gebruikte begrippen en uitgangspunten bij de modellering. In het volgende hoofdstuk worden modelleringsprincipes toegelicht. Het laatste hoofdstuk bevat de gedetailleerde uitwerking van het RDF model, gecombineerd met voorbeelden van het datamodel en datasets.
 
 ## Gebruikte begrippen
 
