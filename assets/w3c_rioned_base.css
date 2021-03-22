@@ -514,6 +514,13 @@
     color: rgb(0, 174, 255);
     font-weight: bold;
   }
+  div.box{
+    background: lightyellow; 
+    border: none;
+    box-shadow:rgba(75%, 75%, 75%, .25);
+    margin-top: 1em;
+    padding-left: 2em;
+  }
 
 /******************************************************************************/
 /*                                    Code                                    */
