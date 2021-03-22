@@ -506,15 +506,8 @@
 /** mv: diverse tekstmarkeringen */
   .yellow{background: yellow;}
   span.red{color: red;}
-  span.box{
-    background: lightyellow;
-    border: none;
-    box-shadow:rgba(75%, 75%, 75%, .25);
-    margin-top: 2em;
-  }
-  span.mark {
-    background-color: yellow;
-  }
+  span.box{background: lightyellow;}
+  span.mark {background-color: yellow;}
   span.blue {
     color: rgb(0, 174, 255);
     font-weight: bold;
