@@ -94,6 +94,7 @@ De datastructuur is object-georiënteerd waarbij relaties tussen objecten in een
 * Soortenboom (de taxonomie of klasse-indeling)
 * Samenstelling (de meronomie of deel-geheel indeling)
 * Proces (het activiteiten-schema)
+* Groepering (collecties van soorten en individuen)
 
 Belangrijke superklassen zijn:
 
@@ -122,10 +123,11 @@ Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkeli
 
 ## Structureren
 
-Zoals genoemd is de datastructuur object-georiënteerd waarbij objecten in een drietal hoofdstructuren zijn ondergebracht:
+Zoals genoemd is de datastructuur object-georiënteerd waarbij objecten in een aantal hoofdstructuren zijn ondergebracht:
 
 * Soortenboom (de taxonomie of klasse-indeling)
 * Samenstelling (de meronomie of deel-geheel indeling en de processchema's)
+* Proces (het activiteiten-schema)
 * Groeperingen (collecties van individuen of soorten)
 
 Bij het ontwerp spelen deze structuren de hoofdrol, ze vormen het ontwerpkader. Met het principe van object-oriëntatie hanteert het model overerving-principes en maakt zo expliciet mogelijk onderscheid in (relaties tussen) subtypes.
