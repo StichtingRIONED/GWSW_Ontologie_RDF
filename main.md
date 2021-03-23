@@ -875,12 +875,12 @@ Deelmodellen worden gemarkeerd met het annotatie-attribuut <span class="blue">sk
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:_TOP
   rdf:type                      gwsw:CollectionOfFacts ; # wordt hiermee individu
-  rdfs:label                    "Collection of facts TOP"@nl ;
+  rdfs:label                    "Collection of facts TOP"@nl ;s
   skos:definition               "Bevat algemene supertypes"@nl 
 .
 gwsw:DeelmodelKentallen
   rdf:type                      owl:Class ;
-  rdfs:label                    "Deelmodel Kentallen"@nl ; 
+  rdfs:label                    "Deelmodel GWSW Kentallen"@nl ; 
   skos:scopeNote                gwsw:_TOP ;
   rdfs:subClassOf               gwsw:VerzamelingSoorten ;
   rdfs:subClassOf
@@ -892,18 +892,18 @@ gwsw:DeelmodelKentallen
 .
 </pre></div>
 
-De annotatie skos:scopeNote (voor het filteren van deelmodellen) wordt altijd opgenomen bij:
+De annotatie skos:scopeNote kan meervoudig voorkomen (voor het filteren van deelmodellen) en wordt altijd opgenomen bij:
 
-* De typering (relatie rdf:type) van alle GWSW-klassen, inclusief alle annotaties
-* De CE's met restrictie op de kardinaliteit van concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken).
+* De typering (relatie rdf:type) van alle GWSW-klassen. De (combinatie van) skos:scopeNote bij de typering geldt ook voor alle annotaties bij de klasse (horen binnen dezelfde scope).
+* De CE's met restrictie op concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken).
 * De typering van individuen binnen een collectie (de verzameling kan variëren vanwege bijvoorbeeld een externe normering)
 
-De annotatie skos:scopeNote wordt **niet** opgenomen bij:
+Voor de volgende concepten is de scope per definitie identiek aan de scope van klasse-typering. De annotatie skos:scopeNote wordt daarom **niet** opgenomen bij:
 
 * De CE's voor de kwalificatie van onderscheidende kenmerken, die vallen binnen de scope van de betrokken klasse. De onderscheidende kenmerken en de individuen/instanties ervan zijn in één centraal deelmodel opgenomen
 * CE's met restrictie op datatype (waarde binnen een collectie of van een xsd-type), bij de relaties gwsw:hasValue en gwsw:hasReference
 * In vervolg daarop: CE's met restricties op waardebereik (min/max)
-* CE's met restrictie op aantal voorkomens van kenmerken van kenmerken: bijvoorbeeld het metagegeven Inwinning bij kenmerken zoals hoogteligging
+* CE's met restrictie op metagegevens bij kenmerken (kenmerken van kenmerken): bijvoorbeeld het metagegeven Inwinning bij kenmerken zoals hoogteligging
 
 ### Validity context
 
