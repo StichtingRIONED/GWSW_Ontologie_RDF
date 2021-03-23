@@ -892,7 +892,7 @@ gwsw:DeelmodelKentallen
 .
 </pre></div>
 
-De annotatie skos:scopeNote kan meervoudig voorkomen (voor het filteren van deelmodellen) en wordt altijd opgenomen bij:
+De annotatie skos:scopeNote kan meervoudig voorkomen (als het concept in meerdere deelmodellen voorkomt) en wordt altijd opgenomen bij:
 
 * De typering (relatie rdf:type) van alle GWSW-klassen. De (combinatie van) skos:scopeNote bij de typering geldt ook voor alle annotaties bij de klasse (horen binnen dezelfde scope).
 * De CE's met restrictie op concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken).
