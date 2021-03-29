@@ -1280,18 +1280,18 @@ Als de kardinaliteit verplicht voor een klasse:
 
 ### Kwalificerende samenstelling
 
-In het GWSW is beschreven welke relaties onderscheidend zijn voor de typering. Een rioolput moet bijvoorbeeld een deksel hebben om een echte rioolput te zijn. Daarvoor geldt ook een type-prolongatie van *Rioolput* naar CE, als iets een *Rioolput* is dan is het ook iets met een *Deksel*.
+In het GWSW is beschreven welke deel-geheel relaties onderscheidend zijn voor de typering. Een Inspectieput moet bijvoorbeeld een deksel hebben om een echte Inspectieput te zijn. Daarvoor gebruiken we de type-prolongatie van *Inspectieput* naar CE, als iets een *Inspectieput* is dan is het ook iets met een *Deksel*.
 
 De structuur wordt voor wat betreft de samenstelling expliciet beschreven door een CE met een restrictie op de property <span class="blue">gwsw:hasPart</span> gecombineerd met de benoeming van de kardinaliteit. De kardinaliteit beschrijft het aantal voorkomens van een property tussen twee soorten.
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:Rioolput   rdfs:subClassOf
-                [
-                  rdf:type                     owl:Restriction ;
-                  owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
-                  owl:onProperty               gwsw:hasPart ;
-                  owl:onClass                  gwsw:Deksel .
-                ] .
+gwsw:Inspectieput rdfs:subClassOf
+                  [
+                    rdf:type                     owl:Restriction ;
+                    owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger ;
+                    owl:onProperty               gwsw:hasPart ;
+                    owl:onClass                  gwsw:Deksel .
+                  ] .
 </pre></div>
 
 ### Inverse kardinaliteit
