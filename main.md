@@ -175,11 +175,21 @@ Definieer klassen zo uitgebreid mogelijk op basis van hun eigenschappen. Daarmee
     - ook “inverse”-kardinaliteit wordt in de reasoning meegenomen
     - minimum kardinaliteit en shall-relatie wel gemodelleerd, controle op strijdigheid met typering niet mogelijk (OWA)
   
-## Specialiseren
+## Soortenboom en samenstelling
+
+<div class="box"><strong>Tips bij opbouw taxonomie</strong> (bron: Bart Bink)
+<br/>- basis is overerving (multiple inheritance)
+<br/>- start met de class die je kent
+<br/>- plaats ze in een hiërarchie door subtypering
+<br/>- geef aan in definitie waarin de class verschilt van de bovenliggende class
+<br/>- geef aan in eigenschappen waarin de class verschilt van de bovenliggende class en omliggende classes
+<br/>- let op orthogonaliteit
+<br/>- plaats een eigenschap zo hoog mogelijk
+</div>
 
 ### Onderscheidende kenmerken
 
-Het specialiseren, opbouwen van de soortenboom, zie hst [Details onderscheidende kenmerken](#details-onderscheidende-kenmerken)
+Het opbouwen van de soortenboom op basis van onderscheidende kenmerken, zie hst [Details onderscheidende kenmerken](#details-onderscheidende-kenmerken)
 
 1. Voor het classificeren van een concept uitgaan van onderscheidende kenmerken in de (abstracte) soortenboom. Denk aan determineren van planten volgens Linnaeus: na het maken van een aantal keuzes wordt de soort gevonden
 2. Streef ernaar om met de onderscheidende kenmerken de (in je hoofd) uitgeschreven definitie te vervangen
@@ -195,16 +205,16 @@ _Klassen (en collecties) die niet voor classificatie worden gebruikt_
 3. Abstracte concepten bij voorkeur als groep/collectie (en niet als supertype) definiëren. Bijvoorbeeld groepering naar thema's, denk aan infiltratievoorzieningen.
 4. Subtypes op hetzelfde niveau dienen in grote lijn hetzelfde samenstellingsniveau te hebben.
 
-### Erven van samenstellingen
-
-1. Voorkom redundantie van deel-geheel relaties, die relatie mag niet dubbel voorkomen voor een subtype en het bijbehorende supertype.
-2. Definieer de samenstelling - hoewel verleidelijk - dus niet op een te hoog niveau
-
 ### Bladerobjecten
 
 1. Specialiseer de concepten zoveel als mogelijk: definieer de subtypes, de "bladerobjecten".
 2. Introduceer geen subtype als het geen onderscheidend kenmerk heeft. Bijvoorbeeld geen extra subtype "standaard hemelwaterstelsel" naast "verbeterd hemelwaterstelsel".
 3. Hou er rekening mee dat de individuen zo specifiek mogelijk geclassificeerd dienen te worden. Classificatie met een supertype gebeurt alleen als het subtype niet van toepassing is (denk aan het eerdere voorbeeld "hemelwaterstelsel") of als het onbekend is en wel toegepast kan worden. Bijvoorbeeld bij gebruik van de inspectienorm voor "vrijverval rioolleidingen" (met subtypes gemengd, hemelwater, vuilwater).
+
+### Erven van samenstellingen
+
+1. Voorkom redundantie van deel-geheel relaties, die relatie mag niet dubbel voorkomen voor een subtype en het bijbehorende supertype.
+2. Definieer de samenstelling - hoewel verleidelijk - dus niet op een te hoog niveau
 
 ## Aspecten en relaties
 
