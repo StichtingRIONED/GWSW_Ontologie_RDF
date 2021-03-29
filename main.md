@@ -77,7 +77,7 @@ Datastructuur die alle relevante entiteiten en hun onderlinge relaties en regels
 Een instantie van een concept, iets uit de werkelijkheid. Zoals individu “0980” de bestaande betonnen constructie van het soort/klasse/concept “rioolput” is.
 
 **Property**
-Voor de relatie (tussen subject en object) zijn meerdere namen gebruikelijk (“predicate”, “property name”), we hanteren in dit document “property”. Properties zijn (confrom de NTA8035) onderverdeeld in attributen (die weer onderverdeeld zijn in aspecten en annotaties) en relaties.
+Voor de relatie (tussen subject en object) zijn meerdere namen gebruikelijk (“predicate”, “property name”), we hanteren in dit document “property”. Properties zijn (confrom de NTA8035) onderverdeeld in **attributen** (die weer onderverdeeld zijn in **aspecten** en **annotaties**) en **relaties**.
 
 **CE**
 De afkorting CE wordt gebruikt voor Class Expressions (in Description Logics “complex concepts”). CE’s worden ondermeer gevormd door Classes te binden aan Property Expressions. Met Class Expressions kunnen we onder andere restricties benoemen voor Properties waarmee concepten/klassen worden onderscheiden.
@@ -101,7 +101,7 @@ Belangrijke superklassen zijn:
 * gwsw:FysiekObject
 * gwsw:Activiteit
 * gwsw:Ruimte
-* gwsw:Levenvorm
+* gwsw:Levensvorm
 
 Bij het ontwerp van een datastructuur spelen deze elementen de hoofdrol, ze vormen het ontwerpkader.
 
@@ -208,16 +208,16 @@ _Klassen (en collecties) die niet voor classificatie worden gebruikt_
 
 ## Aspecten en relaties
 
-Beschrijf alle relevante aspecten en relaties bij een concept.
+Beschrijf alleen relevante - toegepaste - aspecten en relaties bij een concept.
 
-1. Beschrijf met CE's op de kardinaliteit alle mogelijk voorkomende properties (uitgezonderd de annotatie-attributen), ook als ze niet definiërend zijn. Hanteer de kardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
-2. Beschrijf definiërende relaties tussen concepten met de kardinaliteit. Een fysiek object heeft dan bijvoorbeeld per definitie andere fysieke objecten als onderdeel.
-3. Beschrijf op dezelfde wijze ook altijd de inverse relatie.
+1. Beschrijf met CE's op de kardinaliteit de aspecten en relaties bij concepten, ook als ze niet definiërend zijn. Hanteer de kardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
+    * Beschrijf definiërende relaties tussen concepten met de kardinaliteit. Een fysiek object heeft dan bijvoorbeeld per definitie andere fysieke objecten als onderdeel.
+2. Beschrijf op dezelfde wijze ook altijd de inverse relatie.
 
-### Kenmerken
+### Aspecten (kenmerken)
 
 1. Kenmerken zijn altijd eigendom van een entiteit/geheel en kunnen niet bestaan zonder de eigenaar.
-2. Vermeng dus geen kenmerken van entiteiten. Bijvoorbeeld Dekselmateriaal, Beheerdernaam kunnen geen kenmerken van een Put zijn, die horen bij het concept Deksel en Beheerder. Die concepten zijn vervolgens gerelateerd aan de put.
+2. Hou kenmerken en entiteiten gescheiden en blijf object-georiënteerd. Bijvoorbeeld Dekselmateriaal en Beheerdernaam kunnen geen kenmerken van een Put zijn, dat zijn aspecten van het concept Deksel en Beheerder. Die concepten zijn vervolgens gerelateerd aan de put.
 3. Voorkom het opnemen van optionele kenmerken bij een supertype (kenmerken die niet voor alle subtypes gelden), definieer de kenmerken dus niet op een te hoog niveau.
 4. Gebruik het multi-parent principe. Als alleen kunststof leidingen het gebruikte kenmerk "kleur" hebben, introduceer dan het concept "kunststof leiding" met het kenmerk "kleur". Een individu is dan zowel een "vrijverval rioolleiding" als een "kunststof leiding" en heeft daarmee dat extra kenmerk.
 
