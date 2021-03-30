@@ -340,7 +340,7 @@ De toegepaste **relaties** in een diagram:
 
 ### Omschrijving properties
 
-De toepassing van **relaties** is in de GWSW-Ontologie aan regels gebonden door middel van een Class Expression (CE). In de volgende tabel is dat aangegeven (“CE”).
+De toepassing van **relaties** is in de GWSW-Ontologie aan regels gebonden door middel van een Class Expression (CE). In de volgende tabel is dat aangegeven met **CE**.
 
 <table class="simp">
 <thead>
