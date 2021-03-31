@@ -1231,7 +1231,7 @@ Als de kardinaliteit niet beperkt is:
 
 Hiermee is wel gemarkeerd dat het aspect *relevant is voor* het subject.
 
-Als de kardinaliteit verplicht voor een klasse:
+Als de kardinaliteit voorgeschreven is:
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
                       owl:qualifiedCardinality        "1"^^xsd:nonNegativeInteger ;
@@ -1268,7 +1268,7 @@ ex:Insp1               rdf:type           gwsw:InspecterenPut ;
 
 **Meronomie**
 
-<span class="blue">gwsw:hasPart</span> wordt type owl:ObjectProperty en geldt voor zowel fysieke als ruimtelijke composities.
+<span class="blue">gwsw:hasPart</span> wordt type owl:ObjectProperty en geldt voor fysieke objecten, ruimtelijke objecten en activiteiten onderling. Daarnaast kunnen ruimtes en fysieke dingen met <span class="blue">gwsw:hasPart</span> een ruimtelijke compositie vormen.
 
 Ruimtelijke composities (“bevatten” iets) via de property <span class="blue">gwsw:hasPart</span> / <span class="blue">gwsw:isPartOf</span> met restrictie op object-class:
 
@@ -1323,7 +1323,7 @@ Ook voor deze inverse property + object (was subject) wordt dan de kardinaliteit
 
 ## Collecties
 
-_Domeintabellen_
+_Domeintabellen, groeperingen_
 
 Alle collectie-leden zijn in de GWSW topologie opgenomen als individuen met annotaties. RDF beschrijft de enumeratie van individuen per collectie. Hoofdstuk 3.7 bevat de details.
 
