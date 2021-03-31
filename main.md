@@ -175,7 +175,9 @@ Definieer klassen zo uitgebreid mogelijk op basis van hun eigenschappen. Daarmee
     - ook “inverse”-kardinaliteit wordt in de reasoning meegenomen
     - minimum kardinaliteit en shall-relatie wel gemodelleerd, controle op strijdigheid met typering niet mogelijk (OWA)
   
-## Soortenboom en samenstelling
+## Soortenboom
+
+<br/><img src="media/taxonomie.png" style="width:50%;" />
 
 <div class="box"><strong>Tips bij opbouw taxonomie</strong> (bron: Bart Bink)
 <br/>- basis is overerving (multiple inheritance)
@@ -211,30 +213,20 @@ _Klassen (en collecties) die niet voor classificatie worden gebruikt_
 2. Introduceer geen subtype als het geen onderscheidend kenmerk heeft. Bijvoorbeeld geen extra subtype "standaard hemelwaterstelsel" naast "verbeterd hemelwaterstelsel".
 3. Hou er rekening mee dat de individuen zo specifiek mogelijk geclassificeerd dienen te worden. Classificatie met een supertype gebeurt alleen als het subtype niet van toepassing is (denk aan het eerdere voorbeeld "hemelwaterstelsel") of als het onbekend is en wel toegepast kan worden. Bijvoorbeeld bij gebruik van de inspectienorm voor "vrijverval rioolleidingen" (met subtypes gemengd, hemelwater, vuilwater).
 
-### Erven van samenstellingen
-
-1. Voorkom redundantie van deel-geheel relaties, die relatie mag niet dubbel voorkomen voor een subtype en het bijbehorende supertype.
-2. Definieer de samenstelling - hoewel verleidelijk - dus niet op een te hoog niveau
-
 ### Orthogonaliteit
 
 Binnen de GWSW taxonomie kunnen begrippen haaks (orthogonaal) op elkaar staan, de orthogonaliteit is dus niet bepalend voor de opbouw van de soortenboom. Bijvoorbeeld kun je de in het GWSW opgenomen concepten Blinde Put en Overstortput als orthogonaal beschouwen, de één wordt onderscheiden vanwege de constructie, de ander wordt onderscheiden vanwege de functie.  
 Dat vraagt extra aandacht bij de toepassing ervan. Zo kan een individu zowel van het type Blinde Put als van het type Overstortput maar dat geldt niet voor de combinatie van de typen Overstortput als Stuwput. Die laatste combinatie conflicteert vanwege de scheiding in functie. In het datamodel kun je dat expliciteren door conflicterende typeringen met <span class="blue">owl:disjointWith</span> te beschrijven. In het GWSW datamodel is dat niet uitgewerkt, via de onderscheidende kenmerken is de orthogonaliteit wel herkenbaar.
 
-## Aspecten en relaties
+## Aspecten
 
-Beschrijf alleen relevante - toegepaste - aspecten en relaties bij een concept.
+Beschrijf alleen relevante - toegepaste - aspecten bij een concept.
 
-1. Beschrijf met CE's op de kardinaliteit de aspecten en relaties bij concepten, ook als ze niet definiërend zijn. Hanteer de kardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
-    * Beschrijf definiërende relaties tussen concepten met de kardinaliteit. Een fysiek object heeft dan bijvoorbeeld per definitie andere fysieke objecten als onderdeel.
-2. Beschrijf op dezelfde wijze ook altijd de inverse relatie.
-
-### Aspecten (kenmerken)
-
-1. Kenmerken zijn altijd eigendom van een entiteit/geheel en kunnen niet bestaan zonder de eigenaar.
-2. Hou kenmerken en entiteiten gescheiden en blijf object-georiënteerd. Bijvoorbeeld Dekselmateriaal en Beheerdernaam kunnen geen kenmerken van een Put zijn, dat zijn aspecten van het concept Deksel en Beheerder. Die concepten zijn vervolgens gerelateerd aan de put.
-3. Voorkom het opnemen van optionele kenmerken bij een supertype (kenmerken die niet voor alle subtypes gelden), definieer de kenmerken dus niet op een te hoog niveau.
-4. Gebruik het multi-parent principe. Als alleen kunststof leidingen het gebruikte kenmerk "kleur" hebben, introduceer dan het concept "kunststof leiding" met het kenmerk "kleur". Een individu is dan zowel een "vrijverval rioolleiding" als een "kunststof leiding" en heeft daarmee dat extra kenmerk.
+1. Beschrijf met CE's op de kardinaliteit de aspecten van concepten, ook als ze niet definiërend zijn. Hanteer de kardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
+2. Kenmerken zijn altijd eigendom van een entiteit/geheel en kunnen niet bestaan zonder de eigenaar.
+3. Hou kenmerken en entiteiten gescheiden en blijf object-georiënteerd. Bijvoorbeeld Dekselmateriaal en Beheerdernaam kunnen geen kenmerken van een Put zijn, dat zijn aspecten van het concept Deksel en Beheerder. Die concepten zijn vervolgens gerelateerd aan de put.
+4. Voorkom het opnemen van optionele kenmerken bij een supertype (kenmerken die niet voor alle subtypes gelden), definieer de kenmerken dus niet op een te hoog niveau.
+5. Gebruik het multi-parent principe. Als alleen kunststof leidingen het gebruikte kenmerk "kleur" hebben, introduceer dan het concept "kunststof leiding" met het kenmerk "kleur". Een individu is dan zowel een "vrijverval rioolleiding" als een "kunststof leiding" en heeft daarmee dat extra kenmerk.
 
 **Geen typelijsten**  
 Kenmerken die verwijzen naar een typelijst (bijvoorbeeld het kenmerk Soort Deksel van het concept Deksel) komen niet voor. Een typelijst wordt uitgedrukt in de taxonomie (bijvoorbeeld als subtypes van Deksel).
@@ -251,6 +243,21 @@ Kenmerken die verwijzen naar een typelijst (bijvoorbeeld het kenmerk Soort Dekse
 1. Specificeer altijd de waardetypes bij de aspectwaarden
 2. Specificeer waar nodig ook het waardebereik (in combinatie met het waardetype)
 3. Start de URI van een gemodelleerd datatype altijd met "Dt_"
+
+## Samenstelling en proces
+
+<br/><img src="media/meronomie.png" style="width:40%;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="media/proces.png" style="width:35%;" />
+
+Definieer de samenstelling, de topologie en het proces op basis van de relaties bij een concept, zie hst [Details relaties](#details-relaties)
+
+1. Beschrijf met CE's de kardinaliteit van de relaties bij concepten, ook als ze niet definiërend zijn. Hanteer de kardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
+    * Met de kardinaliteit beschrijven we ook dat een fysiek object bijvoorbeeld per definitie andere fysieke objecten als onderdeel heeft.
+2. Beschrijf op dezelfde wijze ook altijd de inverse relatie.
+
+### Erven van samenstellingen
+
+1. Voorkom redundantie van deel-geheel relaties, die relatie mag niet dubbel voorkomen voor een subtype en het bijbehorende supertype.
+2. Definieer de samenstelling - hoewel verleidelijk - dus niet op een te hoog niveau
 
 ## Deelmodellen
 
@@ -320,7 +327,7 @@ De "top level" concepten in GWSW-OroX zijn de concepten die boven in de soortenb
 
 Het oorspronkelijke Gellish-model bevat een serie metagegevens zoals Kardinaliteit Links/Rechts, UoM, Brondefinitie, Eigen definitie, Datum Begin/Wijziging. Die worden als volgt in het RDF-model meegenomen:
 
-De **Kardinaliteit** wordt via CE’s in RDF uitgedrukt. De kardinaliteit kan in twee richtingen gelden, daarvoor is voor de relevante properties een inverse geïntroduceerd. Ook voor deze omgekeerde propery geldt dan via de CE een restrictie op kardinaliteit.
+De **Kardinaliteit** wordt via CE’s in RDF uitgedrukt. De kardinaliteit kan in twee richtingen gelden, daarvoor is voor de relevante properties een inverse geïntroduceerd. Ook voor deze omgekeerde property geldt dan via de CE een restrictie op kardinaliteit.
 
 De **UoM, Brondefinitie, Eigen definitie** worden als annotaties bij de concepten opgenomen.
 
@@ -1184,7 +1191,7 @@ gwsw:NodeId   rdf:type             owl:Class ;
 
 ## Details relaties
 
-_Deel-geheel, verbindingen_
+_Deel-geheel, verbindingen, proces_
 
 Het GWSW definieert relaties van de samenstelling (meronomie) en de verbindingen (netwerk, topologie) Deze samenstelling-relaties komen voor in datasets en in het datamodel, het datamodel beschrijft de restricties op deze relaties. De volgende relaties worden gebruikt:
 
@@ -1193,59 +1200,11 @@ Het GWSW definieert relaties van de samenstelling (meronomie) en de verbindingen
 > hasOutput  
 > hasConnection  
 
-**Activiteiten**
+### Kardinaliteit
 
-De relaties <span class="blue">gwsw:hasInput</span> en <span class="blue">gwsw:hasOutput</span> worden gebruikt voor de beschrijving van activiteiten en processen, een voorbeeld:
+De kardinaliteit beschrijft het aantal voorkomens van de (binaire) relatie. Met de kardinaliteits-restrictie beschrijven we ook de mogelijke relaties tussen concepten. Zo wordt de samenstelling expliciet beschreven door een CE met een restrictie op de property <span class="blue">gwsw:hasPart</span> gecombineerd met de benoeming van de kardinaliteit.
 
-<div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:hasInput           rdfs:label         "has as input" ;
-                        rdf:type           owl:ObjectProperty .
-gwsw:InspecterenPut     rdfs:label         "Inspecteren van een put"@nl, “Inspection manhole”@en ;
-                        rdfs:subClassOf    gwsw:Activiteit .
-</pre></div>
-
-In een dataset:
-
-<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-ex:Insp1               rdf:type           gwsw:InspecterenPut ;
-                        gwsw:hasInput      ex:Put1 .
-</pre></div>
-
-**Verbindingen**
-
-<span class="blue">gwsw:hasConnection</span> wordt van het type owl:SymmetricProperty.
-
-**Decompositie**
-
-<span class="blue">gwsw:hasPart</span> wordt type owl:ObjectProperty en geldt voor zowel fysieke als ruimtelijke composities.
-
-Ruimtelijke composities (“bevatten” iets) via de property <span class="blue">gwsw:hasPart</span> / <span class="blue">gwsw:isPartOf</span> met restrictie op object-class:
-
-<div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:Ruimte       rdf:type              owl:Class ;
-                  rdfs:label            "Ruimte"@nl ;
-                  rdfs:subClassOf
-                  [
-                    rdf:type            owl:Restriction ;
-                    owl:onProperty      gwsw:hasPart ;
-                    owl:allValuesFrom
-                    [
-                      rdf:type          owl:Class;
-                      owl:unionOf       (gwsw:Ruimte gwsw:FysiekObject) ;
-                    ]
-                  ] .
-</pre></div>
-
-In combinatie daarmee is in de ontologie expliciet gemaakt dat bijvoorbeeld individuen van het type FysiekObject altijd iets anders zijn dan die van het type Ruimte:
-
-<div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:Ruimte        owl:disjointWith     gwsw:Kenmerk ;
-                   owl:disjointWith     gwsw:FysiekObject . # Enzovoort
-</pre></div>
-
-## Kardinaliteit
-
-Kardinaliteit wordt in CE’s geborgd. Fictief voorbeeld van kardinaliteit voor relatie en objecttype:
+Voorbeeld van kardinaliteit voor relatie en objecttype:
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:Rioolstelsel     rdfs:subClassOf
@@ -1278,11 +1237,66 @@ Als de kardinaliteit verplicht voor een klasse:
                       owl:qualifiedCardinality        "1"^^xsd:nonNegativeInteger ;
 </pre></div>
 
+**Proces en activiteit**
+
+De relaties <span class="blue">gwsw:hasInput</span> en <span class="blue">gwsw:hasOutput</span> worden gebruikt voor de beschrijving van activiteiten en processen, een voorbeeld:
+
+<div class="example"><div class="example-title marker">Model:</div><pre>
+gwsw:hasInput           rdfs:label         "has as input" ;
+                        rdf:type           owl:ObjectProperty .
+gwsw:InspecterenPut     rdfs:label         "Inspecteren van een put"@nl, “Inspection manhole”@en ;
+                        rdfs:subClassOf    gwsw:Activiteit ;
+                        rdfs:subClassOf
+                        [
+                          rdf:type                      owl:Restriction ;
+                          owl:qualifiedCardinality      "1"^^xsd:nonNegativeInteger ;
+                          owl:onProperty                gwsw:hasInput ;
+                          owl:onClass                   gwsw:Rioolput ;
+                        ] .
+</pre></div>
+
+In een dataset:
+
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+ex:Insp1               rdf:type           gwsw:InspecterenPut ;
+                        gwsw:hasInput      ex:Put1 .
+</pre></div>
+
+**Topologie**
+
+<span class="blue">gwsw:hasConnection</span> is van het type owl:SymmetricProperty.
+
+**Meronomie**
+
+<span class="blue">gwsw:hasPart</span> wordt type owl:ObjectProperty en geldt voor zowel fysieke als ruimtelijke composities.
+
+Ruimtelijke composities (“bevatten” iets) via de property <span class="blue">gwsw:hasPart</span> / <span class="blue">gwsw:isPartOf</span> met restrictie op object-class:
+
+<div class="example"><div class="example-title marker">Model:</div><pre>
+gwsw:Ruimte       rdf:type              owl:Class ;
+                  rdfs:label            "Ruimte"@nl ;
+                  rdfs:subClassOf
+                  [
+                    rdf:type            owl:Restriction ;
+                    owl:onProperty      gwsw:hasPart ;
+                    owl:allValuesFrom
+                    [
+                      rdf:type          owl:Class;
+                      owl:unionOf       (gwsw:Ruimte gwsw:FysiekObject) ;
+                    ]
+                  ] .
+</pre></div>
+
+In combinatie daarmee is in de ontologie expliciet gemaakt dat bijvoorbeeld individuen van het type FysiekObject altijd iets anders zijn dan die van het type Ruimte:
+
+<div class="example"><div class="example-title marker">Model:</div><pre>
+gwsw:Ruimte        owl:disjointWith     gwsw:Kenmerk ;
+                   owl:disjointWith     gwsw:FysiekObject . # Enzovoort
+</pre></div>
+
 ### Kwalificerende samenstelling
 
 In het GWSW is beschreven welke deel-geheel relaties onderscheidend zijn voor de typering. Een Inspectieput moet bijvoorbeeld een deksel hebben om een echte Inspectieput te zijn. Daarvoor gebruiken we de type-prolongatie van *Inspectieput* naar CE, als iets een *Inspectieput* is dan is het ook iets met een *Deksel*.
-
-De structuur wordt voor wat betreft de samenstelling expliciet beschreven door een CE met een restrictie op de property <span class="blue">gwsw:hasPart</span> gecombineerd met de benoeming van de kardinaliteit. De kardinaliteit beschrijft het aantal voorkomens van een property tussen twee soorten.
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:Inspectieput rdfs:subClassOf
