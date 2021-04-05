@@ -1070,7 +1070,7 @@ In de GWSW ontologie gaan we uit van het “class-central” principe. Deze oplo
 
 ### Betrouwbaarheid, actualiteit
 
-Voor de beschrijving van de gegevenskwaliteit - met name nauwkeurigheid, actualiteit en betrouwbaarheid - definieert de GWSW Ontologie voor veel kenmerken het metagegeven <span class="blue">Inwinning</span>. Dat is volgens het class-central principe relatief eenvoudig te beschrijven:
+Voor de beschrijving van de gegevenskwaliteit - met name nauwkeurigheid, actualiteit en betrouwbaarheid - definieert de GWSW Ontologie voor veel kenmerken het metagegeven <span class="blue">Inwinning</span>. Dat is volgens het class-central principe eenvoudig te beschrijven:
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 ex:Put1  gwsw:hasAspect  
@@ -1330,11 +1330,11 @@ Ook voor deze inverse property + object (was subject) wordt dan de kardinaliteit
 
 _Domeintabellen, groeperingen_
 
-Alle collectie-leden zijn in de GWSW topologie opgenomen als individuen met annotaties. RDF beschrijft de enumeratie van individuen per collectie. Hoofdstuk 3.7 bevat de details.
+Alle collectie-leden zijn in de GWSW topologie opgenomen als individuen met annotaties. RDF beschrijft de enumeratie van individuen per collectie.
 
 Voor de modellering van collecties gebruiken we in RDF een enumeratie van individuen. Alle collectie-members (elementen) zijn dus in de GWSW-topologie opgenomen als individuen met annotatieproperties.
 
-Ook klassen (concepten van het type owl:Class) kunnen in collecties voorkomen. Vaak gaat het dan om groeperingen van soorten die niet in de soortenboom zijn ingedeeld. Deze concepten worden niet als individu van het type collectie opgenomen, ze zijn al getypeerd en van annotaties voorzien.
+Ook klassen (concepten van het type owl:Class) kunnen in collecties voorkomen. Vaak gaat het dan om groeperingen van soorten die niet in de soortenboom zijn ingedeeld.
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:PutMateriaal  rdfs:subClassOf      gwsw:Kenmerk ;
