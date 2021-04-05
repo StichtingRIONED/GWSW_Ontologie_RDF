@@ -238,11 +238,14 @@ Kenmerken die verwijzen naar een typelijst (bijvoorbeeld het kenmerk Soort Dekse
     * Definieer het generieke kenmerk "diameter" met het subtype "diameter leiding" met specifieke restricties op de afmetingen.
 2. Intrinsieke kenmerken zijn geen noodzaak maar de combinatie met restricties (bijvoorbeeld minimum/maximum waarde) maakt ze waardevol en daarnaast wordt het model robuuster: als een individu het kenmerk heeft, dan hoort het van een bepaald type te zijn.
 
-### Datatypes
+### Kwaliteitseisen
+
+Beschrijf in het datamodel de eisen voor de gegevenskwaliteit, met name die voor nauwkeurigheid via restricties aan waardetype en waardebereik.
 
 1. Specificeer altijd de waardetypes bij de aspectwaarden
 2. Specificeer waar nodig ook het waardebereik (in combinatie met het waardetype)
 3. Start de URI van een gemodelleerd datatype altijd met "Dt_"
+4. Modelleer waar nodig het metagegeven <span class="blue">Inwinning</span> voor beschrijving van de actualiteit en betrouwbaarheid.
 
 ## Samenstelling en proces
 
@@ -1048,23 +1051,6 @@ ex:Put1  gwsw:hasAspect
           ]
 </pre></div>
 
-In de GWSW Ontologie definieert voor veel kenmerken metagegevens zoals de "wijze van inwinning". Dat is volgens het class-central principe relatief eenvoudig te beschrijven:
-
-<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-ex:Put1  gwsw:hasAspect  
-          [
-            rdf:type                    gwsw:HoogtePut ;
-            gwsw:hasValue               1000^^xsd:integer ;
-            gwsw:hasAspect
-            [
-              rdf:type                  gwsw:Inwinning ;
-              gwsw:hasAspect
-              [
-                 rdf:type               gwsw:WijzeVanInwinning ;
-                 gwsw:hasReference      gwsw:Schatting ;
-              ] ] ] .
-</pre></div>
-
 Property <span class="blue">gwsw:hasAspect</span> is van het type owl:ObjectProperty.
 
 Property <span class="blue">gwsw:hasValue</span> is van het type owl:DatatypeProperty en owl:FunctionalProperty. De property rdf:value wordt niet toegepast omdat het geen owl-type is (en daardoor bijvoorbeeld OWL RL-reasoning beperkt wordt).
@@ -1082,14 +1068,33 @@ In de GWSW ontologie gaan we uit van het “class-central” principe. Deze oplo
 * In een dataset kan naar believen het aspect als URI of anoniem (via een blank node) worden uitgeschreven.
 * De uitgebreidere semantiek kan in een dataset met beperkte syntax worden beschreven (zie het eerdere voorbeeld)
 
-### Minimum/maximum waarde, datatype
+### Betrouwbaarheid, actualiteit
+
+Voor de beschrijving van de gegevenskwaliteit - met name nauwkeurigheid, actualiteit en betrouwbaarheid - definieert de GWSW Ontologie voor veel kenmerken het metagegeven <span class="blue">Inwinning</span>. Dat is volgens het class-central principe relatief eenvoudig te beschrijven:
+
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+ex:Put1  gwsw:hasAspect  
+          [
+            rdf:type                    gwsw:HoogtePut ;
+            gwsw:hasValue               1000^^xsd:integer ;
+            gwsw:hasAspect
+            [
+              rdf:type                  gwsw:Inwinning ;
+              gwsw:hasAspect
+              [
+                 rdf:type               gwsw:WijzeVanInwinning ;
+                 gwsw:hasReference      gwsw:Schatting ;
+              ] ] ] .
+</pre></div>
+
+### Nauwkeurigheid: minimum/maximum waarde, datatype
 
 We hanteren twee soorten datatypes:
 
 * de standaard xsd types: integer, decimal, date, gYear, time
 * de maatwerk datatypes: van het type rdfs:datatype in combinatie met waarde-restricties
 
-Voor restricties op de kenmerk-waarde hanteren we:
+De eisen aan nauwkeurigheid drukken we uit als restrictie op de kenmerk-waarde:
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:hasAspect     rdf:type               owl:ObjectProperty .
