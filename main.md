@@ -1229,7 +1229,7 @@ Als de kardinaliteit niet beperkt is:
                       owl:minQualifiedCardinality     "0"^^xsd:nonNegativeInteger ;
 </pre></div>
 
-Hiermee is wel gemarkeerd dat het aspect *relevant is voor* het subject.
+Hiermee is wel gemarkeerd dat de relatie relevant is voor de klasse.
 
 Als de kardinaliteit voorgeschreven is:
 
