@@ -200,10 +200,15 @@ Het opbouwen van de soortenboom op basis van onderscheidende kenmerken, zie hst 
 
 ### Abstracte concepten
 
-_Klassen (en collecties) die niet voor classificatie worden gebruikt_
+_Klassen (en collecties) die niet voor classificatie worden gebruikt / niet instantieerbaar zijn_
 
-1. Hou ze beperkt, de soortenboom zo veel mogelijk concreet houden. Supertypes zijn vaak alleen verdichtingen, geen soort.
+1. Hou ze beperkt, hou de soortenboom zo veel mogelijk concreet. Supertypes zijn vaak alleen verdichtingen, geen soort.
 2. Concepten zijn herkenbaar als abstract wanneer ze bijvoorbeeld niet in de deel-geheel relaties (bijvoorbeeld als deel van een rioleringsgebied) voorkomen.
+
+<div class="box"><strong>Oormerken met behulp van conformiteitsklassen</strong>
+Voor de eindgebruiker worden abstracte klassen gemarkeerd in de conformiteitsklasse. De conformiteitsklasse beschrijft onder andere de geldende klassen. <a href="#validity-context">Zie validity context</a>
+</div>
+
 3. Abstracte concepten bij voorkeur als groep/collectie (en niet als supertype) definiëren. Bijvoorbeeld groepering naar thema's, denk aan infiltratievoorzieningen.
 4. Subtypes op hetzelfde niveau dienen in grote lijn hetzelfde samenstellingsniveau te hebben.
 
@@ -255,7 +260,7 @@ Definieer de samenstelling, de topologie en het proces op basis van de relaties 
 
 1. Beschrijf met CE's de kardinaliteit van de relaties bij concepten, ook als ze niet definiërend zijn. Hanteer de kardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
     * Met de kardinaliteit beschrijven we ook dat een fysiek object bijvoorbeeld per definitie andere fysieke objecten als onderdeel heeft.
-2. Beschrijf op dezelfde wijze ook altijd de inverse relatie.
+2. Beschrijf op dezelfde wijze ook altijd de inverse relatie. Voor de dataverificatie is die inverse vaak waardevol. Een constructie kan bijvoorbeeld meerdere delen bevatten (<span class="blue">gwsw:hasPart</span>) maar het deel hoort bij één constructie (<span class="blue">gwsw:isPartOf</span>).
 
 ### Erven van samenstellingen
 
@@ -295,7 +300,7 @@ De "top level" concepten in GWSW-OroX zijn de concepten die boven in de soortenb
 </tr>
 <tr>
 <td>FysiekObject</td>
-<td></td>
+<td>[Gellish] That is a distribution of matter or energy in time and space that satisfies the laws of physics. All kinds of physical objects are subtypes of this class. It is the top of the hierarchical network of specializations of kinds of physical objects.</td>
 </tr>
 <tr>
 <td>Informatiedrager</td>
@@ -932,7 +937,7 @@ Voor de volgende concepten is de scope per definitie identiek aan de scope van k
 
 ### Validity context
 
-Voor de definitie vab conformiteitsklassen.
+Voor de definitie van conformiteitsklassen.
 
 Vergelijkbaar met de Collection of Facts speelt ook de **Validity context** vanuit Gellish nog steeds een rol in de RDF-vorm van het GWSW. Met de annotatie **gwsw:hasValidity** worden de triples nabewerkt voor een bepaalde conformiteitsklasse (met kwaliteitseisen per proces).
 
@@ -973,7 +978,7 @@ De letter geeft het soort kwaliteitseis aan:
 **Expliciete definitie: basis voor determinatie**  
 Voor de indeling in soorten, de bepaling van de taxonomie, wordt de onderscheidende definitie zo expliciet mogelijk beschreven. Determinerend kan daarmee (de naam van) een soort worden bepaald. Verschillende elementen in de ontologie spelen hierbij een rol, die zijn beschreven in de volgende paragrafen.
 
-De onderscheidende kenmerken specificeren de soorten, de GWSW ontologie hanteert de volgende:
+De onderscheidende kenmerken specificeren de soorten, de GWSW ontologie hanteert de volgende (in willekeurige volgorde):
 
 * Doel (waarvoor)
 * Toepassing (waarin)
@@ -987,9 +992,10 @@ Meer specifiek voor activiteiten:
 * Toepassing (waarin, welk proces)
 * Technologie (werkwijze, eisen)
 * Resultaat (wat doet het)
-* Mechanisme (waarmee)
 
-De onderscheidende kenmerken wordt beschreven met een specifieke kwalitatieve-aspect-property, de range bij de property is dan een individu van het type onderscheidend kenmerk. Met een CE wordt een restrictie op de properties <span class="blue">doel</span>, <span class="blue">toepassing</span>, <span class="blue">functie</span>, <span class="blue">uitvoering</span>, <span class="blue">structuur</span>, <span class="blue">technologie</span>, <span class="blue">resultaat</span>, <span class="blue">mechanisme</span> gecombineerd met een restrictie op <span class="blue">hasValue</span>.
+Vooral Functie en Uitvoering worden veel gebruikt om het onderscheid te maken.
+
+De onderscheidende kenmerken worden beschreven met een specifieke kwalitatieve-aspect-property, de range bij de property is dan een individu van het type onderscheidend kenmerk. Met een CE wordt een restrictie op de properties <span class="blue">doel</span>, <span class="blue">toepassing</span>, <span class="blue">functie</span>, <span class="blue">uitvoering</span>, <span class="blue">structuur</span>, <span class="blue">technologie</span>, <span class="blue">resultaat</span>, <span class="blue">mechanisme</span> gecombineerd met een restrictie op <span class="blue">hasValue</span>.
 
 Een onderscheidend kenmerk wordt gemodelleerd met restricties binnen een CE. Bij benoeming van de CE als equivalentClass vragen deze restricties veel rekenkracht, daarom is hier ook voor een éénzijdige subtypering (rdfs:subClassOf ipv owl:equivalentClass) gekozen. Daarmee leveren we wel semantiek in (“sufficient”, niet “necessary”).
 
@@ -1135,7 +1141,7 @@ gwsw:Dt_HoogtePut  rdf:type       rdfs:Datatype ; # typering verplicht in OWL RL
 
 _Possessed aspects_
 
-Een intrinsiek aspect behoort specifiek (per definitie) bij een klasse. Afhankelijk van de soort kunnen kenmerken worden specialiseerd. Die intrinsieke kenmerken horen dan exclusief bij een soort. De CE beschrijft een restrictie op de property <span class="blue">gwsw:hasAspect</span> in combinatie met het gerelateerd kenmerktype.
+Een intrinsiek aspect behoort specifiek (per definitie) bij een klasse. Afhankelijk van de soort kunnen kenmerken worden gespecialiseerd. Die intrinsieke kenmerken horen dan exclusief bij een soort. De CE beschrijft een restrictie op de property <span class="blue">gwsw:hasAspect</span> in combinatie met het gerelateerd kenmerktype.
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:HoogtePut  rdfs:comment      “Intrinsiek kenmerk” ;
