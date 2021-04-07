@@ -254,7 +254,7 @@ Beschrijf in het datamodel de eisen voor de gegevenskwaliteit, met name die voor
 
 ## Samenstelling en proces
 
-<br/><img src="media/meronomie.png" style="width:40%;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="media/proces.png" style="width:35%;" />
+<br/><img src="media/meronomie.png" style="width:40%;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="media/proces.png" style="width:35%;" />
 
 Definieer de samenstelling, de topologie en het proces op basis van de relaties bij een concept, zie hst [Details relaties](#details-relaties)
 
