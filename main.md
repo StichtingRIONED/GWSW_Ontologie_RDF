@@ -1032,7 +1032,7 @@ ex:KleinObject1    gwsw:uitvoering  gwsw:Klein .
 In RDF worden aspect-attributen vaak gespecificeerd in de property (“property-central”). Bijvoorbeeld:
 
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-ex:Put1  gwsw:hasAspectPutHoogte  1000^^xsd:integer .
+ex:Put1  gwsw:hasAspectPutHoogte  "1000"^^xsd:integer .
 </pre></div>
 
 In het GWSW definiëren we zo'n eigenschap/kenmerk als apart concept (“class-central”):
@@ -1040,7 +1040,7 @@ In het GWSW definiëren we zo'n eigenschap/kenmerk als apart concept (“class-c
 <div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
 ex:Put1  gwsw:hasAspect      ex:Hgt1 .
 ex:Hgt1  rdf:type            gwsw:HoogtePut ;
-          gwsw:hasValue       1000^^xsd:integer .
+          gwsw:hasValue       "1000"^^xsd:integer .
 </pre></div>
 
 De notatie (in turtle) blijft overzichtelijk, het object Hgt1 kan anoniem blijven (zonder URI) en wordt bijvoorbeeld gecombineerd met de specificatie van putmateriaal (zie hoofdstuk “Collecties”):
@@ -1049,7 +1049,7 @@ De notatie (in turtle) blijft overzichtelijk, het object Hgt1 kan anoniem blijve
 ex:Put1  gwsw:hasAspect  
           [
             rdf:type            gwsw:HoogtePut ; 
-            gwsw:hasValue       1000^^xsd:integer
+            gwsw:hasValue       "1000"^^xsd:integer
           ] ,
           [
             rdf:type            gwsw:PutMateriaal ;
@@ -1082,7 +1082,7 @@ Voor de beschrijving van de gegevenskwaliteit - met name nauwkeurigheid, actuali
 ex:Put1  gwsw:hasAspect  
           [
             rdf:type                    gwsw:HoogtePut ;
-            gwsw:hasValue               1000^^xsd:integer ;
+            gwsw:hasValue               "1000"^^xsd:integer ;
             gwsw:hasAspect
             [
               rdf:type                  gwsw:Inwinning ;
