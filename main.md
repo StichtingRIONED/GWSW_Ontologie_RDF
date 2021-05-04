@@ -205,7 +205,7 @@ _Klassen (en collecties) die niet voor classificatie worden gebruikt / niet inst
 1. Hou ze beperkt, hou de soortenboom zo veel mogelijk concreet. Supertypes zijn vaak alleen verdichtingen, geen soort.
 2. Concepten zijn herkenbaar als abstract wanneer ze bijvoorbeeld niet in de deel-geheel relaties (bijvoorbeeld als deel van een rioleringsgebied) voorkomen.
 
-<div class="box"><strong>Oormerken met behulp van conformiteitsklassen</strong>
+<div class="box"><strong>Oormerken met behulp van conformiteitsklassen</strong><br/>
 Voor de eindgebruiker worden abstracte klassen gemarkeerd in de conformiteitsklasse. De conformiteitsklasse beschrijft onder andere de geldende klassen. <a href="#validity-context">Zie validity context</a>
 </div>
 
@@ -227,8 +227,13 @@ Dat vraagt extra aandacht bij de toepassing ervan. Zo kan een individu zowel van
 
 Beschrijf alleen relevante - toegepaste - aspecten bij een concept.
 
-1. Beschrijf met CE's op de kardinaliteit de aspecten van concepten, ook als ze niet definiërend zijn. Hanteer de kardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
-2. Kenmerken zijn altijd eigendom van een entiteit/geheel en kunnen niet bestaan zonder de eigenaar.
+1. Kenmerken zijn altijd eigendom van een entiteit/geheel en kunnen niet bestaan zonder de eigenaar.
+2. Beschrijf met CE's op de kardinaliteit de aspecten van concepten, ook als ze niet definiërend zijn. Hanteer de kardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
+
+<div class="box"><strong>Aspecten in CE's ondersteunen de data-afleiding</strong><br/>
+Als een individu kenmerk X heeft is het mogelijk van type Y
+</div>  
+
 3. Hou kenmerken en entiteiten gescheiden en blijf object-georiënteerd. Bijvoorbeeld Dekselmateriaal en Beheerdernaam kunnen geen kenmerken van een Put zijn, dat zijn aspecten van het concept Deksel en Beheerder. Die concepten zijn vervolgens gerelateerd aan de put.
 4. Voorkom het opnemen van optionele kenmerken bij een supertype (kenmerken die niet voor alle subtypes gelden), definieer de kenmerken dus niet op een te hoog niveau.
 5. Gebruik het multi-parent principe. Als alleen kunststof leidingen het gebruikte kenmerk "kleur" hebben, introduceer dan het concept "kunststof leiding" met het kenmerk "kleur". Een individu is dan zowel een "vrijverval rioolleiding" als een "kunststof leiding" en heeft daarmee dat extra kenmerk.
