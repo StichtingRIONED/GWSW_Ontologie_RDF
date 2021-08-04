@@ -405,12 +405,12 @@ De toepassing van **relaties** is in de GWSW-Ontologie aan regels gebonden door 
 <tr>
 <td>rdfs:label</td>
 <td>Annotatie</td>
-<td><em>Subject</em> <span class="blue">heeft als voorkeursnaam</span> <em>Literal</em> (ook vertalingen, dan meerdere rdfs:label properties) (annotatie)</td>
+<td><em>Subject</em> <span class="blue">heeft als voorkeursnaam</span> <em>Literal</em> (ook vertalingen, dan meerdere rdfs:label properties)</td>
 </tr>
 <tr>
 <td>skos:altLabel</td>
 <td>owl:AnnotationProperty</td>
-<td><em>Subject</em> <span class="blue">heeft als synoniem</span> <em>Literal</em> (ook vertalingen, dan meerdere rdfs:altLabel properties) (annotatie)</td>
+<td><em>Subject</em> <span class="blue">heeft als synoniem</span> <em>Literal</em> (ook vertalingen, dan meerdere rdfs:altLabel properties)</td>
 </tr>
 <tr>
 <td>skos:hiddenLabel</td>
@@ -420,43 +420,43 @@ De toepassing van **relaties** is in de GWSW-Ontologie aan regels gebonden door 
 <tr>
 <td>skos:notation</td>
 <td>owl:DatatypeProperty</td>
-<td><em>Subject</em> <span class="blue">heeft als code</span> <em>Literal</em> (annotatie) Eventueel per context
+<td><em>Subject</em> <span class="blue">heeft als code</span> <em>Literal</em> Eventueel per context
 </td></tr>
 <tr>
 <td>skos:definition</td>
 <td>owl:AnnotationProperty</td>
-<td><em>Subject</em> <span class="blue">heeft als definitie</span> <em>Literal</em> (definitie <em>zonder</em> bron-referentie) (annotatie) Een "interne" omschrijving, vastgesteld binnen het GWSW-project</td>
+<td><em>Subject</em> <span class="blue">heeft als definitie</span> <em>Literal</em> (definitie <em>zonder</em> bron-referentie) Een "interne" omschrijving, vastgesteld binnen het GWSW-project</td>
 </tr>
 <tr>
 <td><del>rdfs:isDefinedBy</del></td>
 <td></td>
-<td><em>Subject</em> <span class="blue">is gedefinieerd door</span> <em>Literal</em> (definitie <em>met</em> bron-referentie) (annotatie)
+<td><em>Subject</em> <span class="blue">is gedefinieerd door</span> <em>Literal</em> (definitie <em>met</em> bron-referentie)
 <br/>Vanaf GWSW 1.6 niet meer in gebruik, vervangen door rdfs:seeAlso</td>
 </tr>
 <tr>
 <td>rdfs:seeAlso</td>
 <td>Annotatie</td>
-<td><em>Subject</em> <span class="blue">heeft aanvullende infofmatie</span> op <em>Literal</em> (definitie, bron-referentie of bijlage) (annotatie)</td>
+<td><em>Subject</em> <span class="blue">heeft aanvullende informatie</span> op <em>Literal</em> (definitie, bron-referentie of bijlage)</td>
 </tr>
 <tr>
 <td>rdfs:comment</td>
 <td>Annotatie</td>
-<td><em>Subject</em> <span class="blue">heeft als commentaar</span> <em>Literal</em> (annotatie)</td>
+<td><em>Subject</em> <span class="blue">heeft als commentaar</span> <em>Literal</em></td>
 </tr>
 <tr>
 <td>gwsw:hasUnit</td>
 <td>owl:AnnotationProperty</td>
-<td><em>Subject</em> <span class="blue">heeft als eenheid</span> <em>Literal</em> (annotatie)</td>
+<td><em>Subject</em> <span class="blue">heeft als eenheid</span> <em>Literal</em></td>
 </tr>
 <tr>
 <td>gwsw:hasDateStart</td>
 <td>owl:AnnotationProperty</td>
-<td><em>Subject</em> <span class="blue">heeft als begindatum</span> <em>Literal</em> (annotatie)</td>
+<td><em>Subject</em> <span class="blue">heeft als begindatum</span> <em>Literal</em></td>
 </tr>
 <tr>
 <td>gwsw:hasDateChange</td>
 <td>owl:AnnotationProperty</td>
-<td><em>Subject</em> <span class="blue">heeft als wijzigingsdatum</span> <em>Literal</em> (annotatie)</td>
+<td><em>Subject</em> <span class="blue">heeft als wijzigingsdatum</span> <em>Literal</em></td>
 </tr>
 <tr>
 <td>gwsw:hasAuthorStart</td>
