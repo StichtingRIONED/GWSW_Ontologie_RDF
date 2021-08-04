@@ -10,7 +10,7 @@ Van: Stichting RIONED
 Versie historie
 <div style="font-size: 0.90em">
 
-20210804: Modelleerprincipes aangepast, property-tabellen compleet gemaakt
+20210804: Modelleerprincipes aangepast, property-tabellen compleet gemaakt  
 20210319: Modelleerprincipes verder uitgewerkt  
 20210319: Herziene hoofdstukindeling, samenvatting (oorspronkelijk hst 2) in modelleerprincipes (nieuwe hst 2) en details (blijft hst 3) ondergebracht  
 20201219-20210223: In kader Gellish-ontmanteling
