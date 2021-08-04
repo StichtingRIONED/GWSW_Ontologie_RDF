@@ -10,6 +10,7 @@ Van: Stichting RIONED
 Versie historie
 <div style="font-size: 0.90em">
 
+20210804: Modelleerprincipes aangepast, property-tabellen compleet gemaakt
 20210319: Modelleerprincipes verder uitgewerkt  
 20210319: Herziene hoofdstukindeling, samenvatting (oorspronkelijk hst 2) in modelleerprincipes (nieuwe hst 2) en details (blijft hst 3) ondergebracht  
 20201219-20210223: In kader Gellish-ontmanteling
@@ -153,9 +154,10 @@ Zie hst [Identificatie van concepten](#identificatie-van-concepten)
 
 1. Een concept wordt geïdentificeerd door de URI (prefix + naam)
 2. Volg de gebruikelijke termen binnen het vakgebied, bedenk geen nieuwe conceptnamen die misschien de lading beter dekken of neutraler zijn. Dat geldt ook - waar mogelijk - voor abstracte concepten.
-3. Geef alle gebruikelijke vakgebied-termen die gelden voor het te modelleren systeem of proces een plek, als apart concept of als synoniem van een concept. De zoekfunctie wordt daarmee volledig.
-4. Laat algemene termen die niet specifiek bij de discipline horen zoveel mogelijk buiten beschouwing. Modelleer bijvoorbeeld het concept "calamiteit" alleen als het als supertype nodig is.
-5. Verwijs voor algemene termen waar mogelijk naar andere databronnen (rdfs:seeAlso).
+3. Voorkom zoveel mogelijk het gebruik van handels- of merknamen in de conceptnamen.
+4. Geef alle gebruikelijke vakgebied-termen die gelden voor het te modelleren systeem of proces een plek, als apart concept of als synoniem van een concept. De zoekfunctie wordt daarmee volledig.
+5. Laat algemene termen die niet specifiek bij de discipline horen zoveel mogelijk buiten beschouwing. Modelleer bijvoorbeeld het concept "calamiteit" alleen als het als supertype nodig is.
+6. Verwijs voor algemene termen waar mogelijk naar andere databronnen (rdfs:seeAlso).
 
 ## Data-afleiding en validatie
 
@@ -383,6 +385,14 @@ De toepassing van **relaties** is in de GWSW-Ontologie aan regels gebonden door 
 <td><em>Subject</em> <span class="blue">is van het subtype</span> <em>Object</em> (Klasse-naam)</td>
 </tr>
 <tr>
+<tr>
+<td>rdfs:range</td>
+<td></td>
+<td><em>Property</em> <span class="blue">heeft als bereik</span> <em>Object</em> (Klasse-naam)
+<br/>Vanaf GWSW 1.6 in gebruik voor attribuut-properties bij onderscheidende kenmerken
+</td>
+</tr>
+<tr>
 <td>owl:inverseOf</td>
 <td></td>
 <td><em>Subject-property</em> <span class="blue">is de inverse van</span> <em>Object-property</em></td>
@@ -420,7 +430,8 @@ De toepassing van **relaties** is in de GWSW-Ontologie aan regels gebonden door 
 <tr>
 <td><del>rdfs:isDefinedBy</del></td>
 <td></td>
-<td><del><em>Subject</em> <span class="blue">is gedefinieerd door</span> <em>Literal</em> (definitie <em>met</em> bron-referentie) (annotatie)</del></td>
+<td><em>Subject</em> <span class="blue">is gedefinieerd door</span> <em>Literal</em> (definitie <em>met</em> bron-referentie) (annotatie)
+<br/>Vanaf GWSW 1.6 niet meer in gebruik, vervangen door rdfs:seeAlso</td>
 </tr>
 <tr>
 <td>rdfs:seeAlso</td>
@@ -605,7 +616,25 @@ Voor het uitdrukken van CE’s voorziet OWL 2 in een groot aantal (restrictie) p
 </tr>
 <tr>
 <td><del>owl:intersectionOf</del></td>
-<td><del>Uitdrukken van onderscheidende kenmerken</del></td>
+<td>Uitdrukken van onderscheidende kenmerken
+<br/>Vanaf GWSW 1.6 niet meer in gebruik, vervangen door attribuut-property voor onderscheidende kenmerken
+</td>
+</tr>
+<tr>
+<td>owl:oneOf</td>
+<td>Opsomming van collectie individuals</td>
+</tr>
+<tr>
+<td>owl:equivalentClass</td>
+<td>Subject is equivalent (wederzijdse subklasse) van object</td>
+</tr>
+<tr>
+<td>owl:onDatatype</td>
+<td>CE heeft betrekking op een datatype</td>
+</tr>
+<tr>
+<td>owl:withRestrictions</td>
+<td>Uitdrukken van beperkingen op datatype (bijvoorbeeld min/max waarde)</td>
 </tr>
 </tbody>
 </table>
@@ -631,35 +660,35 @@ In datasets conform het GWSW worden de volgende properties gebruikt:
 <td><em>Subject</em> <span class="blue">heeft als naam</span> <em>Literal</em></td>
 </tr>
 <tr>
-<td>hasAspect</td>
+<td>gwsw:hasAspect</td>
 <td><em>Subject</em> <span class="blue">heeft als kenmerk</span> <em>Object</em></td>
 </tr>
 <tr>
-<td>hasValue</td>
+<td>gwsw:hasValue</td>
 <td><em>Subject</em> <span class="blue">heeft als waarde</span> <em>Literal</em> (subject is kenmerk)</td>
 </tr>
 <tr>
-<td>hasReference</td>
+<td>gwsw:hasReference</td>
 <td><em>Subject</em> <span class="blue">heeft als referentie</span> <em>Object</em> (subject is kenmerk)</td>
 </tr>
 <tr>
-<td>hasInput</td><span class="blue">
+<td>gwsw:hasInput</td><span class="blue">
 <td><em>Subject</em> <span class="blue">heeft als invoer</span> <em>Object</em></td>
 </tr>
 <tr>
-<td>hasOutput</td>
+<td>gwsw:hasOutput</td>
 <td><em>Subject</em> <span class="blue">heeft als uitvoer</span> <em>Object</em></td>
 </tr>
 <tr>
-<td>hasPart</td>
+<td>gwsw:hasPart</td>
 <td><em>Subject</em> <span class="blue">heeft als deel</span> <em>Object</em></td>
 </tr>
 <tr>
-<td>hasConnection</td>
+<td>gwsw:hasConnection</td>
 <td><em>Subject</em> <span class="blue">heeft verbinding met</span> <em>Object</em></td>
 </tr>
 <tr>
-<td>hasRepresentation</td>
+<td>gwsw:hasRepresentation</td>
 <td><em>Subject</em> <span class="blue">heeft als representatie</span> <em>Object</em></td>
 </tr>
 </tbody>
@@ -680,33 +709,35 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 <tr>
 <td>rdfs:label</td>
 <td>Exact 1 per taalgemeenschap.
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, optioneel bij CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu, optioneel bij CE's</span></td>
 </tr>
 <tr>
 <td>skos:altLabel</td>
 <td>Onbeperkt (min=0)
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividu</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu</span></td>
 </tr>
 <tr>
-<td>skos:hiddenLabel</td>
+<td><del>skos:hiddenLabel</del></td>
 <td>Maximaal 1 (min=0) <span class="red">Vervalt op termijn (alleen in Gellish-omgeving)</span>
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividu</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu</span>
+<br/>Vanaf GWSW 1.6 niet meer in gebruik
+</td>
 </tr>
 <tr>
 <td>skos:notation</td>
 <td>Maximaal 1 per context (min=0)
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividu</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu</span></td>
 </tr>
 <tr>
 <td>skos:definition</td>
 <td>Onbeperkt (min=0)
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividu</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu</span></td>
 </tr>
 <tr>
 <td>rdfs:seeAlso</td>
 <td>Onbeperkt (min=0)
 <br/>Opbouw: [externe bron] Omschrijving of URI (webadres naar site of document)
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividu</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu</span></td>
 </tr>
 <tr>
 <td>rdfs:comment</td>
@@ -714,7 +745,7 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 <br/>Algemene opbouw: Commentaar-tekst
 <br/>Verwijzing naar figuur: [Bijlage nnn.jpg]
 <br/>- als "nnn" identiek is aan de URI-naam: [Bijlage *.jpg]
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, optioneel bij CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu, optioneel bij CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasUnit</td>
@@ -724,32 +755,32 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 <tr>
 <td>gwsw:hasDateStart</td>
 <td>Exact 1
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasDateChange</td>
 <td>Minimaal 0, invullen als de waarde van één van de attributen wijzigt of als het concept andere properties (attributen/relaties) krijgt. Bevat altijd de laatste datum.
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasAuthorStart</td>
 <td>Exact 1. Bijgehouden vanaf 2006
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasAuthorChange</td>
 <td>Minimaal 0
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasValidity</td>
 <td>Minimaal 0, maximaal 1
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
 </tr>
 <tr>
 <td>skos:scopeNote</td>
 <td>Minimaal 0
-<br/><span class="blue">Opnemen bij de klasse, collectie-idividu, CE's</span></td>
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
 </tr>
 </tbody>
 </table>
