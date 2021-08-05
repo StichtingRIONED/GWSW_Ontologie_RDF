@@ -923,6 +923,7 @@ Bij een concept kunnen meerdere codes afhankelijk van de context voorkomen. Bij 
 <tr><td>Dt_Notation_IL</td><td>Inspecteren leiding</td></tr>
 <tr><td>Dt_Notation_IP</td><td>Inspecteren put</td></tr>
 <tr><td>Dt_Notation_IR</td><td>Inspecteren en reinigen algemeen</td></tr>
+<tr><td>Dt_Notation_NC</td><td>NLCS-coderingen voor materiaal</td></tr>
 <tr><td>Dt_Notation_RK</td><td>Reinigen en inspecteren leiding</td></tr>
 <tr><td>Dt_Notation_RL</td><td>Reinigen leiding</td></tr>
 <tr><td>Dt_Notation_RP</td><td>Reinigen put</td></tr>
