@@ -15,6 +15,7 @@ Versie historie
 20210319: Herziene hoofdstukindeling, samenvatting (oorspronkelijk hst 2) in modelleerprincipes (nieuwe hst 2) en details (blijft hst 3) ondergebracht  
 20201219-20210223: In kader Gellish-ontmanteling
 
+
 * verwijzing naar bijlage in opmerking-annotatie vervangen door rdfs:seeAlso-verwijzing naar document-URL
 * URI's voor aspect properties vragen extra aandacht voor hoofdlettergevoeligheid. Nu bestaan bijvoorbeeld gwsw:functie en gwsw:Functie naast elkaar. (hst 3.1.1)
 * op basis NTA8035: consequent de term properties voor predicates hanteren, onderverdeeld in attributen (annotaties en aspecten) en relaties
@@ -135,7 +136,7 @@ Bij het ontwerp spelen deze structuren de hoofdrol, ze vormen het ontwerpkader. 
 
 <div class="box"><strong>Voorbeelden:</strong>
 <br/>Afgeleide gegevens komen niet voor in de definitie van fysieke objecten, bijvoorbeeld het kenmerk "aantal pompen". Zo'n gegeven wordt (in presentaties) afgeleid uit het aantal voorkomens van de relatie <span class="blue">gwsw:hasPart</span> tussen Gemaal en Pomp. De objecten Gemaal en Pomp worden expliciet beschreven.  
-<br/>Afgeleide gegevens zoals rekenresultaten en data-analyses komen in het GWSW wel voor in de vorm van gemodelleerde rapportages, bijvoorbeeld in GWSW Kentallen.  
+<br/>Afgeleide gegevens zoals rekenresultaten en data-analyses komen in het GWSW wel voor in de vorm van gemodelleerde rapportages, bijvoorbeeld in GWSW Kentallen. 
 <br/>Eigenschappen van de bovengrond en ondergrond (maaiveldhoogte, grondsoort) komen niet voor als aspecten van de fysieke objecten die zich daarin bevinden. Een leiding heeft niet als kenmerk "Grondsoort", wel wordt er een relatie <span class="blue">gwsw:isPartOf</span> met de ondergrond - en dus met bijbehorende kenmerken - gedefinieerd.</div>
 
 **"As is", een momentopname**  
@@ -227,10 +228,10 @@ Dat vraagt extra aandacht bij de toepassing ervan. Zo kan een individu zowel van
 
 ## Aspecten
 
-Beschrijf alleen relevante - toegepaste - aspecten bij een concept.
-
+**Beschrijf alleen relevante - toegepaste - aspecten bij een concept.**
 1. Kenmerken zijn altijd eigendom van een entiteit/geheel en kunnen niet bestaan zonder de eigenaar.
-2. Beschrijf met CE's op de kardinaliteit de aspecten van concepten, ook als ze niet definiërend zijn. Hanteer de kardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
+2. Beschrijf met CE's de kardinaliteit op <span class="blue">gwsw:hasAspect</span> en op de inverse property <span class="blue">gwsw:isAspectOf</span>, ook als ze niet definiërend zijn. Hanteer de kardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
+1. 
 
 <div class="box"><strong>Aspecten in CE's ondersteunen de data-afleiding</strong><br/>
 Als een individu kenmerk X heeft is het mogelijk van type Y
@@ -257,9 +258,9 @@ Beschrijf in het datamodel de eisen voor de gegevenskwaliteit, met name die voor
 1. Specificeer altijd de waardetypes bij de aspectwaarden
 2. Specificeer waar nodig ook het waardebereik (in combinatie met het waardetype)
 3. Start de URI van een gemodelleerd datatype altijd met "Dt_"
-4. Modelleer waar nodig het metagegeven <span class="blue">Inwinning</span> voor beschrijving van de actualiteit en betrouwbaarheid.
+4. Modelleer waar nodig het metagegeven <span class="blue">gwsw:Inwinning</span> voor beschrijving van de actualiteit en betrouwbaarheid.
 
-## Samenstelling en proces
+## Relaties - Samenstelling en proces
 
 <br/><img src="media/meronomie.png" style="width:40%;" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="media/proces.png" style="width:35%;" />
 
@@ -285,7 +286,7 @@ Op basis van de CoF worden dus de GWSW deelmodellen samengesteld. Zo'n deelmodel
 * het samenstellen van conformiteitsklassen, data-verificatie voor bepaalde processen
 * het koppelen van alleen de relevante modelonderdelen aan datasets, afgestemd op de praktijk van uitwisselen
 
-Hou rekening met de onderverdeling van de context-specifieke deelmodellen. Combineren van deelmodellen met behoud van overzicht is in RDF-editors mogelijk. Handhaaf een logisch onderverdeling door modelaanpassingen in het juiste bronbestand (geïmporteerde turtle-bestand) te doen en de annotatie skos:scopeNote te vullen.
+Hou rekening met de onderverdeling van de context-specifieke deelmodellen. Combineren van deelmodellen met behoud van overzicht is in RDF-editors mogelijk. Handhaaf een logisch onderverdeling door modelaanpassingen in het juiste bronbestand (geïmporteerde turtle-bestand) te doen en consequent de annotatie skos:scopeNote te vullen.
 
 # Details van de GWSW semantiek
 
@@ -833,7 +834,7 @@ Daarnaast zijn de volgende annotaties onder voorwaarden altijd opgenomen:
 
 ### Identificatie van concepten
 
-Naamgeving, URI-strategie.
+Naamgeving, URI-strategie
 
 Het hanteren van begrijpbare namen in de URI voor concepten is de gangbare RDF praktijk. We gaan uit van camelCase of CamelCase notatie van de namen voor respectievelijk de properties (starten met lowercase) als de klassen (starten met uppercase). De syntax van de namen is natuurlijk conform de voorwaarden voor een URI, de prefix + naam is de URI van het concept.
 In het oorspronkelijke Gellish-model is een nummer-identificatie (naast het unieke label) belangrijk. Dit unieke nummer wordt met de property skos:hiddenLabel benoemd, maar zal op termijn zijn waarde verliezen.
@@ -937,17 +938,16 @@ In het GWSW Datamodel worden context-specifieke coderingen meestal gecombineerd 
 
 ### Details deelmodellen
 
-Deelmodellen worden gemarkeerd met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen. De deelmodel-markeringen zijn van het type <span class="blue">gwsw:CollectionOfFacts</span>, ze zijn als volgt in het GWSW datamodel opgenomen:
-
+Deelmodellen worden gemarkeerd met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen. De deelmodel-markeringen zijn van het type <span class="blue">gwsw:CollectionOfFacts</span>, ze zijn als volgt in het GWSW datamodel opgen
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:_TOP
   rdf:type                      gwsw:CollectionOfFacts ; # wordt hiermee individu
-  rdfs:label                    "Collection of facts TOP"@nl ;s
-  skos:definition               "Bevat algemene supertypes"@nl 
+  rdfs:label                    "Collection of facts TOP"@nl ;
+  skos:definition               "Bevat algemene supertypes"@nl ;
 .
 gwsw:DeelmodelKentallen
-  rdf:type                      owl:Class ;
-  rdfs:label                    "Deelmodel GWSW Kentallen"@nl ; 
+  rdf:type                  
+  rdfs:label                    "Deelmodel GWSW Kentallen"@nl ;
   skos:scopeNote                gwsw:_TOP ;
   rdfs:subClassOf               gwsw:VerzamelingSoorten ;
   rdfs:subClassOf
