@@ -940,12 +940,13 @@ In het GWSW Datamodel worden context-specifieke coderingen meestal gecombineerd 
 
 ### Details deelmodellen
 
-Deelmodellen worden gemarkeerd met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen. De deelmodel-markeringen zijn van het type <span class="blue">gwsw:CollectionOfFacts</span>, ze zijn als volgt in het GWSW datamodel opgen
+Deelmodellen worden gemarkeerd met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen. De deelmodel-markeringen zijn van het type <span class="blue">gwsw:CollectionOfFacts</span>, ze zijn als volgt in het GWSW datamodel opgenomen:
+
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:clsTOP
   rdf:type                      owl:Class ;  
-  rdfs:subClassOf               gwsw:ExclusieveCollectie ;
   rdfs:label                    "Collection of facts TOP"@nl ;
+  rdfs:subClassOf               gwsw:ExclusieveCollectie ;
 .
 gwsw:cofTOP
   rdf:type                      gwsw:clsTOP ; # wordt hiermee individu
