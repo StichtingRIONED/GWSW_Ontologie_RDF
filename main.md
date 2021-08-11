@@ -229,9 +229,9 @@ Dat vraagt extra aandacht bij de toepassing ervan. Zo kan een individu zowel van
 ## Aspecten
 
 **Beschrijf alleen relevante - toegepaste - aspecten bij een concept.**
-1. Kenmerken zijn altijd eigendom van een entiteit/geheel en kunnen niet bestaan zonder de eigenaar.
+
+1. Kenmerken zijn altijd eigendom van een entiteit/geheel en kunnen niet bestaan zonder de eigenaar
 2. Beschrijf met CE's de kardinaliteit op <span class="blue">gwsw:hasAspect</span> en op de inverse property <span class="blue">gwsw:isAspectOf</span>, ook als ze niet definiërend zijn. Hanteer de kardinaliteit "minimum=0" en "maximum=1" voor globale uitdrukkingen.
-1. 
 
 <div class="box"><strong>Aspecten in CE's ondersteunen de data-afleiding</strong><br/>
 Als een individu kenmerk X heeft is het mogelijk van type Y
@@ -276,6 +276,8 @@ Definieer de samenstelling, de topologie en het proces op basis van de relaties 
 2. Definieer de samenstelling - hoewel verleidelijk - dus niet op een te hoog niveau
 
 ## Deelmodellen
+
+Zie hst [Details deelmodellen](#details-deelmodellen)  
 
 Vanaf GWSW versie 1.6 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen.
 
@@ -465,14 +467,14 @@ De toepassing van **relaties** is in de GWSW-Ontologie aan regels gebonden door 
 <td><em>Subject</em> <span class="blue">heeft als begin-auteur</span> <em>Literal</em> (naam persoon die concept heeft gemaakt)</td>
 </tr>
 <tr>
-<td>gwsw:hasAuthorChange</td>
+ho<td>gwsw:hasAuthorChange</td>
 <td>owl:AnnotationProperty</td>
 <td><em>Subject</em> <span class="blue">heeft als wijziging-auteur</span> <em>Literal</em> (naam persoon die concept heeft gewijzigd)</td>
 </tr>
 <tr>
 <td>skos:scopeNote</td>
 <td>owl:AnnotationProperty</td>
-<td><em>Subject</em> <span class="blue">heeft als feitencollectie</span> <em>Individu</em> (een type CollectionOfFacts)</td>
+<td><em>Subject</em> <span class="blue">hoort bij feitencollectie</span> <em>Individu</em> (een type CollectionOfFacts)</td>
 </tr>
 <tr>
 <td>gwsw:hasValidity</td>
@@ -709,8 +711,23 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 <tbody>
 <tr>
 <td>rdfs:label</td>
-<td>Exact 1 per taalgemeenschap.
+<td><strong>Exact 1 per taalgemeenschap
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu, optioneel bij CE's</span></td>
+</tr>
+<tr>
+<td>gwsw:hasDateStart</td>
+<td><strong>Exact 1
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
+</tr>
+<tr>
+<td>gwsw:hasAuthorStart</td>
+<td><strong>Exact 1. Bijgehouden vanaf 2006
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
+</tr>
+<tr>
+<td>skos:scopeNote</td>
+<td><strong>Minimaal 1
+<br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
 </tr>
 <tr>
 <td>skos:altLabel</td>
@@ -754,18 +771,8 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 <br/><span class="blue">Opnemen bij de klasse</span></td>
 </tr>
 <tr>
-<td>gwsw:hasDateStart</td>
-<td>Exact 1
-<br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
-</tr>
-<tr>
 <td>gwsw:hasDateChange</td>
 <td>Minimaal 0, invullen als de waarde van één van de attributen wijzigt of als het concept andere properties (attributen/relaties) krijgt. Bevat altijd de laatste datum.
-<br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
-</tr>
-<tr>
-<td>gwsw:hasAuthorStart</td>
-<td>Exact 1. Bijgehouden vanaf 2006
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
 </tr>
 <tr>
@@ -776,11 +783,6 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 <tr>
 <td>gwsw:hasValidity</td>
 <td>Minimaal 0, maximaal 1
-<br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
-</tr>
-<tr>
-<td>skos:scopeNote</td>
-<td>Minimaal 0
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
 </tr>
 </tbody>
@@ -797,7 +799,7 @@ gwsw:Put    rdf:type                    owl:Class ;
                                         "https://imgeo.geostandaarden.nl/def/imgeo-object/put" ;
             rdfs:comment                "Toelichting bij modellering put" ;
             gwsw:hasValidity            "1f 3f 4f " ; # codering voor samenstellen conformiteitsklasse
-            skos:scopeNote              gwsw:_TOP ;
+            skos:scopeNote              gwsw:cofTOP ;
             gwsw:hasDateStart           "2013-07-18"^^xsd:date .
 </pre></div>
 
@@ -940,22 +942,20 @@ In het GWSW Datamodel worden context-specifieke coderingen meestal gecombineerd 
 
 Deelmodellen worden gemarkeerd met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen. De deelmodel-markeringen zijn van het type <span class="blue">gwsw:CollectionOfFacts</span>, ze zijn als volgt in het GWSW datamodel opgen
 <div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:_TOP
-  rdf:type                      gwsw:CollectionOfFacts ; # wordt hiermee individu
+gwsw:clsTOP
+  rdf:type                      owl:Class ;  
+  rdfs:subClassOf               gwsw:ExclusieveCollectie ;
   rdfs:label                    "Collection of facts TOP"@nl ;
+.
+gwsw:cofTOP
+  rdf:type                      gwsw:clsTOP ; # wordt hiermee individu
   skos:definition               "Bevat algemene supertypes"@nl ;
 .
 gwsw:DeelmodelKentallen
-  rdf:type                  
-  rdfs:label                    "Deelmodel GWSW Kentallen"@nl ;
-  skos:scopeNote                gwsw:_TOP ;
-  rdfs:subClassOf               gwsw:VerzamelingSoorten ;
-  rdfs:subClassOf
-  [
   rdf:type                      owl:Class ;
-  owl:oneOf                     (gwsw:_TOP gwsw:_DMO gwsw:_HYD )
-  ] ;
-  skos:definition               "Deelmodel voor afvoerscenario's en kentallen. Bevat het rioleringsnetwerk, het afvoernetwerk (verbindingen tussen stelsels) en gemeentelijke activiteiten voor optimaliseren afvalwaterketen"@nl
+  rdfs:label                    "Deelmodel Kentallen"@nl ;
+  rdfs:subClassOf               gwsw:GWSWDeelmodel ;
+  skos:definition               "Deelmodel voor afvoerscenario's en kentallen. Bevat het rioleringsnetwerk, het afvoernetwerk (verbindingen tussen stelsels) en gemeentelijke activiteiten voor optimaliseren afvalwaterketen"@nl ;
 .
 </pre></div>
 
