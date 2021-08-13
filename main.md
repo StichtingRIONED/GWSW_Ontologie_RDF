@@ -721,12 +721,12 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 </tr>
 <tr>
 <td>gwsw:hasDateStart</td>
-<td><strong>Exact 1
+<td><strong>Exact 1</strong> (bijgehouden vanaf 2006)
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasAuthorStart</td>
-<td><strong>Exact 1. Bijgehouden vanaf 2006
+<td><strong>Exact 1</strong> (bijgehouden vanaf 2006)
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
 </tr>
 <tr>
