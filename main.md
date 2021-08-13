@@ -736,35 +736,35 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 </tr>
 <tr>
 <td>skos:altLabel</td>
-<td>Onbeperkt (min=0)
+<td>Onbeperkt (minimum=0)
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu</span></td>
 </tr>
 <tr>
 <td><del>skos:hiddenLabel</del></td>
-<td>Maximaal 1 (min=0) <span class="red">Vervalt op termijn (alleen in Gellish-omgeving)</span>
+<td>Maximaal 1 (minimum=0) <span class="red">Vervalt op termijn (alleen in Gellish-omgeving)</span>
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu</span>
 <br/>Vanaf GWSW 1.6 niet meer in gebruik
 </td>
 </tr>
 <tr>
 <td>skos:notation</td>
-<td>Maximaal 1 per context (min=0)
+<td>Maximaal 1 per context (minimum=0)
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu</span></td>
 </tr>
 <tr>
 <td>skos:definition</td>
-<td>Onbeperkt (min=0)
+<td>Onbeperkt (minimum=0)
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu</span></td>
 </tr>
 <tr>
 <td>rdfs:seeAlso</td>
-<td>Onbeperkt (min=0)
+<td>Onbeperkt (minimum=0)
 <br/>Opbouw: [externe bron] Omschrijving of URI (webadres naar site of document)
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu</span></td>
 </tr>
 <tr>
 <td>rdfs:comment</td>
-<td>Onbeperkt (min=0)
+<td>Onbeperkt (minimum=0)
 <br/>Algemene opbouw: Commentaar-tekst
 <br/>Verwijzing naar figuur: [Bijlage nnn.jpg]
 <br/>- als "nnn" identiek is aan de URI-naam: [Bijlage *.jpg]
@@ -772,7 +772,7 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 </tr>
 <tr>
 <td>gwsw:hasUnit</td>
-<td>Kies uit de tabel hierna
+<td>Maximaal 1, kies uit de tabel hierna
 <br/><span class="blue">Opnemen bij de klasse</span></td>
 </tr>
 <tr>
@@ -787,7 +787,7 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 </tr>
 <tr>
 <td>gwsw:hasValidity</td>
-<td>Minimaal 0, maximaal 1
+<td>Maximaal 1
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
 </tr>
 </tbody>
