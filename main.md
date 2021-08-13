@@ -777,12 +777,12 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 </tr>
 <tr>
 <td>gwsw:hasDateChange</td>
-<td>Minimaal 0, invullen als de waarde van één van de attributen wijzigt of als het concept andere properties (attributen/relaties) krijgt. Bevat altijd de laatste datum.
+<td>Onbeperkt (minimum=0), invullen als de waarde van één van de attributen wijzigt of als het concept andere properties (attributen/relaties) krijgt. Bevat altijd de laatste datum.
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
 </tr>
 <tr>
 <td>gwsw:hasAuthorChange</td>
-<td>Minimaal 0
+<td>Onbeperkt (minimum=0)
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu, CE's</span></td>
 </tr>
 <tr>
