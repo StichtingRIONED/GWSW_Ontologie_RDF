@@ -125,8 +125,8 @@ Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkeli
 
 ## Reikwijdte model
 
-Het GWSW Datamodel volgt de ontwikkelingen in het vakgebied. Het bevat alleen concepten die actief worden toegepast (in uitwisseling en applicaties) of die in ontwerpen voor toepassing (bijvoorbeeld nieuwe uitwisselvormen) zijn opgenomen. Dat geldt ook (en vooral) voor kenmerken van objecten.
-Terminologie waarbij het uitsluitend gaat om vastleggen van definities worden met terughoudendheid opgenomen.
+Het GWSW Datamodel volgt de ontwikkelingen in het vakgebied. Het bevat alleen concepten die actief worden toegepast (in uitwisseling en applicaties) of die in ontwerpen voor toepassing (bijvoorbeeld nieuwe uitwisselvormen) zijn opgenomen. Dat geldt ook (en vooral) voor kenmerken van objecten.  
+Terminologie waarbij het uitsluitend gaat om vastleggen van definities wordt met terughoudendheid opgenomen.
 
 **"As is", een momentopname**  
 Het datamodel beschrijft de "as is" situatie, het bevat een momentopname van systemen en processen binnen de discipline stedelijk water. Het beschrijft dus geen historische gegevens of de levenscyclus van objecten zoals binnen de context van system engineering.
@@ -171,8 +171,8 @@ Definieer klassen zo uitgebreid mogelijk op basis van hun eigenschappen. Daarmee
 
 * Controle op hasReference-waarden binnen domein van collecties / keuzelijsten (UNA)
 * Controle op correcte typering binnen samenstellingen via <span class="blue">gwsw:hasPart</span>.
-    - Ruimte <span class="blue">gwsw:hasPart</span> “Object”. Object: alleen van de klasse Ruimte of FysiekObject
-    - FysiekObject <span class="blue">gwsw:hasPart</span> “Object”. Object: alleen van de klasse Ruimte of FysiekObject
+  - Ruimte <span class="blue">gwsw:hasPart</span> “Object”. Object: alleen van de klasse Ruimte of FysiekObject
+  - FysiekObject <span class="blue">gwsw:hasPart</span> “Object”. Object: alleen van de klasse Ruimte of FysiekObject
 * Inferencing: Individu-klasse wordt afgeleid uit intrinsiek aspect.
     - <span class="blue">gwsw:hasAspect</span> BreedteLeiding =&gt; Individu = Leiding
 * Inferencing: Individu-klasse wordt afgeleid uit onderscheidend kenmerk.
@@ -180,8 +180,8 @@ Definieer klassen zo uitgebreid mogelijk op basis van hun eigenschappen. Daarmee
 * Controle op correct gebruik datatype bij <span class="blue">gwsw:hasValue</span>: decimal, string, integer, double, date, time, year.
 * Controle op numerieke waarden binnen minimum maximum grenzen
 * Kardinaliteit, aantal voorkomens per property boven het voor het type gedefinieerde maximum wordt gemeld (UNA)
-    - ook “inverse”-kardinaliteit wordt in de reasoning meegenomen
-    - minimum kardinaliteit en shall-relatie wel gemodelleerd, controle op strijdigheid met typering niet mogelijk (OWA)
+  - ook “inverse”-kardinaliteit wordt in de reasoning meegenomen
+  - minimum kardinaliteit en shall-relatie wel gemodelleerd, controle op strijdigheid met typering niet mogelijk (OWA)
   
 ## Soortenboom
 
