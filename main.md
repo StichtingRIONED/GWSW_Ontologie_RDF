@@ -284,7 +284,7 @@ Definieer de samenstelling, de topologie en het proces op basis van de relaties 
 
 Zie hst [Details deelmodellen](#details-deelmodellen)  
 
-Vanaf GWSW versie 1.6 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen.
+Vanaf GWSW versie 1.6 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de annotatie-waarde (de URI van een CollectionOfFacts-subklasse) verwijst naar een deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen.
 
 Op basis van de CoF worden dus de GWSW deelmodellen samengesteld. Zo'n deelmodel is een filter op het datamodel waarbij de klassen, de CE's en de individuen worden geselecteerd op de gekoppelde CoF. De deelmodellen hebben meerdere functies:
 
@@ -479,7 +479,7 @@ ho<td>gwsw:hasAuthorChange</td>
 <tr>
 <td>skos:scopeNote</td>
 <td>owl:AnnotationProperty</td>
-<td><em>Subject</em> <span class="blue">hoort bij feitencollectie</span> <em>Individu</em> (een type CollectionOfFacts)</td>
+<td><em>Subject</em> <span class="blue">hoort bij feitencollectie</span> <em>Klasse-naam</em> (een subklasse van CollectionOfFacts)</td>
 </tr>
 <tr>
 <td>gwsw:hasValidity</td>
@@ -970,6 +970,10 @@ De annotatie skos:scopeNote kan meervoudig voorkomen (als het concept in meerder
 * De typering (relatie rdf:type) van alle GWSW-klassen. De (combinatie van) skos:scopeNote bij de typering geldt ook voor alle annotaties bij de klasse (horen binnen dezelfde scope).
 * De CE's met restrictie op concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken).
 * De typering van individuen binnen een collectie (de verzameling kan variëren vanwege bijvoorbeeld een externe normering)
+
+<div class="box"><strong>Individuen, een speciaal geval</strong><br/>
+Individuen in het GWSW Datamodel kunnen veelvoudig geclassificeerd zijn. Bijvoorbeeld: het individu gwsw:Rond is geclassificeerd als gwsw:VormPutColl, gwsw:VormLeidingColl, gwsw:VormStroomprofiel. Om te kunnen bepalen of de classificatie van een individu binnen een deelmodel valt moet zowel de skos:scopeNote van het individu als de skos:scopeNote van de klasse binnen het deelmodel vallen.   
+</div>
 
 Voor de volgende concepten is de scope per definitie identiek aan de scope van klasse-typering. De annotatie skos:scopeNote wordt daarom **niet** opgenomen bij:
 
