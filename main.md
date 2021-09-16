@@ -128,6 +128,15 @@ Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkeli
 Het GWSW Datamodel volgt de ontwikkelingen in het vakgebied. Het bevat alleen concepten die actief worden toegepast (in uitwisseling en applicaties) of die in ontwerpen voor toepassing (bijvoorbeeld nieuwe uitwisselvormen) zijn opgenomen. Dat geldt ook (en vooral) voor kenmerken van objecten.  
 Terminologie waarbij het uitsluitend gaat om vastleggen van definities wordt met terughoudendheid opgenomen.
 
+Bij het ontwerp van het GWSW Datamodel spelen altijd de volgende **invalshoeken** mee:
+* Wordt het concept algemeen gebruikt in - native - databases, wordt het (straks) uitgewisseld via GWSW Datasets
+* Welke gevolgen heeft de aanpassing voor de toepassingen:
+  * Externe applicaties die GWSW Datasets gebruiken
+  * De geografische presentaties (en onderliggende queries)
+  * De uitwisselformaten HydX, RibX
+  * De kwaliteitsmetingen van datasets: dataverificatie met Nulmeting, SHACL
+* Zijn de aanpassingen relevant voor het GWSW als naslagwerk
+
 **"As is", een momentopname**  
 Het datamodel beschrijft de "as is" situatie, het bevat een momentopname van systemen en processen binnen de discipline stedelijk water. Het beschrijft dus geen historische gegevens of de levenscyclus van objecten zoals binnen de context van system engineering.
 
@@ -151,6 +160,7 @@ Bij het ontwerp spelen deze structuren de hoofdrol, ze vormen het ontwerpkader. 
 
 1. Elk GWSW-concept is van het generieke type owl:Class.
 2. Een concept en elke CE wordt altijd voorzien van de annotaties zoals opgenomen in hst [Annotaties bij concepten](#annotaties-bij-concepten)
+3. Voeg zoveel mogelijk extra informatie toe zoals afbeeldingen (verwijs via <span class="blue">rdfs:seeAlso</span>)
 
 ## Naamgeving
 
@@ -163,9 +173,9 @@ Zie hst [Identificatie van concepten](#identificatie-van-concepten)
 3. Voorkom zoveel mogelijk het gebruik van handels- of merknamen in de conceptnamen.
 4. Geef alle gebruikelijke vakgebied-termen die gelden voor het te modelleren systeem of proces een plek, als apart concept of als synoniem van een concept. De zoekfunctie wordt daarmee volledig.
 5. Laat algemene termen die niet specifiek bij de discipline horen zoveel mogelijk buiten beschouwing. Modelleer bijvoorbeeld het concept "calamiteit" alleen als het als supertype nodig is.
-6. Verwijs voor algemene termen waar mogelijk naar andere databronnen (rdfs:seeAlso).
+6. Verwijs voor algemene termen waar mogelijk naar andere databronnen (<span class="blue">rdfs:seeAlso</span>).
 
-## Data-afleiding en validatie
+## Data-afleiding en -verificatie
 
 Definieer klassen zo uitgebreid mogelijk op basis van hun eigenschappen. Daarmee worden datasets op basis van het datamodel ruimer interpreteerbaar en beter valideerbaar. Hier volgt een opsomming van de mogelijke afleidingen (inferences) en uit de CE's afgeleide validaties. In enkele gevallen is reasoning op basis van het UNA (Unique Name Assumption) principe nodig. De controle op kardinaliteit is beperkt vanwege het OWA (Open World Assumption) principe in RDF.
 
@@ -801,7 +811,8 @@ gwsw:Put    rdf:type                    owl:Class ;
             rdfs:subClassOf             gwsw:FysiekObject ;
             skos:definition             "Verticale waterdichte ….”@nl ;
             rdfs:seeAlso                "[IMGeo:1.0/2007] Gegraven of … "@nl ,
-                                        "https://imgeo.geostandaarden.nl/def/imgeo-object/put" ;
+                                        "https://imgeo.geostandaarden.nl/def/imgeo-object/put" ,
+                                        "https://data.gwsw.nl/img/put.png" ; # verwijs naar afbeelding
             rdfs:comment                "Toelichting bij modellering put" ;
             gwsw:hasValidity            "1f 3f 4f " ; # codering voor samenstellen conformiteitsklasse
             skos:scopeNote              gwsw:cofTOP ;
