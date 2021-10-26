@@ -3,7 +3,7 @@
 <!-- gebruik voor lokaal editen -->
 <script src="./builds/respec-rioned.js"></script>
 
-**Een beschrijving van het protocol GWSW-OroX versie 1.6**
+**Een beschrijving van het protocol GWSW-OroX versie 1.5.2**
 
 Van: Stichting RIONED
 
@@ -57,7 +57,7 @@ Michel Böhms
 Matthé van Koetsveld  
 Linda van den Brink  
 
-Tot en met GWSW versie 1.5.1 (medio 2020) heeft het GWSW-projectteam in de “backend” situatie het Gellish formaat toegepast voor ontologie-ontwerp en -beheer. Via een geautomatiseerd proces werd echter gepubliceerd conform de RDF semantiek. Vanaf versie 1.6 wordt het GWSW volledig met RDF tools ontwikkeld en onderhouden.
+Tot en met GWSW versie 1.5.1 (medio 2020) heeft het GWSW-projectteam in de “backend” situatie het Gellish formaat toegepast voor ontologie-ontwerp en -beheer. Via een geautomatiseerd proces werd echter gepubliceerd conform de RDF semantiek. Vanaf versie 1.5.2 wordt het GWSW volledig met RDF tools ontwikkeld en onderhouden.
 
 ## Leeswijzer
 
@@ -89,7 +89,7 @@ Een dataset bevat de beschrijving van een fysiek stedelijk water systeem, de “
 
 ## Inrichting GWSW-OroX protocol
 
-De GWSW ontologie wordt beschreven volgens het GWSW OroX protocol. Dit protocol onderscheidt zich door diepgang in semantiek en reikwijdte in de toepassing (van systeem tot proces). Het protocol beschrijft zowel het GWSW model (de "TBox", zie data.gwsw.nl) als de daarop gebaseerde datasets (de "ABox", zie apps.gwsw.nl).
+De GWSW ontologie wordt beschreven volgens het GWSW OroX protocol. Dit protocol onderscheidt zich door diepgang in semantiek en reikwijdte in de toepassing (van systeem tot proces). Het protocol beschrijft zowel het GWSW model (de "TBox", zie [data.gwsw.nl](https://data.gwsw.nl)) als de daarop gebaseerde datasets (de "ABox", zie [apps.gwsw.nl](https://apps.gwsw.nl)).
 
 De datastructuur is object-georiënteerd waarbij relaties tussen objecten in een aantal structuren zijn ondergebracht:
 
@@ -294,7 +294,7 @@ Definieer de samenstelling, de topologie en het proces op basis van de relaties 
 
 Zie hst [Details deelmodellen](#details-deelmodellen)  
 
-Vanaf GWSW versie 1.6 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de annotatie-waarde (de URI van een CollectionOfFacts-subklasse) verwijst naar een deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen.
+Vanaf GWSW versie 1.5.2 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de annotatie-waarde (de URI van een CollectionOfFacts-subklasse) verwijst naar een deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen.
 
 Op basis van de CoF worden dus de GWSW deelmodellen samengesteld. Zo'n deelmodel is een filter op het datamodel waarbij de klassen, de CE's en de individuen worden geselecteerd op de gekoppelde CoF. De deelmodellen hebben meerdere functies:
 
@@ -407,7 +407,7 @@ De toepassing van **relaties** is in de GWSW-Ontologie aan regels gebonden door 
 <td>rdfs:range</td>
 <td></td>
 <td><em>Property</em> <span class="blue">heeft als bereik</span> <em>Object</em> (Klasse-naam)
-<br/>Vanaf GWSW 1.6 in gebruik voor attribuut-properties bij onderscheidende kenmerken
+<br/>Vanaf GWSW 1.5.2 in gebruik voor attribuut-properties bij onderscheidende kenmerken
 </td>
 </tr>
 <tr>
@@ -449,7 +449,7 @@ De toepassing van **relaties** is in de GWSW-Ontologie aan regels gebonden door 
 <td><del>rdfs:isDefinedBy</del></td>
 <td></td>
 <td><em>Subject</em> <span class="blue">is gedefinieerd door</span> <em>Literal</em> (definitie <em>met</em> bron-referentie)
-<br/>Vanaf GWSW 1.6 niet meer in gebruik, vervangen door rdfs:seeAlso</td>
+<br/>Vanaf GWSW 1.5.2 niet meer in gebruik, vervangen door rdfs:seeAlso</td>
 </tr>
 <tr>
 <td>rdfs:seeAlso</td>
@@ -635,7 +635,7 @@ Voor het uitdrukken van CE’s voorziet OWL 2 in een groot aantal (restrictie) p
 <tr>
 <td><del>owl:intersectionOf</del></td>
 <td>Uitdrukken van onderscheidende kenmerken
-<br/>Vanaf GWSW 1.6 niet meer in gebruik, vervangen door attribuut-property voor onderscheidende kenmerken
+<br/>Vanaf GWSW 1.5.2 niet meer in gebruik, vervangen door attribuut-property voor onderscheidende kenmerken
 </td>
 </tr>
 <tr>
@@ -753,7 +753,7 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [o
 <td><del>skos:hiddenLabel</del></td>
 <td>Maximaal 1 (minimum=0) <span class="red">Vervalt op termijn (alleen in Gellish-omgeving)</span>
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu</span>
-<br/>Vanaf GWSW 1.6 niet meer in gebruik
+<br/>Vanaf GWSW 1.5.2 niet meer in gebruik
 </td>
 </tr>
 <tr>
