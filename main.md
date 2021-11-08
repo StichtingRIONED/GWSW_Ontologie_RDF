@@ -831,9 +831,9 @@ Een GWSW concept van het type owl:Class heeft altijd de volgende annotaties:
 
 Daarnaast zijn de volgende annotaties onder voorwaarden opgenomen:
 
-* rdfs:hasDateChange (indien andere annotaties zoals skos:definition gewijzigd zijn)
-* rdfs:hasAuthorChange (indien hasDateChange is opgenomen)
-* gwsw:hasUnit (indien de klasse een relatie rdfs:hasValue met een relevant datatype heeft)
+* rdfs:hasDateChange: indien andere annotaties zoals skos:definition gewijzigd zijn. Als een CE bij de klasse wijzigt wordt de wijzigingsdatum alleen bij die CE opgenomen.
+* rdfs:hasAuthorChange: indien hasDateChange is opgenomen
+* gwsw:hasUnit: indien de klasse een relatie rdfs:hasValue met een relevant datatype heeft
 
 ### Annotaties per CE
 
@@ -846,9 +846,9 @@ Een GWSW concept van het type owl:Restriction heeft altijd de volgende annotatie
 
 Daarnaast zijn de volgende annotaties onder voorwaarden altijd opgenomen:
 
-* rdfs:hasDateChange (indien andere annotaties zoals skos:definition gewijzigd zijn)
-* rdfs:hasAuthorChange (indien hasDateChange is opgenomen)
-* gwsw:hasUnit (indien de klasse een relatie rdfs:hasValue met een relevant datatype heeft)
+* rdfs:hasDateChange: indien andere annotaties bij de CE gewijzigd zijn
+* rdfs:hasAuthorChange: indien hasDateChange is opgenomen
+* gwsw:hasUnit: indien de CE een relatie rdfs:hasValue met een relevant datatype heeft
 
 ### Identificatie van concepten
 
