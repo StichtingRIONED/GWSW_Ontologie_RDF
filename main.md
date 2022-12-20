@@ -1,7 +1,7 @@
 # GWSW Ontologie in RDF
 
-<!-- gebruik voor lokaal editen -->
-<script src="./builds/respec-rioned.js"></script>
+<!-- gebruik voor lokaal editen
+<script src="./builds/respec-rioned.js"></script> -->
 
 **Een beschrijving van het protocol GWSW-OroX versie 1.5.2**
 
@@ -307,7 +307,9 @@ Hou rekening met de onderverdeling van de context-specifieke deelmodellen. Combi
 
 # Details van de GWSW semantiek
 
-## Top Level soorten
+## Details soortenboom
+
+### Top Level soorten
 
 De "top level" concepten in GWSW-OroX zijn de concepten die boven in de soortenboom staan. Deze concepten zijn geen subklasse van andere concepten, ze zijn van het generieke type owl:Class.
 
@@ -353,6 +355,90 @@ De "top level" concepten in GWSW-OroX zijn de concepten die boven in de soortenb
 </tr>
 </tbody>
 </table>
+
+### Details specialsatie en classificatie
+
+Voor de definitie van de soortenboom gebruiken we basiselementen uit RDF, RDFS en OWL. Ter illustratie de hiërachische indeling van de familie "put":
+
+<div class="example"><div class="example-title marker">Model: de put-familie</div><pre>
+    gwsw:Put        rdf:type                   owl:Class ;                   
+                    rdfs:subClassOf            bs:PhysicalObject ; # het supertype uit NTA 8035
+                    rdfs:label                "Put"@nl .
+    gwsw:Rioolput   rdf:type                   owl:Class ;                   
+                    rdfs:subClassOf            gwsw:Put ;
+                    skos:prefLabel             "Rioolput"@nl .               
+    gwsw:Stuwput    rdf:type                   owl:Class ;                   
+                    rdfs:subClassOf            gwsw:Rioolput ;               
+                    rdfs:label                 "Stuwput"@nl ,                
+                    skos:altLabel              “Weir”@en .         # vertaling als synoniem opnemen
+    gwsw:BlindePut  rdf:type                   owl:Class ;                   
+                    rdfs:subClassOf            gwsw:Rioolput ;               
+                    rdfs:label                 "Blinde put"@nl .             
+</pre></div>
+
+In een dataset wordt altijd zoveel mogelijk verwezen naar de zogenaamde "bladerobjecten". Dat zijn de soorten waarvan geen subtypes bestaan, ze staan onderaan in de boomstructuur. In het GWSW model worden uit principe ook zo min mogelijk supertypes gedefinieerd. Die worden alleen opgenomen indien noodzakelijk voor de indeling (ervingsprincipe) of als de klasse voorkomt als gebruikelijke term.
+
+<div class="example-dataset"><div class="example-title marker">Dataset: individuen typeren als GWSW concept</div><pre>
+    ex:Put_1        rdf:type      gwsw:Put .          # te generiek voor veel toepassingen
+    ex:Put_2        rdf:type      gwsw:Stuwput ,      # specifiek genoeg voor veel toepassingen
+                                  gwsw:BlindePut .    # tweede typering
+</pre></div>
+
+Het individu ex:Put_2 is dus zowel een stuwput (een put met een stuwconstructie) als een blinde put (een put zonder deksel).
+
+### Details onderscheidende kenmerken
+
+**Expliciete definitie: basis voor determinatie**  
+Voor de indeling in soorten, de bepaling van de taxonomie, wordt de onderscheidende definitie zo expliciet mogelijk beschreven. Determinerend kan daarmee (de naam van) een soort worden bepaald. Verschillende elementen in de ontologie spelen hierbij een rol, die zijn beschreven in de volgende paragrafen.
+
+De onderscheidende kenmerken specificeren de soorten, de GWSW ontologie hanteert de volgende (in willekeurige volgorde):
+
+* Doel (waarvoor)
+* Toepassing (waarin)
+* Functie (wat doet het)
+* Uitvoering (hoe)
+* Structuur (waaruit)
+
+Meer specifiek voor activiteiten:
+
+* Doel (waarvoor)
+* Toepassing (waarin, welk proces)
+* Technologie (werkwijze, eisen)
+* Resultaat (wat doet het)
+
+Vooral Functie en Uitvoering worden veel gebruikt om het onderscheid te maken.
+
+De onderscheidende kenmerken worden beschreven met een specifieke kwalitatieve-aspect-property, de range bij de property is dan een individu van het type onderscheidend kenmerk. Met een CE wordt een restrictie op de properties <span class="blue">doel</span>, <span class="blue">toepassing</span>, <span class="blue">functie</span>, <span class="blue">uitvoering</span>, <span class="blue">structuur</span>, <span class="blue">technologie</span>, <span class="blue">resultaat</span>, <span class="blue">mechanisme</span> gecombineerd met een restrictie op <span class="blue">hasValue</span>.
+
+Een onderscheidend kenmerk wordt gemodelleerd met restricties binnen een CE. Bij benoeming van de CE als equivalentClass vragen deze restricties veel rekenkracht, daarom is hier ook voor een éénzijdige subtypering (rdfs:subClassOf ipv owl:equivalentClass) gekozen. Daarmee leveren we wel semantiek in (“sufficient”, niet “necessary”).
+
+<div class="example"><div class="example-title marker">Model:</div><pre>
+gwsw:Uitvoering     skos:definition  "Materiaal, afwerking, vorm"@nl ;
+                    rdfs:subClassOf  gwsw:OnderscheidendKenmerk .
+gwsw:uitvoering     rdf:type         owl:ObjectProperty ;
+                    rdfs:range       gwsw:Uitvoering ;
+                    rdfs:label       "Heeft Uitvoering"@nl .
+</pre></div>
+
+Combineer het kenmerk en de waarde ervan in een CE
+
+<div class="example"><div class="example-title marker">Model:</div><pre>
+gwsw:Klein          rdfs:label       “klein" ;
+                    rdf:type         gwsw:Uitvoering .  # Individu: uitvoeringswijze
+gwsw:KleinObject    rdfs:subClassOf  gwsw:FysiekObject ;
+                    rdfs:subClassOf
+                    [
+                      rdf:type       owl:Restriction ;  # Via blank node: eenzijdige subklasse
+                      owl:onProperty gwsw:uitvoering ; # Kwalitatief aspect
+                      owl:hasValue   gwsw:Klein;  # Individu
+                    ] .
+</pre></div>
+
+Als in de dataset een individu als volgt beschreven is leidt een reasoner af dat KleinObject1 van het type KleinObject is:
+
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+ex:KleinObject1    gwsw:uitvoering  gwsw:Klein .
+</pre></div>
 
 ## Overzicht properties
 
@@ -712,9 +798,9 @@ In datasets conform het GWSW worden de volgende properties gebruikt:
 </tbody>
 </table>
 
-## Annotaties bij concepten
+## Details annotaties
 
-De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [overzicht van de properties](overzicht-properties-in-de-gwsw-ontologie)):
+De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [Overzicht properties](#overzicht-properties)):
 
 <table class="simp">
 <thead>
@@ -1031,60 +1117,6 @@ De letter geeft het soort kwaliteitseis aan:
 </tbody>
 </table>
 
-## Details onderscheidende kenmerken
-
-**Expliciete definitie: basis voor determinatie**  
-Voor de indeling in soorten, de bepaling van de taxonomie, wordt de onderscheidende definitie zo expliciet mogelijk beschreven. Determinerend kan daarmee (de naam van) een soort worden bepaald. Verschillende elementen in de ontologie spelen hierbij een rol, die zijn beschreven in de volgende paragrafen.
-
-De onderscheidende kenmerken specificeren de soorten, de GWSW ontologie hanteert de volgende (in willekeurige volgorde):
-
-* Doel (waarvoor)
-* Toepassing (waarin)
-* Functie (wat doet het)
-* Uitvoering (hoe)
-* Structuur (waaruit)
-
-Meer specifiek voor activiteiten:
-
-* Doel (waarvoor)
-* Toepassing (waarin, welk proces)
-* Technologie (werkwijze, eisen)
-* Resultaat (wat doet het)
-
-Vooral Functie en Uitvoering worden veel gebruikt om het onderscheid te maken.
-
-De onderscheidende kenmerken worden beschreven met een specifieke kwalitatieve-aspect-property, de range bij de property is dan een individu van het type onderscheidend kenmerk. Met een CE wordt een restrictie op de properties <span class="blue">doel</span>, <span class="blue">toepassing</span>, <span class="blue">functie</span>, <span class="blue">uitvoering</span>, <span class="blue">structuur</span>, <span class="blue">technologie</span>, <span class="blue">resultaat</span>, <span class="blue">mechanisme</span> gecombineerd met een restrictie op <span class="blue">hasValue</span>.
-
-Een onderscheidend kenmerk wordt gemodelleerd met restricties binnen een CE. Bij benoeming van de CE als equivalentClass vragen deze restricties veel rekenkracht, daarom is hier ook voor een éénzijdige subtypering (rdfs:subClassOf ipv owl:equivalentClass) gekozen. Daarmee leveren we wel semantiek in (“sufficient”, niet “necessary”).
-
-<div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:Uitvoering     skos:definition  "Materiaal, afwerking, vorm"@nl ;
-                    rdfs:subClassOf  gwsw:OnderscheidendKenmerk .
-gwsw:uitvoering     rdf:type         owl:ObjectProperty ;
-                    rdfs:range       gwsw:Uitvoering ;
-                    rdfs:label       "Heeft Uitvoering"@nl .
-</pre></div>
-
-Combineer het kenmerk en de waarde ervan in een CE
-
-<div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:Klein          rdfs:label       “klein" ;
-                    rdf:type         gwsw:Uitvoering .  # Individu: uitvoeringswijze
-gwsw:KleinObject    rdfs:subClassOf  gwsw:FysiekObject ;
-                    rdfs:subClassOf
-                    [
-                      rdf:type       owl:Restriction ;  # Via blank node: eenzijdige subklasse
-                      owl:onProperty gwsw:uitvoering ; # Kwalitatief aspect
-                      owl:hasValue   gwsw:Klein;  # Individu
-                    ] .
-</pre></div>
-
-Als in de dataset een individu als volgt beschreven is leidt een reasoner af dat KleinObject1 van het type KleinObject is:
-
-<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-ex:KleinObject1    gwsw:uitvoering  gwsw:Klein .
-</pre></div>
-
 ## Details aspecten
 
 In RDF worden aspect-attributen vaak gespecificeerd in de property (“property-central”). Bijvoorbeeld:
@@ -1195,7 +1227,7 @@ gwsw:Dt_HoogtePut  rdf:type       rdfs:Datatype ; # typering verplicht in OWL RL
                    ] .
 </pre></div>
 
-### Details intrinsieke aspecten
+### Intrinsieke kenmerken
 
 _Possessed aspects_
 
@@ -1262,14 +1294,88 @@ gwsw:NodeId   rdf:type             owl:Class ;
 
 _Deel-geheel, verbindingen, proces_
 
-Het GWSW definieert relaties van de samenstelling (meronomie) en de verbindingen (netwerk, topologie) Deze samenstelling-relaties komen voor in datasets en in het datamodel, het datamodel beschrijft de restricties op deze relaties. De volgende relaties worden gebruikt:
+Het GWSW definieert relaties voor de samenstelling (meronomie) en de verbindingen (netwerk, topologie) Deze samenstelling-relaties komen voor in datasets en in het datamodel, het datamodel beschrijft de restricties op deze relaties. De volgende relaties worden gebruikt:
 
 > hasPart  
 > hasInput  
 > hasOutput  
 > hasConnection  
 
-### Kardinaliteit
+
+### Relaties proces (activiteiten)
+
+De relaties <span class="blue">gwsw:hasInput</span> en <span class="blue">gwsw:hasOutput</span> worden gebruikt voor de beschrijving van activiteiten en processen, een voorbeeld:
+
+<div class="example"><div class="example-title marker">Model:</div><pre>
+gwsw:hasInput           rdfs:label         "has as input" ;
+                        rdf:type           owl:ObjectProperty .
+gwsw:InspecterenPut     rdfs:label         "Inspecteren van een put"@nl, “Inspection manhole”@en ;
+                        rdfs:subClassOf    gwsw:Activiteit ;
+                        rdfs:subClassOf
+                        [
+                          rdf:type                      owl:Restriction ;
+                          owl:qualifiedCardinality      "1"^^xsd:nonNegativeInteger ;
+                          owl:onProperty                gwsw:hasInput ;
+                          owl:onClass                   gwsw:Rioolput ;
+                        ] .
+</pre></div>
+
+Het individu ex:Put1 is onderwerp van inspectie ex:Insp:
+
+<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
+ex:Insp1               rdf:type           gwsw:InspecterenPut ;
+                        gwsw:hasInput      ex:Put1 .
+</pre></div>
+
+### Relaties topologie (verbindingen)
+
+*Netwerkbeschrijving* 
+
+Het GWSW definieert ook de concepten voor een netwerkbeschrijving. Daarvoor worden de onderlinge verbindingen beschreven via de elementen "oriëntatie" die onderling gerelateerd zijn via <span class="blue">gwsw:hasConnection</span>. Deze relatie is van het type owl:SymmetricProperty.
+
+<img src="media/image4.png" style="width:100%;height:50%" />
+
+Een oriëntatie kan een vertex zijn of kan bestaan uit een egde met begin- en eindpunt (vertices). In een netwerk voor hydraulische modellering worden die twee vormen "knooppunt" en "verbinding" genoemd. Een verbinding kan dan zowel een leiding (de meest voorkomende) als een pomp, doorlaat of wand zijn.
+
+<span class="blue">gwsw:hasConnection</span> is van het type owl:SymmetricProperty (heeft geen inverse). Voor de netwerk-beschrijving is deze relatie essentieel, het is dan de relatie tussen topologische elementen van fysieke objecten. De relatie wordt echter ook voor de algemene beschrijving gebruikt, bijvoorbeeld om te beschrijven dat een gemaal vaak verbonden is met een persleiding.
+
+De topologie wordt beschreven via de elementen "oriëntatie". Een oriëntatie kan een vertex zijn of kan bestaan uit een egde met begin- en eindpunt (vertices).
+
+<span class="blue">gwsw:hasConnection</span> is van het type owl:SymmetricProperty.
+
+### Relaties compositie (deel-geheel)
+
+*Meronomie*
+
+<span class="blue">gwsw:hasPart</span> wordt type owl:ObjectProperty en geldt voor fysieke objecten, ruimtelijke objecten en activiteiten onderling. Daarnaast kunnen ruimtes en fysieke dingen met <span class="blue">gwsw:hasPart</span> een ruimtelijke compositie vormen.
+
+Ruimtelijke composities (“bevatten” iets) via de property <span class="blue">gwsw:hasPart</span> / <span class="blue">gwsw:isPartOf</span> met restrictie op object-class:
+
+<div class="example"><div class="example-title marker">Model:</div><pre>
+gwsw:Ruimte       rdf:type              owl:Class ;
+                  rdfs:label            "Ruimte"@nl ;
+                  rdfs:subClassOf
+                  [
+                    rdf:type            owl:Restriction ;
+                    owl:onProperty      gwsw:hasPart ;
+                    owl:allValuesFrom
+                    [
+                      rdf:type          owl:Class;
+                      owl:unionOf       (gwsw:Ruimte gwsw:FysiekObject) ;
+                    ]
+                  ] .
+</pre></div>
+
+In combinatie daarmee is in de ontologie expliciet gemaakt dat bijvoorbeeld individuen van het type FysiekObject altijd iets anders zijn dan die van het type Ruimte:
+
+<div class="example"><div class="example-title marker">Model:</div><pre>
+gwsw:Ruimte        owl:disjointWith     gwsw:Kenmerk ;
+                   owl:disjointWith     gwsw:FysiekObject . # Enzovoort
+</pre></div>
+
+### Beperking en afleiding
+
+#### Kardinaliteit
 
 De kardinaliteit beschrijft het aantal voorkomens van de (binaire) relatie. Met de kardinaliteits-restrictie beschrijven we ook de mogelijke relaties tussen concepten. Zo wordt de samenstelling expliciet beschreven door een CE met een restrictie op de property <span class="blue">gwsw:hasPart</span> gecombineerd met de benoeming van de kardinaliteit.
 
@@ -1306,64 +1412,7 @@ Als de kardinaliteit voorgeschreven is:
                       owl:qualifiedCardinality        "1"^^xsd:nonNegativeInteger ;
 </pre></div>
 
-**Proces en activiteit**
-
-De relaties <span class="blue">gwsw:hasInput</span> en <span class="blue">gwsw:hasOutput</span> worden gebruikt voor de beschrijving van activiteiten en processen, een voorbeeld:
-
-<div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:hasInput           rdfs:label         "has as input" ;
-                        rdf:type           owl:ObjectProperty .
-gwsw:InspecterenPut     rdfs:label         "Inspecteren van een put"@nl, “Inspection manhole”@en ;
-                        rdfs:subClassOf    gwsw:Activiteit ;
-                        rdfs:subClassOf
-                        [
-                          rdf:type                      owl:Restriction ;
-                          owl:qualifiedCardinality      "1"^^xsd:nonNegativeInteger ;
-                          owl:onProperty                gwsw:hasInput ;
-                          owl:onClass                   gwsw:Rioolput ;
-                        ] .
-</pre></div>
-
-In een dataset:
-
-<div class="example-dataset"><div class="example-title marker">Dataset:</div><pre>
-ex:Insp1               rdf:type           gwsw:InspecterenPut ;
-                        gwsw:hasInput      ex:Put1 .
-</pre></div>
-
-**Topologie**
-
-<span class="blue">gwsw:hasConnection</span> is van het type owl:SymmetricProperty.
-
-**Meronomie**
-
-<span class="blue">gwsw:hasPart</span> wordt type owl:ObjectProperty en geldt voor fysieke objecten, ruimtelijke objecten en activiteiten onderling. Daarnaast kunnen ruimtes en fysieke dingen met <span class="blue">gwsw:hasPart</span> een ruimtelijke compositie vormen.
-
-Ruimtelijke composities (“bevatten” iets) via de property <span class="blue">gwsw:hasPart</span> / <span class="blue">gwsw:isPartOf</span> met restrictie op object-class:
-
-<div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:Ruimte       rdf:type              owl:Class ;
-                  rdfs:label            "Ruimte"@nl ;
-                  rdfs:subClassOf
-                  [
-                    rdf:type            owl:Restriction ;
-                    owl:onProperty      gwsw:hasPart ;
-                    owl:allValuesFrom
-                    [
-                      rdf:type          owl:Class;
-                      owl:unionOf       (gwsw:Ruimte gwsw:FysiekObject) ;
-                    ]
-                  ] .
-</pre></div>
-
-In combinatie daarmee is in de ontologie expliciet gemaakt dat bijvoorbeeld individuen van het type FysiekObject altijd iets anders zijn dan die van het type Ruimte:
-
-<div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:Ruimte        owl:disjointWith     gwsw:Kenmerk ;
-                   owl:disjointWith     gwsw:FysiekObject . # Enzovoort
-</pre></div>
-
-### Kwalificerende samenstelling
+#### Kwalificerende samenstelling
 
 In het GWSW is beschreven welke deel-geheel relaties onderscheidend zijn voor de typering. Een Inspectieput moet bijvoorbeeld een deksel hebben om een echte Inspectieput te zijn. Daarvoor gebruiken we de type-prolongatie van *Inspectieput* naar CE, als iets een *Inspectieput* is dan is het ook iets met een *Deksel*.
 
@@ -1377,7 +1426,7 @@ gwsw:Inspectieput rdfs:subClassOf
                   ] .
 </pre></div>
 
-### Inverse kardinaliteit
+#### Inverse kardinaliteit
 
 Kardinaliteit wordt tweezijdig beschreven, daarvoor zijn er omgekeerde relaties nodig.
 
