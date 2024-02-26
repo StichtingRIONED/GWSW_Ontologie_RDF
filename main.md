@@ -125,8 +125,8 @@ Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkeli
 
 ## Reikwijdte model
 
-Het GWSW Datamodel volgt de ontwikkelingen in het vakgebied. Het bevat alleen concepten die actief worden toegepast (in uitwisseling en applicaties) of die in ontwerpen voor toepassing (bijvoorbeeld nieuwe uitwisselvormen) zijn opgenomen. Dat geldt ook (en vooral) voor kenmerken van objecten.  
-Terminologie waarbij het uitsluitend gaat om vastleggen van definities wordt met terughoudendheid opgenomen.
+Het GWSW Datamodel volgt de ontwikkelingen in het vakgebied. Het bevat concepten die actief worden toegepast (in uitwisseling en applicaties) of die in ontwerpen voor toepassing (bijvoorbeeld nieuwe uitwisselvormen) zijn opgenomen. Dat geldt ook (en vooral) voor kenmerken van objecten.  
+Terminologie waarbij het uitsluitend gaat om vastleggen van definities wordt met terughoudendheid opgenomen, maar het GWSW heeft zeker ook een woordenboek-functie.
 
 Bij het ontwerp van het GWSW Datamodel spelen altijd de volgende **invalshoeken** mee:
 * Wordt het concept algemeen gebruikt in - native - databases, wordt het (straks) uitgewisseld via GWSW Datasets
@@ -135,7 +135,7 @@ Bij het ontwerp van het GWSW Datamodel spelen altijd de volgende **invalshoeken*
   * De geografische presentaties (en onderliggende queries)
   * De uitwisselformaten HydX, RibX
   * De kwaliteitsmetingen van datasets: dataverificatie met Nulmeting, SHACL
-* Zijn de aanpassingen relevant voor het GWSW als naslagwerk
+* Zijn de aanpassingen relevant voor het GWSW als naslagwerk en woordenboek
 
 **"As is", een momentopname**  
 Het datamodel beschrijft de "as is" situatie, het bevat een momentopname van systemen en processen binnen de discipline stedelijk water. Het beschrijft dus geen historische gegevens of de levenscyclus van objecten zoals binnen de context van system engineering.
@@ -153,7 +153,7 @@ Bij het ontwerp spelen deze structuren de hoofdrol, ze vormen het ontwerpkader. 
 
 <div class="box"><strong>Voorbeelden:</strong>
 <br/>Afgeleide gegevens komen niet voor in de definitie van fysieke objecten, bijvoorbeeld het kenmerk "aantal pompen". Zo'n gegeven wordt (in presentaties) afgeleid uit het aantal voorkomens van de relatie <span class="blue">gwsw:hasPart</span> tussen Gemaal en Pomp. De objecten Gemaal en Pomp worden expliciet beschreven.  
-<br/>Afgeleide gegevens zoals rekenresultaten en data-analyses komen in het GWSW wel voor in de vorm van gemodelleerde rapportages, bijvoorbeeld in GWSW Kentallen. 
+<br/>Afgeleide gegevens zoals rekenresultaten en data-analyses komen in het GWSW wel voor in de vorm van gemodelleerde rapportages, bijvoorbeeld in GWSW Kengetallen. 
 <br/>Eigenschappen van de bovengrond en ondergrond (maaiveldhoogte, grondsoort) komen niet voor als aspecten van de fysieke objecten die zich daarin bevinden. Een leiding heeft niet als kenmerk "Grondsoort", wel wordt er een relatie <span class="blue">gwsw:isPartOf</span> met de ondergrond - en dus met bijbehorende kenmerken - gedefinieerd.</div>
 
 ## Concepten en annotaties
@@ -294,7 +294,7 @@ Definieer de samenstelling, de topologie en het proces op basis van de relaties 
 
 Zie hst [Details deelmodellen](#details-deelmodellen)  
 
-Vanaf GWSW versie 1.5.2 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de annotatie-waarde (de URI van een CollectionOfFacts-subklasse) verwijst naar een deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen.
+Vanaf GWSW versie 1.5.2 (na afscheid van het Gellish bronmodel) is de **Collection of Facts** (CoF) op conceptniveau in de RDF-bron opgenomen. De CoF speelt nog steeds een belangrijke rol in de RDF-versie van het GWSW. Het wordt beschreven met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de annotatie-waarde (de URI van een CollectionOfFacts-subklasse) verwijst naar een deelmodel (GWSW-Basis, GWSW-Kengetallen, enz.) horen.
 
 Op basis van de CoF worden dus de GWSW deelmodellen samengesteld. Zo'n deelmodel is een filter op het datamodel waarbij de klassen, de CE's en de individuen worden geselecteerd op de gekoppelde CoF. De deelmodellen hebben meerdere functies:
 
@@ -788,6 +788,10 @@ In datasets conform het GWSW worden de volgende properties gebruikt:
 <td><em>Subject</em> <span class="blue">heeft als deel</span> <em>Object</em></td>
 </tr>
 <tr>
+<td>gwsw:isPartOf</td>
+<td><em>Subject</em> <span class="blue">is deel van</span> <em>Object</em></td>
+</tr>
+<tr>
 <td>gwsw:hasConnection</td>
 <td><em>Subject</em> <span class="blue">heeft verbinding met</span> <em>Object</em></td>
 </tr>
@@ -1042,7 +1046,7 @@ In het GWSW Datamodel worden context-specifieke coderingen meestal gecombineerd 
 
 ### Details deelmodellen
 
-Deelmodellen worden gemarkeerd met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kentallen, enz.) horen. De deelmodel-markeringen zijn van het type <span class="blue">gwsw:CollectionOfFacts</span>, ze zijn als volgt in het GWSW datamodel opgenomen:
+Deelmodellen worden gemarkeerd met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kengetallen, enz.) horen. De deelmodel-markeringen zijn van het type <span class="blue">gwsw:CollectionOfFacts</span>, ze zijn als volgt in het GWSW datamodel opgenomen:
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
 gwsw:clsTOP
@@ -1054,11 +1058,11 @@ gwsw:cofTOP
   rdf:type                      gwsw:clsTOP ; # wordt hiermee individu
   skos:definition               "Bevat algemene supertypes"@nl ;
 .
-gwsw:DeelmodelKentallen
+gwsw:DeelmodelKengetallen
   rdf:type                      owl:Class ;
-  rdfs:label                    "Deelmodel Kentallen"@nl ;
+  rdfs:label                    "Deelmodel Kengetallen"@nl ;
   rdfs:subClassOf               gwsw:GWSWDeelmodel ;
-  skos:definition               "Deelmodel voor afvoerscenario's en kentallen. Bevat het rioleringsnetwerk, het afvoernetwerk (verbindingen tussen stelsels) en gemeentelijke activiteiten voor optimaliseren afvalwaterketen"@nl ;
+  skos:definition               "Deelmodel voor afvoerscenario's en kengetallen. Bevat het rioleringsnetwerk, het afvoernetwerk (verbindingen tussen stelsels) en gemeentelijke activiteiten voor optimaliseren afvalwaterketen"@nl ;
 .
 </pre></div>
 
@@ -1340,8 +1344,6 @@ Een oriëntatie kan een vertex zijn of kan bestaan uit een egde met begin- en ei
 <span class="blue">gwsw:hasConnection</span> is van het type owl:SymmetricProperty (heeft geen inverse). Voor de netwerk-beschrijving is deze relatie essentieel, het is dan de relatie tussen topologische elementen van fysieke objecten. De relatie wordt echter ook voor de algemene beschrijving gebruikt, bijvoorbeeld om te beschrijven dat een gemaal vaak verbonden is met een persleiding.
 
 De topologie wordt beschreven via de elementen "oriëntatie". Een oriëntatie kan een vertex zijn of kan bestaan uit een egde met begin- en eindpunt (vertices).
-
-<span class="blue">gwsw:hasConnection</span> is van het type owl:SymmetricProperty.
 
 ### Relaties compositie (deel-geheel)
 
