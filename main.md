@@ -10,6 +10,7 @@ Van: Stichting RIONED
 Versie historie
 <div style="font-size: 0.90em">
 
+20240514: Modelleerprincipes overgenomen uit GWSW 2.0 (gesynchroniseerd)
 20210804: Modelleerprincipes aangepast, property-tabellen compleet gemaakt  
 20210319: Modelleerprincipes verder uitgewerkt  
 20210319: Herziene hoofdstukindeling, samenvatting (oorspronkelijk hst 2) in modelleerprincipes (nieuwe hst 2) en details (blijft hst 3) ondergebracht  
@@ -289,6 +290,24 @@ Definieer de samenstelling, de topologie en het proces op basis van de relaties 
 
 1. Voorkom redundantie van deel-geheel relaties, die relatie mag niet dubbel voorkomen voor een subtype en het bijbehorende supertype.
 2. Definieer de samenstelling - hoewel verleidelijk - dus niet op een te hoog niveau
+
+### Proces en activiteit
+
+Het GWSW volgt de Gellish-aanpak (bron Matthé van Koetsveld): Bij het modelleren van een activiteit/project (als bij IDEF0) onderscheid maken naar invoer (die verwerkt wordt), uitvoer (resultaat van de verwerking/activiteit), control (ook soort invoer van de activiteit die project controleert, aanstuurt) en mechanisme (soort uitvoer, die de activiteit uitvoert, kan een organisatie, systeem, enzovoort zijn). Dan zou het semantisch netjes zijn: 
+
+* Project **heeft als control** Opdrachtgever
+* Project **heeft als mechanisme** Opdrachtnemer
+* Inspectieproject **heeft als invoer** Put, Leiding
+* Inspectieproject **heeft als uitvoer** Waarneming
+
+In het GWSW simplificeren we het enigszins (met alleen hasInput, hasOutput):
+
+* Project **is een** Activiteit
+* Project **heeft als invoer** Opdrachtgever (aansturing project)
+* Project **heeft als uitvoer** Opdrachtnemer (uitvoering project)
+* Project **heeft als deel** Inspecteren Leiding (ook een activiteit)
+* Inspecteren Leiding **heeft als invoer** Leiding
+* Inspecteren Leiding **heeft als uitvoer** Waarneming
 
 ## Deelmodellen
 
