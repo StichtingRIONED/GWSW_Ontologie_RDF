@@ -124,6 +124,12 @@ Voor de definitie van klassen, eigenschappen, datatypen en restricties kunnen ve
 
 Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkelijke opzet (gestart in 2006) van het model in Gellish-vorm. Deze principes zijn natuurlijk taalonafhankelijk, ook in de RDF-vorm blijven ze van groot belang. Veel dank gaat naar Andries van Renssen, geestelijk vader van Gellish en Matthé van Koetsveld, intensief betrokken bij de modellering in Gellish van het GWSW en zijn voorlopers.
 
+PRINCIPES CONTROLEREN/UITBREIDEN:
+* Omgaan met multi-typering (gezamenlijk supertype "Rol/Extra type")
+* Naam (naast URI) uniek houden
+* Dubbele eigenschappen (zie notities 20240417/links, hoe zat dat?)
+* Woordenboek-functie - altijd volgend in woordgebruik (belangrijk voor draagvlak)
+
 ## Reikwijdte model
 
 Het GWSW Datamodel volgt de ontwikkelingen in het vakgebied. Het bevat concepten die actief worden toegepast (in uitwisseling en applicaties) of die in ontwerpen voor toepassing (bijvoorbeeld nieuwe uitwisselvormen) zijn opgenomen. Dat geldt ook (en vooral) voor kenmerken van objecten.  
