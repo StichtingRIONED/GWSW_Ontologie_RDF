@@ -126,7 +126,7 @@ Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkeli
 
 PRINCIPES CONTROLEREN/UITBREIDEN:
 * Omgaan met multi-typering (gezamenlijk supertype "Rol/Extra type")
-* Naam (naast URI) uniek houden
+* Voorkeursnaam (naast URI) uniek houden (denk aan IMBOR met onleesbare URI)
 * Dubbele eigenschappen (zie notities 20240417/links, hoe zat dat?)
 * Woordenboek-functie - altijd volgend in woordgebruik (belangrijk voor draagvlak)
 
@@ -152,7 +152,7 @@ Het datamodel beschrijft de "as is" situatie, het bevat een momentopname van sys
 Zoals genoemd is de datastructuur object-georiënteerd waarbij objecten in een aantal hoofdstructuren zijn ondergebracht:
 
 * Soortenboom (de taxonomie of klasse-indeling)
-* Samenstelling (de meronomie of deel-geheel indeling en de processchema's)
+* Samenstelling en proces (de meronomie of deel-geheel indeling)
 * Proces (het activiteiten-schema)
 * Groeperingen (collecties van individuen of soorten)
 
@@ -1074,28 +1074,27 @@ In het GWSW Datamodel worden context-specifieke coderingen meestal gecombineerd 
 Deelmodellen worden gemarkeerd met het annotatie-attribuut <span class="blue">skos:scopeNote</span>, de bijbehorende waarde geeft aan welke triples bij welk deelmodel (GWSW-Basis, GWSW-Kengetallen, enz.) horen. De deelmodel-markeringen zijn van het type <span class="blue">gwsw:CollectionOfFacts</span>, ze zijn als volgt in het GWSW datamodel opgenomen:
 
 <div class="example"><div class="example-title marker">Model:</div><pre>
-gwsw:clsTOP
-  rdf:type                      owl:Class ;  
-  rdfs:label                    "Collection of facts TOP"@nl ;
-  rdfs:subClassOf               gwsw:ExclusieveCollectie ;
-.
-gwsw:cofTOP
-  rdf:type                      gwsw:clsTOP ; # wordt hiermee individu
-  skos:definition               "Bevat algemene supertypes"@nl ;
-.
-gwsw:DeelmodelKengetallen
-  rdf:type                      owl:Class ;
-  rdfs:label                    "Deelmodel Kengetallen"@nl ;
-  rdfs:subClassOf               gwsw:GWSWDeelmodel ;
-  skos:definition               "Deelmodel voor afvoerscenario's en kengetallen. Bevat het rioleringsnetwerk, het afvoernetwerk (verbindingen tussen stelsels) en gemeentelijke activiteiten voor optimaliseren afvalwaterketen"@nl ;
+gwsw:Cof_TOP
+  rdf:type                     owl:Class ;
+  rdfs:label                   "Collection of facts TOP"@nl ;
+  rdfs:subClassOf              gwsw:CollectionOfFacts ;
+  skos:definition              "Bevat algemene supertypes"@nl ;
+  skos:scopeNote               gwsw:Cof_TOP .
+
+gwsw:DeelmodelBasis
+  rdf:type owl:Class ;
+  rdfs:label                   "Deelmodel Basis"@nl ;
+  rdfs:subClassOf              gwsw:GWSWDeelmodel ;
+  skos:definition              "Bevat de concepten die generiek in beheersystemen voorkomen"@nl ;
+  skos:scopeNote               gwsw:Cof_TOP .
 .
 </pre></div>
 
-De annotatie skos:scopeNote kan meervoudig voorkomen (als het concept in meerdere deelmodellen voorkomt) en wordt altijd opgenomen bij:
+De annotatie skos:scopeNote kan meervoudig voorkomen (als het concept in meerdere deelmodellen voorkomt) en wordt opgenomen bij:
 
-* De typering (relatie rdf:type) van alle GWSW-klassen. De (combinatie van) skos:scopeNote bij de typering geldt ook voor alle annotaties bij de klasse (horen binnen dezelfde scope).
-* De CE's met restrictie op concept-relaties (gwsw:hasPart, gwsw:hasAspect) (dus niet voor de CE's met onderscheidende kenmerken).
-* De typering van individuen binnen een collectie (de verzameling kan variëren vanwege bijvoorbeeld een externe normering)
+* De typering (relatie rdf:type) van alle GWSW-klassen, hier de is de skos:scopeNote verplicht. De (combinatie van) skos:scopeNote bij de typering geldt ook voor alle annotaties bij de klasse (horen binnen dezelfde scope).
+* De CE's met restrictie op de concept-relaties (gwsw:hasPart, gwsw:hasAspect, dus niet voor de CE's met onderscheidende kenmerken). Voor de CE's is de skos:scopeNote optioneel, hoeft alleen opgenomen te worden bij afwijkingen van de skos:scopeNote op concept-niveau.
+* De typering van individuen binnen een collectie (de verzameling kan variëren per deelmodel vanwege bijvoorbeeld een externe normering)
 
 <div class="box"><strong>Individuen, een speciaal geval</strong><br/>
 Individuen in het GWSW Datamodel kunnen veelvoudig geclassificeerd zijn. Bijvoorbeeld: het individu gwsw:Rond is geclassificeerd als gwsw:VormPutColl, gwsw:VormLeidingColl, gwsw:VormStroomprofiel. Om te kunnen bepalen of de classificatie van een individu binnen een deelmodel valt moet zowel de skos:scopeNote van het individu als de skos:scopeNote van de klasse binnen het deelmodel vallen.   
