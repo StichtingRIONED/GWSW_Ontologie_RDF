@@ -789,6 +789,10 @@ In datasets conform het GWSW worden de volgende properties gebruikt:
 <td><em>Subject</em> <span class="blue">heeft als naam</span> <em>Literal</em></td>
 </tr>
 <tr>
+<td>rdfs:comment</td>
+<td><em>Subject</em> <span class="blue">heeft als opmerking</span> <em>Literal</em></td>
+</tr>
+<tr>
 <td>gwsw:hasAspect</td>
 <td><em>Subject</em> <span class="blue">heeft als kenmerk</span> <em>Object</em></td>
 </tr>
