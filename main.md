@@ -1019,7 +1019,7 @@ Gebruik voor de waarden van het attribuut <span class="blue">gwsw:hasUnit</span>
 <tr><td>1/min</td><td>xsd:decimal</td></tr>
 <tr><td>bar</td><td>xsd:decimal</td></tr>
 <tr><td>degC (graden Celsius)</td><td>xsd:integer</td></tr>
-<tr><td>DEG <em>(hoek in graden, 360 gebaseerd, zie https://qudt.org/vocab/unit/) (vanaf versie 1.6)</em></td><td>xsd:integer</td></tr>
+<tr><td><span class="yellow">DEG</span><em>(hoek in graden, 360 gebaseerd, zie https://qudt.org/vocab/unit/) (vanaf versie 1.6)</em></td><td>xsd:integer</td></tr>
 <tr><td>dm3</td><td>xsd:decimal</td></tr>
 <tr><td>dm3/s</td><td>xsd:decimal</td></tr>
 <tr><td>h</td><td>xsd:integer</td></tr>
@@ -1036,7 +1036,7 @@ Gebruik voor de waarden van het attribuut <span class="blue">gwsw:hasUnit</span>
 <tr><td>ppm</td><td>xsd:integer</td></tr>
 <tr><td>hhmmss</td><td>xsd:time</td></tr>
 <tr><td>- <em>(factor)</em></td><td>xsd:decimal</td></tr>
-<tr><td><span class="yellow">gml</td><td><span class="yellow">geo:gmlLiteral</td></tr>
+<tr><td><span class="yellow">gml</span></td><td>geo:gmlLiteral</td></tr>
 </tbody>
 </table>
 
