@@ -1295,6 +1295,8 @@ ex:Put1    gwsw:hasAspect
             ] .
 </pre></div>
 
+De OWL-reasoner leidt af dat individu ex:Put1 van het type gwsw:Put is, de triple wordt (impliciet) toegevoegd (inferencing). 
+
 ### Kwalificatie standaardwaardes
 
 De restrictie-property <span class="blue">owl:hasValue</span> gebruiken we voor het kwalificeren van standaardwaardes van kenmerken (bijvoorbeeld voor versie-aanduidingen) .
