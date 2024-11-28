@@ -1116,7 +1116,11 @@ Voor de volgende concepten is de scope per definitie identiek aan de scope van k
 
 Voor de definitie van conformiteitsklassen.
 
-Vergelijkbaar met de Collection of Facts speelt ook de **Validity context** vanuit Gellish nog steeds een rol in de RDF-vorm van het GWSW. Met de annotatie **gwsw:hasValidity** worden de triples nabewerkt voor een bepaalde conformiteitsklasse (met kwaliteitseisen per proces).
+Vergelijkbaar met de Collection of Facts speelt ook de **Validity context** vanuit Gellish nog steeds een rol in de RDF-vorm van het GWSW. 
+Met de annotatie **gwsw:hasValidity** worden de triples nabewerkt voor een bepaalde conformiteitsklasse (met kwaliteitseisen per proces).
+
+Een conformiteitsklasse is altijd een vorm van een deelmodel: een filter op het GWSW-datamodel met een eventuele nabewerking (zie verder).
+De validity context kan met een extra filter op het GWSW-datamodel ook gebruikt worden voor alleen een deelmodel-selectie, zie de letter "d" in het vervolg. 
 
 De waarde bij gwsw:hasValidity bevat een codering voor toepassing van de conformiteitsklassen. Het is een string met de volgende opbouw:
 
@@ -1132,8 +1136,8 @@ Het cijfer in deze condering staat voor het type conformiteitsklasse:
 <tr><td>1</td><td>MdsProj</td></tr>
 <tr><td>2</td><td>RibHeen</td></tr>
 <tr><td>3</td><td>MdsPlan</td></tr>
-<tr><td>4</td><td>IMBOR</td></tr>
 <tr><td>5</td><td>Hyd</td></tr>
+<tr><td>6</td><td>IMBOR-SW</td></tr>
 </tbody>
 </table>
 
@@ -1145,7 +1149,9 @@ De letter geeft het soort kwaliteitseis aan:
 </thead>
 <tbody>
 <tr><td>t</td><td> Draai de kardinaliteit, bijvoorbeeld *minimaal 0* wordt *exact 1*</td></tr>
-<tr><td>d</td><td> De klasse doet niet mee in de kwaliteitseis, meestal gaat het om een CE</td></tr>
+<tr><td>d</td><td> De klasse doet niet mee in het deelmodel of de kwaliteitseis. In het geval van een kwaliteitseis gaat het meestal om een CE. Alle subklassen van de
+uitgeschakelde klasse worden ook uitgeschakeld (niet mee-gefiterd voor het deelmodel), daarom kan deze optie ook handig zijn voor het deelmodel-filter.
+ </td></tr>
 <tr><td>f</td><td> De klasse is te abstract binnen de conformiteitsklasse. Bij de aanmaak van het RDF bestand met de conformiteitsklasse wordt op basis van deze code de Opmerking-kolom bijgewerkt met tekst: [cfk fout]. Deze tekst wordt gescand in validatie-queries</td></tr>
 </tbody>
 </table>
