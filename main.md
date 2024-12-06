@@ -1112,6 +1112,12 @@ Voor de volgende concepten is de scope per definitie identiek aan de scope van k
 * In vervolg daarop: CE's met restricties op waardebereik (min/max)
 * CE's met restrictie op metagegevens bij kenmerken (kenmerken van kenmerken): bijvoorbeeld het metagegeven Inwinning bij kenmerken zoals hoogteligging
 
+Als een concept op basis van skos:scopeNote niet in het deelmodel opgenomen wordt, dan geldt dit **ook** voor alle restricties op de klasse (object van owl:onClass).
+
+Als een concept op basis van skos:scopeNote niet in het deelmodel opgenomen wordt, dan geldt dit **niet** automatisch voor de subklassen 
+(die kunnen multiparent zijn en de deelmodel-filtering is daar (nog) niet op ingericht). Gebruik in speciale gevallen daarvoor de validaty-context (kwaliteitseis "d").
+
+
 ### Validity context
 
 Voor de definitie van conformiteitsklassen.
@@ -1150,7 +1156,7 @@ De letter geeft het soort kwaliteitseis aan:
 <tbody>
 <tr><td>t</td><td> Draai de kardinaliteit, bijvoorbeeld *minimaal 0* wordt *exact 1*</td></tr>
 <tr><td>d</td><td> De klasse doet niet mee in het deelmodel of de kwaliteitseis. In het geval van een kwaliteitseis gaat het meestal om een CE. Alle subklassen van de
-uitgeschakelde klasse worden ook uitgeschakeld (niet mee-gefiterd voor het deelmodel), daarom kan deze optie ook handig zijn voor het deelmodel-filter.
+uitgeschakelde klasse worden ook uitgeschakeld (niet mee-gefiterd voor het deelmodel).
  </td></tr>
 <tr><td>f</td><td> De klasse is te abstract binnen de conformiteitsklasse. Bij de aanmaak van het RDF bestand met de conformiteitsklasse wordt op basis van deze code de Opmerking-kolom bijgewerkt met tekst: [cfk fout]. Deze tekst wordt gescand in validatie-queries</td></tr>
 </tbody>
