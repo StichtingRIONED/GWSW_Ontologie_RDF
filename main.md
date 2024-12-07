@@ -306,7 +306,7 @@ Het GWSW volgt de Gellish-aanpak (bron Matthé van Koetsveld): Bij het modellere
 * Inspectieproject **heeft als invoer** Put, Leiding
 * Inspectieproject **heeft als uitvoer** Waarneming
 
-In het GWSW simplificeren we het enigszins (met alleen hasInput, hasOutput):
+In het GWSW vereenvoudig we het (met alleen hasInput, hasOutput):
 
 * Project **is een** Activiteit
 * Project **heeft als invoer** Opdrachtgever (aansturing project)
