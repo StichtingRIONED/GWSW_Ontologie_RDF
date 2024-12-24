@@ -1144,8 +1144,17 @@ Het cijfer in deze condering staat voor het type conformiteitsklasse:
 <tr><td>3</td><td>MdsPlan</td></tr>
 <tr><td>5</td><td>Hyd</td></tr>
 <tr><td>6</td><td>IMBOR-SW</td></tr>
+<tr><td>10</td><td>CFK Ligging</td></tr>
+<tr><td>11</td><td>CFK Modelleren</td></tr>
+<tr><td>12</td><td>CFK Ribx</td></tr>
+<tr><td>13</td><td>CFK Prognoses</td></tr>
+<tr><td>14</td><td>CFK Volledig</td></tr>
 </tbody>
 </table>
+
+Geen cijfer voor de conformiteitsklasse maar een "*" betekent dat de validity voor alle CFK'en geldt:
+
+**" *f "** 
 
 De letter geeft het soort kwaliteitseis aan:
 
@@ -1156,7 +1165,7 @@ De letter geeft het soort kwaliteitseis aan:
 <tbody>
 <tr><td>t</td><td> Draai de kardinaliteit, bijvoorbeeld *minimaal 0* wordt *exact 1*</td></tr>
 <tr><td>d</td><td> De klasse doet niet mee in het deelmodel of de kwaliteitseis. In het geval van een kwaliteitseis gaat het meestal om een CE. Alle subklassen van de
-uitgeschakelde klasse worden ook uitgeschakeld (niet mee-gefiterd voor het deelmodel).
+uitgeschakelde klasse worden ook uitgeschakeld (niet meegefiterd voor het CFK-deelmodel).
  </td></tr>
 <tr><td>f</td><td> De klasse is te abstract binnen de conformiteitsklasse. Bij de aanmaak van het RDF bestand met de conformiteitsklasse wordt op basis van deze code de Opmerking-kolom bijgewerkt met tekst: [cfk fout]. Deze tekst wordt gescand in validatie-queries</td></tr>
 </tbody>
