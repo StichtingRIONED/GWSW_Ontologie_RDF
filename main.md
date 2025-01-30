@@ -1117,7 +1117,7 @@ Voor de volgende concepten wordt de scope afgeleid van de klasse-typering. De an
   * CE's met restrictie op metagegevens bij kenmerken (kenmerken van kenmerken): bijvoorbeeld het metagegeven Inwinning bij kenmerken zoals hoogteligging
 
 Als een concept op basis van skos:scopeNote niet in het deelmodel opgenomen wordt, dan geldt dit **niet** automatisch voor de subklassen 
-(die kunnen multiparent zijn en de deelmodel-filtering is daar (nog) niet op ingericht). Gebruik in speciale gevallen daarvoor de validaty-context (kwaliteitseis "d").
+(die kunnen multiparent zijn en de deelmodel-filtering is daar (nog) niet op ingericht). Gebruik in speciale gevallen daarvoor de validaty-context (validatiecode "d").
 
 ### Validity context
 
@@ -1153,7 +1153,7 @@ Het cijfer in deze condering staat voor het type conformiteitsklasse:
 </tbody>
 </table>
 
-De letter (valdatiecode) geeft het soort kwaliteitseis aan:
+De letter is de valdatiecode, die geeft het soort kwaliteitseis aan:
 
 <table class="simp">
 <thead>
