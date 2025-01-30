@@ -1097,26 +1097,27 @@ gwsw:DeelmodelBasis
 
 De annotatie skos:scopeNote kan meervoudig voorkomen (als het concept in meerdere deelmodellen voorkomt) en wordt opgenomen bij:
 
-* De typering (relatie rdf:type) van alle GWSW-klassen, hier de is de skos:scopeNote verplicht. De (combinatie van) skos:scopeNote bij de typering geldt ook voor alle annotaties bij de klasse (horen binnen dezelfde scope).
-* De CE's met restrictie op de concept-relaties (gwsw:hasPart, gwsw:hasAspect, dus niet voor de CE's met onderscheidende kenmerken). Voor de CE's is de skos:scopeNote optioneel, hoeft alleen opgenomen te worden bij afwijkingen van de skos:scopeNote op concept-niveau.
-* De typering van individuen binnen een collectie (de verzameling kan variëren per deelmodel vanwege bijvoorbeeld een externe normering)
+* De typering (rdf:type owl:Class) van alle GWSW-klassen, hier de is de skos:scopeNote verplicht. 
+De (combinatie van) skos:scopeNote bij de typering geldt natuurlijk ook voor alle annotaties bij de klasse (horen binnen dezelfde scope). Maar vanaf GWSW versie 1.6.1 
+wordt skos:scopeNote niet meer binnen CE's toegepast. Om te bepalen of een restrictie op bijvoorbeeld <span class="blue">gwsw:hasAspect</span>, <span class="blue">gwsw:hasPart</span> 
+binnen het deelmodel geldig is wordt de notatie bij het object (bij bijv. owl:onClass) gebruikt.
+* De typering van individuen binnen een collectie (de verzameling kan variëren per deelmodel vanwege bijvoorbeeld een externe normering). Als de notatie ontbreekt, dan geldt de notatie op collectienveau.
 
 <div class="box"><strong>Individuen, een speciaal geval</strong><br/>
-Individuen in het GWSW Datamodel kunnen veelvoudig geclassificeerd zijn. Bijvoorbeeld: het individu gwsw:Rond is geclassificeerd als gwsw:VormPutColl, gwsw:VormLeidingColl, gwsw:VormStroomprofiel. Om te kunnen bepalen of de classificatie van een individu binnen een deelmodel valt moet zowel de skos:scopeNote van het individu als de skos:scopeNote van de klasse binnen het deelmodel vallen.   
+Individuen in het GWSW Datamodel kunnen veelvoudig geclassificeerd zijn. Bijvoorbeeld: het individu gwsw:Rond is geclassificeerd als gwsw:VormPutColl, gwsw:VormLeidingColl, gwsw:VormStroomprofiel. 
+Om te kunnen bepalen of het individu binnen een deelmodel valt moet zowel de skos:scopeNote van het individu als de skos:scopeNote van de klasse binnen het deelmodel vallen.   
 </div>
 
-Voor de volgende concepten is de scope per definitie identiek aan de scope van klasse-typering. De annotatie skos:scopeNote wordt daarom **niet** opgenomen bij:
+Voor de volgende concepten wordt de scope afgeleid van de klasse-typering. De annotatie skos:scopeNote wordt daarom **niet** opgenomen bij:
 
-* De CE's voor de kwalificatie van onderscheidende kenmerken, die vallen binnen de scope van de betrokken klasse. De onderscheidende kenmerken en de individuen/instanties ervan zijn in één centraal deelmodel opgenomen
-* CE's met restrictie op datatype (waarde binnen een collectie of van een xsd-type), bij de relaties gwsw:hasValue en gwsw:hasReference
-* In vervolg daarop: CE's met restricties op waardebereik (min/max)
-* CE's met restrictie op metagegevens bij kenmerken (kenmerken van kenmerken): bijvoorbeeld het metagegeven Inwinning bij kenmerken zoals hoogteligging
-
-Als een concept op basis van skos:scopeNote niet in het deelmodel opgenomen wordt, dan geldt dit **ook** voor alle restricties op de klasse (object van owl:onClass).
+* Alle CE's (vanaf GWSW 1.6.1), dus inclusief:
+  * CE's voor de kwalificatie van onderscheidende kenmerken, die vallen binnen de scope van de betrokken klasse. De onderscheidende kenmerken en de individuen/instanties ervan zijn in één centraal deelmodel opgenomen
+  * CE's met restrictie op datatype (waarde binnen een collectie of van een xsd-type), bij de relaties gwsw:hasValue en gwsw:hasReference
+  * In vervolg daarop: CE's met restricties op waardebereik (min/max)
+  * CE's met restrictie op metagegevens bij kenmerken (kenmerken van kenmerken): bijvoorbeeld het metagegeven Inwinning bij kenmerken zoals hoogteligging
 
 Als een concept op basis van skos:scopeNote niet in het deelmodel opgenomen wordt, dan geldt dit **niet** automatisch voor de subklassen 
 (die kunnen multiparent zijn en de deelmodel-filtering is daar (nog) niet op ingericht). Gebruik in speciale gevallen daarvoor de validaty-context (kwaliteitseis "d").
-
 
 ### Validity context
 
@@ -1126,7 +1127,7 @@ Vergelijkbaar met de Collection of Facts speelt ook de **Validity context** vanu
 Met de annotatie **gwsw:hasValidity** worden de triples nabewerkt voor een bepaalde conformiteitsklasse (met kwaliteitseisen per proces).
 
 Een conformiteitsklasse is altijd een vorm van een deelmodel: een filter op het GWSW-datamodel met een eventuele nabewerking (zie verder).
-De validity context kan met een extra filter op het GWSW-datamodel ook gebruikt worden voor alleen een deelmodel-selectie, zie de letter "d" in het vervolg. 
+De validity context ook gebruikt worden voor extra deelmodel-selecties, zie de letter "d" in het vervolg. 
 
 De waarde bij gwsw:hasValidity bevat een codering voor toepassing van de conformiteitsklassen. Het is een string met de volgende opbouw:
 
@@ -1152,24 +1153,27 @@ Het cijfer in deze condering staat voor het type conformiteitsklasse:
 </tbody>
 </table>
 
-Geen cijfer voor de conformiteitsklasse maar een "*" betekent dat de validity voor alle CFK'en geldt:
-
-**" *f "** 
-
-De letter geeft het soort kwaliteitseis aan:
+De letter (valdatiecode) geeft het soort kwaliteitseis aan:
 
 <table class="simp">
 <thead>
 <tr class="header"><th>Letter</th><th>Betekenis</th></tr>
 </thead>
 <tbody>
-<tr><td>t</td><td> Draai de kardinaliteit, bijvoorbeeld *minimaal 0* wordt *exact 1*</td></tr>
-<tr><td>d</td><td> De klasse doet niet mee in het deelmodel of de kwaliteitseis. In het geval van een kwaliteitseis gaat het meestal om een CE. Alle subklassen van de
+<tr><td>t</td><td>(turn) Draai de kardinaliteit, bijvoorbeeld *minimaal 0* wordt *exact 1*</td></tr>
+<tr><td>d</td><td>(delete) De klasse doet niet mee in het deelmodel of de kwaliteitseis. In het geval van een kwaliteitseis gaat het meestal om een CE. Alle subklassen van de
 uitgeschakelde klasse worden ook uitgeschakeld (niet meegefiterd voor het CFK-deelmodel).
  </td></tr>
-<tr><td>f</td><td> De klasse is te abstract binnen de conformiteitsklasse. Bij de aanmaak van het RDF bestand met de conformiteitsklasse wordt op basis van deze code de Opmerking-kolom bijgewerkt met tekst: [cfk fout]. Deze tekst wordt gescand in validatie-queries</td></tr>
+<tr><td>f</td><td>(false) De klasse is te abstract binnen de conformiteitsklasse. Bij de aanmaak van het RDF bestand met de conformiteitsklasse wordt op basis van deze code de Opmerking-kolom bijgewerkt met tekst: [cfk fout]. Deze tekst wordt gescand in validatie-queries</td></tr>
 </tbody>
 </table>
+
+De validity-context wordt veelal gebruikt op klasse-niveau (annotatie bij rdf:type owl:Class).
+Binnen CE's wordt alleen de valitiecode "t" gebruikt, om kenmerken en componenten verplicht of optioneel te maken.
+
+Geen cijfer voor de conformiteitsklasse maar een "*" betekent dat de validity voor alle CFK'en geldt:
+
+**" *f "** betekent dat de GWSW-klasse te abstract is binnen alle conformiteitsklassen.
 
 ## Details aspecten
 
