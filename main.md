@@ -1171,7 +1171,7 @@ uitgeschakelde klasse worden ook uitgeschakeld (niet meegefiterd voor het CFK-de
 De validity-context wordt veelal gebruikt op klasse-niveau (annotatie bij rdf:type owl:Class).
 Binnen CE's wordt alleen de validatiecode "t" gebruikt, om kenmerken en componenten verplicht of optioneel te maken.
 
-Geen cijfer voor de conformiteitsklasse maar een "*" betekent dat de validity voor alle CFK'en geldt: ***f** betekent dat de GWSW-klasse te abstract is binnen alle conformiteitsklassen.
+Geen cijfer voor de conformiteitsklasse maar een "*" betekent dat de validity voor alle CFK'en geldt: ** *f ** betekent dat de GWSW-klasse te abstract is binnen alle conformiteitsklassen.
 
 ## Details aspecten
 
