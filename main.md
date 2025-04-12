@@ -166,7 +166,7 @@ Bij het ontwerp spelen deze structuren de hoofdrol, ze vormen het ontwerpkader. 
 ## Concepten en annotaties
 
 1. Elk GWSW-concept is van het generieke type owl:Class.
-2. Een concept en elke CE wordt altijd voorzien van de annotaties zoals opgenomen in hst [Annotaties bij concepten](#annotaties-bij-concepten)
+2. Een concept en elke CE wordt altijd voorzien van de annotaties zoals opgenomen in hst [Details annotaties](#details-annotaties)
 3. Voeg zoveel mogelijk extra informatie toe zoals afbeeldingen (verwijs via <span class="blue">rdfs:seeAlso</span>)
 
 ## Naamgeving
