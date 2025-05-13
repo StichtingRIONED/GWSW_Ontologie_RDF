@@ -1030,11 +1030,11 @@ Gebruik voor de waarden van het attribuut <span class="blue">gwsw:hasUnit</span>
 <tr><td>mm</td><td>xsd:integer</td></tr>
 <tr><td>mm/h</td><td>xsd:decimal</td></tr>
 <tr><td>mm/min</td><td>xsd:decimal</td></tr>
-<tr><td>yyyymmdd</td><td>xsd:date</td></tr>
+<tr><td>yyyy-mm-dd</td><td>xsd:date</td></tr>
 <tr><td>yyyy</td><td>xsd:gYear</td></tr>
 <tr><td>pcs</td><td>xsd:integer</td></tr>
 <tr><td>ppm</td><td>xsd:integer</td></tr>
-<tr><td>hhmmss</td><td>xsd:time</td></tr>
+<tr><td>hh:mm:ss</td><td>xsd:time</td></tr>
 <tr><td>- <em>(factor)</em></td><td>xsd:decimal</td></tr>
 <tr><td><span class="yellow">gml</span></td><td>geo:gmlLiteral</td></tr>
 </tbody>
