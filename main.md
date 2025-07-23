@@ -175,12 +175,13 @@ _Terminologie_
 
 Zie hst [Identificatie van concepten](#identificatie-van-concepten)  
 
-1. Een concept wordt geïdentificeerd door de URI (prefix + naam)
-2. Volg de gebruikelijke termen binnen het vakgebied, bedenk geen nieuwe conceptnamen die misschien de lading beter dekken of neutraler zijn. Dat geldt ook - waar mogelijk - voor abstracte concepten.
+1. Een concept wordt geïdentificeerd door de URI (prefix + de uri-vorm van de naam)
+2. Volg voor de naamgeving de gebruikelijke termen binnen het vakgebied, bedenk geen nieuwe conceptnamen die misschien de lading beter dekken of neutraler zijn. Dat geldt ook - waar mogelijk - voor abstracte concepten. 
 3. Voorkom zoveel mogelijk het gebruik van handels- of merknamen in de conceptnamen.
 4. Geef alle gebruikelijke vakgebied-termen die gelden voor het te modelleren systeem of proces een plek, als apart concept of als synoniem van een concept. De zoekfunctie wordt daarmee volledig.
 5. Laat algemene termen die niet specifiek bij de discipline horen zoveel mogelijk buiten beschouwing. Modelleer bijvoorbeeld het concept "calamiteit" alleen als het als supertype nodig is.
 6. Verwijs voor algemene termen waar mogelijk naar andere databronnen (<span class="blue">rdfs:seeAlso</span>).
+7. Namen voor andere taalgemeenschappen kunnen worden toegevoegd, maar de NL-versie moet minimaal aanwezig zijn (is een uitgangspunt bij query-ontwerp)
 
 ## Data-afleiding en -verificatie
 
@@ -477,7 +478,7 @@ De **UoM, Brondefinitie, Eigen definitie** worden als annotaties bij de concepte
 
 De **Auteurs** gecombineerd met **Datum start concept** en **Datum wijziging concept** worden als annotaties bij de concepten opgenomen.
 
-De **Taalgemeenschap** wordt als extra naam bij de concepten (met property rdfs:label) vermeld.
+De **Taalgemeenschap** wordt als extra aanduiding bij de concepten (met property rdfs:label) vermeld. De NL-versie dient altijd aanwezig te zijn.
 
 ### Properties in diagrammen
 
@@ -845,7 +846,7 @@ De volgende annotaties worden in het GWSW toegepast (zie voor toelichting het [O
 <tbody>
 <tr>
 <td>rdfs:label</td>
-<td><strong>Exact 1 per taalgemeenschap
+<td><strong>Exact 1 per taalgemeenschap, de NL-versie dient altijd aanwezig te zijn
 <br/><span class="blue">Opnemen bij de klasse, collectie-individu, optioneel bij CE's</span></td>
 </tr>
 <tr>
@@ -978,7 +979,8 @@ In het oorspronkelijke Gellish-model is een nummer-identificatie (naast het unie
 
 Voor de voorkeursnaam van GWSW-concepten geldt het volgende uitgangspunt:
 
-Altijd de literal bij rdfs:label als voorkeursterm gebruiken. Als die meertalig is (er kunnen meerdere rdfs:label relaties zijn met een eigen taalaanduiding) geldt altijd de voorkeur @nl en daarna @en (van een GWSW-concept is minimaal een @nl of een @en versie aanwezig).
+Altijd de literal bij rdfs:label als voorkeursterm gebruiken. Als die meertalig is (er kunnen meerdere rdfs:label relaties zijn met een eigen taalaanduiding) geldt altijd de voorkeur @nl
+Van een GWSW-concept is altijd een NL-versie aanwezig, dit uitgangspunt geldt ook bij het ontwerp van queries.
 
 In het GWSW komen vertalingen voor, die worden als rdfs:label (voorzien van de taalcode) benoemd. Ook synoniemen komen veelvuldig in het GWSW voor, die worden benoemd met de relatie skos:altLabel.
 
