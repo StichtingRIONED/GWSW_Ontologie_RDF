@@ -1100,9 +1100,9 @@ gwsw:DeelmodelBasis
 De annotatie skos:scopeNote kan meervoudig voorkomen (als het concept in meerdere deelmodellen voorkomt) en wordt opgenomen bij:
 
 * De typering (rdf:type owl:Class) van alle GWSW-klassen, hier de is de skos:scopeNote verplicht. 
-De (combinatie van) skos:scopeNote bij de typering geldt natuurlijk ook voor alle annotaties bij de klasse (horen binnen dezelfde scope). Maar vanaf GWSW versie 1.6.1 
-wordt skos:scopeNote niet meer binnen CE's toegepast. Om te bepalen of een restrictie op bijvoorbeeld <span class="blue">gwsw:hasAspect</span>, <span class="blue">gwsw:hasPart</span> 
-binnen het deelmodel geldig is wordt de notatie bij het object (bij bijv. owl:onClass) gebruikt.
+De (combinatie van) skos:scopeNote bij de typering geldt natuurlijk ook voor alle annotaties bij de klasse (horen binnen dezelfde scope). 
+Maar vanaf GWSW versie 1.6.1 wordt skos:scopeNote niet meer binnen CE's toegepast. Om te bepalen of een restrictie op bijvoorbeeld <span class="blue">gwsw:hasAspect</span>, 
+<span class="blue">gwsw:hasPart</span> binnen het deelmodel geldig is wordt de notatie bij het object (bijv. de klasse waarnaar owl:onClass verwijst) gebruikt.
 * De typering van individuen binnen een collectie (de verzameling kan variëren per deelmodel vanwege bijvoorbeeld een externe normering). Als de notatie ontbreekt, dan geldt de notatie op collectienveau.
 
 <div class="box"><strong>Individuen, een speciaal geval</strong><br/>
