@@ -246,8 +246,12 @@ Voor de eindgebruiker worden abstracte klassen gemarkeerd in de conformiteitskla
 
 ### Orthogonaliteit
 
-Binnen de GWSW taxonomie kunnen begrippen haaks (orthogonaal) op elkaar staan, de orthogonaliteit is dus niet bepalend voor de opbouw van de soortenboom. Bijvoorbeeld kun je de in het GWSW opgenomen concepten Blinde Put en Overstortput als orthogonaal beschouwen, de één wordt onderscheiden vanwege de constructie, de ander wordt onderscheiden vanwege de functie.  
-Dat vraagt extra aandacht bij de toepassing ervan. Zo kan een individu zowel van het type Blinde Put als van het type Overstortput maar dat geldt niet voor de combinatie van de typen Overstortput als Stuwput. Die laatste combinatie conflicteert vanwege de scheiding in functie. In het datamodel kun je dat expliciteren door conflicterende typeringen met <span class="blue">owl:disjointWith</span> te beschrijven. In het GWSW datamodel is dat niet uitgewerkt, via de onderscheidende kenmerken is de orthogonaliteit wel herkenbaar.
+Binnen de GWSW taxonomie kunnen begrippen haaks (orthogonaal) op elkaar staan, de orthogonaliteit is dus niet bepalend voor de opbouw van de soortenboom. 
+Bijvoorbeeld kun je de in het GWSW opgenomen concepten Blinde Put en Overstortput als orthogonaal beschouwen, de één wordt onderscheiden vanwege de constructie, de ander wordt onderscheiden vanwege de functie.  
+Dat vraagt extra aandacht bij de toepassing ervan. Zo kan een individu zowel van het type Blinde Put als van het type Overstortput maar dat geldt niet voor de 
+combinatie van de typen Overstortput als Stuwput. Die laatste combinatie conflicteert vanwege de scheiding in functie. 
+In het datamodel kun je dat expliciteren door conflicterende typeringen met <span class="blue">owl:disjointWith</span> te beschrijven. 
+In het GWSW datamodel is dat niet uitgewerkt, via de onderscheidende kenmerken is de orthogonaliteit wel herkenbaar.
 
 ## Aspecten
 
@@ -1123,7 +1127,7 @@ Als een concept op basis van skos:scopeNote niet in het deelmodel opgenomen word
 
 ### Validity context
 
-Voor de definitie van conformiteitsklassen.
+Voor de definitie van conformiteitsklassen (CFK).
 
 Vergelijkbaar met de Collection of Facts speelt ook de **Validity context** vanuit Gellish nog steeds een rol in de RDF-vorm van het GWSW. 
 Met de annotatie **gwsw:hasValidity** worden de triples nabewerkt voor een bepaalde conformiteitsklasse (met kwaliteitseisen per proces).
@@ -1147,11 +1151,12 @@ Het cijfer in deze condering staat voor het type conformiteitsklasse:
 <tr><td>3</td><td>MdsPlan</td></tr>
 <tr><td>5</td><td>Hyd</td></tr>
 <tr><td>6</td><td>IMBOR-SW</td></tr>
-<tr><td>10</td><td>CFK Ligging</td></tr>
-<tr><td>11</td><td>CFK Modelleren</td></tr>
-<tr><td>12</td><td>CFK Ribx</td></tr>
-<tr><td>13</td><td>CFK Prognoses</td></tr>
-<tr><td>14</td><td>CFK Volledig</td></tr>
+<tr><td>10</td><td>GGN Ligging</td></tr>
+<tr><td>11</td><td>GGN Modelleren</td></tr>
+<tr><td>12</td><td>GGN R&I</td></tr>
+<tr><td>14</td><td>GGN Volledig</td></tr>
+<tr><td>15</td><td>GGN Monitor</td></tr>
+<tr><td>16</td><td>Revisies</td></tr>
 </tbody>
 </table>
 
@@ -1166,14 +1171,17 @@ De letter is de valdatiecode, die geeft het soort kwaliteitseis aan:
 <tr><td>d</td><td>(delete) De klasse doet niet mee in het deelmodel of de kwaliteitseis. In het geval van een kwaliteitseis gaat het meestal om een CE. Alle subklassen van de
 uitgeschakelde klasse worden ook uitgeschakeld (niet meegefiterd voor het CFK-deelmodel).
  </td></tr>
-<tr><td>f</td><td>(false) De klasse is te abstract binnen de conformiteitsklasse. Bij de aanmaak van het RDF bestand met de conformiteitsklasse wordt op basis van deze code de Opmerking-kolom bijgewerkt met tekst: [cfk fout]. Deze tekst wordt gescand in validatie-queries</td></tr>
+<tr><td>f</td><td>(false) De klasse is te abstract binnen de conformiteitsklasse. Bij de aanmaak van het RDF bestand met de conformiteitsklasse wordt op basis van deze code de 
+Opmerking-kolom bijgewerkt met tekst: [cfk fout]. Deze tekst wordt gescand in validatie-queries</td></tr>
 </tbody>
 </table>
 
 De validity-context wordt veelal gebruikt op klasse-niveau (annotatie bij rdf:type owl:Class).
 Binnen CE's wordt alleen de validatiecode __t__ gebruikt, om kenmerken en componenten verplicht of optioneel te maken.
 
-Geen cijfer voor de conformiteitsklasse maar een "*" betekent dat de validity voor alle CFK'en geldt: __*f__ betekent dat de GWSW-klasse te abstract is binnen alle conformiteitsklassen.
+Geen cijfer voor de conformiteitsklasse maar een "\*" betekent dat de validity voor alle CFK'en geldt: __*f__ betekent dat de GWSW-klasse te abstract is binnen alle conformiteitsklassen.
+De "\*"-aanduiding mag gecombineerd worden met de validatiecode __d__. De validatiewaarde __*f 15d__ betekent dat de GWSW-klasse niet meedoet in conformiteitsklasse 15 
+en voor de overigen te abstract is.
 
 ## Details aspecten
 
@@ -1405,7 +1413,8 @@ De topologie wordt beschreven via de elementen "oriëntatie". Een oriëntatie ka
 
 *Meronomie*
 
-<span class="blue">gwsw:hasPart</span> wordt type owl:ObjectProperty en geldt voor fysieke objecten, ruimtelijke objecten en activiteiten onderling. Daarnaast kunnen ruimtes en fysieke dingen met <span class="blue">gwsw:hasPart</span> een ruimtelijke compositie vormen.
+<span class="blue">gwsw:hasPart</span> wordt type owl:ObjectProperty en geldt voor fysieke objecten, ruimtelijke objecten en activiteiten onderling. 
+Daarnaast kunnen ruimtes en fysieke dingen met <span class="blue">gwsw:hasPart</span> een ruimtelijke compositie vormen.
 
 Ruimtelijke composities (“bevatten” iets) via de property <span class="blue">gwsw:hasPart</span> / <span class="blue">gwsw:isPartOf</span> met restrictie op object-class:
 
