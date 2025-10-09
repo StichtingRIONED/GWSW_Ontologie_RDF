@@ -1154,6 +1154,7 @@ Het cijfer in deze condering staat voor het type conformiteitsklasse:
 <tr><td>10</td><td>GGN Ligging</td></tr>
 <tr><td>11</td><td>GGN Modelleren</td></tr>
 <tr><td>12</td><td>GGN R&I</td></tr>
+<tr><td>13</td><td>GGN Prognoses (niet in gebruik)</td></tr>
 <tr><td>14</td><td>GGN Uitgebreid</td></tr>
 <tr><td>15</td><td>GGN Monitor</td></tr>
 <tr><td>16</td><td>Revisies</td></tr>
