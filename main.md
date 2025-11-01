@@ -181,7 +181,7 @@ Zie hst [Identificatie van concepten](#identificatie-van-concepten)
 4. Geef alle gebruikelijke vakgebied-termen die gelden voor het te modelleren systeem of proces een plek, als apart concept of als synoniem van een concept. De zoekfunctie wordt daarmee volledig.
 5. Laat algemene termen die niet specifiek bij de discipline horen zoveel mogelijk buiten beschouwing. Modelleer bijvoorbeeld het concept "calamiteit" alleen als het als supertype nodig is.
 6. Verwijs voor algemene termen waar mogelijk naar andere databronnen (<span class="blue">rdfs:seeAlso</span>).
-7. Namen voor andere taalgemeenschappen kunnen worden toegevoegd, maar de NL-versie moet minimaal aanwezig zijn (is een uitgangspunt bij query-ontwerp)
+7. Namen voor andere taalgemeenschappen kunnen worden toegevoegd, maar **de NL-versie moet minimaal aanwezig zijn (is een uitgangspunt bij query-ontwerp**).
 
 ## Data-afleiding en -verificatie
 
