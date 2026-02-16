@@ -169,7 +169,7 @@ Bij het ontwerp spelen deze structuren de hoofdrol, ze vormen het ontwerpkader. 
 2. Een concept en elke CE wordt altijd voorzien van de annotaties zoals opgenomen in hst [Details annotaties](#details-annotaties)
 3. Voeg zoveel mogelijk extra informatie toe zoals afbeeldingen (verwijs via <span class="blue">rdfs:seeAlso</span>)
 
-## Naamgeving
+## Naamgeving en semantiek
 
 _Terminologie_
 
@@ -178,7 +178,7 @@ Zie hst [Identificatie van concepten](#identificatie-van-concepten)
 1. Een concept wordt geïdentificeerd door de URI (prefix + de uri-vorm van de naam)
 2. Volg voor de naamgeving de gebruikelijke termen binnen het vakgebied, bedenk geen nieuwe conceptnamen die misschien de lading beter dekken of neutraler zijn. Dat geldt ook - waar mogelijk - voor abstracte concepten. 
 3. Voorkom zoveel mogelijk het gebruik van handels- of merknamen in de conceptnamen.
-4. Geef alle gebruikelijke vakgebied-termen die gelden voor het te modelleren systeem of proces een plek, als apart concept of als synoniem van een concept. De zoekfunctie wordt daarmee volledig.
+4. Geef alle gebruikelijke vakgebied-termen die gelden voor het te modelleren systeem of proces een plek, als apart concept of als synoniem van een concept. De zoekfunctie is volledig voor het vakgebied.
 5. Laat algemene termen die niet specifiek bij de discipline horen zoveel mogelijk buiten beschouwing. Modelleer bijvoorbeeld het concept "calamiteit" alleen als het als supertype nodig is.
 6. Verwijs voor algemene termen waar mogelijk naar andere databronnen (<span class="blue">rdfs:seeAlso</span>).
 7. Namen voor andere taalgemeenschappen kunnen worden toegevoegd, maar **de NL-versie moet minimaal aanwezig zijn (is een uitgangspunt bij query-ontwerp)**.
@@ -219,7 +219,7 @@ Definieer klassen zo uitgebreid mogelijk op basis van hun eigenschappen. Daarmee
 
 Het opbouwen van de soortenboom op basis van onderscheidende kenmerken, zie hst [Details onderscheidende kenmerken](#details-onderscheidende-kenmerken)
 
-1. Voor het classificeren van een concept uitgaan van onderscheidende kenmerken in de (abstracte) soortenboom. Denk aan determineren van planten volgens Linnaeus: na het maken van een aantal keuzes wordt de soort gevonden
+1. Voor het classificeren van een concept uitgaan van onderscheidende kenmerken in de (abstracte) soortenboom. Denk aan determineren van planten volgens Linnaeus: na het maken van een aantal keuzes wordt de soort gevonden. Belangrijke onderscheidende kenmerken in het GWSW zijn Functie (wat doet het) en Uitvoering (hoe ziet het er uit).
 2. Streef ernaar om met de onderscheidende kenmerken de (in je hoofd) uitgeschreven definitie te vervangen
 3. Gebruik de beschreven onderscheidende kenmerken bij fysieke objecten en activiteiten
 4. Kwalificeer het onderscheidende kenmerk impliciet (gwsw:uitvoering "groot"). Expliciete kwalificaties (in de vorm van subtypes van generieke kenmerken) worden dus niet gebruikt (zijn - nog - onnodig)
@@ -240,9 +240,11 @@ Voor de eindgebruiker worden abstracte klassen gemarkeerd in de conformiteitskla
 
 ### Bladerobjecten
 
-1. Specialiseer de concepten zoveel als mogelijk: definieer de subtypes, de "bladerobjecten".
-2. Introduceer geen subtype als het geen onderscheidend kenmerk heeft. Bijvoorbeeld geen extra subtype "standaard hemelwaterstelsel" naast "verbeterd hemelwaterstelsel".
-3. Hou er rekening mee dat de individuen zo specifiek mogelijk geclassificeerd dienen te worden. Classificatie met een supertype gebeurt alleen als het subtype niet van toepassing is (denk aan het eerdere voorbeeld "hemelwaterstelsel") of als het onbekend is en wel toegepast kan worden. Bijvoorbeeld bij gebruik van de inspectienorm voor "vrijverval rioolleidingen" (met subtypes gemengd, hemelwater, vuilwater).
+1. Denk "semantisch", voorop staat het uitdrukken van de betekenis van concepten via hun relaties. Ook de soortenboom is hieraan ondergeschikt, voor het gebruik zijn vooral de bladerobjecten (de bladeren aan de boom) van belang.
+2. Specialiseer de concepten zoveel als mogelijk: definieer de subtypes, de "bladerobjecten".
+3. Introduceer geen subtype als het geen onderscheidend kenmerk heeft. Bijvoorbeeld geen extra subtype "standaard hemelwaterstelsel" naast "verbeterd hemelwaterstelsel".
+4. Hou er rekening mee dat individuen zo specifiek mogelijk geclassificeerd dienen te worden. Classificatie met een supertype gebeurt alleen als het subtype niet van toepassing is (denk aan het eerdere voorbeeld "hemelwaterstelsel") of als het onbekend is en wel toegepast kan worden. Bijvoorbeeld bij gebruik van de inspectienorm voor "vrijverval rioolleidingen" (met subtypes gemengd, hemelwater, vuilwater).
+5. Als bladerobjecten niet altijd in detail worden gebruikt (bijvoorbeeld "grindkoffer" of "zandkoffer"), introduceer dan waar mogelijk een supertype (bijvoorbeeld "infiltratiekoffer") binnen de regels van het vorige punt.
 
 ### Orthogonaliteit
 
