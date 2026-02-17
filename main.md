@@ -226,7 +226,7 @@ Het opbouwen van de soortenboom op basis van onderscheidende kenmerken, zie hst 
 
 ### Definiërende onderdelen
 
-De deel/geheel relatie kan ook onderscheidend zijn voor de classificatie, bijvoorbeeld een overstortput moet als onderdeel een overstortdrempel hebben.
+De deel/geheel relatie kan ook onderscheidend zijn voor de classificatie, bijvoorbeeld moet een overstortput als onderdeel een overstortdrempel hebben.
 Gebruik de kardinaliteitseis voor de <span class="blue">gwsw:hasPart</span> relatie om de definiërende onderdelen te beschrijven.
 
 ### Abstracte concepten
