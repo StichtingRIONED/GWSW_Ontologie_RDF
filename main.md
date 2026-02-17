@@ -224,6 +224,11 @@ Het opbouwen van de soortenboom op basis van onderscheidende kenmerken, zie hst 
 3. Gebruik de beschreven onderscheidende kenmerken bij fysieke objecten en activiteiten
 4. Kwalificeer het onderscheidende kenmerk impliciet (gwsw:uitvoering "groot"). Expliciete kwalificaties (in de vorm van subtypes van generieke kenmerken) worden dus niet gebruikt (zijn - nog - onnodig)
 
+### Definiërende onderdelen
+
+De deel/geheel relatie kan ook onderscheidend zijn voor de classificatie, bijvoorbeeld een overstortput moet als onderdeel een overstortdrempel hebben.
+Gebruik de kardinaliteitseis voor de <span class="blue">gwsw:hasPart</span> relatie om de definiërende onderdelen te beschrijven.
+
 ### Abstracte concepten
 
 _Klassen (en collecties) die niet voor classificatie worden gebruikt / niet instantieerbaar zijn_
