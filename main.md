@@ -4,7 +4,7 @@
 <!-- gebruik voor lokaal editen
 <script src="./builds/respec-rioned.js"></script> -->
 
-**Een beschrijving van het protocol GWSW-OroX versie 1.5.2**
+**Een beschrijving van het protocol GWSW-OroX versie 1.6.1**
 
 Van: Stichting RIONED
 
