@@ -18,6 +18,7 @@ Versie historie
 20210319: Herziene hoofdstukindeling, samenvatting (oorspronkelijk hst 2) in modelleerprincipes (nieuwe hst 2) en details (blijft hst 3) ondergebracht  
 
 20201219-20210223: In kader Gellish-ontmanteling
+
 * verwijzing naar bijlage in opmerking-annotatie vervangen door rdfs:seeAlso-verwijzing naar document-URL
 * URI's voor aspect properties vragen extra aandacht voor hoofdlettergevoeligheid. Nu bestaan bijvoorbeeld gwsw:functie en gwsw:Functie naast elkaar. (hst 3.1.1)
 * op basis NTA8035: consequent de term properties voor predicates hanteren, onderverdeeld in attributen (annotaties en aspecten) en relaties
