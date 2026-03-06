@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # GWSW Ontologie in RDF
 
 <!-- gebruik voor lokaal editen
