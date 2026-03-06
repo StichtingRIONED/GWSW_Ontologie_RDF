@@ -10,13 +10,13 @@ Van: Stichting RIONED
 Versie historie
 <div style="font-size: 0.90em">
 
+20260306: Modelleerprincipes terminologie verduidelijkt
 20240514: Modelleerprincipes overgenomen uit GWSW 2.0 (gesynchroniseerd)
 20210804: Modelleerprincipes aangepast, property-tabellen compleet gemaakt  
 20210319: Modelleerprincipes verder uitgewerkt  
 20210319: Herziene hoofdstukindeling, samenvatting (oorspronkelijk hst 2) in modelleerprincipes (nieuwe hst 2) en details (blijft hst 3) ondergebracht  
+
 20201219-20210223: In kader Gellish-ontmanteling
-
-
 * verwijzing naar bijlage in opmerking-annotatie vervangen door rdfs:seeAlso-verwijzing naar document-URL
 * URI's voor aspect properties vragen extra aandacht voor hoofdlettergevoeligheid. Nu bestaan bijvoorbeeld gwsw:functie en gwsw:Functie naast elkaar. (hst 3.1.1)
 * op basis NTA8035: consequent de term properties voor predicates hanteren, onderverdeeld in attributen (annotaties en aspecten) en relaties
@@ -176,12 +176,22 @@ _Terminologie_
 Zie hst [Identificatie van concepten](#identificatie-van-concepten)  
 
 1. Een concept wordt geïdentificeerd door de URI (prefix + de uri-vorm van de naam)
+<<<<<<< HEAD
+2. Voorkom zoveel mogelijk het gebruik van handels- of merknamen in de conceptnamen.
+3. Maak een zo semantisch-rijk mogelijk kennismodel, elk begrip/vakterm wordt gemodelleerd zolang het onderscheiden kan worden en betekenisvol is. Toets aan het taalgebruik, veel gebruik van de term betekent veelal: er is onderscheid.
+4. In aanvulling daarop, geef alle gebruikelijke vakgebied-termen een plek, als apart concept of als synoniem van een concept. Bij twijfel altijd meenemen, hou de naslagfunctie volledig voor het vakgebied.
+5. Volg voor de naamgeving de gebruikelijke termen binnen het vakgebied, bedenk geen nieuwe conceptnamen die misschien de lading beter dekken of neutraler zijn. Dat geldt ook - waar mogelijk - voor abstracte concepten. 
+6. Laat algemene termen die niet specifiek bij de discipline horen zoveel mogelijk buiten beschouwing. Modelleer bijvoorbeeld het concept "calamiteit" alleen als het als supertype nodig is.
+7. Verwijs voor algemene termen waar mogelijk naar andere databronnen (<span class="blue">rdfs:seeAlso</span>).
+8. Namen voor andere taalgemeenschappen kunnen worden toegevoegd, maar **de NL-versie moet minimaal aanwezig zijn (is een uitgangspunt bij query-ontwerp)**.
+=======
 2. Volg voor de naamgeving de gebruikelijke termen binnen het vakgebied, bedenk geen nieuwe conceptnamen die misschien de lading beter dekken of neutraler zijn. Dat geldt ook - waar mogelijk - voor abstracte concepten. 
 3. Voorkom zoveel mogelijk het gebruik van handels- of merknamen in de conceptnamen.
 4. Geef alle gebruikelijke vakgebied-termen die gelden voor het te modelleren systeem of proces een plek, als apart concept of als synoniem van een concept. De zoekfunctie is volledig voor het vakgebied.
 5. Laat algemene termen die niet specifiek bij de discipline horen zoveel mogelijk buiten beschouwing. Modelleer bijvoorbeeld het concept "calamiteit" alleen als het als supertype nodig is.
 6. Verwijs voor algemene termen waar mogelijk naar andere databronnen (<span class="blue">rdfs:seeAlso</span>).
 7. Namen voor andere taalgemeenschappen kunnen worden toegevoegd, maar **de NL-versie moet minimaal aanwezig zijn (is een uitgangspunt bij query-ontwerp)**.
+>>>>>>> fb0dfcc2b9d1bc6ac087f67a55329a0d55e439e7
 
 ## Data-afleiding en -verificatie
 
