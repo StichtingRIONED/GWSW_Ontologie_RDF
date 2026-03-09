@@ -1,8 +1,5 @@
 # GWSW Ontologie in RDF
 
-<!-- gebruik voor lokaal editen
-<script src="./builds/respec-rioned.js"></script> -->
-
 **Een beschrijving van het protocol GWSW-OroX versie 1.6.1**
 
 Van: Stichting RIONED
@@ -10,7 +7,7 @@ Van: Stichting RIONED
 Versie historie
 <div style="font-size: 0.90em">
 
-20260306: Modelleerprincipes terminologie verduidelijkt
+20260309: Modelleerprincipes terminologie verduidelijkt
 20240514: Modelleerprincipes overgenomen uit GWSW 2.0 (gesynchroniseerd)
 20210804: Modelleerprincipes aangepast, property-tabellen compleet gemaakt  
 20210319: Modelleerprincipes verder uitgewerkt  
