@@ -123,13 +123,21 @@ Voor de definitie van klassen, eigenschappen, datatypen en restricties kunnen ve
 
 # Modelleerprincipes
 
-Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkelijke opzet (gestart in 2006) van het model in Gellish-vorm. Deze principes zijn natuurlijk taalonafhankelijk, ook in de RDF-vorm blijven ze van groot belang. Veel dank gaat naar Andries van Renssen, geestelijk vader van Gellish en Matthé van Koetsveld, intensief betrokken bij de modellering in Gellish van het GWSW en zijn voorlopers.
+Een groot deel van de gehanteerde modelleerprincipes stammen uit de oorspronkelijke opzet (gestart in 2006) van het model in Gellish-vorm. 
+Deze principes zijn natuurlijk taalonafhankelijk, ook in de RDF-vorm blijven ze van groot belang. 
+Veel dank gaat naar Andries van Renssen, geestelijk vader van Gellish en Matthé van Koetsveld, intensief betrokken bij de modellering in Gellish van het GWSW en zijn voorlopers.
 
-PRINCIPES CONTROLEREN/UITBREIDEN:
+**Toegankelijk kennismodel**  
+De traditionele wijze van modelleren richt zich op normaliseren van gegevens (consequent, economisch, “lean&mean” maken). 
+De opzet van het GWSW-datamodel is/lijkt soms strijdig met die aanpak. 
+Het GWSW is een zo semantisch-rijk mogelijk kennismodel, elk begrip/vakterm doet mee zolang het onderscheiden kan worden en betekenisvol is.  
+Daarmee wordt het GWSW niet technisch minder, integendeel, de semantiek geeft extra waarde aan de technologie. 
+De techniek van objectoriëntatie met overervingsprincipes levert naast een toegankelijk kennismodel ook "lean&mean" uitwisselingsmethoden.
+
+**NOG TOELICHTEN:**
 * Omgaan met multi-typering (gezamenlijk supertype "Rol/Extra type")
 * Voorkeursnaam (naast URI) uniek houden (denk aan IMBOR met onleesbare URI)
 * Dubbele eigenschappen (zie notities 20240417/links, hoe zat dat?)
-* Woordenboek-functie - altijd volgend in woordgebruik (belangrijk voor draagvlak)
 
 ## Reikwijdte model
 
@@ -224,7 +232,7 @@ Definieer klassen zo uitgebreid mogelijk op basis van hun eigenschappen. Daarmee
 <br/>- geef aan in eigenschappen waarin de class verschilt van de bovenliggende class en omliggende classes
 <br/>- let op orthogonaliteit
 <br/>- plaats een eigenschap zo hoog mogelijk
-</div>
+</div>  
 
 ### Onderscheidende kenmerken
 
@@ -257,7 +265,11 @@ Voor de eindgebruiker worden abstracte klassen gemarkeerd in de conformiteitskla
 ### Bladerobjecten
 
 1. Denk "semantisch", voorop staat het uitdrukken van de betekenis van concepten via hun relaties. Ook de soortenboom is hieraan ondergeschikt, voor het gebruik zijn vooral de bladerobjecten (de bladeren aan de boom) van belang.
-2. Specialiseer de concepten zoveel als mogelijk: definieer de subtypes, de "bladerobjecten".
+2. Specialiseer de concepten zoveel als mogelijk: definieer de bladerobjecten.
+De traditionele wijze van modelleren richt zich op normaliseren van gegevens (consequent, economisch, “lean&mean” maken). Voor het GWSW zullen we die neiging toch moeten onderdrukken.
+Het GWSW is en blijft een zo semantisch-rijk mogelijk kennismodel, elk begrip/vakterm doet mee zolang het onderscheiden kan worden en betekenisvol is. 
+Dat laatste criterium kan je vaak al goed toetsen met het taalgebruik, veel gebruik van de term betekent: er is onderscheid. 
+
 3. Introduceer geen subtype als het geen onderscheidend kenmerk heeft. Bijvoorbeeld geen extra subtype "standaard hemelwaterstelsel" naast "verbeterd hemelwaterstelsel".
 4. Hou er rekening mee dat individuen zo specifiek mogelijk geclassificeerd dienen te worden. Classificatie met een supertype gebeurt alleen als het subtype niet van toepassing is (denk aan het eerdere voorbeeld "hemelwaterstelsel") of als het onbekend is en wel toegepast kan worden. Bijvoorbeeld bij gebruik van de inspectienorm voor "vrijverval rioolleidingen" (met subtypes gemengd, hemelwater, vuilwater).
 5. Als bladerobjecten niet altijd in detail worden gebruikt (bijvoorbeeld "grindkoffer" of "zandkoffer"), introduceer dan waar mogelijk een supertype (bijvoorbeeld "infiltratiekoffer") binnen de regels van het vorige punt.
