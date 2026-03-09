@@ -128,7 +128,7 @@ Veel dank gaat naar Andries van Renssen, geestelijk vader van Gellish en Matthé
 De traditionele wijze van modelleren richt zich op normaliseren van gegevens (consequent, economisch, “lean&mean” maken). 
 De opzet van het GWSW-datamodel is/lijkt soms strijdig met die aanpak. 
 Het GWSW is een zo semantisch-rijk mogelijk kennismodel, elk begrip/vakterm doet mee zolang het onderscheiden kan worden en betekenisvol is.  
-Daarmee wordt het GWSW niet technisch minder, integendeel, de semantiek geeft extra waarde aan de technologie. 
+Daarmee wordt het GWSW niet technisch minder, de semantiek geeft extra waarde aan de technologie. 
 De techniek van objectoriëntatie met overervingsprincipes levert naast een toegankelijk kennismodel ook "lean&mean" uitwisselingsmethoden.
 
 **NOG TOELICHTEN:**
